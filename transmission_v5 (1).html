@@ -2985,6 +2985,7 @@ function negDecide(action){
       if(bdg){ bdg.className='badge b-green'; bdg.style.cssText='font-size:9px;padding:1px 6px'; bdg.textContent='✓ Locked'; }
       const ur=item.querySelector('.neg-sup-item-unread'); if(ur) ur.style.display='none';
     }
+    addWorklogEntry('Locked the deal with <b>'+d.firm+'</b> at '+d.accept+' — issuing the PO now.');
   } else if(action==='push'){
     negAppendMsg('out','L','Layla · for you','We\'re ready to commit today at <strong>'+d.push+'</strong>. Match it and the '+d.unit+' order is yours.');
     setNegStatus('Layla is pushing for '+d.push+'…');
@@ -3010,6 +3011,7 @@ function decApprove(el,msg){
     const ac=document.getElementById('nyd-allclear'); if(ac) ac.style.display='flex';
     if(c){ c.textContent='✓'; c.style.background='var(--green)'; }
   }
+  addWorklogEntry(msg);
   showToast(msg);
 }
 
@@ -3249,6 +3251,7 @@ function procApprove(btn,name){
       row.appendChild(tk);
     }
   }
+  addWorklogEntry('Approved <b>'+name+'</b> — preparing the PO for your signature.');
   showToast('Approved — Layla is preparing the PO for '+name);
 }
 // Show Layla's score on each supplier row in the project tree (data-driven, idempotent)
@@ -3862,6 +3865,14 @@ document.addEventListener('keydown',function(e){
   var m=document.querySelector('.modal-overlay.show');
   if(m) m.classList.remove('show');
 });
+// Append a live entry to Layla's Worklog (top of Today) when you take an action — keeps it a living record (§3-B)
+function addWorklogEntry(text){
+  var day=document.querySelector('#robot-panel .wl-day');
+  if(!day) return;
+  var item=document.createElement('div'); item.className='wl-item';
+  item.innerHTML='<div class="wl-time">now</div><div class="wl-dot"></div><div class="wl-body">'+text+'</div>';
+  day.insertAdjacentElement('afterend', item);
+}
 
 // ── INIT ──
 window.onload = function(){

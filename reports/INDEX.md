@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 080](round-080-live-worklog.md) · 🟦 · Worklog 变活(accept/approve 动作追加「now」实时条目,§3-B 可累积)· console0 · 3/3 KEEP
 - [Round 079](round-079-tree-approved-and-active-bug.md) · 🟦 · 修 cat/suez 行高亮 bug(短 id)+ procApprove 树项「✓ Approved」状态一致 · console0 · 3/3 KEEP
 - [Round 078](round-078-accept-listitem-lock.md) · 🟦 · Accept 后供应商列表项同步「✓ Locked」(绿徽章+左边,状态一致)· 用户重发 1min 恢复高频 · console0 · 3/3 KEEP
 - [Round 077](round-077-convergence.md) · 🏁 收敛 · 全 5 视图视觉核验(demo 目录,全清)+ §6 收敛 K=3 → cadence 60s→30min · 无改动
