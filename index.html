@@ -2753,6 +2753,9 @@ function goNeg(id){
   });
   if(match) selectNegSupplier(id, match);
 }
+// Procurement supplier id → negotiation thread id (most match; a couple differ). goNeg handles ids with no thread gracefully.
+const PROC_TO_NEG = {guangzhou:'gz', suez_cement:'suez'};
+function chatSupplier(id){ goNeg(PROC_TO_NEG[id] || id); }
 // ── SOURCING MAP (interactive) ──
 const MAP_HUB={x:500,y:350};
 const MAP_NODES=[
@@ -3316,7 +3319,7 @@ function buildBriefing(d){
       <div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap">${d.tags.map(t=>`<span class="badge b-gray">${t}</span>`).join('')}</div>
     </div>
     <div class="bf-actions">
-      <button class="btn btn-secondary btn-sm" onclick="showView('negotiation')">Chat</button>
+      <button class="btn btn-secondary btn-sm" onclick="chatSupplier('${d.id}')">Chat</button>
       <button class="btn btn-primary btn-sm" onclick="openBgCheck('${d.id}')">Background Check</button>
     </div>
   </div>

@@ -158,6 +158,10 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 085 · ✅审计+🟦 · 数据流一致 + proc Chat 深链 · 自主模式
+- 2026-06-26 · 见 `reports/round-085-chat-deeplink.md`。审计:neg(list/NEG_DATA/NEG_DEC 各 8)+ proc tree(19)/SUPPLIERS 全一致。修 R064 残留:proc Chat → chatSupplier(PROC_TO_NEG 映射 guangzhou→gz/suez_cement→suez,goNeg 优雅回退)。
+- **闸门**:console 零错 · guangzhou→gz/suez→suez/baosteel 优雅 · 仅 proc 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 084 · 🟦 Standard · 修 Background Check XCMG 错配(合成)· 自主模式
 - 2026-06-26 · 见 `reports/round-084-bgcheck-synth.md`。openBgCheck 对无 BG_DATA 的 ~14 供应商落 XCMG → getBgData(id) 从 SUPPLIERS 合成真公司报告(名/年/exports→海关/risk→信用+结论,诚实占位)。
 - **闸门**:console 零错 · baosteel/sany 显真数据+ezz 专属仍工作+截图 · 仅 bg-modal 无回归 · 3/3 KEEP。已 cp index.html + push。
