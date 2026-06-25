@@ -3420,7 +3420,7 @@ function showCmpReport(d){
         <thead><tr><th>Criteria</th>${cat.sups.map((s,i)=>`<th class="${i===cat.sups.findIndex(x=>x.score===Math.max(...cat.sups.map(y=>y.score)))?'winner-col':''}">${s.name}</th>`).join('')}</tr></thead>
         <tbody>${critHeaders.map((h,ci)=>`<tr><td style="font-weight:600;color:var(--text2)">${h}</td>${cat.sups.map(s=>`<td class="${s.criteria[ci][2]}">${s.criteria[ci][1]}</td>`).join('')}</tr>`).join('')}</tbody>
       </table>
-      <div class="ai-rec-box"><p><strong>Specialist recommendation:</strong> ${cat.rec}</p></div>
+      <div class="ai-rec-box"><p><strong>Layla's recommendation:</strong> ${cat.rec}</p></div>
     </div>`;
   });
   document.getElementById('cmp-report').innerHTML = html;

@@ -151,6 +151,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 060 · ✅审计+⬜ · Compare 模态核验 + persona 统一 · 自主模式
+- 2026-06-26 · 见 `reports/round-060-compare-audit-persona.md`。① 核查 openCompare = 强组件(score 双条 + 逐维 winner ✓ 表 + Layla 配比建议 60/40 省 $24.8K),无缺陷。② compare 推荐框「Specialist recommendation」→「Layla's recommendation」;全量残留 persona sweep=0;现「Layla's recommendation」3 处跨视图一致(compare/proc/diligence)。
+- **闸门**:console 零错 · 截图确认 Layla's recommendation + 对比表完好 · 残留=0 · 纯文案无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 059 · 🟦 Standard · sourcing/bg-check loader 提速 · 自主模式
 - 2026-06-26 · 见 `reports/round-059-loader-speedup.md`。runSupplierMatching / openBgCheck 节奏减半(间隔 3000→1500 / active 2400→1100 / 收尾→500)。每步仍有实质产出,仅去拖沓。实测 MATCH 15.2→7.6s / BG 12.1→6.1s。backlog「loader 提速」清。
 - **闸门**:console 零错 · 两流程正确到达 results/report + 计时确认 · 仅时间常量 无回归 · 3/3 KEEP。已 cp index.html + push。
