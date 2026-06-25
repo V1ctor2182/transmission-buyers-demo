@@ -3391,7 +3391,11 @@ function getBgData(id){
   return {
     name: s.name, regno:'Verified ✓', capital:'On file', rep:'On file', est: s.est||'—',
     rev:'—', growth:'—', credit: credit,
-    customs: (s.exports||[]).map(e=>['12M', (e.flag||'')+' '+e.country, '—', e.val, '—']),
+    customs: (s.exports||[]).map(function(e){
+      const valNum=parsePrice(e.val), pParts=String(s.price||'').split('/'), priceNum=parsePrice(pParts[0]), unit=(pParts[1]||'units').trim();
+      const qty=(priceNum>0&&valNum>0)?Math.round(valNum/priceNum).toLocaleString('en-US')+' '+unit:'—';
+      return ['12M', (e.flag||'')+' '+e.country, qty, e.val, s.price||'—'];
+    }),
     risk: '<strong style="color:'+(s.riskColor||'var(--green)')+'">'+(s.riskLabel||'Low Risk')+'.</strong> '+(s.why||'')
   };
 }

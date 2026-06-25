@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 087](round-087-synth-customs.md) · 🟦 · 合成 bg-check 海关表补全(qty=val/price、avg=price,内部自洽;/m 单位边界处理)· console0 · 3/3 KEEP
 - [Round 086](round-086-regression-sweep.md) · ✅ 验证 · 扩展全交互回归(含 R067-085 状态一致/worklog/bg 合成/deep-link)= 0 错 · harness 更新 · 稳健
 - [Round 085](round-085-chat-deeplink.md) · ✅+🟦 · 数据流一致核查(neg 8/proc 19 全匹配)+ proc Chat 深链(chatSupplier,R064 残留)· console0 · 3/3 KEEP
 - [Round 084](round-084-bgcheck-synth.md) · 🟦 · 修 Background Check 对 ~14 供应商落 XCMG 错配(getBgData 从 SUPPLIERS 合成真公司报告,诚实占位)· console0 · 3/3 KEEP

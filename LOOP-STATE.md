@@ -158,6 +158,10 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 087 · 🟦 Standard · 合成 bg-check 海关表补全 · 自主模式
+- 2026-06-26 · 见 `reports/round-087-synth-customs.md`。getBgData 海关 Qty=val/price、Avg=price(qty×price≈val 自洽),单价用 split('/')[0] 避 /m 误判。补 R084 空列。
+- **闸门**:console 零错 · baosteel/sewedy/caterpillar 各单位自洽+截图 · 仅 diligence 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 086 · ✅ 验证 · 扩展全交互回归 0 错 · 自主模式
 - 2026-06-26 · 见 `reports/round-086-regression-sweep.md`。smoke 跑 6 视图 + R067-085 全新增(状态一致/worklog/bg 合成/chatSupplier/模态关/map) = ERRORS=0。R036-085 零回归。harness 更新。
 - **闸门**:ERRORS=0(纯验证无 UI)· 3/3 KEEP。
