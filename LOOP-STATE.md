@@ -151,6 +151,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 068 · 🟦 Standard · runDueDiligence loader 提速(R059 漏网)· 自主模式
+- 2026-06-26 · 见 `reports/round-068-diligence-loader-speedup.md`。审计 dd-bar 填充(showDDReport 正常,非 bug)时发现 runDueDiligence 仍 i*3400×6≈20.3s(R059 漏掉最慢流程)。压到 i*1500/active 1100/收尾 500 → 实测 9.1s,bars 仍填充(80%)。
+- **闸门**:console 零错 · DD 20.3→9.1s + FIRST_BAR_W=80% · 仅时间常量 diligence-only 无回归 · 3/3 KEEP。已 cp index.html + push。loader 提速全收齐(matching/bg/diligence)。
+
 ### Round 067 · 🟦 Standard · Savings momentum 加 Y 轴刻度标 · 自主模式
 - 2026-06-26 · 见 `reports/round-067-momentum-yaxis.md`。momentum 图网格线原无数值标 → 加左侧 Y 轴刻度 $843K/$420K/$0(.mom-yl),网格有意义、量级可读。折线升势使左侧上半区空,标不压线(截图实证)。
 - **闸门**:console 零错 · 截图确认不压线不 cramped · 仅 3 静态 text dashboard-only 无回归 · 3/3 KEEP。已 cp index.html + push。

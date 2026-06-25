@@ -3770,9 +3770,9 @@ function runDueDiligence(){
         el.querySelector('.step-icon').textContent='\u2713';
         const tn = el.childNodes[el.childNodes.length-1];
         if(tn && tn.nodeType===3) tn.textContent = doneLabels[i];
-        if(i===steps.length-1) setTimeout(()=>showDDReport(),700);
-      },2600);
-    },i*3400);
+        if(i===steps.length-1) setTimeout(()=>showDDReport(),500);
+      },1100);
+    },i*1500);
   });
 }
 function showDDReport(){
