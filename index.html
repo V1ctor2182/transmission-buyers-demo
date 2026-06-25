@@ -946,6 +946,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     .eg-pin{transition:opacity .15s}
     .eg-pin.eg-dim{opacity:.25}
     .eg-pin.eg-lit .eg-core{r:11;stroke:#fff}
+    .proj-progress-card.eg-row-lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow);transition:box-shadow .15s,border-color .15s}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
     .radar-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(16,191,255,.32),transparent);pointer-events:none;z-index:2;animation:radarSweep 6s linear infinite}
     @keyframes radarSweep{0%{top:-2px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
@@ -2834,9 +2835,16 @@ const EG_PROJECTS={
 };
 function egTip(e,id){ var p=EG_PROJECTS[id]; if(!p) return; var t=document.getElementById('eg-tip'); if(!t) return;
   t.innerHTML='<div style="font-weight:700;font-size:12.5px">'+p.name+'</div><div style="color:#9fb6d6;font-size:11px;margin-top:2px">'+p.loc+'</div><div style="margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.4px;color:'+p.color+'">'+p.status.toUpperCase()+'</div><div style="color:#9fb6d6;font-size:10.5px;margin-top:3px;line-height:1.45">'+p.meta+'</div>';
-  t.classList.add('show'); egTipMove(e); }
+  t.classList.add('show'); egTipMove(e); egLitRow(EG_PIN2CARD[id]); }
 function egTipMove(e){ var w=document.querySelector('.eg-map-wrap'); if(!w) return; var r=w.getBoundingClientRect(),t=document.getElementById('eg-tip'); if(!t) return; var x=e.clientX-r.left+14,y=e.clientY-r.top+14; if(x+242>r.width)x-=262; if(y+96>r.height)y-=112; t.style.left=x+'px'; t.style.top=y+'px'; }
-function egTipHide(){ var t=document.getElementById('eg-tip'); if(t)t.classList.remove('show'); }
+function egTipHide(){ var t=document.getElementById('eg-tip'); if(t)t.classList.remove('show'); egLitRow(-1); }
+// Reverse link: hovering a map pin highlights its project row in the list
+const EG_PIN2CARD={p1:1,p2:0,p3:2,p4:3};
+function egLitRow(cardIdx){
+  var wrap=document.getElementById('dash-proj-list'); if(!wrap) return;
+  var cards=wrap.querySelectorAll('.proj-progress-card');
+  cards.forEach(function(c,i){ c.classList.toggle('eg-row-lit', cardIdx!==undefined && cardIdx>=0 && i===cardIdx); });
+}
 // Link the dashboard project list to the Egypt map: hovering a project row lights its pin
 const EG_DP2PINIDX=[1,0,2,3]; // card order (NewCairo,SmartCity,Sinai,Benban) → pin index (p2,p1,p3,p4)
 function egLitPin(cardIdx){

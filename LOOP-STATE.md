@@ -148,10 +148,16 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
-### 🏁 收敛(2026-06-26,Round 050 后)
+### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
+- 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
+
+### Round 051 · ⬜ Polish · Egypt map 反向联动(pin→行)· 自主模式
+- 2026-06-26 · 见 `reports/round-051-pin-to-row-link.md`。补全 map↔list 双向:hover pin→高亮项目行(EG_PIN2CARD,egLitRow 在 egTip 调/egTipHide 清,.eg-row-lit accent ring)。配合 R046(行→pin)闭环。
+- **闸门**:console 零错 · hover p3→ROWLIT=2(Sinai)+ 截图确认 · 仅 dashboard 无回归 · 3/3 KEEP。已 cp index.html + push。
+
+### 🏁 收敛(2026-06-26,Round 050 后)→ 用户 R051 重发 1min 取消收敛
 - R036-050(本 run 15 轮)全 5 视图 + 地图 viz/交互 + factorygate Egypt map + dashboard 整合 + tour 无回归 + 树评分全。两北极星达标,console 全程零错。
-- **§6 收敛动作**:cadence 60s→**30min**(cron e6293617 删除 → 新建 `877bb22f` `13,43 * * * *`)。低频心跳,余皆细件。
-- 用户随时可:重发 `/loop 1min …` 恢复高频 / 给新方向 / 喊停(CronDelete 877bb22f)。
+- 用户随时可:给新方向 / 喊停(CronDelete 2c65de54)。
 
 ### Round 050 · ✅ 审计+修 · tour 回归核查 + 树评分补全 · 自主模式
 - 2026-06-26 · 见 `reports/round-050-tour-audit-tree-fix.md`。① **回归核查**:R047 重组后 tour 10 步 sel 全是稳定元素(.agent-bar/#dec-grid/.grid-4/.sidebar/各视图锚),无一指向被移动块 → tour 未破坏。② **补全 R049**:树评分 17→19,decorateTreeScores 改从 onclick 解析真实键(cat→caterpillar92 / suez→suez_cement85),修短 id 不匹配。
