@@ -948,7 +948,8 @@ textarea.form-input{resize:vertical;min-height:80px}
     .eg-pin.eg-lit .eg-core{r:11;stroke:#fff}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
     </style>
-    <div class="eg-card">
+    <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:start;margin-bottom:20px">
+    <div class="eg-card" style="margin-bottom:0">
       <div class="eg-head">
         <div class="eg-title">Egypt project map <span>Where Layla is delivering for you — hover a site, click to open</span></div>
         <div class="eg-legend"><span><i style="background:#1B5EFF"></i>In negotiation</span><span><i style="background:#F59E0B"></i>Sampling</span><span><i style="background:#10BFFF"></i>Quoting</span></div>
@@ -987,9 +988,6 @@ textarea.form-input{resize:vertical;min-height:80px}
         <div class="eg-tip" id="eg-tip"></div>
       </div>
     </div>
-
-    <div class="grid-2" style="margin-bottom:20px">
-      <!-- Project Progress -->
       <div id="dash-proj-list">
         <div class="section-title">
           In progress · Layla is managing
@@ -1245,8 +1243,10 @@ textarea.form-input{resize:vertical;min-height:80px}
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Right: Latest Messages + Deadlines -->
+    <!-- Replies + Deadlines (2-col) -->
+    <div class="grid-2" style="margin-bottom:20px;align-items:start">
       <div>
         <div class="section-title">Replies Layla is handling <span style="font-size:11px;font-weight:500;color:var(--text3);margin-left:8px">She'll draft responses for your approval</span></div>
         <div class="msg-preview-card" onclick="showView('negotiation')">
@@ -1288,8 +1288,8 @@ textarea.form-input{resize:vertical;min-height:80px}
           <div class="fact-chips"><span class="fact-chip"><b>50</b> samples</span><span class="fact-chip">ES 4698 ✓</span><span class="fact-chip">via DHL</span></div>
           <div style="text-align:right;margin-top:6px;font-size:11px;color:var(--accent);font-weight:600">Layla drafted a reply — review →</div>
         </div>
-
-        <div class="divider"></div>
+      </div>
+      <div>
         <div class="section-title">Upcoming Deadlines</div>
         <div class="deadline-bar">
           <div class="dl-item dl-urgent"><span class="dl-dot"></span>Road Lighting · Jul 05 · 12 days</div>

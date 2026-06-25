@@ -148,6 +148,12 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 047 · 🟦 Standard · Dashboard 布局整合 · 自主模式
+- 2026-06-26 · 见 `reports/round-047-dashboard-consolidation.md`。Egypt map(全宽)+ 下方项目列表(同 4 项目)冗余 → 重组:① map+列表并排 2 列(地图填左、列表贴右,R046 联动相邻);② Replies|Deadlines 2 列。scrollHeight 1904→1803(2.12→2.00 屏)。内容零删,brace 4 处重组。
+- **闸门**:console 零错 · R046 联动保留(hover Smart City→点亮 pin0)· toggle 完好 · 无破版/回归 · 3/3 KEEP。已 cp index.html + push。
+- **★ 收敛**:布局/组件大件全清。余皆细件(反向联动 / 决策卡抽组件 / flag emoji / Replies 精简)。下轮起趋向收敛。
+- **next**:细件或收敛 digest。1min cron 自主续跑。
+
 ### Round 046 · 🟦 Standard · Egypt map ↔ 项目列表联动 · 自主模式
 - 2026-06-26 · 见 `reports/round-046-map-list-link.md`。「In progress」项目行 hover → 对应 Egypt map pin 点亮放大(白描边)+ 其余 dim .25。事件委托(#dash-proj-list,卡序→pin 序 EG_DP2PINIDX=[1,0,2,3],地理正确)。消解 R045 地图/列表冗余为联动。
 - **闸门**:console 零错 · 模拟 hover Sinai 卡 → LIT=2/DIM=0,1,3 + 截图确认 · 委托守卫 · 仅 dashboard 无回归 · 3/3 KEEP。已 cp index.html + push。
