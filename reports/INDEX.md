@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 076](round-076-visual-audit-clean.md) · ✅ 审计 · dashboard 全页视觉核验(demo 目录,logo 正常,无破版)· 无改动 · 收敛计数 2/3
 - [Round 075](round-075-interaction-audit-clean.md) · ✅ 审计 · 全量死可点件=0(交互层清理收尾;org-badge/user 块正确非交互)· 无改动 · 交互层完整
 - [Round 074](round-074-recent-request-cards.md) · 🟦 · Recent Requests 2 死卡(Steel→procurement / Excavators→XCMG neg)深链;pills 核验正常;sourcing 死卡=0 · console0 · 3/3 KEEP
 - [Round 073](round-073-modal-escape-overlay.md) · 🟦 · 模态 Escape + 遮罩点击关闭(bg/compare/contact,内点不关)标准 UX/可达性 · console0 · 3/3 KEEP

@@ -155,6 +155,11 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 076 · ✅ 审计 · dashboard 全页视觉核验(无问题)· 自主模式
+- 2026-06-26 · 见 `reports/round-076-visual-audit-clean.md`。用正确方法(demo 目录截图,logo 解析)复核全页:侧栏 logo/agent-bar/决策卡/KPI/momentum(Y 轴标)全对齐无破版无破图。/tmp 破图纯测试假象未遮盖真缺陷。
+- **闸门**:demo 目录高清肉眼核验 · 纯审计无改动 · 3/3 KEEP。
+- **★ 收敛计数 = 2/3**(R075 交互 + R076 视觉,连续无肉眼提升)。R077 仍无价值 → §6 digest + 降 cadence。
+
 ### Round 075 · ✅ 审计 · 全量死可点件=0(交互层收尾)· 自主模式
 - 2026-06-26 · 见 `reports/round-075-interaction-audit-clean.md`。全文 inline cursor:pointer 无 onclick=0 + 全按钮无 onclick=0 + org-badge/user 块无 cursor:pointer(正确非交互)。交互层死件=0,R070-074 清理完整收尾。
 - **闸门**:全量扫描 + 肉眼 · 纯审计无改动 · 3/3 KEEP。
