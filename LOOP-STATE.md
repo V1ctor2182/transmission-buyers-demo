@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 040 · 🟦 Standard · Map 选中态 trace 详情卡 · 自主模式
+- 2026-06-26 · 见 `reports/round-040-map-trace-card.md`。点击节点 → 侧栏头部下出 trace 卡:供应商+状态、航线 region→Alexandria(箭头)、Transit(mono)/Lane(incoterm)mini-stat、品类·价、Open in workspace CTA(ready→procurement 否则 negotiation)。MAP_NODES 补 transit/mode/kpi(9 家,与既有数据一致)。交互层次:hover=描线,click=描线+ping+卡;reset 收卡。
+- **闸门**:console 零错 · 选中截图确认卡+hot+ping · 仅 map 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:地图续(键盘 ←→ 切节点 / 端点标记);procurement ghosted reveal 真机确认;决策卡抽组件;flag emoji。1min cron 自主续跑。
+
 ### Round 039 · 🟦 Standard · Sourcing Map 游戏感/交互感增强 · 自主模式
 - 2026-06-26 · 见 `reports/round-039-map-game-feel.md`。用户点名「地图交互/游戏感」。加:① 双向 hover 追踪(hover 节点或列表项→路由点亮+其余 dim,移开复位)② 点击 dispatch ping 包沿 hot 路由疾驰到 hub(1.05s,完后移除)③ flow 点随高亮 dim/亮。全用户触发即时反馈,非假进度;mapSel 守卫选中态不被 hover 抢。
 - **闸门**:console 零错(含选中态)· 选中/默认截图确认 hot+dim+ping+基础渲染未坏 · 仅 map 跨视图无回归 · 3/3 KEEP。已 cp index.html + push。

@@ -2452,6 +2452,7 @@ textarea.form-input{resize:vertical;min-height:80px}
       </div>
       <div class="map-side">
         <div class="map-side-head">Supplier network<div class="map-side-sub">24 tracked · 5 countries · 2 ready to award</div></div>
+        <div id="map-trace" style="display:none;border-bottom:1px solid var(--border);padding:14px 16px;background:var(--accent-light)"></div>
         <div class="map-side-list" id="map-side-list"></div>
       </div>
     </div>
@@ -2636,15 +2637,15 @@ function showView(v){
 // ── SOURCING MAP (interactive) ──
 const MAP_HUB={x:500,y:350};
 const MAP_NODES=[
-  {id:'gz',x:818,y:236,name:'Guangzhou Lumens',region:'Guangzhou, China',supplies:'LED street lights',status:'Negotiating',ready:false},
-  {id:'bright',x:884,y:232,name:'Shenzhen Brightway',region:'Shenzhen, China',supplies:'LED fixtures',status:'Quoting',ready:false},
-  {id:'xcmg',x:872,y:262,name:'XCMG International',region:'Xuzhou, China',supplies:'Excavators',status:'Quoting',ready:false},
-  {id:'sany',x:842,y:294,name:'SANY Heavy Ind.',region:'Changsha, China',supplies:'Excavators',status:'Leverage',ready:false},
-  {id:'baosteel',x:802,y:212,name:'Baosteel Group',region:'Shanghai, China',supplies:'Structural steel',status:'Spec review',ready:false},
-  {id:'osram',x:452,y:132,name:'Osram',region:'Germany',supplies:'Premium LED',status:'Shortlisted',ready:false},
-  {id:'sandvik',x:498,y:104,name:'Sandvik',region:'Sweden',supplies:'Mining tools',status:'Vetting',ready:false},
-  {id:'eei',x:548,y:356,name:'Egyptian Electrical',region:'10th Ramadan, Egypt',supplies:'LED · local',status:'Sample sent',ready:true},
-  {id:'ezz',x:468,y:364,name:'Ezz Steel',region:'Cairo, Egypt',supplies:'Structural steel',status:'Ready to award',ready:true}
+  {id:'gz',x:818,y:236,name:'Guangzhou Lumens',region:'Guangzhou, China',supplies:'LED street lights',status:'Negotiating',ready:false,transit:'22 days',mode:'Sea · CIF',kpi:'$38.50/unit'},
+  {id:'bright',x:884,y:232,name:'Shenzhen Brightway',region:'Shenzhen, China',supplies:'LED fixtures',status:'Quoting',ready:false,transit:'26 days',mode:'Sea · FOB',kpi:''},
+  {id:'xcmg',x:872,y:262,name:'XCMG International',region:'Xuzhou, China',supplies:'Excavators',status:'Quoting',ready:false,transit:'90 days',mode:'Sea · CIF',kpi:'$144K/unit'},
+  {id:'sany',x:842,y:294,name:'SANY Heavy Ind.',region:'Changsha, China',supplies:'Excavators',status:'Leverage',ready:false,transit:'88 days',mode:'Sea · CIF',kpi:'$140K/unit'},
+  {id:'baosteel',x:802,y:212,name:'Baosteel Group',region:'Shanghai, China',supplies:'Structural steel',status:'Spec review',ready:false,transit:'30 days',mode:'Sea · CFR',kpi:''},
+  {id:'osram',x:452,y:132,name:'Osram',region:'Germany',supplies:'Premium LED',status:'Shortlisted',ready:false,transit:'12 days',mode:'Sea · DAP',kpi:''},
+  {id:'sandvik',x:498,y:104,name:'Sandvik',region:'Sweden',supplies:'Mining tools',status:'Vetting',ready:false,transit:'16 days',mode:'Sea · CIF',kpi:''},
+  {id:'eei',x:548,y:356,name:'Egyptian Electrical',region:'10th Ramadan, Egypt',supplies:'LED · local',status:'Sample sent',ready:true,transit:'14 days',mode:'Local · road',kpi:'$44.00/unit'},
+  {id:'ezz',x:468,y:364,name:'Ezz Steel',region:'Cairo, Egypt',supplies:'Structural steel',status:'Ready to award',ready:true,transit:'2 days',mode:'Local · road',kpi:''}
 ];
 function mapArc(x1,y1,x2,y2){
   var dx=x2-x1,dy=y2-y1,dist=Math.sqrt(dx*dx+dy*dy)||1;
@@ -2712,8 +2713,28 @@ function mapPing(id){
   try{ am.beginElement(); }catch(e){}
   setTimeout(function(){ if(pk.parentNode) pk.parentNode.removeChild(pk); }, 1250);
 }
-function mapSelect(id){ mapSel=id; var s=mapHighlight(id); if(s)s.scrollIntoView({block:'nearest'}); mapPing(id); }
-function mapReset(){ mapSel=null; mapResetVisual(); }
+function renderMapTrace(n){
+  var box=document.getElementById('map-trace'); if(!box) return;
+  var c=n.ready?'var(--green)':'var(--accent)';
+  var go=n.ready?'procurement':'negotiation';
+  box.innerHTML=
+    '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px">'
+      +'<div style="font-weight:800;font-size:13px;color:var(--text1)">'+n.name+'</div>'
+      +'<span style="font-size:10px;font-weight:700;color:'+c+';white-space:nowrap">'+n.status+'</span></div>'
+    +'<div style="display:flex;align-items:center;gap:7px;font-size:11px;margin-bottom:11px">'
+      +'<span style="font-weight:600;color:var(--text2)">'+n.region+'</span>'
+      +'<svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:'+c+';fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>'
+      +'<span style="font-weight:700;color:var(--text1)">Alexandria</span></div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px">'
+      +'<div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 10px"><div style="font-size:9px;font-weight:700;color:var(--text3);letter-spacing:.4px;text-transform:uppercase;margin-bottom:3px">Transit</div><div style="font-family:\'JetBrains Mono\',monospace;font-weight:700;font-size:13px;color:var(--text1)">'+n.transit+'</div></div>'
+      +'<div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 10px"><div style="font-size:9px;font-weight:700;color:var(--text3);letter-spacing:.4px;text-transform:uppercase;margin-bottom:3px">Lane</div><div style="font-weight:700;font-size:12px;color:var(--text1)">'+n.mode+'</div></div>'
+    +'</div>'
+    +'<div style="font-size:11px;color:var(--text3);margin-bottom:11px">'+n.supplies+(n.kpi?' · <b style="color:var(--text2)">'+n.kpi+'</b>':'')+'</div>'
+    +'<button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="showView(\''+go+'\')">Open in workspace →</button>';
+  box.style.display='block';
+}
+function mapSelect(id){ mapSel=id; var s=mapHighlight(id); if(s)s.scrollIntoView({block:'nearest'}); mapPing(id); var node=MAP_NODES.find(function(n){return n.id===id;}); if(node)renderMapTrace(node); }
+function mapReset(){ mapSel=null; mapResetVisual(); var b=document.getElementById('map-trace'); if(b)b.style.display='none'; }
 function mapHover(id){ if(mapSel) return; mapHighlight(id); }
 function mapUnhover(){ if(mapSel) return; mapResetVisual(); }
 function negAppendMsg(side, ava, name, html){

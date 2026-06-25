@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 040](round-040-map-trace-card.md) · 🟦 · Map 选中态 trace 详情卡(航线 region→Alexandria + Transit/Lane mini-stat + 价 + Open in workspace CTA)· console0 · 3/3 KEEP
 - [Round 039](round-039-map-game-feel.md) · 🟦 · Sourcing Map 游戏感(双向 hover 追踪路由 + 点击 dispatch ping 包疾驰到 hub + flow dim 聚焦)· console0 · 3/3 KEEP
 - [Round 038](round-038-sourcing-empty-preview.md) · 🟦 · Sourcing 空状态 void → 匹配预览(Searching across 来源 chips + 4 评分维度行,诚实呈现"将执行"非假结果)· console0 · 3/3 KEEP
 - [Round 037](round-037-diligence-empty-checklist.md) · 🟦 · Diligence 空状态 void → 可视化尽调清单(88/100 评分 + 4 维度 Cleared 行,忠于真实报告,填空白减散文)· console0 · 3/3 KEEP
