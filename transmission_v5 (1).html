@@ -3392,10 +3392,10 @@ const SUPPLIERS = {
 
 // ── BACKGROUND CHECK ──
 const BG_DATA = {
-  ezz:{name:'Ezz Steel Egypt S.A.E.',regno:'EG-10014-1994',capital:'EGP 5.2B',rep:'Ahmed Ezz',est:'1994',rev:'~$2.8B',growth:'+8% YoY',credit:'AA (Stable)',customs:[['Q1 2025','🇸🇦 Saudi Arabia','8,500 MT','$5.8M','$682/MT'],['Q4 2024','🇦🇪 UAE','3,200 MT','$2.2M','$688/MT'],['Q3 2024','🇸🇩 Sudan','1,800 MT','$1.2M','$667/MT']],risk:'✅ <strong style="color:var(--green)">Very Low Risk.</strong> Egypt\'s largest steel producer. No sanctions, no litigation. Strong government project track record. Recommended as primary local supplier.'},
-  guangzhou:{name:'Guangzhou Lumens Technology Co., Ltd.',regno:'91440100600019644G',capital:'CNY 50M',rep:'Zhang Wei',est:'2008',rev:'~$48M',growth:'+18% YoY',credit:'A+ (Stable)',customs:[['Q1 2025','🇪🇬 Egypt','2,100 units','$2.1M','$1,000/unit'],['Q4 2024','🇸🇦 Saudi Arabia','4,800 units','$4.8M','$1,000/unit'],['Q3 2024','🇦🇪 UAE','3,200 units','$3.2M','$1,000/unit']],risk:'✅ <strong style="color:var(--green)">Low Risk.</strong> Established Egypt export record. CE + IEC 60598 certified. Competitive pricing. No sanctions flags. Recommend as primary LED fixture supplier.'},
-  xcmg:{name:'XCMG International Co., Ltd.',regno:'91320300600019622X',capital:'CNY 8.5B',rep:'Chen Jianhua',est:'1989',rev:'~$16B',growth:'+22% YoY',credit:'AA+ (Stable)',customs:[['Q1 2025','🇸🇦 Saudi Arabia','42 units','$6.2M','$147,619'],['Q1 2025','🇪🇬 Egypt','18 units','$2.7M','$150,000'],['Q4 2024','🇦🇪 UAE','31 units','$4.6M','$148,387']],risk:'✅ <strong style="color:var(--green)">Low Risk.</strong> China\'s #1 construction machinery manufacturer. $16B revenue, AA+ credit. Proven Egypt export record. No sanctions. Recommend as primary excavator supplier.'},
-  sandvik:{name:'Sandvik Mining & Rock Technology AB',regno:'556234-6483',capital:'SEK 1.5B',rep:'Stefan Widing',est:'1862',rev:'~$11.2B',growth:'+12% YoY',credit:'AAA (Stable)',customs:[['Q1 2025','🇸🇦 Saudi Arabia','14 units','$4.5M','$321,429'],['Q4 2024','🇿🇦 South Africa','11 units','$3.5M','$318,182'],['Q3 2024','🇪🇬 Egypt','5 units','$1.6M','$320,000']],risk:'✅ <strong style="color:var(--green)">Very Low Risk.</strong> World leader in mining equipment. 160+ year history. AAA credit rating. Proven Egypt track record. Premium price justified by reliability.'}
+  ezz:{name:'Ezz Steel Egypt S.A.E.',regno:'EG-10014-1994',capital:'EGP 5.2B',rep:'Ahmed Ezz',est:'1994',rev:'~$2.8B',growth:'+8% YoY',credit:'AA (Stable)',customs:[['Q1 2025','🇸🇦 Saudi Arabia','8,500 MT','$5.8M','$682/MT'],['Q4 2024','🇦🇪 UAE','3,200 MT','$2.2M','$688/MT'],['Q3 2024','🇸🇩 Sudan','1,800 MT','$1.2M','$667/MT']],risk:'<strong style="color:var(--green)">Very Low Risk.</strong> Egypt\'s largest steel producer. No sanctions, no litigation. Strong government project track record. Recommended as primary local supplier.'},
+  guangzhou:{name:'Guangzhou Lumens Technology Co., Ltd.',regno:'91440100600019644G',capital:'CNY 50M',rep:'Zhang Wei',est:'2008',rev:'~$48M',growth:'+18% YoY',credit:'A+ (Stable)',customs:[['Q1 2025','🇪🇬 Egypt','2,100 units','$2.1M','$1,000/unit'],['Q4 2024','🇸🇦 Saudi Arabia','4,800 units','$4.8M','$1,000/unit'],['Q3 2024','🇦🇪 UAE','3,200 units','$3.2M','$1,000/unit']],risk:'<strong style="color:var(--green)">Low Risk.</strong> Established Egypt export record. CE + IEC 60598 certified. Competitive pricing. No sanctions flags. Recommend as primary LED fixture supplier.'},
+  xcmg:{name:'XCMG International Co., Ltd.',regno:'91320300600019622X',capital:'CNY 8.5B',rep:'Chen Jianhua',est:'1989',rev:'~$16B',growth:'+22% YoY',credit:'AA+ (Stable)',customs:[['Q1 2025','🇸🇦 Saudi Arabia','42 units','$6.2M','$147,619'],['Q1 2025','🇪🇬 Egypt','18 units','$2.7M','$150,000'],['Q4 2024','🇦🇪 UAE','31 units','$4.6M','$148,387']],risk:'<strong style="color:var(--green)">Low Risk.</strong> China\'s #1 construction machinery manufacturer. $16B revenue, AA+ credit. Proven Egypt export record. No sanctions. Recommend as primary excavator supplier.'},
+  sandvik:{name:'Sandvik Mining & Rock Technology AB',regno:'556234-6483',capital:'SEK 1.5B',rep:'Stefan Widing',est:'1862',rev:'~$11.2B',growth:'+12% YoY',credit:'AAA (Stable)',customs:[['Q1 2025','🇸🇦 Saudi Arabia','14 units','$4.5M','$321,429'],['Q4 2024','🇿🇦 South Africa','11 units','$3.5M','$318,182'],['Q3 2024','🇪🇬 Egypt','5 units','$1.6M','$320,000']],risk:'<strong style="color:var(--green)">Very Low Risk.</strong> World leader in mining equipment. 160+ year history. AAA credit rating. Proven Egypt track record. Premium price justified by reliability.'}
 };
 // Use the dedicated background-check data when present; otherwise synthesise the right
 // supplier's report from SUPPLIERS (real name/est/customs/risk) instead of falling back to XCMG.
@@ -3585,7 +3585,7 @@ function selectNegSupplier(v, el){
       reg:'91440100600019644G', rev:'~$48M', credit:'A+ (Stable)', cert:'CE \u00b7 IEC 60598 \u00b7 ISO 9001', egypt:'$2.1M (12M)',
       exports:[{f:'\ud83c\uddf8\ud83c\udde6',l:'Saudi Arabia',w:85,v:'$6.1M',c:'var(--accent)'},{f:'\ud83c\udde6\ud83c\uddea',l:'Egypt',w:29,v:'$2.1M',c:'var(--green)'},{f:'\ud83c\udde6\ud83c\uddea',l:'UAE',w:55,v:'$3.9M',c:'var(--purple)'},{f:'\ud83c\uddf2\ud83c\udde6',l:'Morocco',w:18,v:'$1.3M',c:'var(--amber)'}],
       txns:[['Q1 2025 \u00b7 Egypt','$2.1M','var(--accent)'],['Q4 2024 \u00b7 Saudi Arabia','$1.8M',''],['Q3 2024 \u00b7 UAE','$1.4M',''],['Q2 2024 \u00b7 Morocco','$0.9M','']],
-      risk:'\u2705 <strong style="color:var(--green)">Low risk.</strong> Established Egypt export record ($2.1M). CE & IEC certified. Competitive pricing. No sanctions flags. Recommend as primary LED fixture supplier.',
+      risk:'<strong style="color:var(--green)">Low risk.</strong> Established Egypt export record ($2.1M). CE & IEC certified. Competitive pricing. No sanctions flags. Recommend as primary LED fixture supplier.',
       riskBg:'var(--green-light)', riskBorder:'var(--green)',
       chips:[
         {tag:'ACCEPT',cls:'chip-accept',text:'Confirm $38.50 \u2014 please send proforma invoice for 8,000 units CIF Alexandria.'},
@@ -3611,7 +3611,7 @@ function selectNegSupplier(v, el){
       reg:'91320300132012345X', rev:'~$15.8B', credit:'AA (Stable)', cert:'CE \u00b7 ISO 9001 \u00b7 ISO 14001', egypt:'$2.7M (12M)',
       exports:[{f:'\ud83c\uddf8\ud83c\udde6',l:'Saudi Arabia',w:90,v:'$142M',c:'var(--accent)'},{f:'\ud83c\udde6\ud83c\uddea',l:'Egypt',w:17,v:'$2.7M',c:'var(--green)'},{f:'\ud83c\udde6\ud83c\uddea',l:'UAE',w:60,v:'$95M',c:'var(--purple)'},{f:'\ud83c\uddf3\ud83c\uddec',l:'Nigeria',w:25,v:'$40M',c:'var(--amber)'}],
       txns:[['Q1 2025 \u00b7 Egypt','$2.7M','var(--accent)'],['Q4 2024 \u00b7 Saudi Arabia','$38M',''],['Q3 2024 \u00b7 UAE','$22M',''],['Q2 2024 \u00b7 Nigeria','$15M','']],
-      risk:'\u2705 <strong style="color:var(--green)">Low risk.</strong> World Top 3 construction machinery. Strong Egypt track record ($2.7M). Recommend as primary excavator supplier. Negotiate toward $144K/unit.',
+      risk:'<strong style="color:var(--green)">Low risk.</strong> World Top 3 construction machinery. Strong Egypt track record ($2.7M). Recommend as primary excavator supplier. Negotiate toward $144K/unit.',
       riskBg:'var(--green-light)', riskBorder:'var(--green)',
       chips:[
         {tag:'ACCEPT',cls:'chip-accept',text:'Please send formal PI for 3 units XE215C at $148,000 CIF Alexandria with 90-day delivery.'},
@@ -3635,7 +3635,7 @@ function selectNegSupplier(v, el){
       reg:'EG-10R-1979-00441', rev:'~$85M', credit:'A (Stable)', cert:'ES 4698 \u00b7 ISO 9001 \u00b7 GAPC Approved', egypt:'Domestic',
       exports:[{f:'\ud83c\uddea\ud83c\uddec',l:'Egypt (Domestic)',w:90,v:'$76M',c:'var(--accent)'},{f:'\ud83c\uddf8\ud83c\udde6',l:'Saudi Arabia',w:10,v:'$8.5M',c:'var(--green)'}],
       txns:[['Q1 2025 \u00b7 GAPC Contract','$12M','var(--accent)'],['Q4 2024 \u00b7 New Cairo','$8M',''],['Q3 2024 \u00b7 Ministry of Housing','$6M','']],
-      risk:'\u2705 <strong style="color:var(--green)">Very Low risk.</strong> GAPC-approved vendor. ES 4698 certified. No import duty. Domestic supplier advantage for government tender compliance.',
+      risk:'<strong style="color:var(--green)">Very Low risk.</strong> GAPC-approved vendor. ES 4698 certified. No import duty. Domestic supplier advantage for government tender compliance.',
       riskBg:'var(--green-light)', riskBorder:'var(--green)',
       chips:[
         {tag:'ACCEPT',cls:'chip-accept',text:'Please confirm $44.00/unit for 3,200 units (40% allocation). Send GAPC vendor registration docs.'},
@@ -3657,7 +3657,7 @@ function selectNegSupplier(v, el){
       reg:'EG-CAI-1994-07823', rev:'~$3.2B', credit:'A+ (Stable)', cert:'ISO 9001 \u00b7 EN 10025 \u00b7 ASTM A36', egypt:'Domestic',
       exports:[{f:'\ud83c\uddea\ud83c\uddec',l:'Egypt (Domestic)',w:85,v:'$2.7B',c:'var(--accent)'},{f:'\ud83c\uddf8\ud83c\udde6',l:'Saudi Arabia',w:20,v:'$640M',c:'var(--green)'},{f:'\ud83c\uddf1\ud83c\uddfe',l:'Libya',w:8,v:'$256M',c:'var(--amber)'}],
       txns:[['Q1 2025 \u00b7 New Cairo Project','$4.8M','var(--accent)'],['Q4 2024 \u00b7 Suez Canal Auth.','$12M',''],['Q3 2024 \u00b7 Saudi Arabia','$85M','']],
-      risk:'\u2705 <strong style="color:var(--green)">Very Low risk.</strong> Largest steel producer in Egypt and MENA. Domestic pricing advantage. No import duty. Ideal for New Cairo Construction structural steel.',
+      risk:'<strong style="color:var(--green)">Very Low risk.</strong> Largest steel producer in Egypt and MENA. Domestic pricing advantage. No import duty. Ideal for New Cairo Construction structural steel.',
       riskBg:'var(--green-light)', riskBorder:'var(--green)',
       chips:[
         {tag:'ACCEPT',cls:'chip-accept',text:'Please confirm $680/MT for 12,000 MT HEA/HEB sections. Send formal contract draft.'},
@@ -3721,7 +3721,7 @@ function selectNegSupplier(v, el){
       reg:'EG-SUZ-1977-00112', rev:'~$420M', credit:'A (Stable)', cert:'ES 4756 \u00b7 ISO 9001 \u00b7 CE', egypt:'Domestic',
       exports:[{f:'\ud83c\uddea\ud83c\uddec',l:'Egypt (Domestic)',w:92,v:'$386M',c:'var(--accent)'},{f:'\ud83c\uddf1\ud83c\uddfe',l:'Libya',w:8,v:'$34M',c:'var(--amber)'}],
       txns:[['Q1 2025 \u00b7 New Cairo','$18M','var(--accent)'],['Q4 2024 \u00b7 Ministry of Housing','$24M',''],['Q3 2024 \u00b7 Libya Export','$8M','']],
-      risk:'\u2705 <strong style="color:var(--green)">Very Low risk.</strong> Lafarge-Holcim subsidiary. Egypt market leader. No import duty. Ideal for New Cairo Construction cement supply.',
+      risk:'<strong style="color:var(--green)">Very Low risk.</strong> Lafarge-Holcim subsidiary. Egypt market leader. No import duty. Ideal for New Cairo Construction cement supply.',
       riskBg:'var(--green-light)', riskBorder:'var(--green)',
       chips:[
         {tag:'ACCEPT',cls:'chip-accept',text:'Please confirm OPC 42.5N at EGP 1,850/ton for 50,000 tons. Send framework agreement draft.'},
@@ -3743,7 +3743,7 @@ function selectNegSupplier(v, el){
       reg:'EG-CAI-1955-00001', rev:'~$950M', credit:'AAA', cert:'CAT Certified \u00b7 ISO 9001 \u00b7 No Import Duty', egypt:'Domestic',
       exports:[{f:'\ud83c\uddea\ud83c\uddec',l:'Egypt (Domestic)',w:90,v:'$855M',c:'var(--accent)'},{f:'\ud83c\uddf8\ud83c\udde6',l:'Sudan',w:10,v:'$95M',c:'var(--amber)'}],
       txns:[['Q1 2025 \u00b7 GAPC Contract','$45M','var(--accent)'],['Q4 2024 \u00b7 Suez Canal Auth.','$28M',''],['Q3 2024 \u00b7 Ministry of Defense','$62M','']],
-      risk:'\u2705 <strong style="color:var(--green)">Very Low risk.</strong> CAT authorized dealer. Premium price ($218K) but unmatched local service, spare parts, and zero import duty. Best for mission-critical operations.',
+      risk:'<strong style="color:var(--green)">Very Low risk.</strong> CAT authorized dealer. Premium price ($218K) but unmatched local service, spare parts, and zero import duty. Best for mission-critical operations.',
       riskBg:'var(--green-light)', riskBorder:'var(--green)',
       chips:[
         {tag:'ACCEPT',cls:'chip-accept',text:'Please send PI for 1 CAT 320 at $218,000 EXW Cairo as premium backup unit.'},
