@@ -785,7 +785,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding:14px 18px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)">
       <div>
         <div style="font-size:16px;font-weight:800;color:var(--text1)">Good morning, Ahmed</div>
-        <div style="font-size:12px;color:var(--text3);margin-top:3px"><strong style="color:var(--accent)">3 decisions</strong> waiting — Layla has handled everything else.</div>
+        <div id="greeting-sub" style="font-size:12px;color:var(--text3);margin-top:3px"><strong style="color:var(--accent)">3 decisions</strong> waiting — Layla has handled everything else.</div>
       </div>
       <div style="font-size:11px;color:var(--text3);text-align:right;line-height:1.7">Tuesday, 24 June 2025<br><span style="color:var(--accent);font-weight:600">🇪🇬 Cairo, Egypt</span></div>
     </div>
@@ -3025,6 +3025,10 @@ function decApprove(el,msg){
   card.innerHTML='<div class="dec-tag" style="color:var(--green)"><span class="dec-done-dot"></span>Approved</div><div class="dec-title" style="font-weight:600;color:var(--text2);font-size:12.5px">'+msg+'</div>';
   const remaining=document.querySelectorAll('#dec-grid .dec-card:not(.done)').length;
   const c=document.getElementById('nyd-count'); if(c) c.textContent=remaining;
+  const g=document.getElementById('greeting-sub');
+  if(g) g.innerHTML = remaining>0
+    ? '<strong style="color:var(--accent)">'+remaining+' decision'+(remaining>1?'s':'')+'</strong> waiting — Layla has handled everything else.'
+    : '<strong style="color:var(--green)">All caught up</strong> — Layla has everything from here.';
   if(remaining===0){
     const s=document.getElementById('agent-status'); if(s) s.innerHTML='All decisions cleared — <b>I\'m on it</b>. I\'ll update you as suppliers respond.';
     const ac=document.getElementById('nyd-allclear'); if(ac) ac.style.display='flex';

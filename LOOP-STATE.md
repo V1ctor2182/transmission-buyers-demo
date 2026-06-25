@@ -158,6 +158,10 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 090 · 🟦 Standard · 问候语随决策清空同步 · 自主模式
+- 2026-06-26 · 见 `reports/round-090-greeting-sync.md`。问候副标「3 decisions waiting」静态(批准后陈旧)→ #greeting-sub + decApprove 据 remaining 更新(N decisions / All caught up)。配 count 徽章+all-caught-up 横幅。
+- **闸门**:console 零错 · 批 1→2 decisions/批 3→All caught up · 仅 dashboard 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 089 · 🟦 Standard · Upcoming Deadlines 可点导航 · 自主模式
 - 2026-06-26 · 见 `reports/round-089-deadlines-clickable.md`。dashboard Upcoming Deadlines 4 项加 onclick→procurement(My Projects)+ cursor/hover/title。配 R088 漏斗,静态→导航。
 - **闸门**:console 零错 · 4 项可点+首项→procurement · 仅 dashboard 无回归 · 3/3 KEEP。已 cp index.html + push。
