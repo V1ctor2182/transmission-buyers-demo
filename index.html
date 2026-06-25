@@ -956,6 +956,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     .proj-progress-card.eg-row-lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow);transition:box-shadow .15s,border-color .15s}
     .neg-lad-locked svg path:last-of-type{stroke:var(--green)}
     .neg-lad-locked svg circle:last-of-type{filter:drop-shadow(0 0 3px rgba(16,185,129,.85))}
+    .sup-match-card.smc-top{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent)}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
     .radar-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(16,191,255,.32),transparent);pointer-events:none;z-index:2;animation:radarSweep 6s linear infinite}
     @keyframes radarSweep{0%{top:-2px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
@@ -3102,10 +3103,10 @@ function renderSupplierCards() {
   const tierTextColors = {HEAD:'#1B5EFF',CORE:'#059669',LOCAL:'#D97706',TAIL:'#64748B'};
 
   const html = MATCH_SUPPLIERS.map((s, i) => `
-    <div class="sup-match-card" id="smc-${i}" onclick="selectMatchCard(${i})">
+    <div class="sup-match-card${i===0?' smc-top':''}" id="smc-${i}" onclick="selectMatchCard(${i})">
       <div class="smc-logo">${s.name.charAt(0)}</div>
       <div class="smc-info">
-        <div class="smc-name">${s.name} ${s.egypt ? '<span style="font-size:10px;background:#F0FDF4;color:#059669;border:1px solid rgba(5,150,105,.2);border-radius:4px;padding:1px 6px;font-weight:700;margin-left:4px">🇪🇬 Egypt Record</span>' : ''}</div>
+        <div class="smc-name">${s.name} ${i===0?"<span style='font-size:10px;background:var(--accent);color:#fff;border-radius:4px;padding:1px 7px;font-weight:700;margin-left:4px'>Layla's top pick</span>":""} ${s.egypt ? '<span style="font-size:10px;background:#F0FDF4;color:#059669;border:1px solid rgba(5,150,105,.2);border-radius:4px;padding:1px 6px;font-weight:700;margin-left:4px">Egypt record</span>' : ''}</div>
         <div class="smc-meta">${s.flag} ${s.loc} <span style="background:${tierColors[s.tier]};color:${tierTextColors[s.tier]};padding:1px 7px;border-radius:4px;font-weight:700;font-size:10px">${s.tier}</span></div>
         <div class="smc-tags">${s.tags.map(t=>`<span class="badge b-gray">${t}</span>`).join('')}</div>
         <div class="smc-strength">${s.strength}</div>

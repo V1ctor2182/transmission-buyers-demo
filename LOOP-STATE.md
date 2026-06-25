@@ -151,6 +151,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 055 · 🟦 Standard · Sourcing「Layla's top pick」高亮 · 自主模式
+- 2026-06-26 · 见 `reports/round-055-top-pick.md`。renderSupplierCards 第一名(i===0)加「Layla's top pick」蓝徽章 + .smc-top accent 边,首推一眼可见(§3-E)。装饰性 Egypt Record 徽章去 🇪🇬 emoji → 纯文本(功能性原产国旗保留)。
+- **闸门**:console 零错 · TOP=true/PICK=true + 驱动到 Match 阶段截图确认 · 仅 sourcing 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 054 · ✅ 验证+🟦 · 全交互 smoke 0 错 + accept deal-locked · 自主模式
 - 2026-06-26 · 见 `reports/round-054-smoke-test-deal-locked.md`。① headless 22+ 路径×6 视图 smoke = **ERRORS=0**,R036-053 零回归,harness 存 `reports/smoke-test.html`。② negDecide('accept') 给压价 sparkline 加 `.neg-lad-locked`(折线变绿+终点光晕+「✓ Deal locked」绿文案),配 R052 push 成交互对。
 - **闸门**:console 零错 · smoke 0 错 · accept→LOCKED=true + 截图 · 仅 neg 无回归 · 3/3 KEEP。已 cp index.html + push。

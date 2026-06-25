@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 055](round-055-top-pick.md) · 🟦 · Sourcing 结果第一名加「Layla's top pick」徽章+accent 边(§3-E 首推可见)+ Egypt Record 去 emoji · console0 · 3/3 KEEP
 - [Round 054](round-054-smoke-test-deal-locked.md) · ✅+🟦 · 全交互 smoke 22 路径 0 错(存 smoke-test.html)+ Negotiation accept「✓ Deal locked」绿线锁定收尾 · console0 · 3/3 KEEP
 - [Round 053](round-053-all-caught-up.md) · 🟦 · Dashboard 批完决策→「You're all caught up」安心横幅 + count→✓(§3-G 收尾)· console0 · 3/3 KEEP
 - [Round 052](round-052-push-grows-sparkline.md) · 🟦 · Negotiation push→压价 sparkline 动态延长(供应商 counter 作新点,trail/pct 重算,看得见 Layla 再压一档 §3-D)· console0 · 3/3 KEEP
