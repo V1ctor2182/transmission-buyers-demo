@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 058](round-058-login-logo-chip.md) · ⬜ · 登录页 logo 加白 chip(深色卡上由发淡→清晰,配侧栏 R001,开场对比修复)· console0 · 3/3 KEEP
 - [Round 057](round-057-worklog-badge.md) · ⬜ · agent-bar Worklog 加「3」新活动徽章(配面板 3 new,打开即清,人感+发现性)· console0 · 3/3 KEEP
 - [Round 056](round-056-diligence-verdict.md) · 🟦 · Diligence 报告顶部加「Layla's verdict · Cleared」结论横幅 + Proceed 决策按钮(§3-E/§4,配 proc R044)· console0 · 3/3 KEEP
 - [Round 055](round-055-top-pick.md) · 🟦 · Sourcing 结果第一名加「Layla's top pick」徽章+accent 边(§3-E 首推可见)+ Egypt Record 去 emoji · console0 · 3/3 KEEP
