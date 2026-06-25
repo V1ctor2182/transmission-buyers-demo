@@ -11,7 +11,7 @@
 > 选定路线:**亮色 + 加科技感与可视化(低风险)**,不转深色。逐步迭代 dashboard。
 - [x] **KPI 行可视化 + 减字(R028)** — 4 卡加 mini-viz(储蓄上升 sparkline / 4 项目 bar / 24 vetted tick 条 / deadline 倒计时条)+ topline delta + 左侧语义色 rail;greeting 砍长句;dashboard 加克制点阵网格背景(科技感)。
 - [x] **Sourcing pipeline 漏斗可视化**(R029) — 新增 24→9→4→2 funnel(In dialogue/Shortlisted/Negotiating/Ready to award,锥形 + chevron + green-win),at-a-glance 替代读数字。注:项目进度区已有进度条+stage dots,够视觉。
-- [ ] **继续 dashboard 可视化**(下步):① 总览趋势图(采购额/省钱随时间);② 右栏「Replies Layla is handling」仍偏文字 → 状态可视化/精简;③ 视情况克制科技点缀(hairline/微光/glass)。谨慎勿 slop。
+- [~] **继续 dashboard 可视化**:[x] ① 总览趋势图「Savings momentum」(R036:6 周累计省下面积/折线图 + mono 读数,诚实一次性绘入);[ ] ② 右栏「Replies Layla is handling」仍偏文字 → 状态可视化/精简;[ ] ③ 视情况克制科技点缀(hairline/微光/glass)。谨慎勿 slop。
 
 ## 新方向(用户 2026-06-25)
 - [x] 🟦 **logo 改用矢量 SVG(R025)** — 用户提供的 SVG 源(`transmission-tm-icon.source.svg` / `-full-lockup.source.svg`)尾部有 base64 垃圾导致 XML 解析报错;已截断生成干净 `logo/transmission-tm-icon.svg`(monogram,真矢量 4 path + 1 小高光节点)+ `logo/transmission-full-lockup.svg`。HTML 侧栏 brand chip `<img>` 与 favicon(`image/svg+xml`)改指 tm-icon.svg。原 `logo-mark.png` 不再引用(保留未删)。任意缩放清晰。

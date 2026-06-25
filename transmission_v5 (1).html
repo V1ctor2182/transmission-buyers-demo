@@ -846,6 +846,63 @@ textarea.form-input{resize:vertical;min-height:80px}
       </div>
     </div>
 
+    <!-- ░░ SAVINGS MOMENTUM TREND ░░ -->
+    <style>
+    .mom-card{display:flex;gap:0;align-items:stretch;background:var(--bg2);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:16px 18px;margin-bottom:20px}
+    .mom-main{flex:1;min-width:0;padding-right:18px}
+    .mom-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px;gap:12px}
+    .mom-title{font-size:13px;font-weight:700;color:var(--text1)}
+    .mom-title span{font-size:11px;font-weight:500;color:var(--text3);margin-left:8px}
+    .mom-legend{font-size:10px;color:var(--text3);font-weight:600;letter-spacing:.04em;text-transform:uppercase;display:flex;align-items:center;gap:6px;white-space:nowrap}
+    .mom-legend i{width:18px;height:3px;border-radius:2px;background:var(--accent);display:inline-block}
+    .mom-chart{width:100%;height:auto;display:block}
+    .mom-line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:1400;animation:momDraw 1.4s cubic-bezier(.4,0,.2,1) .15s forwards}
+    .mom-area{opacity:0;animation:momFade .9s ease 1s forwards}
+    .mom-dot{fill:var(--bg2);stroke:var(--accent);stroke-width:2;opacity:0;animation:momFade .4s ease forwards}
+    .mom-gl{stroke:var(--border);stroke-width:1;stroke-dasharray:2 3}
+    .mom-xl{font:600 9px Inter;fill:var(--text3)}
+    .mom-side{width:148px;flex:none;border-left:1px solid var(--border);padding-left:18px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+    .mom-stat-l{font-size:10px;color:var(--text3);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
+    .mom-stat-v{font:700 20px 'JetBrains Mono';color:var(--text1);letter-spacing:-.5px}
+    .mom-stat-v .mom-up{font-size:11px;font-weight:600;color:var(--green);margin-left:5px;letter-spacing:0}
+    @keyframes momDraw{to{stroke-dashoffset:0}}
+    @keyframes momFade{to{opacity:1}}
+    @media (prefers-reduced-motion:reduce){.mom-line{animation:none;stroke-dashoffset:0}.mom-area,.mom-dot{animation:none;opacity:1}}
+    </style>
+    <div class="mom-card">
+      <div class="mom-main">
+        <div class="mom-head">
+          <div class="mom-title">Savings momentum <span>Layla compounding wins across all 4 projects</span></div>
+          <div class="mom-legend"><i></i> Cumulative saved · last 6 weeks</div>
+        </div>
+        <svg class="mom-chart" viewBox="0 0 600 150">
+          <defs><linearGradient id="momGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1B5EFF" stop-opacity=".16"/>
+            <stop offset="1" stop-color="#1B5EFF" stop-opacity="0"/>
+          </linearGradient></defs>
+          <line class="mom-gl" x1="20" y1="14" x2="580" y2="14"/>
+          <line class="mom-gl" x1="20" y1="64" x2="580" y2="64"/>
+          <line class="mom-gl" x1="20" y1="114" x2="580" y2="114"/>
+          <path class="mom-area" fill="url(#momGrad)" d="M20,114 L20,98.8 L132,80.1 L244,65.1 L356,47.7 L468,30.8 L580,14 L580,114 Z"/>
+          <path class="mom-line" d="M20,98.8 L132,80.1 L244,65.1 L356,47.7 L468,30.8 L580,14"/>
+          <circle class="mom-dot" cx="20" cy="98.8" r="3.5" style="animation-delay:.95s"/>
+          <circle class="mom-dot" cx="132" cy="80.1" r="3.5" style="animation-delay:1.05s"/>
+          <circle class="mom-dot" cx="244" cy="65.1" r="3.5" style="animation-delay:1.15s"/>
+          <circle class="mom-dot" cx="356" cy="47.7" r="3.5" style="animation-delay:1.25s"/>
+          <circle class="mom-dot" cx="468" cy="30.8" r="3.5" style="animation-delay:1.35s"/>
+          <circle class="mom-dot" cx="580" cy="14" r="5" fill="#1B5EFF" style="animation-delay:1.5s"/>
+          <text class="mom-xl" x="20" y="132">May 13</text>
+          <text class="mom-xl" x="300" y="132" text-anchor="middle">Jun 3</text>
+          <text class="mom-xl" x="580" y="132" text-anchor="end">This week</text>
+        </svg>
+      </div>
+      <div class="mom-side">
+        <div><div class="mom-stat-l">This week</div><div class="mom-stat-v" style="color:var(--green)">+$142K<span class="mom-up">▲</span></div></div>
+        <div><div class="mom-stat-l">Total saved</div><div class="mom-stat-v">$843K</div></div>
+        <div><div class="mom-stat-l">Avg / week</div><div class="mom-stat-v">$140K</div></div>
+      </div>
+    </div>
+
     <div class="pipe-card">
       <div class="section-title" style="margin-bottom:0">Sourcing pipeline <span style="font-size:11px;font-weight:500;color:var(--text3);margin-left:6px">Layla is moving suppliers down the funnel — across 4 active projects</span></div>
       <div class="pipe-row">

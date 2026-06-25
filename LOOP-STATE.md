@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 036 · 🟦 Standard · Dashboard 总览趋势图「Savings momentum」· 自主模式
+- 2026-06-26 · 见 `reports/round-036-savings-momentum.md`。KPI 行与 Sourcing pipeline 之间新增真实 SVG 面积+折线趋势图(6 周累计省下 128→843K,终值=既有 $843K KPI)+ mono 读数(本周 +$142K / 总 $843K / 周均 $140K)。诚实一次性绘入(stroke-dashoffset),reduced-motion 直接成品,非假转圈。
+- **闸门**:console 零错 · 纯静态无 JS 依赖 · 仅 dashboard、跨视图无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:dashboard-viz 续(右栏 Replies 仍偏文字 / 克制科技点缀);或 procurement 助理盯单 / sourcing loader 提速 / 决策卡抽组件 / 去 ✦ sparkle。1min cron 自主续跑。
+
 ### Round 035 · 🟥 新组件 · 登录页 · 自主模式
 - 2026-06-25 · 见 `reports/round-035-login.md`。入场=splash→login(深色玻璃双栏,品牌+3 feature / Welcome back 表单 + Continue as demo)→app→tour;tmLoggedIn 会话一次。FAIL0/UNCAUGHT0。
 - factorygate 组件补齐:开场 splash + 登录页 + 交互地图 + 首页可视化。降回 1800s。

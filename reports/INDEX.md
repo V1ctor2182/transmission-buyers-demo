@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 036](round-036-savings-momentum.md) · 🟦 · Dashboard 总览趋势图「Savings momentum」(真实 6 周累计省下折线/面积图,诚实一次性绘入,减纯文字+加可视化+科技感)· console0 · 3/3 KEEP
 - [Round 035](round-035-login.md) · 🟥 新组件 · 登录页(factorygate 式深色玻璃双栏,splash→login→app)· FAIL0/UNCAUGHT0 · 3/3 KEEP
 - [Round 034](round-034-map-labels.md) · ⬜ Polish · 地图标签 hover 揭示(China 簇防重叠,radar 干净观感)· 3/3 KEEP
 - [Round 033](round-033-interactive-map.md) · 🟥 大组件 · 交互式 Sourcing Map(深色 command-center,路由弧线+流动点+hover/click 追踪,游戏感)· FAIL0/UNCAUGHT0 · 3/3 KEEP
