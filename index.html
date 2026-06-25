@@ -835,7 +835,7 @@ textarea.form-input{resize:vertical;min-height:80px}
         </svg>
       </div>
       <div class="kpi-card">
-        <div class="kpi-topline"><div class="kpi-label">Advancing for you</div><span class="kpi-delta" style="color:var(--accent)">3 need you</span></div>
+        <div class="kpi-topline"><div class="kpi-label">Advancing for you</div><span class="kpi-delta" id="kpi-advancing-delta" style="color:var(--accent)">3 need you</span></div>
         <div class="kpi-value" style="color:var(--accent)">4</div>
         <svg class="kpi-spark" viewBox="0 0 120 30" preserveAspectRatio="none">
           <rect x="6" y="16" width="22" height="14" rx="2" fill="var(--accent)" opacity=".30"/>
@@ -2734,13 +2734,20 @@ const AGENT_STATUS = {
   diligence:"Cross-checking supplier registration, customs &amp; sanctions",
   map:"Tracking <b>24 suppliers</b> across 5 countries in real time"
 };
+// Single source of truth for outstanding dashboard decisions (greeting / KPI / agent-bar all derive from it)
+let decRemaining = 3;
+function dashAgentStatus(){
+  return decRemaining>0
+    ? "Summarising today's queue — <b>"+decRemaining+" item"+(decRemaining>1?'s':'')+"</b> need your decision"
+    : "All decisions cleared — <b>I'm on it</b>. I'll update you as suppliers respond.";
+}
 function showView(v){
   VIEWS.forEach(id=>{
     document.getElementById('view-'+id).classList.toggle('active',id===v);
     document.getElementById('nav-'+id).classList.toggle('active',id===v);
   });
   document.getElementById('topbar-left').textContent = TITLES[v]||v;
-  const as=document.getElementById('agent-status'); if(as && AGENT_STATUS[v]) as.innerHTML = AGENT_STATUS[v];
+  const as=document.getElementById('agent-status'); if(as) as.innerHTML = (v==='dashboard') ? dashAgentStatus() : (AGENT_STATUS[v]||'');
   if(v==='procurement' && !currentSupplier) selectSupplier('ezz','steel');
   if(v==='procurement') decorateTreeScores();
   if(v==='negotiation') renderNegDecision(curNeg);
@@ -3024,13 +3031,16 @@ function decApprove(el,msg){
   card.style.borderTopColor='var(--green)';
   card.innerHTML='<div class="dec-tag" style="color:var(--green)"><span class="dec-done-dot"></span>Approved</div><div class="dec-title" style="font-weight:600;color:var(--text2);font-size:12.5px">'+msg+'</div>';
   const remaining=document.querySelectorAll('#dec-grid .dec-card:not(.done)').length;
+  decRemaining = remaining;
   const c=document.getElementById('nyd-count'); if(c) c.textContent=remaining;
   const g=document.getElementById('greeting-sub');
   if(g) g.innerHTML = remaining>0
     ? '<strong style="color:var(--accent)">'+remaining+' decision'+(remaining>1?'s':'')+'</strong> waiting — Layla has handled everything else.'
     : '<strong style="color:var(--green)">All caught up</strong> — Layla has everything from here.';
+  const kd=document.getElementById('kpi-advancing-delta');
+  if(kd){ kd.textContent = remaining>0 ? remaining+' need you' : 'all clear'; kd.style.color = remaining>0 ? 'var(--accent)' : 'var(--green)'; }
+  const s=document.getElementById('agent-status'); if(s) s.innerHTML = dashAgentStatus();
   if(remaining===0){
-    const s=document.getElementById('agent-status'); if(s) s.innerHTML='All decisions cleared — <b>I\'m on it</b>. I\'ll update you as suppliers respond.';
     const ac=document.getElementById('nyd-allclear'); if(ac) ac.style.display='flex';
     if(c){ c.textContent='✓'; c.style.background='var(--green)'; }
   }
