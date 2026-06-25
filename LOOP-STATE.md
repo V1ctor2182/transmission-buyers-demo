@@ -151,6 +151,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 064 · 🟦 Standard · XCMG 专属动作深链一致 · 自主模式
+- 2026-06-26 · 见 `reports/round-064-xcmg-deeplinks.md`。续 R063 扫 showView('negotiation'):XCMG 决策卡「View thread」(L802)+ diligence verdict「Proceed」(L2401)→ goNeg('xcmg')。其余泛跳(nav/项目行 Chat/proc Chat,因 id 不映射)保留。
+- **闸门**:console 零错 · 真点击 viewthread/proceed→curNeg=xcmg · 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 063 · 🟦 Standard · Dashboard 回复卡深链到对应供应商 · 自主模式
 - 2026-06-26 · 见 `reports/round-063-reply-deeplink.md`。3 回复卡原泛跳 showView('negotiation') 落默认 gz 错配 → goNeg(id)(showView+按 onclick 定位 item+selectNegSupplier)。Guangzhou→gz/XCMG→xcmg/Egyptian→eei。
 - **闸门**:console 零错 · 三链 OK(curNeg 正确)+ 截图 XCMG 深链 · 仅 dash+neg 无回归 · 3/3 KEEP。已 cp index.html + push。

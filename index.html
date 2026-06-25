@@ -799,7 +799,7 @@ textarea.form-input{resize:vertical;min-height:80px}
         <div class="dec-tag">Negotiation · <span class="dec-save">Saves $20K</span></div>
         <div class="dec-title">Approve XCMG excavators at $144K/unit</div>
         <div class="dec-rec"><b>Layla:</b> I negotiated XCMG down from $148K using SANY's $142K quote. Strong Egypt service network — I recommend approving.</div>
-        <div class="dec-actions"><button class="btn btn-primary btn-sm" onclick="decApprove(this,'Approved — Layla will issue the PO to XCMG')">Approve</button><button class="btn btn-secondary btn-sm" onclick="showView('negotiation')">View thread</button></div>
+        <div class="dec-actions"><button class="btn btn-primary btn-sm" onclick="decApprove(this,'Approved — Layla will issue the PO to XCMG')">Approve</button><button class="btn btn-secondary btn-sm" onclick="goNeg('xcmg')">View thread</button></div>
       </div>
       <div class="dec-card">
         <div class="dec-tag">Sourcing · <span style="color:var(--red)">July deadline</span></div>
@@ -2398,7 +2398,7 @@ textarea.form-input{resize:vertical;min-height:80px}
               <div style="font-size:10px;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px">Layla's verdict · Cleared</div>
               <div style="font-size:12.5px;color:var(--text1);line-height:1.5"><b>XCMG is low-risk and ready to advance</b> — no red flags across registration, customs, financials or sanctions. I recommend proceeding.</div>
             </div>
-            <button class="btn btn-primary btn-sm" style="flex-shrink:0" onclick="showView('negotiation')">Proceed to negotiation →</button>
+            <button class="btn btn-primary btn-sm" style="flex-shrink:0" onclick="goNeg('xcmg')">Proceed to negotiation →</button>
           </div>
           <div class="card" style="margin-bottom:16px">
             <div class="card-header">
