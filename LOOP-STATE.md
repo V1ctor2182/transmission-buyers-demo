@@ -158,6 +158,10 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 082 · 🟦 Standard · Worklog 补记 push/floor · 自主模式
+- 2026-06-26 · 见 `reports/round-082-worklog-push-floor.md`。addWorklogEntry 接 negDecide push(收 counter 后)/floor → living worklog 覆盖全谈判决策(accept/push/floor)+ 批准。
+- **闸门**:console 零错 · floor 6→7/push 7→8 · 仅 neg 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 081 · 🟦 Standard · Accept 后决策按钮锁定(持久)· 自主模式
 - 2026-06-26 · 见 `reports/round-081-neg-lock-buttons.md`。accept 锁单后 Push/Accept 仍可点(逻辑矛盾)→ negLockedSet + applyNegLockedUI:Accept→「✓ Deal locked」disabled、隐 Push/Floor,per-supplier 持久(renderNegDecision 末调用)。状态一致弧 R078-081 收尾。
 - **闸门**:console 零错 ERR=0 · gz 锁/切 XCMG 复原/切回 gz 仍锁 · 仅 neg 无回归 · 3/3 KEEP。已 cp index.html + push。

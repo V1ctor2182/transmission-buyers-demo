@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 082](round-082-worklog-push-floor.md) · 🟦 · Worklog 补记 push/守底线(living 覆盖全谈判决策 §3-B)· console0 · 3/3 KEEP
 - [Round 081](round-081-neg-lock-buttons.md) · 🟦 · Accept 后决策按钮锁定(Accept→✓Deal locked disabled/隐藏 Push+Floor,negLockedSet per-supplier 持久)· console0 · 3/3 KEEP
 - [Round 080](round-080-live-worklog.md) · 🟦 · Worklog 变活(accept/approve 动作追加「now」实时条目,§3-B 可累积)· console0 · 3/3 KEEP
 - [Round 079](round-079-tree-approved-and-active-bug.md) · 🟦 · 修 cat/suez 行高亮 bug(短 id)+ procApprove 树项「✓ Approved」状态一致 · console0 · 3/3 KEEP
