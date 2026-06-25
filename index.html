@@ -2435,7 +2435,7 @@ textarea.form-input{resize:vertical;min-height:80px}
   <div class="view" id="view-map">
     <div style="margin-bottom:14px">
       <div style="font-size:16px;font-weight:800;color:var(--text1)">Global sourcing map</div>
-      <div style="font-size:12px;color:var(--text3);margin-top:2px">Where Layla is sourcing for you, live. Hover a node for detail — click to trace its route to your hub.</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:2px">Where Layla is sourcing for you, live. Hover or click a node to trace its route to your hub — or use <kbd style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--bg);border:1px solid var(--border);border-bottom-width:2px;border-radius:4px;padding:1px 5px;color:var(--text2)">←</kbd> <kbd style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--bg);border:1px solid var(--border);border-bottom-width:2px;border-radius:4px;padding:1px 5px;color:var(--text2)">→</kbd> to fly between suppliers.</div>
     </div>
     <div class="map-layout">
       <div class="map-wrap">
@@ -2688,7 +2688,7 @@ function renderMap(){
 function mapTip(n,e){ var t=document.getElementById('map-tip'); var c=n.ready?'#10B981':'#10BFFF'; t.innerHTML='<div class="tt-n">'+n.name+'</div><div class="tt-m">'+n.region+' · '+n.supplies+'</div><div class="tt-s" style="color:'+c+'">'+n.status+'</div>'; t.classList.add('show'); mapTipMove(e); }
 function mapTipMove(e){ var w=document.querySelector('#view-map .map-wrap'); if(!w)return; var r=w.getBoundingClientRect(),t=document.getElementById('map-tip'); var x=e.clientX-r.left+14,y=e.clientY-r.top+14; if(x+232>r.width)x-=252; if(y+90>r.height)y-=110; t.style.left=x+'px'; t.style.top=y+'px'; }
 function mapTipHide(){ var t=document.getElementById('map-tip'); if(t)t.classList.remove('show'); }
-let mapSel=null;
+let mapSel=null, mapNavIdx=-1;
 function mapHighlight(id){
   document.querySelectorAll('#view-map .map-node').forEach(g=>g.classList.remove('sel'));
   document.querySelectorAll('#view-map .map-route').forEach(r=>{r.classList.remove('hot');r.classList.add('dim');});
@@ -2738,10 +2738,20 @@ function renderMapTrace(n){
     +'<button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="showView(\''+go+'\')">Open in workspace →</button>';
   box.style.display='block';
 }
-function mapSelect(id){ mapSel=id; var s=mapHighlight(id); if(s)s.scrollIntoView({block:'nearest'}); mapPing(id); var node=MAP_NODES.find(function(n){return n.id===id;}); if(node)renderMapTrace(node); }
-function mapReset(){ mapSel=null; mapResetVisual(); var b=document.getElementById('map-trace'); if(b)b.style.display='none'; }
+function mapSelect(id){ mapSel=id; mapNavIdx=MAP_NODES.findIndex(function(n){return n.id===id;}); var s=mapHighlight(id); if(s)s.scrollIntoView({block:'nearest'}); mapPing(id); var node=MAP_NODES.find(function(n){return n.id===id;}); if(node)renderMapTrace(node); }
+function mapReset(){ mapSel=null; mapNavIdx=-1; mapResetVisual(); var b=document.getElementById('map-trace'); if(b)b.style.display='none'; }
 function mapHover(id){ if(mapSel) return; mapHighlight(id); }
 function mapUnhover(){ if(mapSel) return; mapResetVisual(); }
+// Keyboard "flight" between supplier nodes (arrow keys) — only when the map view is open
+document.addEventListener('keydown',function(e){
+  var mv=document.getElementById('view-map'); if(!mv||!mv.classList.contains('active')) return;
+  var tag=(e.target&&e.target.tagName||'').toLowerCase(); if(tag==='input'||tag==='textarea'||tag==='select') return;
+  if(document.querySelector('.modal-overlay.show')) return;
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'){ e.preventDefault(); mapNavIdx=(mapNavIdx+1)%MAP_NODES.length; mapSelect(MAP_NODES[mapNavIdx].id); }
+  else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ e.preventDefault(); mapNavIdx=(mapNavIdx-1+MAP_NODES.length)%MAP_NODES.length; mapSelect(MAP_NODES[mapNavIdx].id); }
+  else if(e.key==='Escape'){ mapReset(); }
+  else if(e.key==='Enter'&&mapSel){ var n=MAP_NODES.find(function(x){return x.id===mapSel;}); if(n) showView(n.ready?'procurement':'negotiation'); }
+});
 function negAppendMsg(side, ava, name, html){
   const msgs=document.getElementById('chat-msgs'); if(!msgs) return;
   const d=document.createElement('div'); d.className='msg '+side+' slide-up';

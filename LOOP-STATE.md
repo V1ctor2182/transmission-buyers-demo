@@ -148,6 +148,12 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 043 · 🟦 Standard · Map 键盘飞行导航(游戏感)· 自主模式
+- 2026-06-26 · 见 `reports/round-043-map-keyboard-nav.md`。map 激活时 ←/→/↑/↓ 在 9 节点循环选中(落点=描线+ping+trace 卡);Enter 进 workspace;Esc 复位;mapNavIdx 在 mapSelect 同步(点击后续飞)。守卫:仅 map active、忽略输入/弹窗。header 加 ←→ kbd 提示。
+- **闸门**:console 零错 · 模拟 ArrowRight 选中正确(node-bright/xcmg)+ 截图确认 · 守卫充分 · 仅 map 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **★ 收敛信号**:R036-043 已覆盖全 5 视图 + 地图 viz/交互;剩余皆细件(procurement 需你决策 / 决策卡抽组件 / flag emoji)。下轮起若只剩细件,向用户发 digest 并视情况降 cadence。
+- **next**:procurement「需你决策/红旗」浮出 / 决策卡抽组件 / flag emoji;或收敛 digest。1min cron 自主续跑。
+
 ### Round 042 · 🟦 Standard · Negotiation 压价 sparkline(看得见博弈)· 自主模式
 - 2026-06-26 · 见 `reports/round-042-negotiation-concession-chart.md`。决策面板让步轨迹纯文字 → 压价 sparkline:parseTrail/parsePrice($/K/M)解析价点,画下降折线+面积+节点(末点绿成交)+mono 价标;轨迹文案精简为 start→final。renderNegDecision 注入;showView 进入即渲染;selectNegSupplier 切换同步(L3485)。价点真实非假。
 - **闸门**:console 零错 · gz/xcmg(K 解析)两态正确 · 切换更新 · 面板无溢出 · 仅 neg 无回归 · 3/3 KEEP。已 cp index.html + push。
