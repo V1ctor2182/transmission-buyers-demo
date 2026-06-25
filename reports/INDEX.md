@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 031](round-031-dashboard-review.md) · ✅ 审计 · 首页改造整体核验(cohesive + 回归 0/0)· 无改动 → 收敛
 - [Round 030](round-030-replies-factchips.md) · 🟦 · 右栏 Replies 长引语→fact chips(减字降 overload)· 3/3 KEEP
 - [Round 029](round-029-pipeline-funnel.md) · 🟦 · Sourcing pipeline 漏斗可视化(24→9→4→2,锥形+chevron)· 3/3 KEEP
 - [Round 028](round-028-dashboard-viz.md) · 🟦 · 首页可视化+减字+科技感(KPI mini-viz sparkline/bars/ticks/countdown + 点阵网格 + greeting 砍字)· 3/3 KEEP
