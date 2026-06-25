@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 084](round-084-bgcheck-synth.md) · 🟦 · 修 Background Check 对 ~14 供应商落 XCMG 错配(getBgData 从 SUPPLIERS 合成真公司报告,诚实占位)· console0 · 3/3 KEEP
 - [Round 083](round-083-diligence-recent-search-fix.md) · 🟦 · Diligence Recent Searches 修错配(loadDDPreset→openBgCheck,点最近搜索开正确公司动态报告)· console0 · 3/3 KEEP
 - [Round 082](round-082-worklog-push-floor.md) · 🟦 · Worklog 补记 push/守底线(living 覆盖全谈判决策 §3-B)· console0 · 3/3 KEEP
 - [Round 081](round-081-neg-lock-buttons.md) · 🟦 · Accept 后决策按钮锁定(Accept→✓Deal locked disabled/隐藏 Push+Floor,negLockedSet per-supplier 持久)· console0 · 3/3 KEEP

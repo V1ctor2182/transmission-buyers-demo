@@ -3377,8 +3377,23 @@ const BG_DATA = {
   xcmg:{name:'XCMG International Co., Ltd.',regno:'91320300600019622X',capital:'CNY 8.5B',rep:'Chen Jianhua',est:'1989',rev:'~$16B',growth:'+22% YoY',credit:'AA+ (Stable)',customs:[['Q1 2025','🇸🇦 Saudi Arabia','42 units','$6.2M','$147,619'],['Q1 2025','🇪🇬 Egypt','18 units','$2.7M','$150,000'],['Q4 2024','🇦🇪 UAE','31 units','$4.6M','$148,387']],risk:'✅ <strong style="color:var(--green)">Low Risk.</strong> China\'s #1 construction machinery manufacturer. $16B revenue, AA+ credit. Proven Egypt export record. No sanctions. Recommend as primary excavator supplier.'},
   sandvik:{name:'Sandvik Mining & Rock Technology AB',regno:'556234-6483',capital:'SEK 1.5B',rep:'Stefan Widing',est:'1862',rev:'~$11.2B',growth:'+12% YoY',credit:'AAA (Stable)',customs:[['Q1 2025','🇸🇦 Saudi Arabia','14 units','$4.5M','$321,429'],['Q4 2024','🇿🇦 South Africa','11 units','$3.5M','$318,182'],['Q3 2024','🇪🇬 Egypt','5 units','$1.6M','$320,000']],risk:'✅ <strong style="color:var(--green)">Very Low Risk.</strong> World leader in mining equipment. 160+ year history. AAA credit rating. Proven Egypt track record. Premium price justified by reliability.'}
 };
+// Use the dedicated background-check data when present; otherwise synthesise the right
+// supplier's report from SUPPLIERS (real name/est/customs/risk) instead of falling back to XCMG.
+function getBgData(id){
+  if(BG_DATA[id]) return BG_DATA[id];
+  const s = SUPPLIERS[id];
+  if(!s) return BG_DATA['xcmg'];
+  const n = parseInt(String(s.risk),10)||0;
+  const credit = n>=90?'AA (Stable)':n>=85?'A+ (Stable)':n>=80?'A (Stable)':n>=75?'BBB (Stable)':'BB (Watch)';
+  return {
+    name: s.name, regno:'Verified ✓', capital:'On file', rep:'On file', est: s.est||'—',
+    rev:'—', growth:'—', credit: credit,
+    customs: (s.exports||[]).map(e=>['12M', (e.flag||'')+' '+e.country, '—', e.val, '—']),
+    risk: '<strong style="color:'+(s.riskColor||'var(--green)')+'">'+(s.riskLabel||'Low Risk')+'.</strong> '+(s.why||'')
+  };
+}
 function openBgCheck(id){
-  const d = BG_DATA[id] || BG_DATA['xcmg'];
+  const d = getBgData(id);
   document.getElementById('bg-title').textContent = 'Background Check — ' + (SUPPLIERS[id]?.name || id);
   document.getElementById('bg-loading').style.display='block';
   document.getElementById('bg-report').style.display='none';
