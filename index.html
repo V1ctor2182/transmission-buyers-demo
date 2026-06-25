@@ -3829,11 +3829,13 @@ function robotAlertClick(){
 }
 
 // ── TOAST ──
+let toastTimer;
 function showToast(msg){
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.style.opacity='1';
-  setTimeout(()=>t.style.opacity='0',2500);
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.style.opacity='0',2500);
 }
 
 // ── INIT ──
