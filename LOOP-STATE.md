@@ -8,6 +8,10 @@
 - 整个 demo/ 已 git 化(main 分支),Pages 源 = main 根;`index.html` = `transmission_v5 (1).html` 镜像。
 - 更新流程:改完 **先 `cp "transmission_v5 (1).html" index.html`(必须!Pages 服务的是 index.html)**,再 `git add -A && git commit && git push`,Pages ~1min 自动重部署。
 
+## ⚠️ 截图方法学(R069 修正,重要)
+- `/tmp/*.html` 测试副本**无法解析相对 `logo/` 路径** → /tmp 截图中 logo 区域可能破图(测试假象,**非 demo bug**)。
+- **含 logo 的 UI(splash/login/sidebar)一律从 demo 目录截图**:写 `__tmp.html` 到 demo 目录 → `file://$PWD/__tmp.html` 截图 → 删除临时文件。其余 UI 用 /tmp 无妨。
+
 ## 基线
 - 优化对象:`transmission_v5 (1).html`(2997 行,单文件,5 视图)。
 - 截图工具:`chrome-headless-shell`(已缓存于 ms-playwright/chromium_headless_shell-1217),`--headless --screenshot`,`--force-device-scale-factor=2`。**非 git 仓库** → 落库 = 写 reports + 本台账(无 git commit/push)。
@@ -150,6 +154,10 @@
 
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
+
+### Round 069 · ✅ 审计 · 入场体验全核验 + 截图方法学修正 · 自主模式
+- 2026-06-26 · 见 `reports/round-069-entry-audit.md`。splash(skip 真生效/2.3s/logo 从 demo 目录渲染 OK)+ login(R058 chip 真 logo 非破图 / Sign in+demo user+Enter 全 → doLogin→afterIntro)+ loaders 全提速 —— 入场稳健无需改动。**方法学:含 logo 的 UI 须从 demo 目录截图(见顶部 ⚠️)。**
+- **闸门**:逐项肉眼核验 · 纯审计无改动 · 3/3 KEEP。
 
 ### Round 068 · 🟦 Standard · runDueDiligence loader 提速(R059 漏网)· 自主模式
 - 2026-06-26 · 见 `reports/round-068-diligence-loader-speedup.md`。审计 dd-bar 填充(showDDReport 正常,非 bug)时发现 runDueDiligence 仍 i*3400×6≈20.3s(R059 漏掉最慢流程)。压到 i*1500/active 1100/收尾 500 → 实测 9.1s,bars 仍填充(80%)。
