@@ -958,6 +958,12 @@ textarea.form-input{resize:vertical;min-height:80px}
     .neg-lad-locked svg circle:last-of-type{filter:drop-shadow(0 0 3px rgba(16,185,129,.85))}
     .sup-match-card.smc-top{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent)}
     .wl-badge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;margin-left:6px;font-family:'JetBrains Mono',monospace;vertical-align:middle}
+    .typing-dots{display:inline-flex;gap:4px;align-items:center;padding:3px 2px}
+    .typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:typingBounce 1.2s infinite}
+    .typing-dots span:nth-child(2){animation-delay:.18s}
+    .typing-dots span:nth-child(3){animation-delay:.36s}
+    @keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}
+    @media (prefers-reduced-motion:reduce){.typing-dots span{animation:none}}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
     .radar-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(16,191,255,.32),transparent);pointer-events:none;z-index:2;animation:radarSweep 6s linear infinite}
     @keyframes radarSweep{0%{top:-2px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
@@ -2876,6 +2882,13 @@ function egLitPin(cardIdx){
   wrap.addEventListener('mouseover',function(e){ var c=e.target.closest('.proj-progress-card'); if(!c) return; var cards=Array.prototype.slice.call(wrap.querySelectorAll('.proj-progress-card')); egLitPin(cards.indexOf(c)); });
   wrap.addEventListener('mouseleave',function(){ egLitPin(-1); });
 })();
+// Transient "supplier is typing…" bubble shown before a real incoming message arrives
+function negTyping(ava){
+  const msgs=document.getElementById('chat-msgs'); if(!msgs) return null;
+  const d=document.createElement('div'); d.className='msg in'; d.id='neg-typing';
+  d.innerHTML='<div class="msg-ava sup">'+ava+'</div><div><div class="msg-bub" style="padding:9px 14px"><span class="typing-dots"><span></span><span></span><span></span></span></div></div>';
+  msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight; return d;
+}
 function negAppendMsg(side, ava, name, html){
   const msgs=document.getElementById('chat-msgs'); if(!msgs) return;
   const d=document.createElement('div'); d.className='msg '+side+' slide-up';
@@ -2953,7 +2966,8 @@ function negDecide(action){
   } else if(action==='push'){
     negAppendMsg('out','L','Layla · for you','We\'re ready to commit today at <strong>'+d.push+'</strong>. Match it and the '+d.unit+' order is yours.');
     setNegStatus('Layla is pushing for '+d.push+'…');
-    setTimeout(()=>{ negAppendMsg('in',d.ava,d.sup,d.push+' isn\'t workable on our margin, but I can hold <strong>'+d.counter+'</strong> if you confirm within 48h — that\'s genuinely final.'); setNegStatus('Counter received: '+d.counter+' — awaiting your call'); negPushLadder(d); }, 1000);
+    var typ=negTyping(d.ava);
+    setTimeout(()=>{ if(typ&&typ.parentNode)typ.parentNode.removeChild(typ); negAppendMsg('in',d.ava,d.sup,d.push+' isn\'t workable on our margin, but I can hold <strong>'+d.counter+'</strong> if you confirm within 48h — that\'s genuinely final.'); setNegStatus('Counter received: '+d.counter+' — awaiting your call'); negPushLadder(d); }, 1200);
     showToast('Layla is pushing '+d.firm+' for a lower price');
   } else {
     showToast('Set your floor in the project brief — Layla will renegotiate to it');

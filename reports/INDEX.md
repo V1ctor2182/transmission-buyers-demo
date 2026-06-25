@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 062](round-062-typing-indicator.md) · 🟦 · Negotiation 供应商「typing…」弹跳指示器(push 后 counter 到达前,§3-D 真实来回,后必跟真消息非假 spinner)· console0 · 3/3 KEEP
 - [Round 061](round-061-responsive-audit.md) · ✅ 审计 · 1280/1120 笔记本宽度核验(dashboard/neg/proc 全 2-col 组件无破版)· 无改动 · 稳健
 - [Round 060](round-060-compare-audit-persona.md) · ✅+⬜ · Compare 模态核验(score 条+逐维 winner+配比建议=强)+ persona「Specialist→Layla's recommendation」统一(残留 sweep=0)· console0 · 3/3 KEEP
 - [Round 059](round-059-loader-speedup.md) · 🟦 · sourcing/bg-check loader 提速(MATCH 15.2→7.6s / BG 12.1→6.1s,保留逐步实质产出,去拖时间感)· console0 · 3/3 KEEP
