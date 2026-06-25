@@ -158,6 +158,10 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 083 · 🟦 Standard · Diligence Recent Searches 修错配 · 自主模式
+- 2026-06-26 · 见 `reports/round-083-diligence-recent-search-fix.md`。Recent Searches 原 loadDDPreset(仅填表单,报告仍 XCMG=错配)→ openBgCheck(guangzhou/ezz/sandvik) 开正确动态报告。
+- **闸门**:console 零错 · 三项 title 正确 + Sandvik 满数据截图 · 仅 diligence 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 082 · 🟦 Standard · Worklog 补记 push/floor · 自主模式
 - 2026-06-26 · 见 `reports/round-082-worklog-push-floor.md`。addWorklogEntry 接 negDecide push(收 counter 后)/floor → living worklog 覆盖全谈判决策(accept/push/floor)+ 批准。
 - **闸门**:console 零错 · floor 6→7/push 7→8 · 仅 neg 无回归 · 3/3 KEEP。已 cp index.html + push。
