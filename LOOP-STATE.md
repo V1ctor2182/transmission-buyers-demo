@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 030 · 🟦 · 右栏 Replies 减字(fact chips)· 自主模式
+- 2026-06-25 · 见 `reports/round-030-replies-factchips.md`。确认本 session 继续买方 demo(忽略误贴的 traderadar-vue)。右栏 3 卡长引语→fact chips。首页减字+可视化三步(R028-030)完成。
+- **闸门**:headless 无 stderr · 静态 · 3/3 KEEP。已 cp index.html + push。
+- **next**:首页 overload 已显著缓解;视情况再加 1 处可视化或收敛。
+
 ### Round 029 · 🟦 · Sourcing pipeline 漏斗可视化(第二步)· 自主模式
 - 2026-06-25 · 见 `reports/round-029-pipeline-funnel.md`。dashboard 加 24→9→4→2 漏斗卡(锥形+chevron+green-win)。项目进度区已够视觉,不强改。
 - **闸门**:headless 无 stderr · 静态 · 3/3 KEEP。已 cp index.html + push。

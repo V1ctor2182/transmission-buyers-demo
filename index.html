@@ -124,6 +124,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text1);disp
 .pipe-seg.pipe-win .pv{color:var(--green)}
 .pipe-arrow{display:flex;align-items:center;color:var(--border2);flex-shrink:0}
 .pipe-arrow svg{width:14px;height:14px;stroke:var(--border2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fact-chips{display:flex;flex-wrap:wrap;gap:6px;padding-left:42px;margin-top:1px}
+.fact-chip{font-size:11px;color:var(--text2);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:2px 8px;font-weight:500;white-space:nowrap}
+.fact-chip b{font-family:'JetBrains Mono',monospace;color:var(--text1);font-weight:700}
 .kpi-label{font-size:11px;font-weight:600;color:var(--text3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px}
 .kpi-value{font-size:26px;font-weight:800;color:var(--text1);font-family:'JetBrains Mono',monospace;line-height:1}
 .kpi-sub{font-size:11px;color:var(--text3);margin-top:4px}
@@ -984,7 +987,7 @@ textarea.form-input{resize:vertical;min-height:80px}
             <span class="badge b-blue">Negotiating</span>
             <span style="font-size:11px;color:var(--text3)">2h ago</span>
           </div>
-          <div style="font-size:12px;color:var(--text2);font-style:italic;padding-left:42px">"We can offer $38.50/unit for 5,000+ MOQ. CE &amp; IEC certified. Lead time 22 days CIF Alexandria."</div>
+          <div class="fact-chips"><span class="fact-chip"><b>$38.50</b>/unit</span><span class="fact-chip">CE · IEC</span><span class="fact-chip"><b>22d</b> CIF</span></div>
           <div style="text-align:right;margin-top:6px;font-size:11px;color:var(--accent);font-weight:600">Layla drafted a reply — review →</div>
         </div>
         <div class="msg-preview-card" onclick="showView('negotiation')">
@@ -997,7 +1000,7 @@ textarea.form-input{resize:vertical;min-height:80px}
             <span class="badge b-gray">Quoting</span>
             <span style="font-size:11px;color:var(--text3)">5h ago</span>
           </div>
-          <div style="font-size:12px;color:var(--text2);font-style:italic;padding-left:42px">"Formal quotation for XE215C excavators attached. Unit price $148,000 CIF Alexandria. 90-day delivery."</div>
+          <div class="fact-chips"><span class="fact-chip">XE215C</span><span class="fact-chip"><b>$148K</b>/unit</span><span class="fact-chip"><b>90d</b> CIF</span></div>
           <div style="text-align:right;margin-top:6px;font-size:11px;color:var(--accent);font-weight:600">Layla drafted a reply — review →</div>
         </div>
         <div class="msg-preview-card" onclick="showView('negotiation')">
@@ -1010,7 +1013,7 @@ textarea.form-input{resize:vertical;min-height:80px}
             <span class="badge b-green">Sample Sent</span>
             <span style="font-size:11px;color:var(--text3)">1d ago</span>
           </div>
-          <div style="font-size:12px;color:var(--text2);font-style:italic;padding-left:42px">"Sample batch of 50 units dispatched via DHL. ES 4698 test report enclosed. Awaiting your feedback."</div>
+          <div class="fact-chips"><span class="fact-chip"><b>50</b> samples</span><span class="fact-chip">ES 4698 ✓</span><span class="fact-chip">via DHL</span></div>
           <div style="text-align:right;margin-top:6px;font-size:11px;color:var(--accent);font-weight:600">Layla drafted a reply — review →</div>
         </div>
 
