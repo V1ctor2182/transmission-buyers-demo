@@ -1,0 +1,165 @@
+# LOOP-STATE — 买方端体验优化 loop
+
+> 每轮 append 一条。权威流程见 `loop-procedure.md`;待办见 `BACKLOG.md`。
+
+## 基线
+- 优化对象:`transmission_v5 (1).html`(2997 行,单文件,5 视图)。
+- 截图工具:`chrome-headless-shell`(已缓存于 ms-playwright/chromium_headless_shell-1217),`--headless --screenshot`,`--force-device-scale-factor=2`。**非 git 仓库** → 落库 = 写 reports + 本台账(无 git commit/push)。
+- 收敛计数:低价值连续轮 = 0 / K=3。
+
+## 轮次日志
+### Round 001 · ⬜ Utility · 真实 logo 接入(用户点名,优先)
+- 2026-06-25 · 首轮:建 LOOP-STATE / BACKLOG + 一次 dashboard 审计 + 执行 logo 任务。
+- **做了什么**:① `.brand-icon` 蓝渐变方块 + 假字母「T」→ 38px 白色圆角 chip 内嵌真实 `logo/logo-mark.png` TM monogram(`<img object-fit:contain>`),解决暗 navy 侧栏对比问题;② head 加 `<link rel=icon>` favicon 指向 logo-mark.png。
+- **闸门**:img 成功渲染(路径解析 → 无 404/新 console 错)✓ · 未触 JS / 动态行为 ✓ · 侧栏跨 5 视图共用,logo 全局生效 ✓ · 3 critic:视觉 KEEP(去除明显占位件、品牌可信度↑、白 chip 对比清晰)/ 产品 KEEP(无新增负担、不退步)/ 对比度 KEEP → 3/3 ✓
+- **残留**:供应商卡 emoji logo(💡🔆☀️…)、nav emoji 图标(🏠🔍📋💬🔎)、👋/🇪🇬 flag emoji、彩色字母 avatar 等仍待「去 AI 味」;助理常驻骨架 / 活动流 / dashboard 三段重构等大件未动 → 见 BACKLOG。
+- **next**:人感骨架优先(助理常驻 = 大件,做完暂停 review)。
+
+### Round 002 · 🟥 审计 · 逐视图深度审计
+- 2026-06-25 · 5 视图截图 + 动态行为登记 + 操作步数,见 `reports/round-002-audit.md`。
+- **关键发现**:① `openCompare` 假进度条(setInterval 空跑 6.7s)= 红线,下一非大件轮首修;② negotiation 买方亲自打字谈判 = 核心违规(应助理代谈,大件);③ sourcing/diligence 都是逼买方填长表单;④ supplierMatching/bgCheck 是真出结果的分阶段过程(允许)但偏慢;⑤ 多处 emoji + 彩色撞色头像。
+- **闸门**:审计轮不改代码;R001 logo 跨 5 视图回归抽查通过 ✓。
+- **next**:① 非大件优先修 openCompare 假进度条(红线);② 大件队列:助理常驻骨架 / dashboard 三段 / 谈判代谈(做完暂停 review)。
+
+### Round 003 · 🟦 Standard · 修 openCompare 假进度条(红线)
+- 2026-06-25 · 见 `reports/round-003-compare-fake-progress.md`。
+- **做了什么**:删 `openCompare` 的 setInterval 0→100% 假进度条;改为"Comparison ready"+ 4 个真实对比维度 <1s reveal → 报告;去 📊 + `🤖 AI Recommendation`(→ "Specialist recommendation:")。
+- **闸门**:headless openCompare 无 stderr + 报告渲染 ✓ · 无 cmp-progress 残留 ✓ · 跨视图正常 ✓ · 3/3 KEEP。
+- **next**:下个非大件可选 sourcing/bg-check loader 提速,或去 AI 味(nav emoji / 撞色头像);大件队列(助理常驻 / dashboard 三段 / 谈判代谈)需暂停 review 才铺开。
+
+### Round 004 · ⬜ Utility · nav emoji → SVG 线性图标
+- 2026-06-25 · 见 `reports/round-004-nav-icons.md`。
+- **做了什么**:侧栏 🏠🔍📋💬🔎 → inline SVG(grid/search/layers/chat/shield-check),`stroke:currentColor` 随 active/hover 变色;`.nav-icon` CSS 改 flex-center + svg 规则。
+- **闸门**:headless 无 stderr · showView 未动 · active 白图标正常 · 跨视图共用 · 3/3 KEEP。
+- **next**:继续去 AI 味(下一非大件:撞色彩色头像收成单一蓝/中性,或 👋/flag/🔧/🤖 装饰 emoji);大件队列待 review。已连续 4 轮均有肉眼可见提升,收敛计数仍 0。
+
+### Round 005 · ⬜ Utility · 头像撞色统一(两档)+ 去装饰 emoji
+- 2026-06-25 · 见 `reports/round-005-avatar-collision.md`。
+- **做了什么**:7 种头像渐变彩虹撞色 → 两档(self=品牌蓝 3 处;supplier/contact=中性 slate `#475569,#64748B` 66 处),sed 顺序避免二次转换;去 `👋` + 2 处 `🤖` 标题。
+- **闸门**:negotiation+dashboard headless 无 stderr · 头像纯样式不影响逻辑 · 跨视图一致 · 3/3 KEEP。备份 /tmp/r005-backup.html。
+- **next**:去 AI 味续(negotiation export 条撞色 / 供应商卡 emoji logo / proj-ph-icon 🏗 / 🔧 / flag),或 sourcing loader 提速;大件(助理常驻含 robot FAB+panel 🤖 / dashboard 三段 / 谈判代谈)待 review。连续 5 轮均有可见提升,收敛计数 0。
+
+### Round 006 · ⬜ Utility · 供应商卡 emoji logo → slate 首字母 chip
+- 2026-06-25 · 见 `reports/round-006-supplier-card-logos.md`。
+- **做了什么**:`renderSupplierCards` 的 `.smc-logo` 由 emoji(💡🔆☀️…9 个)→ `${s.name.charAt(0)}` 首字母;chip 重做 slate `#475569` + 白 JetBrains Mono。
+- **闸门**:headless 渲染 9 卡无 stderr · 仅 sourcing 用 · 3/3 KEEP。
+- **next**:去 AI 味续(negotiation export 条撞色 / proj-ph-icon 🏗 / 🔧 / flag / sourcing ✦ sparkle),或 sourcing loader 提速;大件待 review。连续 6 轮均有可见提升,收敛计数 0。剩余非大件 Utility 渐少,若开始挖到低价值需考虑 §收敛(K=3)或推进大件(需 review)。
+
+### Round 007 · ⬜ Utility · export 条撞色 → 统一品牌蓝
+- 2026-06-25 · 见 `reports/round-007-export-bar-collision.md`。
+- **做了什么**:export/destination 横条 blue/green/purple/amber/grey → 统一 `var(--accent),var(--accent2)`;改 negotiation 静态(L1781/87/93)+ diligence dd-bar(L1974/78/82/86)+ JS exBars(L2847)。未动语义 `.prog-green/amber` 及 Low-risk 绿框。
+- **闸门**:headless 无 stderr · grep 残留撞色=0 · 语义色保留 · 3/3 KEEP。
+- **next**:剩余非大件多为零碎 emoji(🔧/🏗/📊/flag/✦)。**注意收敛**:再做 1–2 轮零碎去 emoji 后,若价值走低,应发 digest 提示用户「高价值已落到大件(助理常驻/dashboard 三段/谈判代谈),需 review 放行」并按 §收敛降速。连续 7 轮可见提升,收敛计数 0。
+
+### Round 008 · ⬜ Utility · dashboard 去 emoji(项目图标 + 截止圆点)
+- 2026-06-25 · 见 `reports/round-008-dashboard-emoji.md`。
+- **做了什么**:proj-ph-icon 🏗💡⛏☀️ → slate SVG(building/bulb/mountain/sun)+ 统一中性 chip(去 pastel 撞色);Upcoming Deadlines 🔴🟡🟢 → `currentColor` CSS 圆点(.dl-dot)。
+- **闸门**:dashboard headless 无 stderr · 纯静态 · 仅 dashboard · 3/3 KEEP。
+- **next**:**下一轮 = sourcing 流程内 emoji 集中清(pcb-icon/rec-chip/sr-cluster/按钮 ✦📄/📊/📌/diligence 🔎)**,作为去 AI 味收尾;之后剩余高价值全在大件(助理常驻含 robot FAB+panel 🤖 / dashboard 三段 / 谈判代谈),将「做完暂停 review」。连续 8 轮可见提升,收敛计数 0。
+
+### Round 009 · ⬜ Utility · 去 AI 味 emoji 全量收尾
+- 2026-06-25 · 见 `reports/round-009-emoji-finale.md`。~34 处:sourcing(pcb/sr-cluster/rec-chip/callout/✦/📄/📊)+ procurement(proj-row-icon/⚡/👆/💬/🔎/📦)+ diligence(🔎🔍✅)+ 模态(🤝✅)→ slate SVG / CSS / 文本。
+- **闸门**:headless 无 stderr · 全文 emoji sweep 仅剩功能性国旗+✓/✕+助理🤖 · 渲染正常 · 3/3 KEEP。备份 /tmp/r009-backup.html。
+- **★ 阶段转折**:去 AI 味基本完成(R001-R009 视觉层已大幅提升)。**剩余高价值全是大件产品项**:① 助理常驻骨架(§3-A,含 robot FAB/panel 🤖)② dashboard 三段(已完成/正在做/需你决策)③ 谈判代谈(买方不再亲自打字)④ sourcing/diligence 表单→助理预填。
+- **next**:按「人感骨架优先」,**下一轮起做大件 §3-A 助理常驻骨架,做完截图暂停等 review,不 ScheduleWakeup**(procedure §4/§5 大件规则 + loop-prompt「做完暂停等定调,不自动铺开」)。连续 9 轮可见提升,收敛计数 0。
+
+### Round 010 · 🟥 大件 · 助理常驻骨架(§3-A)· ⏸ 暂停等 review
+- 2026-06-25 · 见 `reports/round-010-agent-presence.md`。
+- **做了什么**:topbar 下全局共享 `.agent-bar`(Layla Hassan · Your Procurement Agent + 在线点 + 随视图实时状态 AGENT_STATUS + Worklog 按钮→toggleRobot);robot FAB/panel 去 🤖 并入助理主题(panel→「Layla's Worklog」)。
+- **闸门**:dashboard/neg/worklog headless 无 stderr · 切视图 status 实变(neg 确认)· Worklog 面板开 · 静态在线点不假转圈 · 3/3 KEEP。
+- **⏸ 大件已做完 → 暂停等 review,本轮不 ScheduleWakeup**。等用户定调后再推进:§3-B 活动流真实时间戳 / dashboard 三段 / 谈判代谈 / 表单→预填。连续 10 轮可见提升,收敛计数 0。
+- **[review 结果]** 用户选定下一步 = **§3-B 活动流**(R011 已做)。
+
+### Round 011 · 🟦 Standard · §3-B 活动流 / Worklog 时间线
+- 2026-06-25 · 见 `reports/round-011-worklog-activity.md`。
+- **做了什么**:Layla's Worklog 面板 → 带时间戳助理动作时间线(Today/Yesterday、mono 时间、语义点 blue/green、决策 pill、连接线),映射真实流程;新增 `.wl*` CSS。
+- **闸门**:headless 无 stderr · toggleRobot/pill 导航正常 · 真实挣来无假 · 3/3 KEEP。
+- **next**:剩余大件(需 review 放行):**dashboard 三段(已完成/正在做/需你决策)**= 下一最高价值 / 谈判代谈 / sourcing+diligence 表单→预填。§3-A+§3-B 人感骨架已成型。连续 11 轮可见提升,收敛计数 0。
+
+### Round 012 · 🟥 大件 · Dashboard 重构三段(§3-F+§4)· ⏸ 暂停等 review
+- 2026-06-25 · 见 `reports/round-012-dashboard-3section.md`。
+- **做了什么**:顶部「Needs your decision · 3」决策卡 hero(tag+saves/deadline+标题+Layla 建议+Approve/次按钮);`decApprove` 真交互(卡翻绿态+计数递减+toast);三段 relabel(Layla is keeping watch / managing / handling)。
+- **闸门**:dashboard+approve headless 无 stderr · decApprove 计数 3→2+toast 确认 · 真状态变更无假 · 3/3 KEEP。
+- **⏸ 大件做完 → 暂停等 review,本轮不 ScheduleWakeup**。剩余大件:谈判代谈 / sourcing+diligence 表单→预填 / 决策卡抽组件。人感骨架 §3-A+§3-B+dashboard 三段已成型。连续 12 轮可见提升,收敛计数 0。
+- **[review 结果]** 用户选 = **谈判代谈**(R013 已做)。
+
+### Round 013 · 🟥 大件 · 谈判反转为「助理代谈」(§3-D)· ⏸ 暂停等 review
+- 2026-06-25 · 见 `reports/round-013-assistant-led-negotiation.md`。
+- **做了什么**:线程 out 气泡全归 Layla(12+3 翻转);移除买方打字框 → 决策面板(让步轨迹 $42→$38.50 −8.3% + Layla 建议 + Accept/Push/Adjust);`negDecide` 真交互(accept/push 真消息往返+counter)。**修 R010 高度回归**:3 全高布局 calc 补 57px + chat-col/chat-msgs min-height:0。
+- **闸门**:neg/push/procurement/sourcing headless 无 stderr · push counter 逻辑 + toast · 跨视图底部完整 · 真实无假 · 3/3 KEEP。备份 /tmp/r013-backup.html。
+- **⏸ 暂停等 review,不 ScheduleWakeup**。剩余:per-supplier 决策面板 / sourcing+diligence 表单→预填 / 决策卡抽组件 / Click-to-reply→助理起草。北极星-2 四大件(§3-A 在场 / §3-B 活动流 / dashboard 三段 / 谈判代谈)均已落地。连续 13 轮可见提升,收敛计数 0。
+- **[review 结果]** 用户选 = **sourcing+diligence 表单→预填**(R014 已做)。
+
+### Round 014 · sourcing+diligence 表单→助理预填(§4)· ⏸ 暂停等 review
+- 2026-06-25 · 见 `reports/round-014-form-prefill.md`。
+- **做了什么**:两表单 framing 反转 —— sourcing「Layla drafted this…/Review your sourcing brief/CTA Confirm & match」+ diligence「Layla auto-vets…/Open Layla's intelligence report→/placeholder nothing to fill in」。字段本就预填,改叙事为「助理已起草/已跑,你确认/打开」。
+- **闸门**:headless 无 stderr · CTA 逻辑未变 · 真实预填非空表 · 3/3 KEEP。
+- **★ 里程碑**:R002 审计列的**北极星-2 五大违规全部解决**(在场/活动流/dashboard 决策/代谈/表单预填)。两条北极星(视觉零 AI 味 + 产品零负担真人感)均已强对齐。
+- **[review 结果 R014]** 用户选 = **Resume autonomous 1-min loop**:此后**不再每轮暂停等 review**(含大件),自助推进剩余细化 + polish,只在有"notable"事项时才主动 flag。恢复 ScheduleWakeup(60)。
+- 剩余皆细化:per-supplier 决策面板 / 决策卡抽组件 / Click-to-reply→助理起草 / 全量 polish-audit。连续 14 轮可见提升,收敛计数 0。下一轮:全量 polish/audit pass(逐视图抓不一致/措辞/间距)。
+
+### Round 015 · ⬜ Polish · 助理 persona 统一(Layla)· 自主模式
+- 2026-06-25 · 见 `reports/round-015-persona-polish.md`。
+- **做了什么**:泛指「AI/procurement specialist / your agent」全统一为 Layla(sourcing empty/diligence loading/compare loading/report callout/procurement rec 卡标题)。保留品牌名 AI Buyers Agent + 供应商 IoT specialist。
+- **闸门**:sourcing headless 无 stderr · 纯文案 · persona 跨视图一致 · 3/3 KEEP。
+- **next**:继续 polish/audit —— per-supplier 谈判决策面板 / dashboard「Click to reply」→助理起草 / 决策卡抽组件 / 逐视图间距措辞。连续 15 轮可见提升,收敛计数 0。
+
+### Round 016 · ⬜ Polish · dashboard 回复零负担化 · 自主模式
+- 2026-06-25 · 见 `reports/round-016-reply-reframe.md`。dashboard 3 处「Click to reply →」→「Layla drafted a reply — review →」。
+- **闸门**:headless 无 stderr · 纯文案 · 3/3 KEEP。
+- **next**:per-supplier 谈判决策面板(切供应商时让步轨迹/建议随 NEG_DATA 变),或决策卡抽组件。连续 16 轮可见提升,收敛计数 0。
+
+### Round 017 · 🟦 · 谈判 per-supplier 决策面板 + 修崩溃 + 补归属 · 自主模式
+- 2026-06-25 · 见 `reports/round-017-per-supplier-negotiation.md`。
+- **NOTABLE**:修 R013 遗留崩溃(selectNegSupplier 引用已删的 neg-chips → 切供应商必崩)+ 补 9 处转义 `· Ahmed`→Layla。新增 NEG_DEC(8 供应商)+ renderNegDecision,决策面板/agent-bar 随供应商更新;negDecide 数据驱动。
+- **闸门**:切 XCMG headless 无 stderr · 面板正确($148K→$144K)· 线程 Layla 归属 · 仅 sidebar 留 Ahmed · 3/3 KEEP。备份 /tmp/r017-backup.html。
+- **next**:决策卡抽统一组件,或逐视图间距/措辞 polish-audit。连续 17 轮可见提升,收敛计数 0。**提醒**:测动态行为要覆盖切换路径(本轮即因只测默认态漏了崩溃)。
+
+### Round 018 · ✅ 验证 · 全交互回归扫描 · 自主模式
+- 2026-06-25 · 见 `reports/round-018-regression-sweep.md`。建 `reports/selftest-harness.html`,headless 跑 31 交互路径 = **31/31 PASS, 0 uncaught**。17 轮编辑后零回归。
+- **闸门**:31/31 + 零 uncaught(纯逻辑验证轮)。
+- **收敛观察**:本轮无 UI 变更(验证轮)。**收敛计数 = 1/3**(高保障价值但无肉眼提升)。若再 2 轮只挖到低价值,按 §收敛发 digest + 降 cadence。
+- **next**:决策卡抽组件(无视觉变,纯一致性)或逐视图细 polish;若无明显可改,触发收敛 digest。
+
+### Round 019 · ✅ 审计 · 深层状态巡检(无缺陷)· 自主模式
+- 2026-06-25 · 见 `reports/round-019-deep-audit.md`。查 diligence 运行态 / procurement comm-progress / briefing 头像 / export bars,均无缺陷。
+- **收敛计数 = 2/3**(R018 验证 + R019 审计,连续无肉眼提升)。
+- **next**:再给 1 轮找真实可视改进;若仍无 → **§收敛:发 digest + 降 cadence 60s→1800s**。demo 已达高质量收敛态(两北极星强对齐,31/31 回归通过)。
+
+### Round 021 · 🏁 收敛 · 全深层巡检 + 收敛判定 · 自主模式
+- 2026-06-25 · 见 `reports/round-021-convergence.md`。sourcing 全报告态巡检无缺陷。**判定已收敛**:两北极星达标、五大违规全清、31/31 回归、深层状态全清,剩余仅纯重构低价值项。
+- **§6 收敛动作**:降 cadence 60s→**1800s** 低频心跳。用户可随时给新方向 / 喊停。
+- **状态**:demo preview-ready。若用户无新指令,loop 低频空转待命。
+
+### ▶ Loop 重启(用户 2026-06-25)+ Round 022 · 🟥 新功能 · 买家引导 tutorial
+- 用户重启 loop,新方向:demo 给买家看,要"点点看"的 tutorial 快速理解全项目。
+- **R022 已做**:7 步 coachmark tour(跨视图 spotlight + 卡片说明),首次进会话自动启动 + agent-bar「Take a tour」重播;Skip/Back/Next + n/7;零 AI 味。见 `reports/round-022-guided-tour.md`。
+- **闸门**:自检 17/17 + 0 uncaught;step1/step6 截图正常;console 零错;3/3 KEEP。收敛计数重置。
+- **next**:tutorial 后续 polish(tour 按钮首次脉冲提示 / 文案 / 各视图轻量 hint),或按需收敛。自主 1min。
+
+### Round 023 · ⬜ Polish · tour 按钮回访脉冲 · 自主模式
+- 2026-06-25 · 见 `reports/round-023-tour-pulse.md`。回访(已 seen)时「Take a tour」脉冲 3 下后停,点击即清;首访仍自动开 tour。
+- **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
+- **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
+
+### Round 025 · 🟦 · logo 改用矢量 SVG · 自主模式
+- 2026-06-25 · 见 `reports/round-025-vector-svg-logo.md`。用户提供的 SVG 源尾部有 base64 垃圾(XML error);截断生成干净 `logo/transmission-tm-icon.svg` + `-full-lockup.svg`;HTML 侧栏 brand + favicon 改指 tm-icon.svg(矢量,任意 DPI 清晰)。原 logo-mark.png 不再引用。
+- **闸门**:headless 无 stderr · 矢量渲染无 XML error · 裁图确认清晰 · 3/3 KEEP。
+- **状态**:logo 矢量化任务完成;demo 再次处于收敛态。full-lockup.svg 已备好(无使用位)。降回 1800s 低频心跳,等新方向。
+
+### Round 024 · 🟦 · tour 扩到 10 步全视图 + 收敛 · 自主模式
+- 2026-06-25 · 见 `reports/round-024-tour-allviews.md`。tour 7→10 步,覆盖全 5 视图(加 Sourcing/Projects/Diligence,1·2·3·4 阶段编号),买家一遍点完懂全项目。
+- **闸门**:自检 10/10 + 0 uncaught · sourcing 步截图正常 · 3/3 KEEP。
+- **★ tutorial 方向交付完成**:自动启动 + 重播按钮 + 回访脉冲 + 10 步全视图走查。
+- **🏁 收敛**:tutorial 完整,剩余仅极低价值可选项。降 cadence 60s→**1800s** 低频心跳。用户可随时给新方向 / 喊停。
+
+### ⏹ Loop 已停止(用户 2026-06-25 喊停 → 已于 R022 重启)
+- 用户 "stop" → 取消 pending wakeup(cron 59d3818e),不再 ScheduleWakeup。loop 结束于 R021 收敛态。
+- 重启方式:重新发 `/loop 1min …`(见 `loop-prompt.md`),会读本 LOOP-STATE + BACKLOG 接上进度。
+- 收尾态:21 轮,两北极星达标,31/31 回归通过,console 零错;reports/ 全程留档 + selftest-harness.html 可复跑。
+
+### Round 020 · 🟦 Standard · §3-G 安心感 KPI 重做 · 自主模式
+- 2026-06-25 · 见 `reports/round-020-reassurance-kpis.md`。dashboard KPI 行 → Saved for you $843K / Advancing 4 / Suppliers vetted 24 / Next deadline 12d(安心感+进展,真实数值)。
+- **闸门**:headless 无 stderr · 3/3 KEEP。
+- **收敛计数重置 = 0**(本轮真实可视提升)。
+- **next**:剩余仅决策卡抽组件(纯重构无视觉)等极低价值项。下轮若无真实可视改进,即触发 §收敛 digest + 降 cadence。连续 20 轮,北极星-2 §3-A/B/F/G + 五大违规 + 视觉全清,均已落地。

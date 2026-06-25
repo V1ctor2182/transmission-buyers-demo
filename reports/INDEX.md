@@ -1,0 +1,27 @@
+# Reports INDEX(倒序)
+
+- [Round 025](round-025-vector-svg-logo.md) · 🟦 · logo 改用矢量 SVG（清理 source 尾部垃圾→tm-icon.svg，侧栏+favicon 改指 SVG）· 3/3 KEEP
+- [Round 024](round-024-tour-allviews.md) · 🟦 · tour 扩到 10 步覆盖全 5 视图(加 Sourcing/Projects/Diligence,1·2·3·4 阶段编号)· 10/10 自检 · 收敛→1800s
+- [Round 023](round-023-tour-pulse.md) · ⬜ Polish · tour 按钮回访脉冲提示(3 下后停)· 0 uncaught · 3/3 KEEP
+- [Round 022](round-022-guided-tour.md) · 🟥 新功能 · 买家引导式 tutorial（7 步 coachmark tour，跨视图 spotlight，自动启动+「Take a tour」重播）· 17/17 自检 · 3/3 KEEP
+- [Round 021](round-021-convergence.md) · 🏁 收敛 · sourcing 报告巡检无缺陷 + 收敛判定(两北极星达标,31/31 回归)→ 降 cadence 1800s
+- [Round 020](round-020-reassurance-kpis.md) · 🟦 Standard · §3-G 安心感 KPI 重做(Saved $843K / Advancing / Vetted / Deadline)· 收敛重置 · 3/3 KEEP
+- [Round 019](round-019-deep-audit.md) · ✅ 审计 · 深层状态巡检(diligence run / comm-progress / briefing)无缺陷 · 收敛 2/3
+- [Round 018](round-018-regression-sweep.md) · ✅ 验证 · 全交互回归扫描 31/31 PASS · 0 uncaught · 留 selftest-harness.html
+- [Round 017](round-017-per-supplier-negotiation.md) · 🟦 · 谈判 per-supplier 决策面板(NEG_DEC×8)+ **修 R013 切供应商崩溃** + 补 Layla 归属(9 处)· 3/3 KEEP
+- [Round 016](round-016-reply-reframe.md) · ⬜ Polish · dashboard「Click to reply」→「Layla drafted a reply — review」· 3/3 KEEP
+- [Round 015](round-015-persona-polish.md) · ⬜ Polish · 助理 persona 统一为 Layla(去泛指「AI specialist/your agent」)· 3/3 KEEP
+- [Round 014](round-014-form-prefill.md) · 🟥 · sourcing+diligence 表单→助理预填(§4)— 「Layla drafted/queued this」framing,买方只确认/打开 · 北极星-2 五大违规全清 · 3/3 KEEP · **暂停等 review**
+- [Round 013](round-013-assistant-led-negotiation.md) · 🟥 大件 · 谈判反转为「助理代谈」(§3-D)— 线程归 Layla + 决策面板(让步轨迹/Accept/Push/Adjust)+ 修 R010 高度回归 · 3/3 KEEP · **暂停等 review**
+- [Round 012](round-012-dashboard-3section.md) · 🟥 大件 · Dashboard 重构三段 — Needs-your-decision 决策卡 hero(Approve→Layla 接手)+ 三段叙事 relabel · 3/3 KEEP · **暂停等 review**
+- [Round 011](round-011-worklog-activity.md) · 🟦 Standard · §3-B 活动流 — Layla's Worklog 重做为带时间戳动作时间线(决策 pill,映射真实流程)· 3/3 KEEP
+- [Round 010](round-010-agent-presence.md) · 🟥 大件 · 助理常驻骨架(§3-A)— 全局 agent-bar(Layla Hassan + 随视图实时状态 + Worklog)· robot 去 emoji · 3/3 KEEP · **暂停等 review**
+- [Round 009](round-009-emoji-finale.md) · ⬜ Utility · 去 AI 味 emoji 全量收尾(sourcing/procurement/diligence/模态 ~34 处)→ 全应用仅剩功能性国旗+✓/✕+助理🤖 · 3/3 KEEP
+- [Round 008](round-008-dashboard-emoji.md) · ⬜ Utility · dashboard 项目图标 🏗💡⛏☀️ → slate SVG + 截止 🔴🟡🟢 → CSS 圆点 · 3/3 KEEP
+- [Round 007](round-007-export-bar-collision.md) · ⬜ Utility · export/destination 条 blue/green/purple/amber 撞色 → 统一品牌蓝(3 渲染路径)· 语义色保留 · 3/3 KEEP
+- [Round 006](round-006-supplier-card-logos.md) · ⬜ Utility · 供应商卡 emoji logo(💡🔆☀️…)→ slate 首字母 mono chip · 3/3 KEEP
+- [Round 005](round-005-avatar-collision.md) · ⬜ Utility · 头像彩虹撞色 → 两档(self 蓝 / supplier slate,69 处)+ 去 👋/🤖×2 · 3/3 KEEP
+- [Round 004](round-004-nav-icons.md) · ⬜ Utility · nav emoji(🏠🔍📋💬🔎)→ inline SVG 线性图标,随 active/hover tint · 3/3 KEEP
+- [Round 003](round-003-compare-fake-progress.md) · 🟦 Standard · 修 openCompare 假进度条(红线)→ 删 setInterval 空跑,换"已对比完成"4 维 checklist + 去 📊/🤖 emoji · 3/3 KEEP
+- [Round 002](round-002-audit.md) · 🟥 审计 · 逐视图深度审计(5 视图 + 动态行为登记 + 操作步数)· 发现 openCompare 假进度条红线 + 谈判买方亲自谈 + sourcing/diligence 长表单
+- [Round 001](round-001-logo.md) · ⬜ Utility · 真实 logo 接入(假「T」方块 → 白 chip + TM monogram + favicon)· 3/3 KEEP
