@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 089](round-089-deadlines-clickable.md) · 🟦 · Upcoming Deadlines 可点导航 My Projects(配 R088 漏斗,交互感)· console0 · 3/3 KEEP
 - [Round 088](round-088-funnel-clickable.md) · 🟦 · Sourcing pipeline 漏斗各段可点导航(In dialogue→sourcing/Negotiating→neg/Ready→proc,hover 抬升,交互感)· console0 · 3/3 KEEP
 - [Round 087](round-087-synth-customs.md) · 🟦 · 合成 bg-check 海关表补全(qty=val/price、avg=price,内部自洽;/m 单位边界处理)· console0 · 3/3 KEEP
 - [Round 086](round-086-regression-sweep.md) · ✅ 验证 · 扩展全交互回归(含 R067-085 状态一致/worklog/bg 合成/deep-link)= 0 错 · harness 更新 · 稳健

@@ -171,7 +171,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text1);disp
 .msg-preview-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .15s;margin-bottom:8px}
 .msg-preview-card:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
 .deadline-bar{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.dl-item{display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.dl-item{display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;transition:box-shadow .15s,transform .15s}
+.dl-item:hover{box-shadow:0 1px 5px rgba(0,0,0,.1);transform:translateY(-1px)}
 .dl-urgent{background:var(--red-light);color:var(--red)}
 .dl-soon{background:var(--amber-light);color:var(--amber)}
 .dl-ok{background:var(--green-light);color:var(--green)}
@@ -1321,10 +1322,10 @@ textarea.form-input{resize:vertical;min-height:80px}
       <div>
         <div class="section-title">Upcoming Deadlines</div>
         <div class="deadline-bar">
-          <div class="dl-item dl-urgent"><span class="dl-dot"></span>Road Lighting · Jul 05 · 12 days</div>
-          <div class="dl-item dl-soon"><span class="dl-dot"></span>New Cairo Construction · Aug 15 · 53 days</div>
-          <div class="dl-item dl-ok"><span class="dl-dot"></span>Benban Solar Park · Aug 30 · 68 days</div>
-          <div class="dl-item dl-ok"><span class="dl-dot"></span>Sinai Mining · Sep 01 · 70 days</div>
+          <div class="dl-item dl-urgent" onclick="showView('procurement')" title="Open in My Projects"><span class="dl-dot"></span>Road Lighting · Jul 05 · 12 days</div>
+          <div class="dl-item dl-soon" onclick="showView('procurement')" title="Open in My Projects"><span class="dl-dot"></span>New Cairo Construction · Aug 15 · 53 days</div>
+          <div class="dl-item dl-ok" onclick="showView('procurement')" title="Open in My Projects"><span class="dl-dot"></span>Benban Solar Park · Aug 30 · 68 days</div>
+          <div class="dl-item dl-ok" onclick="showView('procurement')" title="Open in My Projects"><span class="dl-dot"></span>Sinai Mining · Sep 01 · 70 days</div>
         </div>
       </div>
     </div>
