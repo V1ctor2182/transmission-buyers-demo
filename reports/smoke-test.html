@@ -692,7 +692,7 @@ textarea.form-input{resize:vertical;min-height:80px}
 .map-supplier.ready .map-sup-stat{color:var(--green)}
 </style>
 </head>
-<body>
+<body><script>try{sessionStorage.setItem("tmLoggedIn","1");sessionStorage.setItem("tmSplashSeen","1");sessionStorage.setItem("tmTourSeen","1");}catch(e){}</script>
 <!-- OPENING SPLASH (开场) -->
 <div id="splash">
   <div class="sp-stars" id="sp-stars"></div>
@@ -954,8 +954,6 @@ textarea.form-input{resize:vertical;min-height:80px}
     .eg-pin.eg-dim{opacity:.25}
     .eg-pin.eg-lit .eg-core{r:11;stroke:#fff}
     .proj-progress-card.eg-row-lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow);transition:box-shadow .15s,border-color .15s}
-    .neg-lad-locked svg path:last-of-type{stroke:var(--green)}
-    .neg-lad-locked svg circle:last-of-type{filter:drop-shadow(0 0 3px rgba(16,185,129,.85))}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
     .radar-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(16,191,255,.32),transparent);pointer-events:none;z-index:2;animation:radarSweep 6s linear infinite}
     @keyframes radarSweep{0%{top:-2px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
@@ -2938,8 +2936,6 @@ function negDecide(action){
     showToast('Accepted — Layla is issuing the PO to '+d.firm);
     setNegStatus('✓ Deal locked at '+d.accept+' — Layla is on it');
     const a=document.getElementById('agent-status'); if(a) a.innerHTML='Issuing PO to <b>'+d.firm+'</b> at '+d.accept+' — '+d.unit;
-    const t=document.getElementById('neg-dec-trail'); if(t) t.innerHTML='<span style="color:var(--green);font-weight:700">✓ Deal locked</span> at <b style="font-family:\'JetBrains Mono\',monospace">'+d.accept+'</b> <span class="neg-trail-pct">'+d.pct+'</span>';
-    const lad=document.getElementById('neg-dec-ladder'); if(lad) lad.classList.add('neg-lad-locked');
   } else if(action==='push'){
     negAppendMsg('out','L','Layla · for you','We\'re ready to commit today at <strong>'+d.push+'</strong>. Match it and the '+d.unit+' order is yours.');
     setNegStatus('Layla is pushing for '+d.push+'…');
@@ -3917,5 +3913,34 @@ window.addEventListener('load', function(){
     </div>
   </div>
 </div>
-</body>
+<script>
+var ERR=[]; window.addEventListener('error',function(e){ERR.push((e.message||'')+' @'+(e.filename||'').split('/').pop()+':'+e.lineno);});
+window.addEventListener('unhandledrejection',function(e){ERR.push('PROMISE:'+e.reason);});
+function T(label,fn){ try{ fn(); }catch(e){ ERR.push(label+': '+e.message); } }
+window.addEventListener('load',function(){ setTimeout(function(){
+  var V=['dashboard','sourcing','procurement','negotiation','diligence','map'];
+  V.forEach(function(v){ T('showView '+v,function(){showView(v);}); });
+  T('decApprove', function(){ document.querySelectorAll('#dec-grid .dec-card .btn-primary').forEach(function(b){b.click();}); });
+  T('openCompare', function(){ openCompare('lighting'); });
+  T('closeCompare', function(){ var m=document.getElementById('cmp-modal'); if(m)m.classList.remove('show'); });
+  T('selectSupplier baosteel', function(){ selectSupplier('baosteel','steel'); });
+  T('selectSupplier caterpillar', function(){ selectSupplier('caterpillar','excavator'); });
+  T('procApprove', function(){ var b=document.querySelector('#rp-briefing .bf-rec .btn'); if(b)b.click(); });
+  T('decorateTreeScores', function(){ decorateTreeScores(); });
+  T('selectNegSupplier xcmg', function(){ showView('negotiation'); var el=document.querySelector('.neg-sup-item'); selectNegSupplier('xcmg', el); });
+  T('negDecide push', function(){ negDecide('push'); });
+  T('negDecide accept', function(){ negDecide('accept'); });
+  T('renderNegDecision sany', function(){ renderNegDecision('sany'); });
+  T('runSrcAnalysis', function(){ showView('sourcing'); runSrcAnalysis(); });
+  T('runDueDiligence', function(){ showView('diligence'); runDueDiligence(); });
+  T('openBgCheck', function(){ openBgCheck('ezz'); });
+  T('closeBg', function(){ closeBg(); });
+  T('renderMap+mapSelect', function(){ showView('map'); renderMap(); mapSelect('gz'); mapReset(); });
+  T('mapKeyboard', function(){ showView('map'); document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight'})); document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft'})); document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'})); });
+  T('egTip', function(){ egTip({clientX:50,clientY:50},'p1'); egTipHide(); egLitPin(2); egLitPin(-1); });
+  T('toggleRobot', function(){ toggleRobot(); toggleRobot(); });
+  T('startTour', function(){ showView('dashboard'); startTour(); tourNext(); tourNext(); endTour(); });
+  setTimeout(function(){ document.title='ERRORS='+ERR.length+(ERR.length?(' :: '+ERR.slice(0,6).join(' || ')):' (CLEAN)'); }, 1500);
+}, 300); });
+</script></body>
 </html>

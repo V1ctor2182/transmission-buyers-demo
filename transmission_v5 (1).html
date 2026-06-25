@@ -954,6 +954,8 @@ textarea.form-input{resize:vertical;min-height:80px}
     .eg-pin.eg-dim{opacity:.25}
     .eg-pin.eg-lit .eg-core{r:11;stroke:#fff}
     .proj-progress-card.eg-row-lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow);transition:box-shadow .15s,border-color .15s}
+    .neg-lad-locked svg path:last-of-type{stroke:var(--green)}
+    .neg-lad-locked svg circle:last-of-type{filter:drop-shadow(0 0 3px rgba(16,185,129,.85))}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
     .radar-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(16,191,255,.32),transparent);pointer-events:none;z-index:2;animation:radarSweep 6s linear infinite}
     @keyframes radarSweep{0%{top:-2px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
@@ -2936,6 +2938,8 @@ function negDecide(action){
     showToast('Accepted — Layla is issuing the PO to '+d.firm);
     setNegStatus('✓ Deal locked at '+d.accept+' — Layla is on it');
     const a=document.getElementById('agent-status'); if(a) a.innerHTML='Issuing PO to <b>'+d.firm+'</b> at '+d.accept+' — '+d.unit;
+    const t=document.getElementById('neg-dec-trail'); if(t) t.innerHTML='<span style="color:var(--green);font-weight:700">✓ Deal locked</span> at <b style="font-family:\'JetBrains Mono\',monospace">'+d.accept+'</b> <span class="neg-trail-pct">'+d.pct+'</span>';
+    const lad=document.getElementById('neg-dec-ladder'); if(lad) lad.classList.add('neg-lad-locked');
   } else if(action==='push'){
     negAppendMsg('out','L','Layla · for you','We\'re ready to commit today at <strong>'+d.push+'</strong>. Match it and the '+d.unit+' order is yours.');
     setNegStatus('Layla is pushing for '+d.push+'…');
