@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 045 · 🟥 新组件 · Dashboard「Egypt project map」· 自主模式
+- 2026-06-26 · 见 `reports/round-045-egypt-project-map.md`。借鉴 factorygate(我没有的组件):dashboard 加 Egypt 项目地图卡(亮卡+深 command-center 画布,adapt Egypt SVG 轮廓/Nile/Sinai/Suez/网格/城市标注),4 真实项目作 pin(Smart City Lighting/New Cairo Construction/Sinai Mining/Benban Solar),hover tooltip(状态+进展)+click→procurement。factorygate emoji pin 全去 → 纯净脉冲点,3 语义色非撞色。
+- **闸门**:console 零错 · 截图确认轮廓+4 pin+tooltip · additive 无既有逻辑改动 · 跨视图无回归 · 3/3 KEEP。已 cp index.html + push。**NOTABLE 新组件(自主未停)。**
+- **next**:Egypt map pin↔项目列表联动去重 / 决策卡抽组件 / flag emoji。1min cron 自主续跑。
+
 ### Round 044 · 🟦 Standard · Procurement 决策横幅(§3-G/§4)· 自主模式
 - 2026-06-26 · 见 `reports/round-044-procurement-decision-banner.md`。buildBriefing KPI 行下加「Layla's recommendation」横幅:风险派生判语(≥85 Strong/≥80 Solid 绿/<80 Workable amber)+「Approve & request PO」→ procApprove 翻绿「✓ Approved · 备 PO」+toast。补 procurement「看完无决策/下一步」缺口。verdict 由 d.risk 算,诚实。
 - **闸门**:console 零错 · Ezz 默认 + approve 翻态 两截图正确 · 仅 procurement 无回归 · 3/3 KEEP。已 cp index.html + push。

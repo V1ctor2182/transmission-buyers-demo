@@ -925,6 +925,66 @@ textarea.form-input{resize:vertical;min-height:80px}
       </div>
     </div>
 
+    <!-- ░░ EGYPT PROJECT MAP ░░ -->
+    <style>
+    .eg-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px}
+    .eg-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;gap:12px;flex-wrap:wrap}
+    .eg-title{font-size:13px;font-weight:700;color:var(--text1)}
+    .eg-title span{font-size:11px;font-weight:500;color:var(--text3);margin-left:8px}
+    .eg-legend{display:flex;gap:14px}
+    .eg-legend span{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.04em}
+    .eg-legend i{width:8px;height:8px;border-radius:50%;display:inline-block}
+    .eg-map-wrap{position:relative;height:320px;background:radial-gradient(ellipse at 50% 45%,#0f2742 0%,#0a1a2f 60%,#07111f 100%);border-top:1px solid var(--border)}
+    .eg-svg{width:100%;height:100%;display:block}
+    .eg-pin{cursor:pointer}
+    .eg-pin-pulse{transform-box:fill-box;transform-origin:center;animation:egPulse 2.6s ease-out infinite}
+    @keyframes egPulse{0%{r:9;opacity:.5}100%{r:24;opacity:0}}
+    .eg-core{transition:r .15s}
+    .eg-pin:hover .eg-core{r:10}
+    .eg-tip{position:absolute;pointer-events:none;background:rgba(10,22,40,.96);border:1px solid #1f3f63;border-radius:9px;padding:9px 12px;color:#e6efff;font-size:12px;opacity:0;transition:opacity .12s;z-index:5;max-width:230px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+    .eg-tip.show{opacity:1}
+    @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
+    </style>
+    <div class="eg-card">
+      <div class="eg-head">
+        <div class="eg-title">Egypt project map <span>Where Layla is delivering for you — hover a site, click to open</span></div>
+        <div class="eg-legend"><span><i style="background:#1B5EFF"></i>In negotiation</span><span><i style="background:#F59E0B"></i>Sampling</span><span><i style="background:#10BFFF"></i>Quoting</span></div>
+      </div>
+      <div class="eg-map-wrap">
+        <svg class="eg-svg" viewBox="0 0 800 700" preserveAspectRatio="xMidYMid meet">
+          <defs><filter id="egGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <g stroke="rgba(27,94,255,0.09)" stroke-width="1">
+            <line x1="0" y1="100" x2="800" y2="100"/><line x1="0" y1="200" x2="800" y2="200"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="400" x2="800" y2="400"/><line x1="0" y1="500" x2="800" y2="500"/><line x1="0" y1="600" x2="800" y2="600"/>
+            <line x1="100" y1="0" x2="100" y2="700"/><line x1="200" y1="0" x2="200" y2="700"/><line x1="300" y1="0" x2="300" y2="700"/><line x1="400" y1="0" x2="400" y2="700"/><line x1="500" y1="0" x2="500" y2="700"/><line x1="600" y1="0" x2="600" y2="700"/><line x1="700" y1="0" x2="700" y2="700"/>
+          </g>
+          <path d="M 180 80 L 560 80 L 580 100 L 600 140 L 610 180 L 600 220 L 590 240 L 580 260 L 600 300 L 620 340 L 640 380 L 650 420 L 640 460 L 620 490 L 590 510 L 560 520 L 520 530 L 480 540 L 440 550 L 400 560 L 360 560 L 320 555 L 280 545 L 240 535 L 200 520 L 170 500 L 150 470 L 140 440 L 145 400 L 155 360 L 160 320 L 155 280 L 150 240 L 155 200 L 160 160 L 165 120 Z" fill="rgba(27,94,255,0.07)" stroke="rgba(16,191,255,0.32)" stroke-width="1.5" filter="url(#egGlow)"/>
+          <path d="M 390 560 L 385 520 L 380 480 L 375 440 L 370 400 L 368 360 L 365 320 L 362 280 L 358 240 L 355 200 L 350 160 L 345 120 L 340 90" fill="none" stroke="rgba(16,191,255,0.35)" stroke-width="2.5"/>
+          <path d="M 340 90 L 290 80 L 250 82 L 220 88 L 200 95 L 280 100 L 320 95 L 340 90 L 360 95 L 390 100 L 420 95 L 450 90 L 480 88 L 510 90 L 530 95 L 510 100 L 480 100 L 450 98 L 420 100 L 390 100 L 360 95" fill="rgba(16,191,255,0.12)" stroke="rgba(16,191,255,0.25)" stroke-width="1"/>
+          <path d="M 560 80 L 565 120 L 570 160 L 565 200 L 560 240" fill="none" stroke="rgba(16,191,255,0.4)" stroke-width="2" stroke-dasharray="6,3"/>
+          <path d="M 560 80 L 600 140 L 610 180 L 600 220 L 590 240 L 580 260 L 600 300 L 620 340 L 640 380 L 650 420 L 640 460 L 620 490 L 590 510 L 570 480 L 560 440 L 555 400 L 560 360 L 565 320 L 560 280 L 555 240 L 560 200 L 565 160 L 560 120 L 555 100 Z" fill="rgba(27,94,255,0.05)" stroke="rgba(16,191,255,0.2)" stroke-width="1"/>
+          <text x="350" y="55" fill="rgba(16,191,255,0.4)" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="2">MEDITERRANEAN SEA</text>
+          <text x="660" y="400" fill="rgba(16,191,255,0.32)" font-size="9" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="1" transform="rotate(70,660,400)">RED SEA</text>
+          <text x="610" y="300" fill="rgba(255,255,255,0.2)" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">Sinai</text>
+          <text x="352" y="112" fill="rgba(255,255,255,0.32)" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">Cairo</text>
+          <text x="240" y="86" fill="rgba(255,255,255,0.3)" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">Alexandria</text>
+          <text x="372" y="540" fill="rgba(255,255,255,0.26)" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">Aswan</text>
+          <g class="eg-pin" onmouseenter="egTip(event,'p1')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(388,116)">
+            <circle class="eg-pin-pulse" r="9" fill="rgba(27,94,255,.5)"/><circle class="eg-core" r="7" fill="#1B5EFF" stroke="#0a1a2f" stroke-width="2"/>
+          </g>
+          <g class="eg-pin" onmouseenter="egTip(event,'p2')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(418,134)">
+            <circle class="eg-pin-pulse" r="9" fill="rgba(245,158,11,.5)" style="animation-delay:.7s"/><circle class="eg-core" r="7" fill="#F59E0B" stroke="#0a1a2f" stroke-width="2"/>
+          </g>
+          <g class="eg-pin" onmouseenter="egTip(event,'p3')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(610,350)">
+            <circle class="eg-pin-pulse" r="9" fill="rgba(16,191,255,.5)" style="animation-delay:1.4s"/><circle class="eg-core" r="7" fill="#10BFFF" stroke="#0a1a2f" stroke-width="2"/>
+          </g>
+          <g class="eg-pin" onmouseenter="egTip(event,'p4')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(358,505)">
+            <circle class="eg-pin-pulse" r="9" fill="rgba(16,191,255,.5)" style="animation-delay:2.1s"/><circle class="eg-core" r="7" fill="#10BFFF" stroke="#0a1a2f" stroke-width="2"/>
+          </g>
+        </svg>
+        <div class="eg-tip" id="eg-tip"></div>
+      </div>
+    </div>
+
     <div class="grid-2" style="margin-bottom:20px">
       <!-- Project Progress -->
       <div>
@@ -2756,6 +2816,18 @@ document.addEventListener('keydown',function(e){
   else if(e.key==='Escape'){ mapReset(); }
   else if(e.key==='Enter'&&mapSel){ var n=MAP_NODES.find(function(x){return x.id===mapSel;}); if(n) showView(n.ready?'procurement':'negotiation'); }
 });
+// ── EGYPT PROJECT MAP (dashboard) ──
+const EG_PROJECTS={
+  p1:{name:'Smart City Road Lighting',loc:'New Cairo Smart City',status:'In negotiation',color:'#3b82f6',meta:'8,000 LED units · Guangzhou Lumens at $38.50'},
+  p2:{name:'New Cairo Construction',loc:'New Administrative Capital · Phase 2',status:'Sampling',color:'#F59E0B',meta:'Structural steel · 3 suppliers in review'},
+  p3:{name:'Sinai Mining Equipment',loc:'Egyptian Mineral Resources · Phase 1',status:'Quoting',color:'#10BFFF',meta:'Excavators · XCMG vs SANY at $144K'},
+  p4:{name:'Benban Solar Park · Ph.3',loc:'Benban, Aswan',status:'Quoting',color:'#10BFFF',meta:'PV mounting systems · early sourcing'}
+};
+function egTip(e,id){ var p=EG_PROJECTS[id]; if(!p) return; var t=document.getElementById('eg-tip'); if(!t) return;
+  t.innerHTML='<div style="font-weight:700;font-size:12.5px">'+p.name+'</div><div style="color:#9fb6d6;font-size:11px;margin-top:2px">'+p.loc+'</div><div style="margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.4px;color:'+p.color+'">'+p.status.toUpperCase()+'</div><div style="color:#9fb6d6;font-size:10.5px;margin-top:3px;line-height:1.45">'+p.meta+'</div>';
+  t.classList.add('show'); egTipMove(e); }
+function egTipMove(e){ var w=document.querySelector('.eg-map-wrap'); if(!w) return; var r=w.getBoundingClientRect(),t=document.getElementById('eg-tip'); if(!t) return; var x=e.clientX-r.left+14,y=e.clientY-r.top+14; if(x+242>r.width)x-=262; if(y+96>r.height)y-=112; t.style.left=x+'px'; t.style.top=y+'px'; }
+function egTipHide(){ var t=document.getElementById('eg-tip'); if(t)t.classList.remove('show'); }
 function negAppendMsg(side, ava, name, html){
   const msgs=document.getElementById('chat-msgs'); if(!msgs) return;
   const d=document.createElement('div'); d.className='msg '+side+' slide-up';

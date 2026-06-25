@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 045](round-045-egypt-project-map.md) · 🟥 新组件 · Dashboard「Egypt project map」(factorygate 借鉴:可辨识 Egypt 轮廓 + 4 真实项目 pin + hover tooltip + click→项目,emoji pin 去成纯净 dot)· console0 · 3/3 KEEP
 - [Round 044](round-044-procurement-decision-banner.md) · 🟦 · Procurement「Layla's recommendation」决策横幅(风险派生判语 + Approve&request PO → 翻绿+toast,补「看→决策」缺口)· console0 · 3/3 KEEP
 - [Round 043](round-043-map-keyboard-nav.md) · 🟦 · Map 键盘飞行导航(←→ 在供应商间飞,落点=描线+ping+trace 卡;Enter 进 workspace;Esc 复位)· console0 · 3/3 KEEP
 - [Round 042](round-042-negotiation-concession-chart.md) · 🟦 · Negotiation 让步轨迹→压价 sparkline(下降折线+绿成交点+mono 价标,看得见 Layla 博弈 §3-D)· console0 · 3/3 KEEP
