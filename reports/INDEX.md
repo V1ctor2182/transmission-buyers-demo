@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 056](round-056-diligence-verdict.md) · 🟦 · Diligence 报告顶部加「Layla's verdict · Cleared」结论横幅 + Proceed 决策按钮(§3-E/§4,配 proc R044)· console0 · 3/3 KEEP
 - [Round 055](round-055-top-pick.md) · 🟦 · Sourcing 结果第一名加「Layla's top pick」徽章+accent 边(§3-E 首推可见)+ Egypt Record 去 emoji · console0 · 3/3 KEEP
 - [Round 054](round-054-smoke-test-deal-locked.md) · ✅+🟦 · 全交互 smoke 22 路径 0 错(存 smoke-test.html)+ Negotiation accept「✓ Deal locked」绿线锁定收尾 · console0 · 3/3 KEEP
 - [Round 053](round-053-all-caught-up.md) · 🟦 · Dashboard 批完决策→「You're all caught up」安心横幅 + count→✓(§3-G 收尾)· console0 · 3/3 KEEP

@@ -151,6 +151,11 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 056 · 🟦 Standard · Diligence 报告「Layla's verdict」结论横幅 · 自主模式
+- 2026-06-26 · 见 `reports/round-056-diligence-verdict.md`。dd-report 顶部加绿「Layla's verdict · Cleared」横幅(结论 + Proceed to negotiation 按钮),报告先给结论+下一步而非裸数据(§3-E/§4)。与 procurement R044 同款。
+- **闸门**:console 零错 · 强显 dd-report 截图确认横幅在数据之上 · diligence-only 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **跨视图一致**:dashboard 决策卡(R012)/ procurement R044 / diligence R056 三处 verdict→decide 横幅成体系。可考虑抽统一组件(backlog)。
+
 ### Round 055 · 🟦 Standard · Sourcing「Layla's top pick」高亮 · 自主模式
 - 2026-06-26 · 见 `reports/round-055-top-pick.md`。renderSupplierCards 第一名(i===0)加「Layla's top pick」蓝徽章 + .smc-top accent 边,首推一眼可见(§3-E)。装饰性 Egypt Record 徽章去 🇪🇬 emoji → 纯文本(功能性原产国旗保留)。
 - **闸门**:console 零错 · TOP=true/PICK=true + 驱动到 Match 阶段截图确认 · 仅 sourcing 无回归 · 3/3 KEEP。已 cp index.html + push。
