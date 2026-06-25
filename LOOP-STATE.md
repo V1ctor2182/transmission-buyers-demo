@@ -148,6 +148,10 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 035 · 🟥 新组件 · 登录页 · 自主模式
+- 2026-06-25 · 见 `reports/round-035-login.md`。入场=splash→login(深色玻璃双栏,品牌+3 feature / Welcome back 表单 + Continue as demo)→app→tour;tmLoggedIn 会话一次。FAIL0/UNCAUGHT0。
+- factorygate 组件补齐:开场 splash + 登录页 + 交互地图 + 首页可视化。降回 1800s。
+
 ### Round 034 · ⬜ Polish · 地图标签防重叠 · 自主模式
 - 2026-06-25 · 见 `reports/round-034-map-labels.md`。节点标签 hover/sel 才显示(ready 节点淡显),China 簇不再重叠;聚焦由既有 click 追踪覆盖。
 - **★ 新方向交付完成**:开场 splash + 科技感 + 首页减字/可视化(KPI viz/漏斗/fact chips/网格)+ 交互地图(+标签打磨)。降回 1800s 低频心跳。

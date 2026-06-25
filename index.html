@@ -598,6 +598,40 @@ textarea.form-input{resize:vertical;min-height:80px}
 @keyframes spTwinkle{0%,100%{opacity:.2}50%{opacity:.95}}
 @keyframes spSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 @media (prefers-reduced-motion: reduce){.sp-orbit,.sp-star{animation:none!important}}
+/* ── LOGIN (factorygate-style entry) ── */
+#login{position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at 50% 40%, #102845 0%, #0a1a2f 55%, #060d1b 100%);display:none;align-items:center;justify-content:center;overflow:hidden;transition:opacity .5s ease}
+#login.show{display:flex}
+#login.hide{opacity:0;pointer-events:none}
+.lg-stars{position:absolute;inset:0;z-index:1}
+.lg-orbit{position:absolute;border:1px solid rgba(27,94,255,.10);border-radius:50%;z-index:1}
+.lg-orbit.a{width:520px;height:520px;animation:spSpin 38s linear infinite}
+.lg-orbit.b{width:820px;height:820px;border-color:rgba(27,94,255,.06);animation:spSpin 60s linear infinite reverse}
+.lg-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;width:min(960px,92vw);z-index:2;background:rgba(11,24,43,.55);border:1px solid #1c3a5c;border-radius:18px;overflow:hidden;backdrop-filter:blur(8px);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lg-brand{padding:42px 40px;border-right:1px solid #16324f;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.lg-logo{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.lg-logo img{width:46px;height:46px;object-fit:contain;filter:drop-shadow(0 0 14px rgba(27,94,255,.5))}
+.lg-logo .ln{color:#fff;font-weight:800;font-size:19px;letter-spacing:.5px}
+.lg-logo .ls{color:rgba(255,255,255,.42);font-size:10px;letter-spacing:2.5px;margin-top:2px}
+.lg-tag{color:rgba(225,238,255,.9);font-size:22px;font-weight:800;line-height:1.3;margin-bottom:14px}
+.lg-feat{display:flex;align-items:flex-start;gap:11px;padding:9px 0}
+.lg-feat-ic{width:34px;height:34px;border-radius:9px;background:rgba(27,94,255,.16);border:1px solid rgba(27,94,255,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lg-feat-ic svg{width:17px;height:17px;stroke:#5b9bff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lg-feat-n{color:#e6efff;font-size:13px;font-weight:700}
+.lg-feat-s{color:#90a8c8;font-size:11.5px;margin-top:2px;line-height:1.45}
+.lg-form{padding:42px 40px;display:flex;flex-direction:column;justify-content:center;background:rgba(8,16,28,.4)}
+.lg-wb{color:#fff;font-size:22px;font-weight:800}
+.lg-wbs{color:#90a8c8;font-size:12.5px;margin-top:4px;margin-bottom:22px}
+.lg-label{color:#a9c0df;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
+.lg-input{width:100%;background:rgba(255,255,255,.05);border:1px solid #28466a;border-radius:9px;padding:11px 13px;color:#eaf2ff;font-size:13px;font-family:'Inter',sans-serif;outline:none;margin-bottom:16px;transition:border .15s}
+.lg-input:focus{border-color:var(--accent)}
+.lg-btn{width:100%;background:linear-gradient(135deg,#1B5EFF,#3b82f6);color:#fff;border:none;border-radius:9px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;transition:filter .15s;box-shadow:0 6px 18px rgba(27,94,255,.4)}
+.lg-btn:hover{filter:brightness(1.08)}
+.lg-or{display:flex;align-items:center;gap:10px;color:#6f88a8;font-size:11px;margin:16px 0}
+.lg-or::before,.lg-or::after{content:'';flex:1;height:1px;background:#1f3a59}
+.lg-demo{text-align:center;color:#5b9bff;font-size:13px;font-weight:600;cursor:pointer;padding:6px}
+.lg-demo:hover{color:#7db0ff}
+.lg-foot{position:absolute;bottom:22px;z-index:2;color:rgba(255,255,255,.3);font-size:11px}
+@media (max-width:760px){.lg-grid{grid-template-columns:1fr}.lg-brand{display:none}}
 /* ── SOURCING MAP (interactive) ── */
 .map-layout{display:grid;grid-template-columns:1fr 300px;gap:16px;height:calc(100vh - 52px - 57px - 48px)}
 .map-wrap{position:relative;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 48% 42%, #0f2742 0%, #0a1a2f 55%, #07111f 100%);border:1px solid #16324f}
@@ -658,6 +692,32 @@ textarea.form-input{resize:vertical;min-height:80px}
   <div class="sp-word"><div class="sp-name">TRANSMISSION</div><div class="sp-sub">AI BUYERS AGENT</div></div>
   <div class="sp-bar"><i></i></div>
   <div class="sp-skip">Click to skip</div>
+</div>
+<!-- LOGIN (factorygate-style entry) -->
+<div id="login">
+  <div class="lg-stars" id="lg-stars"></div>
+  <div class="lg-orbit a"></div><div class="lg-orbit b"></div>
+  <div class="lg-grid">
+    <div class="lg-brand">
+      <div class="lg-logo"><img src="logo/transmission-tm-icon.svg" alt=""><div><div class="ln">Transmission</div><div class="ls">AI BUYERS AGENT</div></div></div>
+      <div class="lg-tag">Your procurement agent never clocks off.</div>
+      <div class="lg-feat"><div class="lg-feat-ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div><div class="lg-feat-n">AI sourcing agent</div><div class="lg-feat-s">Layla matches, vets &amp; negotiates with suppliers for you.</div></div></div>
+      <div class="lg-feat"><div class="lg-feat-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg></div><div><div class="lg-feat-n">Live sourcing map</div><div class="lg-feat-s">Track 24 suppliers across 5 countries in real time.</div></div></div>
+      <div class="lg-feat"><div class="lg-feat-ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div><div><div class="lg-feat-n">Supplier due diligence</div><div class="lg-feat-s">Customs, financials &amp; sanctions — auto-checked in seconds.</div></div></div>
+    </div>
+    <div class="lg-form">
+      <div class="lg-wb">Welcome back</div>
+      <div class="lg-wbs">Sign in to your procurement workspace</div>
+      <div class="lg-label">Work email</div>
+      <input class="lg-input" type="email" value="ahmed.alrashid@gapc.gov.eg" onkeydown="if(event.key==='Enter')doLogin()">
+      <div class="lg-label">Password</div>
+      <input class="lg-input" type="password" value="demopassword" onkeydown="if(event.key==='Enter')doLogin()">
+      <button class="lg-btn" onclick="doLogin()">Sign in →</button>
+      <div class="lg-or">or</div>
+      <div class="lg-demo" onclick="doLogin()">Continue as demo user</div>
+    </div>
+  </div>
+  <div class="lg-foot">© 2025 Transmission · 创拾觅深 · AI Buyers Agent</div>
 </div>
 
 <!-- SIDEBAR -->
@@ -3449,16 +3509,32 @@ function afterIntro(){
     else { var b=document.getElementById('tour-btn'); if(b){ b.classList.add('pulse'); setTimeout(()=>b.classList.remove('pulse'), 5200); } }
   }catch(e){}
 }
-// ── OPENING SPLASH controller ──
+function makeStars(el,n){ if(!el) return; var h=''; for(var i=0;i<n;i++){ h+='<div class="sp-star" style="left:'+((i*53+11)%100)+'%;top:'+((i*29+7)%100)+'%;animation-delay:'+((i%6)*0.4)+'s"></div>'; } el.innerHTML=h; }
+function showLogin(){
+  var lg=document.getElementById('login');
+  if(!lg){ afterIntro(); return; }
+  makeStars(document.getElementById('lg-stars'),60);
+  lg.classList.add('show');
+}
+function doLogin(){
+  try{ sessionStorage.setItem('tmLoggedIn','1'); }catch(e){}
+  var lg=document.getElementById('login');
+  if(lg){ lg.classList.add('hide'); setTimeout(function(){ lg.style.display='none'; afterIntro(); }, 500); }
+  else afterIntro();
+}
+// ── ENTRY controller: splash → login → app ──
 window.addEventListener('load', function(){
-  var sp=document.getElementById('splash'); if(!sp){ afterIntro(); return; }
-  var seen=false; try{ seen=!!sessionStorage.getItem('tmSplashSeen'); }catch(e){}
-  if(seen){ sp.style.display='none'; afterIntro(); return; }
+  var sp=document.getElementById('splash');
+  var loggedIn=false; try{ loggedIn=!!sessionStorage.getItem('tmLoggedIn'); }catch(e){}
+  if(loggedIn){ if(sp) sp.style.display='none'; var lg=document.getElementById('login'); if(lg) lg.style.display='none'; afterIntro(); return; }
+  // not signed in this session → splash (once) → login
+  if(!sp){ showLogin(); return; }
+  var splashSeen=false; try{ splashSeen=!!sessionStorage.getItem('tmSplashSeen'); }catch(e){}
+  if(splashSeen){ sp.style.display='none'; showLogin(); return; }
   try{ sessionStorage.setItem('tmSplashSeen','1'); }catch(e){}
-  // starfield
-  var st=document.getElementById('sp-stars'); if(st){ var h=''; for(var i=0;i<52;i++){ h+='<div class="sp-star" style="left:'+((i*53+11)%100)+'%;top:'+((i*29+7)%100)+'%;animation-delay:'+((i%6)*0.4)+'s"></div>'; } st.innerHTML=h; }
+  makeStars(document.getElementById('sp-stars'),52);
   var done=false;
-  function finish(){ if(done) return; done=true; sp.classList.add('hide'); setTimeout(function(){ sp.style.display='none'; afterIntro(); }, 650); }
+  function finish(){ if(done) return; done=true; sp.classList.add('hide'); setTimeout(function(){ sp.style.display='none'; showLogin(); }, 650); }
   sp.addEventListener('click', finish);
   setTimeout(finish, 2300);
 });
