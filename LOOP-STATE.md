@@ -148,6 +148,12 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 050 · ✅ 审计+修 · tour 回归核查 + 树评分补全 · 自主模式
+- 2026-06-26 · 见 `reports/round-050-tour-audit-tree-fix.md`。① **回归核查**:R047 重组后 tour 10 步 sel 全是稳定元素(.agent-bar/#dec-grid/.grid-4/.sidebar/各视图锚),无一指向被移动块 → tour 未破坏。② **补全 R049**:树评分 17→19,decorateTreeScores 改从 onclick 解析真实键(cat→caterpillar92 / suez→suez_cement85),修短 id 不匹配。
+- **闸门**:console 零错 · ROWS19/SCORED19/CAT92/SUEZ85 · tour 选择器全存活 · 仅 procurement 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **★ 收敛态**:大件全清,两北极星达标,tour 无回归,树评分全。余皆细件(反向联动 / 决策卡抽组件 / flag emoji)。
+- **next**:细件或收敛 digest。1min cron 自主续跑。
+
 ### Round 049 · 🟦 Standard · Procurement 树 match score 徽章 · 自主模式
 - 2026-06-26 · 见 `reports/round-049-tree-match-scores.md`。procurement 项目树 sup-mini-row 原只名+价,无 score。`decorateTreeScores()` 数据驱动(行 id→SUPPLIERS[id].risk)注入 mono 评分徽章,语义色(≥85 绿/≥78 蓝/amber),showView 时调用幂等。钢材 Ezz88/Baosteel91/SAIL74 即时排序。
 - **闸门**:console 零错 · ROWS19/SCORED17(2 无数据优雅跳过)· EZZ=88 · 幂等 · 仅 procurement 无回归 · 3/3 KEEP。已 cp index.html + push。

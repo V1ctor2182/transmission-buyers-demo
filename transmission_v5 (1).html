@@ -3161,7 +3161,8 @@ function procApprove(btn,name){
 function decorateTreeScores(){
   document.querySelectorAll('.sup-mini-row').forEach(function(row){
     if(row.querySelector('.sup-mini-score')) return;
-    var id=row.id.replace('smr-',''); var s=SUPPLIERS[id]; if(!s) return;
+    var oc=row.getAttribute('onclick')||''; var m=oc.match(/selectSupplier\('([^']+)'/);
+    var id=m?m[1]:row.id.replace('smr-',''); var s=SUPPLIERS[id]; if(!s) return;
     var n=parseInt(String(s.risk),10)||0;
     var col=n>=85?'var(--green)':n>=78?'var(--accent)':'var(--amber)';
     var bg=n>=85?'var(--green-light)':n>=78?'var(--accent-light)':'rgba(245,158,11,.12)';

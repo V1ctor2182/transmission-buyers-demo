@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 050](round-050-tour-audit-tree-fix.md) · ✅ 审计+修 · 验证 R047 未破坏 tour(10 选择器全稳定)+ 补全树评分 17→19(onclick 解析真实键,Caterpillar92/Suez85)· console0 · 3/3 KEEP
 - [Round 049](round-049-tree-match-scores.md) · 🟦 · Procurement 供应商树注入 match score 徽章(数据驱动 SUPPLIERS.risk,绿/amber 语义,同类即时排序 §3-E)· console0 · 3/3 KEEP
 - [Round 048](round-048-radar-scan.md) · ⬜ · 两地图加雷达扫描线(faint cyan 6s 慢扫,科技感/游戏感,reduced-motion 关闭)· console0 · 3/3 KEEP
 - [Round 047](round-047-dashboard-consolidation.md) · 🟦 · Dashboard 布局整合(Egypt map+项目列表并排 / Replies+Deadlines 2 列,高度 1904→1803,R046 联动保留)· console0 · 3/3 KEEP
