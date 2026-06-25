@@ -383,6 +383,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text1);disp
 /* ── MISC ── */
 .slide-up{animation:slideUp .3s ease}
 @keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.proc-step-pulse{animation:procPulse 1.8s ease-in-out infinite}
+@keyframes procPulse{0%,100%{box-shadow:0 0 0 0 rgba(27,94,255,.45)}50%{box-shadow:0 0 0 4px rgba(27,94,255,0)}}
+@media (prefers-reduced-motion:reduce){.proc-step-pulse{animation:none}}
 .divider{height:1px;background:var(--border);margin:16px 0}
 .section-title{font-size:13px;font-weight:700;color:var(--text1);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
 .empty-state{text-align:center;padding:40px 20px;color:var(--text3)}
@@ -3016,7 +3019,20 @@ function selectSupplier(id, cat){
 function buildBriefing(d){
   const stageColors = ['stage-done','stage-done','stage-active','stage-pending','stage-pending'];
   const stageLabels = ['Initial Contact','Spec Review','Quote Received','Sample/Counter','Final Negotiation'];
-  const dots = stageColors.slice(0,5).map((c,i)=>`<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><div class="step-dot ${d.stages[i]||'step-pending'}"></div><span class="step-txt ${d.stages[i]||'pending'}">${stageLabels[i]}</span></div>`).join('');
+  const dots = `<div style="position:relative">`+stageLabels.map((lbl,i)=>{
+    const s=d.stages[i]||'step-pending', done=s==='step-done', active=s==='step-active', isLast=i===4;
+    const col=done?'var(--green)':active?'var(--accent)':'var(--border2)';
+    const rail=done?'var(--green)':'var(--border)';
+    const txtCol=done?'var(--text2)':active?'var(--accent)':'var(--text3)';
+    const inner=done
+      ? `<svg viewBox="0 0 24 24" style="width:10px;height:10px;stroke:#fff;fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 11"/></svg>`
+      : active ? `<span style="width:6px;height:6px;border-radius:50%;background:#fff"></span>` : '';
+    return `<div style="position:relative;display:flex;align-items:flex-start;gap:10px;${isLast?'':'padding-bottom:12px'}">`
+      +(isLast?'':`<div style="position:absolute;left:8px;top:18px;bottom:0;width:2px;background:${rail}"></div>`)
+      +`<div class="${active?'proc-step-pulse':''}" style="position:relative;z-index:1;width:17px;height:17px;border-radius:50%;background:${done||active?col:'#fff'};border:2px solid ${col};display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">${inner}</div>`
+      +`<div style="font-size:12px;font-weight:${active?'700':'600'};color:${txtCol};line-height:1.45">${lbl}${active?'<span style="display:block;font-size:10px;font-weight:600;color:var(--text3)">In progress — Layla is on it</span>':''}</div>`
+      +`</div>`;
+  }).join('')+`</div>`;
   const expBars = d.exports.map(e=>`<div class="chart-bar-h"><div class="chart-bar-h-label">${e.flag} ${e.country}</div><div class="chart-bar-h-track"><div class="chart-bar-h-fill" style="width:${e.pct}%;background:linear-gradient(90deg,var(--accent),var(--accent2))"><span class="chart-bar-h-val">${e.val}</span></div></div></div>`).join('');
   return `
   <div class="bf-header">

@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 041 · 🟦 Standard · Procurement 阶段追踪器 + 核实非bug · 自主模式
+- 2026-06-26 · 见 `reports/round-041-procurement-stage-tracker.md`。**核实**:R037 procurement 右栏 ghosted = `selectSupplier` 的 `slide-up` 入场动画被 headless 抓中途,**非 bug**(settle 后正常)。**改**:buildBriefing 的 Communication Progress 由竖排圆点列表 → 连接式阶段追踪器(rail+绿勾 done/蓝脉冲 active「In progress — Layla is on it」/空心 pending),数据驱动 d.stages,19 家通用。
+- **闸门**:console 零错 · Ezz/Guangzhou 两态截图正确 + 切换重渲正常 · 仅 procurement 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:procurement「需你决策/红旗」浮出;地图键盘 ←→;决策卡抽组件;flag emoji。1min cron 自主续跑。
+
 ### Round 040 · 🟦 Standard · Map 选中态 trace 详情卡 · 自主模式
 - 2026-06-26 · 见 `reports/round-040-map-trace-card.md`。点击节点 → 侧栏头部下出 trace 卡:供应商+状态、航线 region→Alexandria(箭头)、Transit(mono)/Lane(incoterm)mini-stat、品类·价、Open in workspace CTA(ready→procurement 否则 negotiation)。MAP_NODES 补 transit/mode/kpi(9 家,与既有数据一致)。交互层次:hover=描线,click=描线+ping+卡;reset 收卡。
 - **闸门**:console 零错 · 选中截图确认卡+hot+ping · 仅 map 无回归 · 3/3 KEEP。已 cp index.html + push。

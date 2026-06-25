@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 041](round-041-procurement-stage-tracker.md) · 🟦 · Procurement 通信进度→连接式阶段追踪器(rail+勾+脉冲 active「Layla is on it」)+ 核实 R037 ghosted 为入场动画非bug · console0 · 3/3 KEEP
 - [Round 040](round-040-map-trace-card.md) · 🟦 · Map 选中态 trace 详情卡(航线 region→Alexandria + Transit/Lane mini-stat + 价 + Open in workspace CTA)· console0 · 3/3 KEEP
 - [Round 039](round-039-map-game-feel.md) · 🟦 · Sourcing Map 游戏感(双向 hover 追踪路由 + 点击 dispatch ping 包疾驰到 hub + flow dim 聚焦)· console0 · 3/3 KEEP
 - [Round 038](round-038-sourcing-empty-preview.md) · 🟦 · Sourcing 空状态 void → 匹配预览(Searching across 来源 chips + 4 评分维度行,诚实呈现"将执行"非假结果)· console0 · 3/3 KEEP
