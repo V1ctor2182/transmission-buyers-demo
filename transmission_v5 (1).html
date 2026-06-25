@@ -2219,7 +2219,7 @@ textarea.form-input{resize:vertical;min-height:80px}
           <div class="neg-dec-actions">
             <button class="btn btn-primary" id="neg-btn-accept" onclick="negDecide('accept')">Accept $38.50 &amp; issue PO</button>
             <button class="btn btn-secondary" id="neg-btn-push" onclick="negDecide('push')">Have Layla push for $37</button>
-            <button class="btn btn-secondary" onclick="negDecide('floor')">Adjust floor</button>
+            <button class="btn btn-secondary" id="neg-btn-floor" onclick="negDecide('floor')">Adjust floor</button>
           </div>
         </div>
       </div>
@@ -2913,6 +2913,17 @@ function negAppendMsg(side, ava, name, html){
 }
 function setNegStatus(t){ const s=document.getElementById('neg-dec-status'); if(s) s.textContent=t; }
 let curNeg = 'gz';
+const negLockedSet = new Set();
+// Reflect a locked deal in the decision buttons (persists across supplier switches via the Set)
+function applyNegLockedUI(){
+  const locked = negLockedSet.has(curNeg);
+  const ab=document.getElementById('neg-btn-accept');
+  const pb=document.getElementById('neg-btn-push');
+  const fb=document.getElementById('neg-btn-floor');
+  if(ab){ ab.disabled=locked; if(locked){ ab.innerHTML='✓ Deal locked'; ab.style.opacity='.65'; ab.style.cursor='default'; } else { ab.style.opacity=''; ab.style.cursor=''; } }
+  if(pb) pb.style.display=locked?'none':'';
+  if(fb) fb.style.display=locked?'none':'';
+}
 const NEG_DEC = {
   gz:{ava:'G',sup:'Kevin Zhang',firm:'Guangzhou Lumens',trail:'$42.00 → $39.50 → $38.50',pct:'−8.3%',accept:'$38.50/unit',unit:'8,000 units',push:'$37.00',counter:'$38.00',rec:'$38.50/unit is Guangzhou\'s best-and-final and matches your competing quote — SGS / ES 4698 confirmed, below your $40 floor. Their July slot needs confirmation by Jun 28, so I recommend accepting now.'},
   xcmg:{ava:'X',sup:'Mr. Li',firm:'XCMG',trail:'$148K → $146K → $144K',pct:'−2.7%',accept:'$144K/unit',unit:'5 units',push:'$142K',counter:'$143K',rec:'I used SANY\'s $142K quote as leverage to bring XCMG to $144K. Their Egypt service network is the strongest of the three — the small premium is worth it. I recommend approving.'},
@@ -2968,6 +2979,7 @@ function renderNegDecision(v){
   const a=document.getElementById('agent-status'); if(a) a.innerHTML='Negotiating with <b>'+d.firm+'</b> on your behalf';
   const ab=document.getElementById('neg-btn-accept'); if(ab) ab.innerHTML='Accept '+d.accept+' &amp; issue PO';
   const pb=document.getElementById('neg-btn-push'); if(pb) pb.textContent='Have Layla push for '+d.push;
+  applyNegLockedUI();
 }
 function negDecide(action){
   const d = NEG_DEC[curNeg] || NEG_DEC.gz;
@@ -2986,6 +2998,7 @@ function negDecide(action){
       const ur=item.querySelector('.neg-sup-item-unread'); if(ur) ur.style.display='none';
     }
     addWorklogEntry('Locked the deal with <b>'+d.firm+'</b> at '+d.accept+' — issuing the PO now.');
+    negLockedSet.add(curNeg); applyNegLockedUI();
   } else if(action==='push'){
     negAppendMsg('out','L','Layla · for you','We\'re ready to commit today at <strong>'+d.push+'</strong>. Match it and the '+d.unit+' order is yours.');
     setNegStatus('Layla is pushing for '+d.push+'…');

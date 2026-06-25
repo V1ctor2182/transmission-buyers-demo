@@ -158,6 +158,10 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 081 · 🟦 Standard · Accept 后决策按钮锁定(持久)· 自主模式
+- 2026-06-26 · 见 `reports/round-081-neg-lock-buttons.md`。accept 锁单后 Push/Accept 仍可点(逻辑矛盾)→ negLockedSet + applyNegLockedUI:Accept→「✓ Deal locked」disabled、隐 Push/Floor,per-supplier 持久(renderNegDecision 末调用)。状态一致弧 R078-081 收尾。
+- **闸门**:console 零错 ERR=0 · gz 锁/切 XCMG 复原/切回 gz 仍锁 · 仅 neg 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 080 · 🟦 Standard · Worklog 变活(动作追加实时条目)· 自主模式
 - 2026-06-26 · 见 `reports/round-080-live-worklog.md`。addWorklogEntry(text) 在 Today 顶插「now」条目;接 negDecide accept / procApprove / decApprove。worklog 成活记录随操作累积(§3-B)。配 R078/R079 状态全一致。
 - **闸门**:console 零错 ERR=0 · 批 3+accept→wl 6→10 顶部 Locked deal + 截图 · 无回归 · 3/3 KEEP。已 cp index.html + push。
