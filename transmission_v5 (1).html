@@ -3477,7 +3477,7 @@ const CMP_DATA = {
   construction:{title:'New Cairo Construction — Supplier Comparison',cats:[
     {name:'Structural Steel',qty:'12,000 MT',budget:'$580–720/MT',sups:[
       {name:'Ezz Steel Egypt 🇪🇬',score:84,color:'var(--green)',criteria:[['Unit Price','$680/MT',''],['MOQ','500 MT ✓','winner'],['Lead Time','7 days ✓','winner'],['Import Duty','None ✓','winner'],['Quality Cert','ISO 9001',''],['Risk','Very Low ✓','winner']]},
-      {name:'Baosteel (CN) ★',score:91,color:'var(--accent)',criteria:[['Unit Price','$620/MT ✓','winner'],['MOQ','1,000 MT',''],['Lead Time','35 days',''],['Import Duty','~10%',''],['Quality Cert','ISO 9001 + CE ✓','winner'],['Risk','Low','']]}
+      {name:'Baosteel (CN)',pick:true,score:91,color:'var(--accent)',criteria:[['Unit Price','$620/MT ✓','winner'],['MOQ','1,000 MT',''],['Lead Time','35 days',''],['Import Duty','~10%',''],['Quality Cert','ISO 9001 + CE ✓','winner'],['Risk','Low','']]}
     ],rec:'Split order — <strong>Baosteel for 70%</strong> (lower price, higher quality cert) and <strong>Ezz Steel for 30%</strong> (zero import duty, 7-day local delivery for urgent needs). Effective blended cost: ~$641/MT, saving ~$468K vs. all-local.'},
     {name:'Cement & Aggregates',qty:'50,000 ton',budget:'$55–65/ton',sups:[
       {name:'Suez Cement 🇪🇬',score:85,color:'var(--green)',criteria:[['Unit Price','$58/ton ✓','winner'],['Lead Time','5 days ✓','winner'],['ES 373','Certified ✓','winner'],['Import Duty','None ✓','winner'],['MOQ','200 ton ✓','winner'],['Risk','Low ✓','winner']]},
@@ -3486,13 +3486,13 @@ const CMP_DATA = {
   ]},
   lighting:{title:'Smart City Road Lighting — Supplier Comparison',cats:[
     {name:'LED Street Light Fixtures',qty:'8,000 units',budget:'$38–48/unit',sups:[
-      {name:'Guangzhou Lumens ★',score:91,color:'var(--accent)',criteria:[['Unit Price','$38.50 ✓','winner'],['Lead Time','22 days',''],['ES 4698','Via IEC equiv.',''],['Import Duty','~12%',''],['MENA Export','$6.1M ✓','winner'],['Risk','Low ✓','winner']]},
+      {name:'Guangzhou Lumens',pick:true,score:91,color:'var(--accent)',criteria:[['Unit Price','$38.50 ✓','winner'],['Lead Time','22 days',''],['ES 4698','Via IEC equiv.',''],['Import Duty','~12%',''],['MENA Export','$6.1M ✓','winner'],['Risk','Low ✓','winner']]},
       {name:'Egyptian Electrical 🇪🇬',score:79,color:'var(--green)',criteria:[['Unit Price','$44.00',''],['Lead Time','14 days ✓','winner'],['ES 4698','Pre-certified ✓','winner'],['Import Duty','None ✓','winner'],['MENA Export','Local only',''],['Risk','Low ✓','winner']]}
     ],rec:'<strong>Guangzhou Lumens as primary (60%)</strong> — best price at $38.50, proven Egypt export record. <strong>Egyptian Electrical as backup (40%)</strong> — ES 4698 pre-certified, critical for 12-day deadline. Blended cost: ~$40.90/unit. Total saving vs. all-local: ~$24,800.'}
   ]},
   mining:{title:'Sinai Mining Equipment — Supplier Comparison',cats:[
     {name:'Hydraulic Excavators',qty:'5 units',budget:'$140–220K/unit',sups:[
-      {name:'XCMG International ★',score:88,color:'var(--accent)',criteria:[['Unit Price','$148K ✓','winner'],['Lead Time','90 days',''],['Egypt Record','$2.7M ✓','winner'],['Warranty','24 months ✓','winner'],['Service','CN-based',''],['Risk','Low ✓','winner']]},
+      {name:'XCMG International',pick:true,score:88,color:'var(--accent)',criteria:[['Unit Price','$148K ✓','winner'],['Lead Time','90 days',''],['Egypt Record','$2.7M ✓','winner'],['Warranty','24 months ✓','winner'],['Service','CN-based',''],['Risk','Low ✓','winner']]},
       {name:'SANY Heavy Industry',score:85,color:'var(--blue)',criteria:[['Unit Price','$142K ✓✓','winner'],['Lead Time','85 days ✓','winner'],['Egypt Record','$1.5M',''],['Warranty','24 months',''],['Service','Limited EG',''],['Risk','Low','']]}
     ],rec:'<strong>XCMG as primary (3 units)</strong> — stronger Egypt track record ($2.7M vs $1.5M), better service network. <strong>SANY for 2 units</strong> — $6K/unit cheaper, use as leverage in XCMG negotiation. Target XCMG blended price: $144K/unit. Total saving vs. Caterpillar: ~$350K.'}
   ]}
@@ -3522,7 +3522,7 @@ function showCmpReport(d){
         ${cat.sups.map(s=>`<div class="score-bar-row"><div class="score-bar-label">${s.name}</div><div class="score-bar-track"><div class="score-bar-fill" style="width:${s.score}%;background:${s.color}"></div></div><div class="score-bar-val" style="color:${s.color}">${s.score}</div></div>`).join('')}
       </div>
       <table class="cmp-table" style="margin-bottom:12px">
-        <thead><tr><th>Criteria</th>${cat.sups.map((s,i)=>`<th class="${i===cat.sups.findIndex(x=>x.score===Math.max(...cat.sups.map(y=>y.score)))?'winner-col':''}">${s.name}</th>`).join('')}</tr></thead>
+        <thead><tr><th>Criteria</th>${cat.sups.map((s,i)=>`<th class="${i===cat.sups.findIndex(x=>x.score===Math.max(...cat.sups.map(y=>y.score)))?'winner-col':''}">${s.name}${s.pick?'<div style="margin-top:3px"><span style="display:inline-block;font-size:9px;font-weight:700;color:var(--accent);background:var(--accent-light);border:1px solid var(--accent);border-radius:4px;padding:1px 5px;letter-spacing:.3px">Layla\'s pick</span></div>':''}</th>`).join('')}</tr></thead>
         <tbody>${critHeaders.map((h,ci)=>`<tr><td style="font-weight:600;color:var(--text2)">${h}</td>${cat.sups.map(s=>`<td class="${s.criteria[ci][2]}">${s.criteria[ci][1]}</td>`).join('')}</tr>`).join('')}</tbody>
       </table>
       <div class="ai-rec-box"><p><strong>Layla's recommendation:</strong> ${cat.rec}</p></div>
