@@ -2896,6 +2896,18 @@ function buildConcessionLadder(steps){
     +'</svg>'
     +'<div style="display:flex;justify-content:space-between;margin-top:2px;padding:0 2px">'+labels+'</div></div>';
 }
+// When Layla pushes and the supplier counters, extend the concession sparkline with the new point
+function negPushLadder(d){
+  var steps=parseTrail(d.trail);
+  steps.push({label:d.counter, val:parsePrice(d.counter)});
+  var lad=document.getElementById('neg-dec-ladder'); if(lad) lad.innerHTML=buildConcessionLadder(steps);
+  var first=steps[0], last=steps[steps.length-1];
+  if(first && last && first.val){
+    var pct=(last.val-first.val)/first.val*100;
+    var t=document.getElementById('neg-dec-trail');
+    if(t) t.innerHTML='Layla bargained <b>'+first.label+' → '+last.label+'</b> <span class="neg-trail-pct">'+(pct<0?'−':'+')+Math.abs(pct).toFixed(1)+'%</span>';
+  }
+}
 function renderNegDecision(v){
   curNeg = NEG_DEC[v] ? v : 'gz';
   const d = NEG_DEC[curNeg];
@@ -2920,7 +2932,7 @@ function negDecide(action){
   } else if(action==='push'){
     negAppendMsg('out','L','Layla · for you','We\'re ready to commit today at <strong>'+d.push+'</strong>. Match it and the '+d.unit+' order is yours.');
     setNegStatus('Layla is pushing for '+d.push+'…');
-    setTimeout(()=>{ negAppendMsg('in',d.ava,d.sup,d.push+' isn\'t workable on our margin, but I can hold <strong>'+d.counter+'</strong> if you confirm within 48h — that\'s genuinely final.'); setNegStatus('Counter received: '+d.counter+' — awaiting your call'); }, 1000);
+    setTimeout(()=>{ negAppendMsg('in',d.ava,d.sup,d.push+' isn\'t workable on our margin, but I can hold <strong>'+d.counter+'</strong> if you confirm within 48h — that\'s genuinely final.'); setNegStatus('Counter received: '+d.counter+' — awaiting your call'); negPushLadder(d); }, 1000);
     showToast('Layla is pushing '+d.firm+' for a lower price');
   } else {
     showToast('Set your floor in the project brief — Layla will renegotiate to it');

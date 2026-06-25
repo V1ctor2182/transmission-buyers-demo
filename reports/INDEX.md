@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 052](round-052-push-grows-sparkline.md) · 🟦 · Negotiation push→压价 sparkline 动态延长(供应商 counter 作新点,trail/pct 重算,看得见 Layla 再压一档 §3-D)· console0 · 3/3 KEEP
 - [Round 051](round-051-pin-to-row-link.md) · ⬜ · Egypt map 反向联动(hover pin→高亮项目行,双向闭环)+ 用户重发 1min 恢复高频 · console0 · 3/3 KEEP
 - [Round 050](round-050-tour-audit-tree-fix.md) · ✅ 审计+修 · 验证 R047 未破坏 tour(10 选择器全稳定)+ 补全树评分 17→19(onclick 解析真实键,Caterpillar92/Suez85)· console0 · 3/3 KEEP
 - [Round 049](round-049-tree-match-scores.md) · 🟦 · Procurement 供应商树注入 match score 徽章(数据驱动 SUPPLIERS.risk,绿/amber 语义,同类即时排序 §3-E)· console0 · 3/3 KEEP

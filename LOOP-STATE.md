@@ -151,6 +151,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 052 · 🟦 Standard · Negotiation push 动态延长 sparkline · 自主模式
+- 2026-06-26 · 见 `reports/round-052-push-grows-sparkline.md`。negDecide('push') 供应商回 counter 时 negPushLadder(d) 把 counter 追加进压价 sparkline + 重算 trail/pct(gz −8.3%→−9.5%)。看得见 Layla 再压一档(§3-D)。幂等(始终 trail+counter)。
+- **闸门**:console 零错 · push→DOTS 3→4 + TRAIL $42→$38.00 −9.5% · accept 不受影响 · 仅 neg 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 051 · ⬜ Polish · Egypt map 反向联动(pin→行)· 自主模式
 - 2026-06-26 · 见 `reports/round-051-pin-to-row-link.md`。补全 map↔list 双向:hover pin→高亮项目行(EG_PIN2CARD,egLitRow 在 egTip 调/egTipHide 清,.eg-row-lit accent ring)。配合 R046(行→pin)闭环。
 - **闸门**:console 零错 · hover p3→ROWLIT=2(Sinai)+ 截图确认 · 仅 dashboard 无回归 · 3/3 KEEP。已 cp index.html + push。
