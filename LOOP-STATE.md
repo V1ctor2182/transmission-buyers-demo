@@ -158,6 +158,10 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 079 · 🟦 Standard · 修 cat/suez 行高亮 bug + 树项 ✓ Approved 一致 · 自主模式
+- 2026-06-26 · 见 `reports/round-079-tree-approved-and-active-bug.md`。① selectSupplier 行查找改稳健(id 失败按 onclick 实参)→ 修 Caterpillar/Suez Cement 点击不高亮 bug。② procApprove 给 active sup-mini-row 加 .sup-approved(绿左边)+绿✓ tick,与 banner/R078 一致。
+- **闸门**:console 零错 · catRowActive/suezRowActive=true(bug 修)+ ezz/cat approved=true + 截图 · 仅 procurement 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 078 · 🟦 Standard · Accept→列表项「✓ Locked」状态一致 · 自主模式
 - 2026-06-26 · 见 `reports/round-078-accept-listitem-lock.md`。negDecide('accept') 原不更新左列表项 → 加 .neg-locked(绿左边)+徽章「✓ Locked」+隐 unread。列表与 thread/面板一致。
 - **闸门**:console 零错 ERR=0 · LOCKEDITEM=true/BADGE✓Locked + 截图 · 仅 neg accept 无回归 · 3/3 KEEP。已 cp index.html + push。

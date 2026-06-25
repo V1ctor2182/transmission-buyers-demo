@@ -961,6 +961,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     .neg-lad-locked svg path:last-of-type{stroke:var(--green)}
     .neg-lad-locked svg circle:last-of-type{filter:drop-shadow(0 0 3px rgba(16,185,129,.85))}
     .neg-sup-item.neg-locked{box-shadow:inset 3px 0 0 var(--green)}
+    .sup-mini-row.sup-approved{box-shadow:inset 3px 0 0 var(--green)}
     .sup-match-card.smc-top{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent)}
     .wl-badge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;margin-left:6px;font-family:'JetBrains Mono',monospace;vertical-align:middle}
     .typing-dots{display:inline-flex;gap:4px;align-items:center;padding:3px 2px}
@@ -3221,7 +3222,8 @@ function selectSupplier(id, cat){
   currentSupplier = id;
   // Highlight
   document.querySelectorAll('.sup-mini-row').forEach(el=>el.classList.remove('active'));
-  const row = document.getElementById('smr-'+id);
+  let row = document.getElementById('smr-'+id);
+  if(!row) row = Array.prototype.find.call(document.querySelectorAll('.sup-mini-row'), function(r){ return (r.getAttribute('onclick')||'').indexOf("'"+id+"'")>-1; });
   if(row) row.classList.add('active');
   // Render briefing
   const data = SUPPLIERS[id];
@@ -3237,6 +3239,15 @@ function procApprove(btn,name){
   if(card){
     card.style.borderLeftColor='var(--green)';
     card.innerHTML='<div class="bf-rec-ava" style="background:var(--green)"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 11"/></svg></div><div style="flex:1"><div class="bf-rec-label" style="color:var(--green)">Approved</div><div class="bf-rec-text">Layla is preparing the PO for '+name+' — she\'ll bring it to you to sign.</div></div>';
+  }
+  const row=document.querySelector('#view-procurement .sup-mini-row.active');
+  if(row){
+    row.classList.add('sup-approved');
+    if(!row.querySelector('.sup-approved-tick')){
+      const tk=document.createElement('span'); tk.className='sup-approved-tick'; tk.textContent='✓';
+      tk.style.cssText='color:var(--green);font-weight:800;font-size:12px;margin-left:4px;flex-shrink:0';
+      row.appendChild(tk);
+    }
   }
   showToast('Approved — Layla is preparing the PO for '+name);
 }
