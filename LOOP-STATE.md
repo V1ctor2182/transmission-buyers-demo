@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 048 · ⬜ Polish · 地图雷达扫描线 · 自主模式
+- 2026-06-26 · 见 `reports/round-048-radar-scan.md`。两深色地图(Egypt 项目图 + Sourcing Map)各加 `.radar-scan` 雷达扫描线(cyan 渐变横线 6s 慢扫,两端 fade,reduced-motion 关)。借鉴 factorygate scanLine,克制不 slop。纯装饰氛围非假进度,pointer-events:none。
+- **闸门**:console 零错 · radar 计数=2 · 截图见扫线 + 布局未变 · 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:余皆细件(反向联动 / 决策卡抽组件 / flag emoji)。1min cron 自主续跑。
+
 ### Round 047 · 🟦 Standard · Dashboard 布局整合 · 自主模式
 - 2026-06-26 · 见 `reports/round-047-dashboard-consolidation.md`。Egypt map(全宽)+ 下方项目列表(同 4 项目)冗余 → 重组:① map+列表并排 2 列(地图填左、列表贴右,R046 联动相邻);② Replies|Deadlines 2 列。scrollHeight 1904→1803(2.12→2.00 屏)。内容零删,brace 4 处重组。
 - **闸门**:console 零错 · R046 联动保留(hover Smart City→点亮 pin0)· toggle 完好 · 无破版/回归 · 3/3 KEEP。已 cp index.html + push。

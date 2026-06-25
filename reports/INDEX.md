@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 048](round-048-radar-scan.md) · ⬜ · 两地图加雷达扫描线(faint cyan 6s 慢扫,科技感/游戏感,reduced-motion 关闭)· console0 · 3/3 KEEP
 - [Round 047](round-047-dashboard-consolidation.md) · 🟦 · Dashboard 布局整合(Egypt map+项目列表并排 / Replies+Deadlines 2 列,高度 1904→1803,R046 联动保留)· console0 · 3/3 KEEP
 - [Round 046](round-046-map-list-link.md) · 🟦 · Egypt map ↔ 项目列表联动(hover 项目行→点亮对应 pin/dim 其余,地理正确,去 R045 冗余)· console0 · 3/3 KEEP
 - [Round 045](round-045-egypt-project-map.md) · 🟥 新组件 · Dashboard「Egypt project map」(factorygate 借鉴:可辨识 Egypt 轮廓 + 4 真实项目 pin + hover tooltip + click→项目,emoji pin 去成纯净 dot)· console0 · 3/3 KEEP

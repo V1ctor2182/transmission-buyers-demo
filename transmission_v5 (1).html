@@ -947,6 +947,9 @@ textarea.form-input{resize:vertical;min-height:80px}
     .eg-pin.eg-dim{opacity:.25}
     .eg-pin.eg-lit .eg-core{r:11;stroke:#fff}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
+    .radar-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(16,191,255,.32),transparent);pointer-events:none;z-index:2;animation:radarSweep 6s linear infinite}
+    @keyframes radarSweep{0%{top:-2px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
+    @media (prefers-reduced-motion:reduce){.radar-scan{display:none}}
     </style>
     <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:start;margin-bottom:20px">
     <div class="eg-card" style="margin-bottom:0">
@@ -955,6 +958,7 @@ textarea.form-input{resize:vertical;min-height:80px}
         <div class="eg-legend"><span><i style="background:#1B5EFF"></i>In negotiation</span><span><i style="background:#F59E0B"></i>Sampling</span><span><i style="background:#10BFFF"></i>Quoting</span></div>
       </div>
       <div class="eg-map-wrap">
+        <div class="radar-scan"></div>
         <svg class="eg-svg" viewBox="0 0 800 700" preserveAspectRatio="xMidYMid meet">
           <defs><filter id="egGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
           <g stroke="rgba(27,94,255,0.09)" stroke-width="1">
@@ -2506,6 +2510,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     </div>
     <div class="map-layout">
       <div class="map-wrap">
+        <div class="radar-scan"></div>
         <svg class="map-svg" id="map-svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet">
           <defs><pattern id="mapgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" class="map-grid-line"/></pattern></defs>
           <rect id="map-bg" width="1000" height="520" fill="url(#mapgrid)" onclick="mapReset()"/>
