@@ -151,6 +151,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 059 · 🟦 Standard · sourcing/bg-check loader 提速 · 自主模式
+- 2026-06-26 · 见 `reports/round-059-loader-speedup.md`。runSupplierMatching / openBgCheck 节奏减半(间隔 3000→1500 / active 2400→1100 / 收尾→500)。每步仍有实质产出,仅去拖沓。实测 MATCH 15.2→7.6s / BG 12.1→6.1s。backlog「loader 提速」清。
+- **闸门**:console 零错 · 两流程正确到达 results/report + 计时确认 · 仅时间常量 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 058 · ⬜ Polish · 登录页 logo 白 chip · 自主模式
 - 2026-06-26 · 见 `reports/round-058-login-logo-chip.md`。login `.lg-logo img` 深色卡上发淡(深 navy 笔画并入暗底)→ 加白底圆角 chip(配侧栏 R001),完整 monogram 清晰。开场首印象修复。
 - **闸门**:console 零错(无 404)· before/after 截图 logo 清晰 · 纯 CSS login-only 无回归 · 3/3 KEEP。已 cp index.html + push。
