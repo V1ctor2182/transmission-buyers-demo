@@ -3886,8 +3886,9 @@ function openContactModal(){
 }
 function closeContactModal(){
   document.getElementById('contact-modal-overlay').classList.remove('show');
-  // After closing, show a toast
-  showToast('Suppliers contacted — you will be notified upon response');
+  showView('negotiation');
+  addWorklogEntry('Sent introduction requests to your shortlisted LED suppliers — awaiting their response.');
+  showToast('Suppliers contacted — Layla will notify you on their response');
 }
 
 // ── ROBOT WIDGET ──
