@@ -148,6 +148,10 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 033 · 🟥 大组件 · 交互式 Sourcing Map · 自主模式
+- 2026-06-25 · 见 `reports/round-033-interactive-map.md`。第 6 视图:深色地图,9 节点按地理分布→Alexandria hub,流动路由弧线 + hover tooltip + click 追踪路线 + 侧列表同步。FAIL0/UNCAUGHT0。
+- **next**:地图细节打磨(节点标签防重叠/聚焦动画)/ 首页继续减字;视情况收敛。
+
 ### Round 032 · 🟦 新组件 · 开场 splash · 自主模式
 - 2026-06-25 · 见 `reports/round-032-opening-splash.md`。新增深色星空/轨道发光 logo 开场,会话一次→淡出→app+tour。FAIL0/UNCAUGHT0。
 - **next**:大组件交互地图(游戏感)。

@@ -598,6 +598,53 @@ textarea.form-input{resize:vertical;min-height:80px}
 @keyframes spTwinkle{0%,100%{opacity:.2}50%{opacity:.95}}
 @keyframes spSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 @media (prefers-reduced-motion: reduce){.sp-orbit,.sp-star{animation:none!important}}
+/* ── SOURCING MAP (interactive) ── */
+.map-layout{display:grid;grid-template-columns:1fr 300px;gap:16px;height:calc(100vh - 52px - 57px - 48px)}
+.map-wrap{position:relative;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 48% 42%, #0f2742 0%, #0a1a2f 55%, #07111f 100%);border:1px solid #16324f}
+.map-svg{width:100%;height:100%;display:block}
+.map-grid-line{stroke:rgba(120,170,255,.07);stroke-width:1}
+.map-land{fill:rgba(80,130,200,.07);stroke:rgba(120,170,255,.16);stroke-width:1}
+.map-region-label{fill:rgba(150,190,255,.32);font-size:12px;font-weight:600;letter-spacing:2px;font-family:'Inter',sans-serif}
+.map-route{fill:none;stroke:rgba(27,94,255,.45);stroke-width:1.5;stroke-dasharray:5 6;animation:mapDash 1.2s linear infinite}
+.map-route.ready{stroke:rgba(16,185,129,.5)}
+.map-route.dim{opacity:.18;animation:none}
+.map-route.hot{stroke:rgba(16,191,255,.95);stroke-width:2.4;filter:drop-shadow(0 0 5px rgba(16,191,255,.6))}
+@keyframes mapDash{to{stroke-dashoffset:-22}}
+.map-flow{fill:#10BFFF;filter:drop-shadow(0 0 4px #10BFFF)}
+.map-node{cursor:pointer}
+.map-node .nd-hit{fill:transparent}
+.map-node .nd{fill:#1B5EFF;stroke:#0a1a2f;stroke-width:2;transition:r .15s}
+.map-node.ready .nd{fill:#10B981}
+.map-node .nd-ring{fill:none;stroke:#1B5EFF;stroke-width:1.5;opacity:.5;transform-box:fill-box;transform-origin:center;animation:mapPulse 2.4s ease-out infinite}
+.map-node.ready .nd-ring{stroke:#10B981}
+.map-node:hover .nd,.map-node.sel .nd{r:9}
+.map-node.sel .nd{stroke:#10BFFF;stroke-width:2.5}
+.map-node .nd-label{fill:rgba(220,235,255,.85);font-size:10.5px;font-weight:600;font-family:'Inter',sans-serif;pointer-events:none}
+@keyframes mapPulse{0%{r:7;opacity:.55}100%{r:20;opacity:0}}
+.map-hub .hb{fill:#fff;stroke:#10BFFF;stroke-width:2.5;filter:drop-shadow(0 0 10px rgba(16,191,255,.8))}
+.map-hub .hb-ring{fill:none;stroke:#10BFFF;stroke-width:2;opacity:.6;transform-box:fill-box;transform-origin:center;animation:mapPulse 2.8s ease-out infinite}
+.map-hub .hb-label{fill:#fff;font-size:12px;font-weight:800;font-family:'Inter',sans-serif;pointer-events:none}
+.map-tip{position:absolute;pointer-events:none;background:rgba(10,22,40,.96);border:1px solid #1f3f63;border-radius:9px;padding:9px 12px;color:#e6efff;font-size:12px;opacity:0;transition:opacity .12s;z-index:5;max-width:220px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.map-tip.show{opacity:1}
+.map-tip .tt-n{font-weight:700;font-size:12.5px}
+.map-tip .tt-m{color:#9fb6d6;font-size:11px;margin-top:2px}
+.map-tip .tt-s{margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.5px}
+.map-legend{position:absolute;left:16px;bottom:14px;display:flex;gap:14px;background:rgba(10,22,40,.7);border:1px solid #16324f;border-radius:9px;padding:8px 12px;backdrop-filter:blur(4px)}
+.map-legend span{display:flex;align-items:center;gap:6px;font-size:11px;color:#adc2e0}
+.map-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.map-side{background:var(--bg2);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden}
+.map-side-head{padding:13px 16px;border-bottom:1px solid var(--border);font-weight:800;font-size:14px}
+.map-side-sub{font-size:11px;color:var(--text3);font-weight:500;margin-top:2px}
+.map-side-list{overflow-y:auto;min-height:0}
+.map-supplier{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s}
+.map-supplier:hover,.map-supplier.sel{background:var(--accent-light)}
+.map-sup-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.map-supplier.ready .map-sup-dot{background:var(--green)}
+.map-sup-info{flex:1;min-width:0}
+.map-sup-n{font-size:12.5px;font-weight:700;color:var(--text1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.map-sup-m{font-size:11px;color:var(--text3)}
+.map-sup-stat{font-size:10px;font-weight:700;color:var(--accent);white-space:nowrap}
+.map-supplier.ready .map-sup-stat{color:var(--green)}
 </style>
 </head>
 <body>
@@ -628,6 +675,7 @@ textarea.form-input{resize:vertical;min-height:80px}
   <div class="nav-item" id="nav-procurement" onclick="showView('procurement')"><span class="nav-icon"><svg viewBox="0 0 24 24"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 16 12 21 21 16"/><polyline points="3 12 12 17 21 12"/></svg></span> My Projects<span class="nav-dot" id="dot-procurement"></span></div>
   <div class="nav-item" id="nav-negotiation" onclick="showView('negotiation')"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 20l1.4-4.2A8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></span> Negotiation</div>
   <div class="nav-item" id="nav-diligence" onclick="showView('diligence')"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span> Due Diligence</div>
+  <div class="nav-item" id="nav-map" onclick="showView('map')"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg></span> Sourcing Map<span class="nav-dot" id="dot-map" style="background:var(--accent2)"></span></div>
   <div class="sidebar-user">
     <div class="user-ava">A</div>
     <div>
@@ -2211,6 +2259,36 @@ textarea.form-input{resize:vertical;min-height:80px}
   </div>
   <!-- END DUE DILIGENCE -->
 
+  <!-- ══════════════════ SOURCING MAP ══════════════════ -->
+  <div class="view" id="view-map">
+    <div style="margin-bottom:14px">
+      <div style="font-size:16px;font-weight:800;color:var(--text1)">Global sourcing map</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:2px">Where Layla is sourcing for you, live. Hover a node for detail — click to trace its route to your hub.</div>
+    </div>
+    <div class="map-layout">
+      <div class="map-wrap">
+        <svg class="map-svg" id="map-svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet">
+          <defs><pattern id="mapgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" class="map-grid-line"/></pattern></defs>
+          <rect id="map-bg" width="1000" height="520" fill="url(#mapgrid)" onclick="mapReset()"/>
+          <ellipse cx="845" cy="258" rx="125" ry="82" class="map-land"/>
+          <ellipse cx="470" cy="138" rx="98" ry="58" class="map-land"/>
+          <ellipse cx="500" cy="350" rx="125" ry="72" class="map-land"/>
+          <text x="845" y="168" text-anchor="middle" class="map-region-label">EAST ASIA</text>
+          <text x="470" y="68" text-anchor="middle" class="map-region-label">EUROPE</text>
+          <text x="500" y="446" text-anchor="middle" class="map-region-label">EGYPT · MENA</text>
+          <g id="map-arcs"></g>
+          <g id="map-nodes"></g>
+        </svg>
+        <div class="map-legend"><span><i style="background:#10BFFF"></i>Your hub</span><span><i style="background:#1B5EFF"></i>In progress</span><span><i style="background:#10B981"></i>Ready to award</span></div>
+        <div class="map-tip" id="map-tip"></div>
+      </div>
+      <div class="map-side">
+        <div class="map-side-head">Supplier network<div class="map-side-sub">24 tracked · 5 countries · 2 ready to award</div></div>
+        <div class="map-side-list" id="map-side-list"></div>
+      </div>
+    </div>
+  </div>
+
   </div><!-- end .content -->
 </div><!-- end .main -->
 
@@ -2367,14 +2445,15 @@ textarea.form-input{resize:vertical;min-height:80px}
 
 <script>
 // ── NAVIGATION ──
-const VIEWS = ['dashboard','sourcing','procurement','negotiation','diligence'];
-const TITLES = {dashboard:'Dashboard',sourcing:'New Sourcing Request',procurement:'My Projects',negotiation:'Negotiation',diligence:'Due Diligence'};
+const VIEWS = ['dashboard','sourcing','procurement','negotiation','diligence','map'];
+const TITLES = {dashboard:'Dashboard',sourcing:'New Sourcing Request',procurement:'My Projects',negotiation:'Negotiation',diligence:'Due Diligence',map:'Sourcing Map'};
 const AGENT_STATUS = {
   dashboard:"Summarising today's queue — <b>3 items</b> need your decision",
   sourcing:"Matching certified suppliers for your <b>LED street-light</b> request",
   procurement:"Monitoring <b>4 active orders</b> across your projects",
   negotiation:"Negotiating with <b>Guangzhou Lumens</b> on your behalf",
-  diligence:"Cross-checking supplier registration, customs &amp; sanctions"
+  diligence:"Cross-checking supplier registration, customs &amp; sanctions",
+  map:"Tracking <b>24 suppliers</b> across 5 countries in real time"
 };
 function showView(v){
   VIEWS.forEach(id=>{
@@ -2384,6 +2463,69 @@ function showView(v){
   document.getElementById('topbar-left').textContent = TITLES[v]||v;
   const as=document.getElementById('agent-status'); if(as && AGENT_STATUS[v]) as.innerHTML = AGENT_STATUS[v];
   if(v==='procurement' && !currentSupplier) selectSupplier('ezz','steel');
+  if(v==='map') renderMap();
+}
+// ── SOURCING MAP (interactive) ──
+const MAP_HUB={x:500,y:350};
+const MAP_NODES=[
+  {id:'gz',x:818,y:236,name:'Guangzhou Lumens',region:'Guangzhou, China',supplies:'LED street lights',status:'Negotiating',ready:false},
+  {id:'bright',x:884,y:232,name:'Shenzhen Brightway',region:'Shenzhen, China',supplies:'LED fixtures',status:'Quoting',ready:false},
+  {id:'xcmg',x:872,y:262,name:'XCMG International',region:'Xuzhou, China',supplies:'Excavators',status:'Quoting',ready:false},
+  {id:'sany',x:842,y:294,name:'SANY Heavy Ind.',region:'Changsha, China',supplies:'Excavators',status:'Leverage',ready:false},
+  {id:'baosteel',x:802,y:212,name:'Baosteel Group',region:'Shanghai, China',supplies:'Structural steel',status:'Spec review',ready:false},
+  {id:'osram',x:452,y:132,name:'Osram',region:'Germany',supplies:'Premium LED',status:'Shortlisted',ready:false},
+  {id:'sandvik',x:498,y:104,name:'Sandvik',region:'Sweden',supplies:'Mining tools',status:'Vetting',ready:false},
+  {id:'eei',x:548,y:356,name:'Egyptian Electrical',region:'10th Ramadan, Egypt',supplies:'LED · local',status:'Sample sent',ready:true},
+  {id:'ezz',x:468,y:364,name:'Ezz Steel',region:'Cairo, Egypt',supplies:'Structural steel',status:'Ready to award',ready:true}
+];
+function mapArc(x1,y1,x2,y2){
+  var dx=x2-x1,dy=y2-y1,dist=Math.sqrt(dx*dx+dy*dy)||1;
+  var nx=-dy/dist,ny=dx/dist,lift=Math.min(dist*0.22,95);
+  return 'M'+x1+' '+y1+' Q'+((x1+x2)/2+nx*lift)+' '+((y1+y2)/2+ny*lift)+' '+x2+' '+y2;
+}
+let mapBuilt=false;
+function renderMap(){
+  if(mapBuilt) return; mapBuilt=true;
+  var SVGNS='http://www.w3.org/2000/svg';
+  var arcs=document.getElementById('map-arcs'),nodes=document.getElementById('map-nodes'),list=document.getElementById('map-side-list');
+  var lh='';
+  MAP_NODES.forEach(function(n,i){
+    var p=mapArc(n.x,n.y,MAP_HUB.x,MAP_HUB.y);
+    var path=document.createElementNS(SVGNS,'path');
+    path.setAttribute('d',p); path.setAttribute('class','map-route'+(n.ready?' ready':'')); path.id='route-'+n.id;
+    arcs.appendChild(path);
+    var dot=document.createElementNS(SVGNS,'circle'); dot.setAttribute('r','3'); dot.setAttribute('class','map-flow');
+    var am=document.createElementNS(SVGNS,'animateMotion'); am.setAttribute('dur',(2.6+(i%5)*0.35).toFixed(2)+'s'); am.setAttribute('repeatCount','indefinite'); am.setAttribute('path',p);
+    dot.appendChild(am); arcs.appendChild(dot);
+    var g=document.createElementNS(SVGNS,'g'); g.setAttribute('class','map-node'+(n.ready?' ready':'')); g.id='node-'+n.id;
+    g.innerHTML='<circle class="nd-ring" cx="'+n.x+'" cy="'+n.y+'" r="7"></circle><circle class="nd" cx="'+n.x+'" cy="'+n.y+'" r="6"></circle><text class="nd-label" x="'+n.x+'" y="'+(n.y-13)+'" text-anchor="middle">'+n.name.split(' ')[0]+'</text><circle class="nd-hit" cx="'+n.x+'" cy="'+n.y+'" r="17"></circle>';
+    g.addEventListener('mouseenter',function(e){mapTip(n,e);});
+    g.addEventListener('mousemove',mapTipMove);
+    g.addEventListener('mouseleave',mapTipHide);
+    g.addEventListener('click',function(e){e.stopPropagation();mapSelect(n.id);});
+    nodes.appendChild(g);
+    lh+='<div class="map-supplier'+(n.ready?' ready':'')+'" id="sup-'+n.id+'" onclick="mapSelect(\''+n.id+'\')"><span class="map-sup-dot"></span><div class="map-sup-info"><div class="map-sup-n">'+n.name+'</div><div class="map-sup-m">'+n.region+' · '+n.supplies+'</div></div><span class="map-sup-stat">'+n.status+'</span></div>';
+  });
+  list.innerHTML=lh;
+  var hub=document.createElementNS(SVGNS,'g'); hub.setAttribute('class','map-hub');
+  hub.innerHTML='<circle class="hb-ring" cx="'+MAP_HUB.x+'" cy="'+MAP_HUB.y+'" r="9"></circle><circle class="hb" cx="'+MAP_HUB.x+'" cy="'+MAP_HUB.y+'" r="8"></circle><text class="hb-label" x="'+MAP_HUB.x+'" y="'+(MAP_HUB.y+26)+'" text-anchor="middle">ALEXANDRIA · YOUR HUB</text>';
+  nodes.appendChild(hub);
+}
+function mapTip(n,e){ var t=document.getElementById('map-tip'); var c=n.ready?'#10B981':'#10BFFF'; t.innerHTML='<div class="tt-n">'+n.name+'</div><div class="tt-m">'+n.region+' · '+n.supplies+'</div><div class="tt-s" style="color:'+c+'">'+n.status+'</div>'; t.classList.add('show'); mapTipMove(e); }
+function mapTipMove(e){ var w=document.querySelector('#view-map .map-wrap'); if(!w)return; var r=w.getBoundingClientRect(),t=document.getElementById('map-tip'); var x=e.clientX-r.left+14,y=e.clientY-r.top+14; if(x+232>r.width)x-=252; if(y+90>r.height)y-=110; t.style.left=x+'px'; t.style.top=y+'px'; }
+function mapTipHide(){ var t=document.getElementById('map-tip'); if(t)t.classList.remove('show'); }
+function mapSelect(id){
+  document.querySelectorAll('#view-map .map-node').forEach(g=>g.classList.remove('sel'));
+  document.querySelectorAll('#view-map .map-route').forEach(r=>{r.classList.remove('hot');r.classList.add('dim');});
+  document.querySelectorAll('#view-map .map-supplier').forEach(s=>s.classList.remove('sel'));
+  var g=document.getElementById('node-'+id); if(g)g.classList.add('sel');
+  var r=document.getElementById('route-'+id); if(r){r.classList.remove('dim');r.classList.add('hot');}
+  var s=document.getElementById('sup-'+id); if(s){s.classList.add('sel'); s.scrollIntoView({block:'nearest'});}
+}
+function mapReset(){
+  document.querySelectorAll('#view-map .map-node').forEach(g=>g.classList.remove('sel'));
+  document.querySelectorAll('#view-map .map-route').forEach(r=>{r.classList.remove('hot');r.classList.remove('dim');});
+  document.querySelectorAll('#view-map .map-supplier').forEach(s=>s.classList.remove('sel'));
 }
 function negAppendMsg(side, ava, name, html){
   const msgs=document.getElementById('chat-msgs'); if(!msgs) return;
