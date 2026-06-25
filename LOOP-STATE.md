@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 028 · 🟦 · 首页可视化+减字+科技感(第一步)· 自主模式
+- 2026-06-25 · 见 `reports/round-028-dashboard-viz.md`。新方向(参考 factorygate;路线=亮色+加科技感/可视化)。KPI 行加 mini-viz(sparkline/bars/ticks/countdown)+ delta + rail;greeting 砍字;dashboard 点阵网格背景。
+- **闸门**:headless 无 stderr · viz 渲染清晰 · 纯静态 · 3/3 KEEP。已 cp index.html + push。
+- **next**:继续逐屏 viz —— 项目进度区(纯文字列表→视觉/环形)、总览趋势图、右栏状态可视化、更多克制科技点缀。谨慎勿 slop。
+
 ### Round 027 · ✅ 审计 · 笔记本宽度核验(无改动)· 自主模式
 - 2026-06-25 · 见 `reports/round-027-laptop-width-audit.md`。1280/1366 下 dashboard + negotiation 布局稳健,无破版。谨慎优化已到位(R026 键盘导航),不凑改动。demo 收敛。降回 1800s 低频心跳。
 

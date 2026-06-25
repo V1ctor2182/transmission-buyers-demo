@@ -108,7 +108,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text1);disp
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
 /* ── KPI CARD ── */
-.kpi-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+.kpi-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.kpi-card::after{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--accent);opacity:.5}
+.kpi-card.k-green::after{background:var(--green)} .kpi-card.k-red::after{background:var(--red)}
+.kpi-spark{width:100%;height:30px;display:block;margin-top:10px}
+.kpi-topline{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.kpi-delta{font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace}
+#view-dashboard{background-image:radial-gradient(circle, rgba(27,94,255,.05) 1px, transparent 1.4px);background-size:24px 24px;background-position:-1px -1px}
 .kpi-label{font-size:11px;font-weight:600;color:var(--text3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px}
 .kpi-value{font-size:26px;font-weight:800;color:var(--text1);font-family:'JetBrains Mono',monospace;line-height:1}
 .kpi-sub{font-size:11px;color:var(--text3);margin-top:4px}
@@ -613,7 +619,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding:14px 18px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)">
       <div>
         <div style="font-size:16px;font-weight:800;color:var(--text1)">Good morning, Ahmed</div>
-        <div style="font-size:12px;color:var(--text3);margin-top:3px">You have <strong style="color:var(--accent)">3 items</strong> awaiting your attention today — 2 supplier quotes to review and 1 sample inspection pending.</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:3px"><strong style="color:var(--accent)">3 decisions</strong> waiting — Layla has handled everything else.</div>
       </div>
       <div style="font-size:11px;color:var(--text3);text-align:right;line-height:1.7">Tuesday, 24 June 2025<br><span style="color:var(--accent);font-weight:600">🇪🇬 Cairo, Egypt</span></div>
     </div>
@@ -647,25 +653,41 @@ textarea.form-input{resize:vertical;min-height:80px}
 
     <div class="section-title" style="margin-bottom:10px">Layla is keeping watch</div>
     <div class="grid-4" style="margin-bottom:20px">
-      <div class="kpi-card">
-        <div class="kpi-label">Saved for you</div>
+      <div class="kpi-card k-green">
+        <div class="kpi-topline"><div class="kpi-label">Saved for you</div><span class="kpi-delta" style="color:var(--green)">▲ 12%</span></div>
         <div class="kpi-value" style="color:var(--green)">$843K</div>
-        <div class="kpi-sub">Layla's negotiated savings · 3 deals</div>
+        <svg class="kpi-spark" viewBox="0 0 120 30" preserveAspectRatio="none">
+          <polygon points="0,28 18,25 36,26 54,18 72,14 90,9 108,6 120,3 120,30 0,30" fill="var(--green)" opacity=".10"/>
+          <polyline points="0,28 18,25 36,26 54,18 72,14 90,9 108,6 120,3" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
       <div class="kpi-card">
-        <div class="kpi-label">Advancing for you</div>
+        <div class="kpi-topline"><div class="kpi-label">Advancing for you</div><span class="kpi-delta" style="color:var(--accent)">3 need you</span></div>
         <div class="kpi-value" style="color:var(--accent)">4</div>
-        <div class="kpi-sub">projects · 3 need your decision</div>
+        <svg class="kpi-spark" viewBox="0 0 120 30" preserveAspectRatio="none">
+          <rect x="6" y="16" width="22" height="14" rx="2" fill="var(--accent)" opacity=".30"/>
+          <rect x="36" y="8" width="22" height="22" rx="2" fill="var(--accent)" opacity=".55"/>
+          <rect x="66" y="21" width="22" height="9" rx="2" fill="var(--accent)" opacity=".30"/>
+          <rect x="96" y="24" width="22" height="6" rx="2" fill="var(--accent)" opacity=".25"/>
+        </svg>
       </div>
       <div class="kpi-card">
-          <div class="kpi-label">Suppliers vetted</div>
+        <div class="kpi-topline"><div class="kpi-label">Suppliers vetted</div><span class="kpi-delta" style="color:var(--green)">100% clear</span></div>
         <div class="kpi-value">24</div>
-        <div class="kpi-sub">All cleared — no sanctions / red flags</div>
+        <svg class="kpi-spark" viewBox="0 0 120 30" preserveAspectRatio="none">
+          <g stroke="var(--green)" stroke-width="2.6" stroke-linecap="round" opacity=".7">
+          <line x1="3" y1="9" x2="3" y2="22"/><line x1="8" y1="9" x2="8" y2="22"/><line x1="13" y1="9" x2="13" y2="22"/><line x1="18" y1="9" x2="18" y2="22"/><line x1="23" y1="9" x2="23" y2="22"/><line x1="28" y1="9" x2="28" y2="22"/><line x1="33" y1="9" x2="33" y2="22"/><line x1="38" y1="9" x2="38" y2="22"/><line x1="43" y1="9" x2="43" y2="22"/><line x1="48" y1="9" x2="48" y2="22"/><line x1="53" y1="9" x2="53" y2="22"/><line x1="58" y1="9" x2="58" y2="22"/><line x1="63" y1="9" x2="63" y2="22"/><line x1="68" y1="9" x2="68" y2="22"/><line x1="73" y1="9" x2="73" y2="22"/><line x1="78" y1="9" x2="78" y2="22"/><line x1="83" y1="9" x2="83" y2="22"/><line x1="88" y1="9" x2="88" y2="22"/><line x1="93" y1="9" x2="93" y2="22"/><line x1="98" y1="9" x2="98" y2="22"/><line x1="103" y1="9" x2="103" y2="22"/><line x1="108" y1="9" x2="108" y2="22"/><line x1="113" y1="9" x2="113" y2="22"/><line x1="118" y1="9" x2="118" y2="22"/>
+          </g>
+        </svg>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Next deadline</div>
+      <div class="kpi-card k-red">
+        <div class="kpi-topline"><div class="kpi-label">Next deadline</div><span class="kpi-delta" style="color:var(--red)">Jul 05</span></div>
         <div class="kpi-value" style="color:var(--red)">12d</div>
-        <div class="kpi-sub">Road Lighting — Jul 05 · on track</div>
+        <svg class="kpi-spark" viewBox="0 0 120 30" preserveAspectRatio="none">
+          <rect x="0" y="13" width="120" height="5" rx="2.5" fill="#E2E8F0"/>
+          <rect x="0" y="13" width="86" height="5" rx="2.5" fill="var(--red)" opacity=".22"/>
+          <rect x="86" y="10" width="34" height="11" rx="2.5" fill="var(--red)"/>
+        </svg>
       </div>
     </div>
 
