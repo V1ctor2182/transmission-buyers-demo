@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 092](round-092-compare-award.md) · 🟦 · Compare 模态加「Award per recommendation」决策动作(关模态+worklog+toast,§4 看→决策闭环)· console0 · 3/3 KEEP
 - [Round 091](round-091-decremaining-source-of-truth.md) · 🟦 · decRemaining 单一真值(KPI delta+agent-bar 随决策同步+导航持久,配 R90 greeting,一致收尾)· console0 · 3/3 KEEP
 - [Round 090](round-090-greeting-sync.md) · 🟦 · 问候语随决策清空同步(3→2→All caught up,配 count/banner,状态一致)· console0 · 3/3 KEEP
 - [Round 089](round-089-deadlines-clickable.md) · 🟦 · Upcoming Deadlines 可点导航 My Projects(配 R088 漏斗,交互感)· console0 · 3/3 KEEP

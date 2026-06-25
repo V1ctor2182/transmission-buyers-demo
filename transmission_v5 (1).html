@@ -2640,7 +2640,8 @@ textarea.form-input{resize:vertical;min-height:80px}
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary" onclick="document.getElementById('cmp-modal').classList.remove('show')">Close</button>
-      <button class="btn btn-primary" onclick="showToast('Exporting comparison report — Layla is compiling the PDF…')">↓ Export PDF Report</button>
+      <button class="btn btn-secondary" onclick="showToast('Exporting comparison report — Layla is compiling the PDF…')">↓ Export PDF</button>
+      <button class="btn btn-primary" onclick="awardComparison()">Award per Layla's recommendation</button>
     </div>
   </div>
 </div>
@@ -3924,6 +3925,12 @@ function addWorklogEntry(text){
   var item=document.createElement('div'); item.className='wl-item';
   item.innerHTML='<div class="wl-time">now</div><div class="wl-dot"></div><div class="wl-body">'+text+'</div>';
   day.insertAdjacentElement('afterend', item);
+}
+// Act on the comparison's allocation recommendation
+function awardComparison(){
+  var m=document.getElementById('cmp-modal'); if(m) m.classList.remove('show');
+  addWorklogEntry("Awarded the supply split per Layla's recommendation — drafting the POs for your signature.");
+  showToast("Awarded per Layla's recommendation — she's drafting the split-award POs.");
 }
 
 // ── INIT ──
