@@ -148,6 +148,10 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 032 · 🟦 新组件 · 开场 splash · 自主模式
+- 2026-06-25 · 见 `reports/round-032-opening-splash.md`。新增深色星空/轨道发光 logo 开场,会话一次→淡出→app+tour。FAIL0/UNCAUGHT0。
+- **next**:大组件交互地图(游戏感)。
+
 ### Round 031 · ✅ 审计 · 首页改造整体核验(无改动)· 自主模式
 - 2026-06-25 · 见 `reports/round-031-dashboard-review.md`。全页核验 cohesive,回归 0/0。首页减字+可视化+科技感(亮色)交付到位。降回 1800s,提供后续选项。
 

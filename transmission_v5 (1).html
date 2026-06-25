@@ -574,9 +574,42 @@ textarea.form-input{resize:vertical;min-height:80px}
 .tour-skip{background:none;border:none;color:var(--text3);font-size:12px;cursor:pointer;padding:0}
 .tour-skip:hover{color:var(--text2)}
 .tour-nav{display:flex;gap:8px}
+/* ── OPENING SPLASH (开场) ── */
+#splash{position:fixed;inset:0;z-index:10000;background:radial-gradient(ellipse at 50% 45%, #102845 0%, #0a1729 55%, #060d1b 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;overflow:hidden;transition:opacity .6s ease}
+#splash.hide{opacity:0;pointer-events:none}
+.sp-stars{position:absolute;inset:0;z-index:1}
+.sp-star{position:absolute;width:2px;height:2px;border-radius:50%;background:rgba(130,175,255,.8);animation:spTwinkle 2.6s ease-in-out infinite}
+.sp-orbit{position:absolute;border:1px solid rgba(27,94,255,.16);border-radius:50%;z-index:1}
+.sp-orbit.o1{width:240px;height:240px;animation:spSpin 14s linear infinite}
+.sp-orbit.o2{width:420px;height:420px;border-color:rgba(27,94,255,.10);animation:spSpin 26s linear infinite reverse}
+.sp-orbit.o3{width:640px;height:640px;border-color:rgba(27,94,255,.06);animation:spSpin 40s linear infinite}
+.sp-orbit.o1::after{content:'';position:absolute;top:-4px;left:50%;width:8px;height:8px;border-radius:50%;background:#10BFFF;box-shadow:0 0 12px #10BFFF;transform:translateX(-50%)}
+.sp-logo{width:96px;height:96px;z-index:2;filter:drop-shadow(0 0 26px rgba(27,94,255,.5));animation:spLogoIn 1s cubic-bezier(.2,.7,.2,1) both}
+.sp-logo img{width:100%;height:100%;object-fit:contain;display:block}
+.sp-word{z-index:2;text-align:center;animation:spFadeUp .8s .35s ease both}
+.sp-name{color:#fff;font-weight:800;font-size:21px;letter-spacing:1.5px}
+.sp-sub{color:rgba(255,255,255,.5);font-size:11px;letter-spacing:4px;margin-top:6px}
+.sp-bar{z-index:2;width:170px;height:3px;background:rgba(255,255,255,.10);border-radius:2px;overflow:hidden;animation:spFadeUp .8s .5s ease both}
+.sp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#10BFFF);border-radius:2px;animation:spLoad 1.7s .45s cubic-bezier(.45,0,.15,1) forwards}
+.sp-skip{position:absolute;bottom:26px;z-index:2;color:rgba(255,255,255,.4);font-size:11px;letter-spacing:.5px}
+@keyframes spLogoIn{0%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:scale(1)}}
+@keyframes spFadeUp{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
+@keyframes spLoad{0%{width:0}100%{width:100%}}
+@keyframes spTwinkle{0%,100%{opacity:.2}50%{opacity:.95}}
+@keyframes spSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.sp-orbit,.sp-star{animation:none!important}}
 </style>
 </head>
 <body>
+<!-- OPENING SPLASH (开场) -->
+<div id="splash">
+  <div class="sp-stars" id="sp-stars"></div>
+  <div class="sp-orbit o1"></div><div class="sp-orbit o2"></div><div class="sp-orbit o3"></div>
+  <div class="sp-logo"><img src="logo/transmission-tm-icon.svg" alt=""></div>
+  <div class="sp-word"><div class="sp-name">TRANSMISSION</div><div class="sp-sub">AI BUYERS AGENT</div></div>
+  <div class="sp-bar"><i></i></div>
+  <div class="sp-skip">Click to skip</div>
+</div>
 
 <!-- SIDEBAR -->
 <div class="sidebar">
@@ -3265,14 +3298,26 @@ document.addEventListener('keydown', function(e){
   else if(e.key==='ArrowRight'||e.key==='Enter'){ e.preventDefault(); tourNext(); }
   else if(e.key==='ArrowLeft'){ e.preventDefault(); tourPrev(); }
 });
-// First session visit → auto-launch tour; later visits → brief pulse on the button as a replay nudge
-try{
-  if(!sessionStorage.getItem('tmTourSeen')){
-    window.addEventListener('load', ()=>setTimeout(startTour, 650));
-  } else {
-    window.addEventListener('load', ()=>{ var b=document.getElementById('tour-btn'); if(b){ b.classList.add('pulse'); setTimeout(()=>b.classList.remove('pulse'), 5200); } });
-  }
-}catch(e){}
+// After the intro splash: first-ever session → auto-launch the tour; otherwise nudge the tour button.
+function afterIntro(){
+  try{
+    if(!sessionStorage.getItem('tmTourSeen')){ startTour(); }
+    else { var b=document.getElementById('tour-btn'); if(b){ b.classList.add('pulse'); setTimeout(()=>b.classList.remove('pulse'), 5200); } }
+  }catch(e){}
+}
+// ── OPENING SPLASH controller ──
+window.addEventListener('load', function(){
+  var sp=document.getElementById('splash'); if(!sp){ afterIntro(); return; }
+  var seen=false; try{ seen=!!sessionStorage.getItem('tmSplashSeen'); }catch(e){}
+  if(seen){ sp.style.display='none'; afterIntro(); return; }
+  try{ sessionStorage.setItem('tmSplashSeen','1'); }catch(e){}
+  // starfield
+  var st=document.getElementById('sp-stars'); if(st){ var h=''; for(var i=0;i<52;i++){ h+='<div class="sp-star" style="left:'+((i*53+11)%100)+'%;top:'+((i*29+7)%100)+'%;animation-delay:'+((i%6)*0.4)+'s"></div>'; } st.innerHTML=h; }
+  var done=false;
+  function finish(){ if(done) return; done=true; sp.classList.add('hide'); setTimeout(function(){ sp.style.display='none'; afterIntro(); }, 650); }
+  sp.addEventListener('click', finish);
+  setTimeout(finish, 2300);
+});
 </script>
 <!-- GUIDED TOUR -->
 <div id="tour">

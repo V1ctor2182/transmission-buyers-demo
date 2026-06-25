@@ -7,7 +7,7 @@
 
 /loop 1min 持续优化买方端 demo `demo/transmission_v5 (1).html`(单文件 HTML,5 视图:dashboard / sourcing / procurement / negotiation / diligence)的体验。**每轮严格按 `demo/loop-procedure.md` 执行**(它是本次权威流程;`../loop-procedure.md`、`../loop-prompt.md` 是卖方端,只作写法参照,产品方向相反,别照搬其北极星)。流程:读 `demo/loop-procedure.md` + LOOP-STATE.md + BACKLOG.md(首轮无则创建)→ 审计 → 按 backlog 影响×把握÷风险 排序取顶。
 
-/loop 1min 持续优化买方端 demo `demo/transmission_v5 (1).html`(单文件 HTML,5 视图:dashboard / sourcing / procurement / negotiation / diligence)的体验。**每轮严格按 `demo/loop-procedure.md` 执行**(它是本次权威流程;`../loop-procedure.md`、`../loop-prompt.md` 是卖方端,只作写法参照,产品方向相反,别照搬其北极星)。流程:读 `demo/loop-procedure.md` + LOOP-STATE.md + BACKLOG.md(首轮无则创建)→ 审计 → 按 backlog 影响×把握÷风险 排序取顶。看看还有什么可以优化的，谨慎优化
+/loop 1min 持续优化买方端 demo `demo/transmission_v5 (1).html`(单文件 HTML,5 视图:dashboard / sourcing / procurement / negotiation / diligence)的体验。**每轮严格按 `demo/loop-procedure.md` 执行**(它是本次权威流程;`../loop-procedure.md`、`../loop-prompt.md` 是卖方端,只作写法参照,产品方向相反,别照搬其北极星)。流程:读 `demo/loop-procedure.md` + LOOP-STATE.md + BACKLOG.md(首轮无则创建)→ 审计 → 按 backlog 影响×把握÷风险 排序取顶。参考这个 /Users/victor/work/创拾觅深-买方/demo/reference/factorygate (1).html来加一下我现在没有的一些component，还有开场+有更多一些有科技感的东西+首页文字排的太多了 页面排布都是纯文字，信息密度太高，一登录进来就是信息过载+多一些可视化+地图就是要有一种交互感 甚至说有一点点游戏感
 
 **两条北极星(高于一切,每轮都按这判,持续朝它走)**:① **视觉 = 零 AI 味 + 高级感**(高端克制有质感的企业级 B2B,像金融/采购终端、Linear、Stripe;敢进给大客户的预售方案)。② **产品(买方视角)= 「我几乎什么都不用做,只看与决策」+ 强烈的「真人采购助理在替我实时干活」的人感**。具体:**(a) 几乎零负担** —— 搜索/比价/填表/核验/来回沟通都由助理替买方干完,界面只端来"做好的综合结论 + 明确建议",买方主要动作是"审阅→批准/否决/选择/设底线"这类一眼能定的决策;看到逼买方劳作(长表单/手动比价/自己整理)就记进 backlog 改掉。**(b) 强人感** —— 助理是个常驻在场的"人"(名字/身份/当前在做什么的实时状态)、工作有过程有阶段产出(不是瞬间吐全量)、带时间戳的真实动作流(像看真人助理工作日志)、谈判看得见助理代你来回博弈的让步轨迹与战报、给的是有立场的判断而非参数堆。**(c) 安心有进展** —— 替你省了多少/谈下多少/挡掉多少风险,可见可累积。
 
