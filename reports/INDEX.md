@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 066](round-066-regression-sweep.md) · ✅ 验证 · 扩展全交互回归(含 R055-065 新增 deep-link/typing/verdict/top-pick…)= 0 错 · harness 更新 · 稳健
 - [Round 065](round-065-worklog-deeplinks.md) · 🟦 · Worklog pill 深链(XCMG 条→xcmg/Guangzhou 条→gz 线程)· deep-link 一致性收尾 · console0 · 3/3 KEEP
 - [Round 064](round-064-xcmg-deeplinks.md) · 🟦 · XCMG 决策卡 View thread + diligence Proceed 深链到 XCMG 线程(修泛跳落默认 gz,续 R063)· console0 · 3/3 KEEP
 - [Round 063](round-063-reply-deeplink.md) · 🟦 · Dashboard 回复卡深链(goNeg:点 XCMG/Egyptian 回复开对应线程,修泛跳落默认 gz 错配)· console0 · 3/3 KEEP

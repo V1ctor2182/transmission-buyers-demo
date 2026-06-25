@@ -616,7 +616,7 @@ textarea.form-input{resize:vertical;min-height:80px}
 .lg-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;width:min(960px,92vw);z-index:2;background:rgba(11,24,43,.55);border:1px solid #1c3a5c;border-radius:18px;overflow:hidden;backdrop-filter:blur(8px);box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .lg-brand{padding:42px 40px;border-right:1px solid #16324f;display:flex;flex-direction:column;justify-content:center;gap:8px}
 .lg-logo{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.lg-logo img{width:46px;height:46px;object-fit:contain;filter:drop-shadow(0 0 14px rgba(27,94,255,.5))}
+.lg-logo img{width:46px;height:46px;box-sizing:border-box;object-fit:contain;background:#fff;border-radius:11px;padding:8px;box-shadow:0 4px 16px rgba(27,94,255,.3),inset 0 0 0 1px rgba(255,255,255,.1)}
 .lg-logo .ln{color:#fff;font-weight:800;font-size:19px;letter-spacing:.5px}
 .lg-logo .ls{color:rgba(255,255,255,.42);font-size:10px;letter-spacing:2.5px;margin-top:2px}
 .lg-tag{color:rgba(225,238,255,.9);font-size:22px;font-weight:800;line-height:1.3;margin-bottom:14px}
@@ -773,7 +773,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     </div>
     <div class="agent-status"><span class="agent-status-dot"></span><span id="agent-status">Summarising today's queue — <b>3 items</b> need your decision</span></div>
     <div class="agent-spacer"></div>
-    <div class="agent-worklog" onclick="toggleRobot()"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Worklog</div>
+    <div class="agent-worklog" onclick="toggleRobot()"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Worklog<span class="wl-badge" id="wl-badge">3</span></div>
     <div class="agent-tour" id="tour-btn" onclick="startTour()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg> Take a tour</div>
   </div>
   <div class="content">
@@ -799,7 +799,7 @@ textarea.form-input{resize:vertical;min-height:80px}
         <div class="dec-tag">Negotiation · <span class="dec-save">Saves $20K</span></div>
         <div class="dec-title">Approve XCMG excavators at $144K/unit</div>
         <div class="dec-rec"><b>Layla:</b> I negotiated XCMG down from $148K using SANY's $142K quote. Strong Egypt service network — I recommend approving.</div>
-        <div class="dec-actions"><button class="btn btn-primary btn-sm" onclick="decApprove(this,'Approved — Layla will issue the PO to XCMG')">Approve</button><button class="btn btn-secondary btn-sm" onclick="showView('negotiation')">View thread</button></div>
+        <div class="dec-actions"><button class="btn btn-primary btn-sm" onclick="decApprove(this,'Approved — Layla will issue the PO to XCMG')">Approve</button><button class="btn btn-secondary btn-sm" onclick="goNeg('xcmg')">View thread</button></div>
       </div>
       <div class="dec-card">
         <div class="dec-tag">Sourcing · <span style="color:var(--red)">July deadline</span></div>
@@ -954,6 +954,16 @@ textarea.form-input{resize:vertical;min-height:80px}
     .eg-pin.eg-dim{opacity:.25}
     .eg-pin.eg-lit .eg-core{r:11;stroke:#fff}
     .proj-progress-card.eg-row-lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow);transition:box-shadow .15s,border-color .15s}
+    .neg-lad-locked svg path:last-of-type{stroke:var(--green)}
+    .neg-lad-locked svg circle:last-of-type{filter:drop-shadow(0 0 3px rgba(16,185,129,.85))}
+    .sup-match-card.smc-top{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent)}
+    .wl-badge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;margin-left:6px;font-family:'JetBrains Mono',monospace;vertical-align:middle}
+    .typing-dots{display:inline-flex;gap:4px;align-items:center;padding:3px 2px}
+    .typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:typingBounce 1.2s infinite}
+    .typing-dots span:nth-child(2){animation-delay:.18s}
+    .typing-dots span:nth-child(3){animation-delay:.36s}
+    @keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}
+    @media (prefers-reduced-motion:reduce){.typing-dots span{animation:none}}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
     .radar-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(16,191,255,.32),transparent);pointer-events:none;z-index:2;animation:radarSweep 6s linear infinite}
     @keyframes radarSweep{0%{top:-2px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
@@ -1261,7 +1271,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     <div class="grid-2" style="margin-bottom:20px;align-items:start">
       <div>
         <div class="section-title">Replies Layla is handling <span style="font-size:11px;font-weight:500;color:var(--text3);margin-left:8px">She'll draft responses for your approval</span></div>
-        <div class="msg-preview-card" onclick="showView('negotiation')">
+        <div class="msg-preview-card" onclick="goNeg('gz')">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
             <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#475569,#64748B);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0">G</div>
             <div style="flex:1">
@@ -1274,7 +1284,7 @@ textarea.form-input{resize:vertical;min-height:80px}
           <div class="fact-chips"><span class="fact-chip"><b>$38.50</b>/unit</span><span class="fact-chip">CE · IEC</span><span class="fact-chip"><b>22d</b> CIF</span></div>
           <div style="text-align:right;margin-top:6px;font-size:11px;color:var(--accent);font-weight:600">Layla drafted a reply — review →</div>
         </div>
-        <div class="msg-preview-card" onclick="showView('negotiation')">
+        <div class="msg-preview-card" onclick="goNeg('xcmg')">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
             <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#475569,#64748B);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0">X</div>
             <div style="flex:1">
@@ -1287,7 +1297,7 @@ textarea.form-input{resize:vertical;min-height:80px}
           <div class="fact-chips"><span class="fact-chip">XE215C</span><span class="fact-chip"><b>$148K</b>/unit</span><span class="fact-chip"><b>90d</b> CIF</span></div>
           <div style="text-align:right;margin-top:6px;font-size:11px;color:var(--accent);font-weight:600">Layla drafted a reply — review →</div>
         </div>
-        <div class="msg-preview-card" onclick="showView('negotiation')">
+        <div class="msg-preview-card" onclick="goNeg('eei')">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
             <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#475569,#64748B);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0">E</div>
             <div style="flex:1">
@@ -2382,6 +2392,14 @@ textarea.form-input{resize:vertical;min-height:80px}
           </div>
         </div>
         <div id="dd-report" style="display:none">
+          <div style="display:flex;align-items:center;gap:13px;background:var(--green-light);border:1px solid rgba(16,185,129,.3);border-radius:12px;padding:14px 16px;margin-bottom:16px">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#1B5EFF,#0EA5E9);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0">L</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:10px;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px">Layla's verdict · Cleared</div>
+              <div style="font-size:12.5px;color:var(--text1);line-height:1.5"><b>XCMG is low-risk and ready to advance</b> — no red flags across registration, customs, financials or sanctions. I recommend proceeding.</div>
+            </div>
+            <button class="btn btn-primary btn-sm" style="flex-shrink:0" onclick="goNeg('xcmg')">Proceed to negotiation →</button>
+          </div>
           <div class="card" style="margin-bottom:16px">
             <div class="card-header">
               <div style="display:flex;align-items:center;gap:12px">
@@ -2661,11 +2679,11 @@ textarea.form-input{resize:vertical;min-height:80px}
       <div class="wl-day">Today · 24 Jun</div>
       <div class="wl-item">
         <div class="wl-time">15:30</div><div class="wl-dot act"></div>
-        <div class="wl-body">Negotiated XCMG excavators from <b>$148K → $144K/unit</b>, using SANY's $142K quote as leverage. Saves you <b>$20K</b> on 5 units.<br><span class="wl-pill" onclick="showView('negotiation');closeRobot()">Approve final price ›</span></div>
+        <div class="wl-body">Negotiated XCMG excavators from <b>$148K → $144K/unit</b>, using SANY's $142K quote as leverage. Saves you <b>$20K</b> on 5 units.<br><span class="wl-pill" onclick="goNeg('xcmg');closeRobot()">Approve final price ›</span></div>
       </div>
       <div class="wl-item">
         <div class="wl-time">14:18</div><div class="wl-dot act"></div>
-        <div class="wl-body">Guangzhou Lumens confirmed <b>$38.50/unit</b> for 8,000 LED fixtures — CE + IEC, 22-day CIF Alexandria. I recommend locking the July slot now.<br><span class="wl-pill" onclick="showView('negotiation');closeRobot()">Review &amp; confirm ›</span></div>
+        <div class="wl-body">Guangzhou Lumens confirmed <b>$38.50/unit</b> for 8,000 LED fixtures — CE + IEC, 22-day CIF Alexandria. I recommend locking the July slot now.<br><span class="wl-pill" onclick="goNeg('gz');closeRobot()">Review &amp; confirm ›</span></div>
       </div>
       <div class="wl-item">
         <div class="wl-time">11:05</div><div class="wl-dot done"></div>
@@ -2719,6 +2737,15 @@ function showView(v){
   if(v==='procurement') decorateTreeScores();
   if(v==='negotiation') renderNegDecision(curNeg);
   if(v==='map') renderMap();
+}
+// Deep-link into a specific supplier's negotiation thread (e.g. from a dashboard reply card)
+function goNeg(id){
+  showView('negotiation');
+  var match=null;
+  document.querySelectorAll('#view-negotiation .neg-sup-item').forEach(function(it){
+    var oc=it.getAttribute('onclick')||''; if(oc.indexOf("'"+id+"'")>-1) match=it;
+  });
+  if(match) selectNegSupplier(id, match);
 }
 // ── SOURCING MAP (interactive) ──
 const MAP_HUB={x:500,y:350};
@@ -2864,6 +2891,13 @@ function egLitPin(cardIdx){
   wrap.addEventListener('mouseover',function(e){ var c=e.target.closest('.proj-progress-card'); if(!c) return; var cards=Array.prototype.slice.call(wrap.querySelectorAll('.proj-progress-card')); egLitPin(cards.indexOf(c)); });
   wrap.addEventListener('mouseleave',function(){ egLitPin(-1); });
 })();
+// Transient "supplier is typing…" bubble shown before a real incoming message arrives
+function negTyping(ava){
+  const msgs=document.getElementById('chat-msgs'); if(!msgs) return null;
+  const d=document.createElement('div'); d.className='msg in'; d.id='neg-typing';
+  d.innerHTML='<div class="msg-ava sup">'+ava+'</div><div><div class="msg-bub" style="padding:9px 14px"><span class="typing-dots"><span></span><span></span><span></span></span></div></div>';
+  msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight; return d;
+}
 function negAppendMsg(side, ava, name, html){
   const msgs=document.getElementById('chat-msgs'); if(!msgs) return;
   const d=document.createElement('div'); d.className='msg '+side+' slide-up';
@@ -2936,10 +2970,13 @@ function negDecide(action){
     showToast('Accepted — Layla is issuing the PO to '+d.firm);
     setNegStatus('✓ Deal locked at '+d.accept+' — Layla is on it');
     const a=document.getElementById('agent-status'); if(a) a.innerHTML='Issuing PO to <b>'+d.firm+'</b> at '+d.accept+' — '+d.unit;
+    const t=document.getElementById('neg-dec-trail'); if(t) t.innerHTML='<span style="color:var(--green);font-weight:700">✓ Deal locked</span> at <b style="font-family:\'JetBrains Mono\',monospace">'+d.accept+'</b> <span class="neg-trail-pct">'+d.pct+'</span>';
+    const lad=document.getElementById('neg-dec-ladder'); if(lad) lad.classList.add('neg-lad-locked');
   } else if(action==='push'){
     negAppendMsg('out','L','Layla · for you','We\'re ready to commit today at <strong>'+d.push+'</strong>. Match it and the '+d.unit+' order is yours.');
     setNegStatus('Layla is pushing for '+d.push+'…');
-    setTimeout(()=>{ negAppendMsg('in',d.ava,d.sup,d.push+' isn\'t workable on our margin, but I can hold <strong>'+d.counter+'</strong> if you confirm within 48h — that\'s genuinely final.'); setNegStatus('Counter received: '+d.counter+' — awaiting your call'); negPushLadder(d); }, 1000);
+    var typ=negTyping(d.ava);
+    setTimeout(()=>{ if(typ&&typ.parentNode)typ.parentNode.removeChild(typ); negAppendMsg('in',d.ava,d.sup,d.push+' isn\'t workable on our margin, but I can hold <strong>'+d.counter+'</strong> if you confirm within 48h — that\'s genuinely final.'); setNegStatus('Counter received: '+d.counter+' — awaiting your call'); negPushLadder(d); }, 1200);
     showToast('Layla is pushing '+d.firm+' for a lower price');
   } else {
     showToast('Set your floor in the project brief — Layla will renegotiate to it');
@@ -3070,10 +3107,10 @@ function runSupplierMatching() {
             loading.style.display = 'none';
             results.style.display = 'block';
             renderSupplierCards();
-          }, 800);
+          }, 500);
         }
-      }, 2400);
-    }, i * 3000);
+      }, 1100);
+    }, i * 1500);
   });
 }
 
@@ -3098,10 +3135,10 @@ function renderSupplierCards() {
   const tierTextColors = {HEAD:'#1B5EFF',CORE:'#059669',LOCAL:'#D97706',TAIL:'#64748B'};
 
   const html = MATCH_SUPPLIERS.map((s, i) => `
-    <div class="sup-match-card" id="smc-${i}" onclick="selectMatchCard(${i})">
+    <div class="sup-match-card${i===0?' smc-top':''}" id="smc-${i}" onclick="selectMatchCard(${i})">
       <div class="smc-logo">${s.name.charAt(0)}</div>
       <div class="smc-info">
-        <div class="smc-name">${s.name} ${s.egypt ? '<span style="font-size:10px;background:#F0FDF4;color:#059669;border:1px solid rgba(5,150,105,.2);border-radius:4px;padding:1px 6px;font-weight:700;margin-left:4px">🇪🇬 Egypt Record</span>' : ''}</div>
+        <div class="smc-name">${s.name} ${i===0?"<span style='font-size:10px;background:var(--accent);color:#fff;border-radius:4px;padding:1px 7px;font-weight:700;margin-left:4px'>Layla's top pick</span>":""} ${s.egypt ? '<span style="font-size:10px;background:#F0FDF4;color:#059669;border:1px solid rgba(5,150,105,.2);border-radius:4px;padding:1px 6px;font-weight:700;margin-left:4px">Egypt record</span>' : ''}</div>
         <div class="smc-meta">${s.flag} ${s.loc} <span style="background:${tierColors[s.tier]};color:${tierTextColors[s.tier]};padding:1px 7px;border-radius:4px;font-weight:700;font-size:10px">${s.tier}</span></div>
         <div class="smc-tags">${s.tags.map(t=>`<span class="badge b-gray">${t}</span>`).join('')}</div>
         <div class="smc-strength">${s.strength}</div>
@@ -3332,9 +3369,9 @@ function openBgCheck(id){
       setTimeout(()=>{
         el.style.borderColor='var(--green)'; el.style.background='var(--green-light)'; el.style.color='var(--green)';
         el.textContent = doneMsgs[i];
-        if(i===3) setTimeout(()=>showBgReport(d),700);
-      },2400);
-    },i*3000);
+        if(i===3) setTimeout(()=>showBgReport(d),500);
+      },1100);
+    },i*1500);
   });
 }
 function showBgReport(d){
@@ -3406,7 +3443,7 @@ function showCmpReport(d){
         <thead><tr><th>Criteria</th>${cat.sups.map((s,i)=>`<th class="${i===cat.sups.findIndex(x=>x.score===Math.max(...cat.sups.map(y=>y.score)))?'winner-col':''}">${s.name}</th>`).join('')}</tr></thead>
         <tbody>${critHeaders.map((h,ci)=>`<tr><td style="font-weight:600;color:var(--text2)">${h}</td>${cat.sups.map(s=>`<td class="${s.criteria[ci][2]}">${s.criteria[ci][1]}</td>`).join('')}</tr>`).join('')}</tbody>
       </table>
-      <div class="ai-rec-box"><p><strong>Specialist recommendation:</strong> ${cat.rec}</p></div>
+      <div class="ai-rec-box"><p><strong>Layla's recommendation:</strong> ${cat.rec}</p></div>
     </div>`;
   });
   document.getElementById('cmp-report').innerHTML = html;
@@ -3773,7 +3810,8 @@ function closeContactModal(){
 
 // ── ROBOT WIDGET ──
 function toggleRobot(){
-  document.getElementById('robot-panel').classList.toggle('open');
+  const p=document.getElementById('robot-panel'); p.classList.toggle('open');
+  if(p.classList.contains('open')){ const b=document.getElementById('wl-badge'); if(b) b.style.display='none'; }
 }
 function closeRobot(){
   document.getElementById('robot-panel').classList.remove('open');
@@ -3918,29 +3956,23 @@ var ERR=[]; window.addEventListener('error',function(e){ERR.push((e.message||'')
 window.addEventListener('unhandledrejection',function(e){ERR.push('PROMISE:'+e.reason);});
 function T(label,fn){ try{ fn(); }catch(e){ ERR.push(label+': '+e.message); } }
 window.addEventListener('load',function(){ setTimeout(function(){
-  var V=['dashboard','sourcing','procurement','negotiation','diligence','map'];
-  V.forEach(function(v){ T('showView '+v,function(){showView(v);}); });
-  T('decApprove', function(){ document.querySelectorAll('#dec-grid .dec-card .btn-primary').forEach(function(b){b.click();}); });
-  T('openCompare', function(){ openCompare('lighting'); });
-  T('closeCompare', function(){ var m=document.getElementById('cmp-modal'); if(m)m.classList.remove('show'); });
-  T('selectSupplier baosteel', function(){ selectSupplier('baosteel','steel'); });
-  T('selectSupplier caterpillar', function(){ selectSupplier('caterpillar','excavator'); });
-  T('procApprove', function(){ var b=document.querySelector('#rp-briefing .bf-rec .btn'); if(b)b.click(); });
-  T('decorateTreeScores', function(){ decorateTreeScores(); });
-  T('selectNegSupplier xcmg', function(){ showView('negotiation'); var el=document.querySelector('.neg-sup-item'); selectNegSupplier('xcmg', el); });
-  T('negDecide push', function(){ negDecide('push'); });
-  T('negDecide accept', function(){ negDecide('accept'); });
-  T('renderNegDecision sany', function(){ renderNegDecision('sany'); });
-  T('runSrcAnalysis', function(){ showView('sourcing'); runSrcAnalysis(); });
-  T('runDueDiligence', function(){ showView('diligence'); runDueDiligence(); });
-  T('openBgCheck', function(){ openBgCheck('ezz'); });
-  T('closeBg', function(){ closeBg(); });
-  T('renderMap+mapSelect', function(){ showView('map'); renderMap(); mapSelect('gz'); mapReset(); });
-  T('mapKeyboard', function(){ showView('map'); document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight'})); document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft'})); document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'})); });
-  T('egTip', function(){ egTip({clientX:50,clientY:50},'p1'); egTipHide(); egLitPin(2); egLitPin(-1); });
-  T('toggleRobot', function(){ toggleRobot(); toggleRobot(); });
-  T('startTour', function(){ showView('dashboard'); startTour(); tourNext(); tourNext(); endTour(); });
-  setTimeout(function(){ document.title='ERRORS='+ERR.length+(ERR.length?(' :: '+ERR.slice(0,6).join(' || ')):' (CLEAN)'); }, 1500);
-}, 300); });
+  ['dashboard','sourcing','procurement','negotiation','diligence','map'].forEach(function(v){ T('view '+v,function(){showView(v);}); });
+  // R063-065 deep-links
+  T('goNeg gz/xcmg/eei', function(){ goNeg('gz'); goNeg('xcmg'); goNeg('eei'); });
+  // R053 all-caught-up
+  T('decApprove all', function(){ showView('dashboard'); document.querySelectorAll('#dec-grid .dec-card .btn-primary').forEach(function(b){b.click();}); });
+  // R052/R062 push grows + typing, R054 accept lock
+  T('negDecide push+accept', function(){ goNeg('gz'); negDecide('push'); });
+  // R044 procApprove + R049 tree scores
+  T('procurement select+approve+scores', function(){ showView('procurement'); selectSupplier('caterpillar','excavator'); decorateTreeScores(); var b=document.querySelector('#rp-briefing .bf-rec .btn'); if(b)b.click(); });
+  // R055 top pick
+  T('sourcing match render', function(){ showView('sourcing'); try{srcGoToStage(3);}catch(e){} renderSupplierCards(); });
+  // R056 diligence verdict
+  T('diligence verdict', function(){ showView('diligence'); var e=document.getElementById('dd-report-empty'); if(e)e.style.display='none'; var r=document.getElementById('dd-report'); if(r)r.style.display='block'; });
+  // R039-043 map full + keyboard + R048 scan, R057 worklog badge
+  T('map + keyboard + worklog', function(){ showView('map'); renderMap(); mapSelect('gz'); document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight'})); mapReset(); toggleRobot(); toggleRobot(); });
+  // R046/R051 egypt link, openCompare, bgCheck, tour
+  T('egypt+compare+bg+tour', function(){ showView('dashboard'); egTip({clientX:50,clientY:50},'p2'); egTipHide(); openCompare('lighting'); var m=document.getElementById('cmp-modal'); if(m)m.classList.remove('show'); openBgCheck('ezz'); closeBg(); startTour(); tourNext(); endTour(); });
+  setTimeout(function(){ document.title='ERRORS='+ERR.length+(ERR.length?(' :: '+ERR.slice(0,6).join(' || ')):' (CLEAN)'); }, 2500); }, 300); });
 </script></body>
 </html>

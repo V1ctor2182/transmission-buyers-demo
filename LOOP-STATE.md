@@ -151,6 +151,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 066 · ✅ 验证 · 扩展全交互回归 0 错 · 自主模式
+- 2026-06-26 · 见 `reports/round-066-regression-sweep.md`。扩展 smoke 跑 6 视图 + R055-065 全新增路径(goNeg/all-caught-up/push+typing/procApprove+tree scores/top-pick/verdict/map+键盘/egTip+compare+bg+tour)= **ERRORS=0**。30 轮编辑零回归。harness `reports/smoke-test.html` 更新。
+- **闸门**:ERRORS=0(纯验证无 UI 变更)· 3/3 KEEP。demo 高质量稳健态。
+
 ### Round 065 · 🟦 Standard · Worklog pill 深链(deep-link 一致性收尾)· 自主模式
 - 2026-06-26 · 见 `reports/round-065-worklog-deeplinks.md`。worklog XCMG 条「Approve final price」→ goNeg('xcmg')、Guangzhou 条「Review & confirm」→ goNeg('gz');Egyptian「Review samples」→ procurement(留)。
 - **闸门**:console 零错 · 真点击 xcmgPill→xcmg/gzPill→gz · 仅 worklog 无回归 · 3/3 KEEP。已 cp index.html + push。
