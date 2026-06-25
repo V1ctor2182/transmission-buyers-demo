@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 042](round-042-negotiation-concession-chart.md) · 🟦 · Negotiation 让步轨迹→压价 sparkline(下降折线+绿成交点+mono 价标,看得见 Layla 博弈 §3-D)· console0 · 3/3 KEEP
 - [Round 041](round-041-procurement-stage-tracker.md) · 🟦 · Procurement 通信进度→连接式阶段追踪器(rail+勾+脉冲 active「Layla is on it」)+ 核实 R037 ghosted 为入场动画非bug · console0 · 3/3 KEEP
 - [Round 040](round-040-map-trace-card.md) · 🟦 · Map 选中态 trace 详情卡(航线 region→Alexandria + Transit/Lane mini-stat + 价 + Open in workspace CTA)· console0 · 3/3 KEEP
 - [Round 039](round-039-map-game-feel.md) · 🟦 · Sourcing Map 游戏感(双向 hover 追踪路由 + 点击 dispatch ping 包疾驰到 hub + flow dim 聚焦)· console0 · 3/3 KEEP

@@ -2119,6 +2119,7 @@ textarea.form-input{resize:vertical;min-height:80px}
             <div class="neg-dec-trail" id="neg-dec-trail">Layla negotiated <b>$42.00 → $39.50 → $38.50</b> <span class="neg-trail-pct">−8.3%</span></div>
             <div class="neg-dec-status" id="neg-dec-status">Awaiting your call</div>
           </div>
+          <div id="neg-dec-ladder"></div>
           <div class="neg-dec-rec"><span class="neg-rec-ava">L</span><div id="neg-dec-rec-text"><b>Layla:</b> $38.50/unit is Guangzhou's best-and-final and matches your competing quote — SGS / ES 4698 confirmed, below your $40 floor. Their July slot needs confirmation by Jun 28, so I recommend accepting now.</div></div>
           <div class="neg-dec-actions">
             <button class="btn btn-primary" id="neg-btn-accept" onclick="negDecide('accept')">Accept $38.50 &amp; issue PO</button>
@@ -2635,6 +2636,7 @@ function showView(v){
   document.getElementById('topbar-left').textContent = TITLES[v]||v;
   const as=document.getElementById('agent-status'); if(as && AGENT_STATUS[v]) as.innerHTML = AGENT_STATUS[v];
   if(v==='procurement' && !currentSupplier) selectSupplier('ezz','steel');
+  if(v==='negotiation') renderNegDecision(curNeg);
   if(v==='map') renderMap();
 }
 // ── SOURCING MAP (interactive) ──
@@ -2759,10 +2761,34 @@ const NEG_DEC = {
   suez:{ava:'S',sup:'Mr. Adel',firm:'Suez Cement',trail:'$63 → $58/ton',pct:'−7.9%',accept:'$58/ton',unit:'50,000 ton',push:'$56',counter:'$57',rec:'$58/ton, ES 373 certified, 5-day delivery, no duty. Recommend as primary for ~80% of the cement volume.'},
   caterpillar:{ava:'C',sup:'Mantrac',firm:'Caterpillar',trail:'List $232K → $218K',pct:'−6.0%',accept:'$218K/unit',unit:'5 units',push:'$210K',counter:'$215K',rec:'Premium price but unmatched local service and zero duty. Justifiable only for mission-critical units — XCMG is better value for the bulk.'}
 };
+function parsePrice(s){ s=String(s).replace(/[$,\s]/g,''); var m=1; if(/k$/i.test(s)){m=1000;s=s.slice(0,-1);} else if(/m$/i.test(s)){m=1e6;s=s.slice(0,-1);} return parseFloat(s)*m; }
+function parseTrail(str){ return String(str).split('→').map(function(s){ s=s.trim(); return {label:s, val:parsePrice(s)}; }).filter(function(x){ return !isNaN(x.val); }); }
+// Concession sparkline — visualises Layla bargaining the price down (real quote points from the trail, not animated)
+function buildConcessionLadder(steps){
+  if(!steps || steps.length<2) return '';
+  var vals=steps.map(function(s){return s.val;}), mx=Math.max.apply(null,vals), mn=Math.min.apply(null,vals), span=(mx-mn)||1, n=steps.length, W=360, H=40;
+  var pts=steps.map(function(s,i){ return [8+(W-16)*i/(n-1), 6+28*(1-(s.val-mn)/span)]; });
+  var line='M'+pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' L');
+  var area='M'+pts[0][0].toFixed(1)+',38 L'+pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' L')+' L'+pts[n-1][0].toFixed(1)+',38 Z';
+  var dots=pts.map(function(p,i){ var last=i===n-1; return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="'+(last?4:3)+'" fill="'+(last?'#10B981':'#fff')+'" stroke="'+(last?'#10B981':'#1B5EFF')+'" stroke-width="2"/>'; }).join('');
+  var labels=steps.map(function(s,i){ var last=i===n-1; return '<span style="font-family:\'JetBrains Mono\',monospace;font-size:10.5px;font-weight:700;color:'+(last?'var(--green)':'var(--text3)')+'">'+s.label+'</span>'; }).join('');
+  return '<div style="margin:1px 0 11px">'
+    +'<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:38px;display:block">'
+      +'<defs><linearGradient id="negLad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B5EFF" stop-opacity=".14"/><stop offset="1" stop-color="#1B5EFF" stop-opacity="0"/></linearGradient></defs>'
+      +'<path d="'+area+'" fill="url(#negLad)"/>'
+      +'<path d="'+line+'" fill="none" stroke="#1B5EFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+      +dots
+    +'</svg>'
+    +'<div style="display:flex;justify-content:space-between;margin-top:2px;padding:0 2px">'+labels+'</div></div>';
+}
 function renderNegDecision(v){
   curNeg = NEG_DEC[v] ? v : 'gz';
   const d = NEG_DEC[curNeg];
-  const t=document.getElementById('neg-dec-trail'); if(t) t.innerHTML='Layla negotiated <b>'+d.trail+'</b> <span class="neg-trail-pct">'+d.pct+'</span>';
+  const steps=parseTrail(d.trail);
+  const t=document.getElementById('neg-dec-trail'); if(t) t.innerHTML= steps.length>=2
+    ? 'Layla bargained <b>'+steps[0].label+' → '+steps[steps.length-1].label+'</b> <span class="neg-trail-pct">'+d.pct+'</span>'
+    : 'Layla negotiated <b>'+d.trail+'</b> <span class="neg-trail-pct">'+d.pct+'</span>';
+  const lad=document.getElementById('neg-dec-ladder'); if(lad) lad.innerHTML=buildConcessionLadder(steps);
   const r=document.getElementById('neg-dec-rec-text'); if(r) r.innerHTML='<b>Layla:</b> '+d.rec;
   setNegStatus('Awaiting your call');
   const a=document.getElementById('agent-status'); if(a) a.innerHTML='Negotiating with <b>'+d.firm+'</b> on your behalf';

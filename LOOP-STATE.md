@@ -148,6 +148,12 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 042 · 🟦 Standard · Negotiation 压价 sparkline(看得见博弈)· 自主模式
+- 2026-06-26 · 见 `reports/round-042-negotiation-concession-chart.md`。决策面板让步轨迹纯文字 → 压价 sparkline:parseTrail/parsePrice($/K/M)解析价点,画下降折线+面积+节点(末点绿成交)+mono 价标;轨迹文案精简为 start→final。renderNegDecision 注入;showView 进入即渲染;selectNegSupplier 切换同步(L3485)。价点真实非假。
+- **闸门**:console 零错 · gz/xcmg(K 解析)两态正确 · 切换更新 · 面板无溢出 · 仅 neg 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **★ 全 5 视图 + 地图本 run 均已获 viz/clarity pass**(R036 dash 趋势 / R037 diligence / R038 sourcing / R039-040 map / R041 procurement / R042 negotiation)。
+- **next**:procurement「需你决策/红旗」浮出;地图键盘 ←→;决策卡抽组件;flag emoji;或视情况收敛。1min cron 自主续跑。
+
 ### Round 041 · 🟦 Standard · Procurement 阶段追踪器 + 核实非bug · 自主模式
 - 2026-06-26 · 见 `reports/round-041-procurement-stage-tracker.md`。**核实**:R037 procurement 右栏 ghosted = `selectSupplier` 的 `slide-up` 入场动画被 headless 抓中途,**非 bug**(settle 后正常)。**改**:buildBriefing 的 Communication Progress 由竖排圆点列表 → 连接式阶段追踪器(rail+绿勾 done/蓝脉冲 active「In progress — Layla is on it」/空心 pending),数据驱动 d.stages,19 家通用。
 - **闸门**:console 零错 · Ezz/Guangzhou 两态截图正确 + 切换重渲正常 · 仅 procurement 无回归 · 3/3 KEEP。已 cp index.html + push。
