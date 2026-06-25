@@ -148,6 +148,12 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 044 · 🟦 Standard · Procurement 决策横幅(§3-G/§4)· 自主模式
+- 2026-06-26 · 见 `reports/round-044-procurement-decision-banner.md`。buildBriefing KPI 行下加「Layla's recommendation」横幅:风险派生判语(≥85 Strong/≥80 Solid 绿/<80 Workable amber)+「Approve & request PO」→ procApprove 翻绿「✓ Approved · 备 PO」+toast。补 procurement「看完无决策/下一步」缺口。verdict 由 d.risk 算,诚实。
+- **闸门**:console 零错 · Ezz 默认 + approve 翻态 两截图正确 · 仅 procurement 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **★ 收敛**:大件全清(全 5 视图+地图 viz/交互 + 各视图决策点)。余皆细件:决策卡抽组件(decApprove/negDecide/procApprove 归一)/ flag emoji。**下轮起趋向收敛,若只剩细件将发 digest + 视情况降 cadence。**
+- **next**:决策卡抽组件 / flag emoji / 或收敛 digest。1min cron 自主续跑。
+
 ### Round 043 · 🟦 Standard · Map 键盘飞行导航(游戏感)· 自主模式
 - 2026-06-26 · 见 `reports/round-043-map-keyboard-nav.md`。map 激活时 ←/→/↑/↓ 在 9 节点循环选中(落点=描线+ping+trace 卡);Enter 进 workspace;Esc 复位;mapNavIdx 在 mapSelect 同步(点击后续飞)。守卫:仅 map active、忽略输入/弹窗。header 加 ←→ kbd 提示。
 - **闸门**:console 零错 · 模拟 ArrowRight 选中正确(node-bright/xcmg)+ 截图确认 · 守卫充分 · 仅 map 无回归 · 3/3 KEEP。已 cp index.html + push。

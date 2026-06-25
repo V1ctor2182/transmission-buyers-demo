@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 044](round-044-procurement-decision-banner.md) · 🟦 · Procurement「Layla's recommendation」决策横幅(风险派生判语 + Approve&request PO → 翻绿+toast,补「看→决策」缺口)· console0 · 3/3 KEEP
 - [Round 043](round-043-map-keyboard-nav.md) · 🟦 · Map 键盘飞行导航(←→ 在供应商间飞,落点=描线+ping+trace 卡;Enter 进 workspace;Esc 复位)· console0 · 3/3 KEEP
 - [Round 042](round-042-negotiation-concession-chart.md) · 🟦 · Negotiation 让步轨迹→压价 sparkline(下降折线+绿成交点+mono 价标,看得见 Layla 博弈 §3-D)· console0 · 3/3 KEEP
 - [Round 041](round-041-procurement-stage-tracker.md) · 🟦 · Procurement 通信进度→连接式阶段追踪器(rail+勾+脉冲 active「Layla is on it」)+ 核实 R037 ghosted 为入场动画非bug · console0 · 3/3 KEEP

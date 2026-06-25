@@ -254,6 +254,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text1);disp
 .bf-section-title{font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .bf-section-title::before{content:'';display:block;width:3px;height:12px;background:var(--accent);border-radius:2px}
 .bf-why{font-size:13px;color:var(--text2);line-height:1.6;padding:10px 12px;background:var(--bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0}
+.bf-rec{display:flex;align-items:center;gap:12px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:14px;box-shadow:var(--shadow)}
+.bf-rec-ava{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#1B5EFF,#0EA5E9);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bf-rec-label{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px}
+.bf-rec-text{font-size:13px;line-height:1.4;color:var(--text1)}
 .step-row{display:flex;align-items:center;gap:8px;padding:4px 0}
 .step-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .step-done{background:var(--green)}.step-active{background:var(--accent)}.step-pending{background:#E2E8F0}
@@ -3052,6 +3056,14 @@ function selectSupplier(id, cat){
   rp.className='slide-up';
   rp.innerHTML = buildBriefing(data);
 }
+function procApprove(btn,name){
+  const card=btn.closest('.bf-rec');
+  if(card){
+    card.style.borderLeftColor='var(--green)';
+    card.innerHTML='<div class="bf-rec-ava" style="background:var(--green)"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 11"/></svg></div><div style="flex:1"><div class="bf-rec-label" style="color:var(--green)">Approved</div><div class="bf-rec-text">Layla is preparing the PO for '+name+' — she\'ll bring it to you to sign.</div></div>';
+  }
+  showToast('Approved — Layla is preparing the PO for '+name);
+}
 function buildBriefing(d){
   const stageColors = ['stage-done','stage-done','stage-active','stage-pending','stage-pending'];
   const stageLabels = ['Initial Contact','Spec Review','Quote Received','Sample/Counter','Final Negotiation'];
@@ -3070,6 +3082,12 @@ function buildBriefing(d){
       +`</div>`;
   }).join('')+`</div>`;
   const expBars = d.exports.map(e=>`<div class="chart-bar-h"><div class="chart-bar-h-label">${e.flag} ${e.country}</div><div class="chart-bar-h-track"><div class="chart-bar-h-fill" style="width:${e.pct}%;background:linear-gradient(90deg,var(--accent),var(--accent2))"><span class="chart-bar-h-val">${e.val}</span></div></div></div>`).join('');
+  const riskNum=parseInt(String(d.risk),10)||0;
+  const recColor = riskNum>=80 ? 'var(--green)' : 'var(--amber)';
+  const recVerdict = riskNum>=85 ? "Strong match — I recommend advancing to a PO."
+    : riskNum>=80 ? "Solid match — cleared to advance."
+    : "Workable — advance once you're comfortable with the caveats below.";
+  const recBanner = `<div class="bf-rec" style="border-left:3px solid ${recColor}"><div class="bf-rec-ava">L</div><div style="flex:1"><div class="bf-rec-label">Layla's recommendation</div><div class="bf-rec-text"><b style="color:${recColor}">${recVerdict}</b></div></div><button class="btn btn-primary btn-sm" style="flex-shrink:0" onclick="procApprove(this,'${d.name}')">Approve &amp; request PO</button></div>`;
   return `
   <div class="bf-header">
     <div class="bf-ava" style="background:${d.color};color:#fff">${d.initial}</div>
@@ -3089,6 +3107,7 @@ function buildBriefing(d){
     <div class="kpi-box"><div class="kpi-label">MOQ</div><div class="kpi-val">${d.moq}</div><div class="kpi-sub">Min. order</div></div>
     <div class="kpi-box"><div class="kpi-label">Risk Score</div><div class="kpi-val" style="color:${d.riskColor}">${d.risk}</div><div class="kpi-sub">${d.riskLabel}</div></div>
   </div>
+  ${recBanner}
   <div style="margin-bottom:14px">
     <div class="bf-section-title">Why This Supplier Was Matched</div>
     <div class="bf-why">${d.why}</div>
