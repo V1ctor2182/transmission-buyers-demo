@@ -3212,6 +3212,12 @@ function positionTour(s){
   pop.style.left=left+'px'; pop.style.top=top+'px'; pop.style.visibility='visible';
 }
 window.addEventListener('resize', ()=>{ if(document.getElementById('tour').style.display==='block') positionTour(TOUR[tourI]); });
+document.addEventListener('keydown', function(e){
+  if(document.getElementById('tour').style.display!=='block') return;
+  if(e.key==='Escape'){ e.preventDefault(); endTour(); }
+  else if(e.key==='ArrowRight'||e.key==='Enter'){ e.preventDefault(); tourNext(); }
+  else if(e.key==='ArrowLeft'){ e.preventDefault(); tourPrev(); }
+});
 // First session visit → auto-launch tour; later visits → brief pulse on the button as a replay nudge
 try{
   if(!sessionStorage.getItem('tmTourSeen')){

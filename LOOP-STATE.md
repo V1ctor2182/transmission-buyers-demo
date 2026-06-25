@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 026 · ⬜ Polish · 回归核验 + tour 键盘导航 · 自主模式
+- 2026-06-25 · 见 `reports/round-026-tour-keyboard.md`。先全交互自检 39/39 + 0 uncaught(基线干净);再加 tour 键盘导航(Esc 关 / ← → 步进,仅 tour 开时生效,纯附加)。
+- **闸门**:按键模拟 step1→3→2→Esc 关闭 + 关闭后 no-op · 0 uncaught · 3/3 KEEP。已 commit/push → 站点更新。
+- **next**:demo 仍收敛态;无明显高价值项即回 1800s 低频心跳。
+
 ### Round 025 · 🟦 · logo 改用矢量 SVG · 自主模式
 - 2026-06-25 · 见 `reports/round-025-vector-svg-logo.md`。用户提供的 SVG 源尾部有 base64 垃圾(XML error);截断生成干净 `logo/transmission-tm-icon.svg` + `-full-lockup.svg`;HTML 侧栏 brand + favicon 改指 tm-icon.svg(矢量,任意 DPI 清晰)。原 logo-mark.png 不再引用。
 - **闸门**:headless 无 stderr · 矢量渲染无 XML error · 裁图确认清晰 · 3/3 KEEP。
