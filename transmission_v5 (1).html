@@ -117,7 +117,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text1);disp
 #view-dashboard{background-image:radial-gradient(circle, rgba(27,94,255,.05) 1px, transparent 1.4px);background-size:24px 24px;background-position:-1px -1px}
 .pipe-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 18px 16px;box-shadow:var(--shadow);margin-bottom:20px}
 .pipe-row{display:flex;align-items:stretch;gap:6px;margin-top:12px}
-.pipe-seg{background:var(--accent-light);border:1px solid rgba(27,94,255,.14);border-radius:9px;padding:10px 13px;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.pipe-seg{background:var(--accent-light);border:1px solid rgba(27,94,255,.14);border-radius:9px;padding:10px 13px;display:flex;flex-direction:column;justify-content:center;min-width:0;cursor:pointer;transition:box-shadow .15s,transform .15s}
+.pipe-seg:hover{box-shadow:0 2px 10px rgba(27,94,255,.14);transform:translateY(-1px)}
 .pipe-seg .pv{font-size:20px;font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--accent);line-height:1}
 .pipe-seg .pl{font-size:10.5px;color:var(--text2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pipe-seg.pipe-win{background:var(--green-light);border-color:rgba(16,185,129,.2)}
@@ -926,13 +927,13 @@ textarea.form-input{resize:vertical;min-height:80px}
     <div class="pipe-card">
       <div class="section-title" style="margin-bottom:0">Sourcing pipeline <span style="font-size:11px;font-weight:500;color:var(--text3);margin-left:6px">Layla is moving suppliers down the funnel — across 4 active projects</span></div>
       <div class="pipe-row">
-        <div class="pipe-seg" style="flex:1.7"><div class="pv">24</div><div class="pl">In dialogue</div></div>
+        <div class="pipe-seg" style="flex:1.7" onclick="showView('sourcing')" title="View sourcing"><div class="pv">24</div><div class="pl">In dialogue</div></div>
         <div class="pipe-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-        <div class="pipe-seg" style="flex:1.4"><div class="pv">9</div><div class="pl">Shortlisted</div></div>
+        <div class="pipe-seg" style="flex:1.4" onclick="showView('sourcing')" title="View sourcing"><div class="pv">9</div><div class="pl">Shortlisted</div></div>
         <div class="pipe-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-        <div class="pipe-seg" style="flex:1.15"><div class="pv">4</div><div class="pl">Negotiating</div></div>
+        <div class="pipe-seg" style="flex:1.15" onclick="showView('negotiation')" title="View negotiations"><div class="pv">4</div><div class="pl">Negotiating</div></div>
         <div class="pipe-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-        <div class="pipe-seg pipe-win" style="flex:1"><div class="pv">2</div><div class="pl">Ready to award</div></div>
+        <div class="pipe-seg pipe-win" style="flex:1" onclick="showView('procurement')" title="View projects ready to award"><div class="pv">2</div><div class="pl">Ready to award</div></div>
       </div>
     </div>
 
