@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 049 · 🟦 Standard · Procurement 树 match score 徽章 · 自主模式
+- 2026-06-26 · 见 `reports/round-049-tree-match-scores.md`。procurement 项目树 sup-mini-row 原只名+价,无 score。`decorateTreeScores()` 数据驱动(行 id→SUPPLIERS[id].risk)注入 mono 评分徽章,语义色(≥85 绿/≥78 蓝/amber),showView 时调用幂等。钢材 Ezz88/Baosteel91/SAIL74 即时排序。
+- **闸门**:console 零错 · ROWS19/SCORED17(2 无数据优雅跳过)· EZZ=88 · 幂等 · 仅 procurement 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:余皆细件(2 树供应商补数据 / 反向联动 / 决策卡抽组件 / flag emoji)。1min cron 自主续跑。
+
 ### Round 048 · ⬜ Polish · 地图雷达扫描线 · 自主模式
 - 2026-06-26 · 见 `reports/round-048-radar-scan.md`。两深色地图(Egypt 项目图 + Sourcing Map)各加 `.radar-scan` 雷达扫描线(cyan 渐变横线 6s 慢扫,两端 fade,reduced-motion 关)。借鉴 factorygate scanLine,克制不 slop。纯装饰氛围非假进度,pointer-events:none。
 - **闸门**:console 零错 · radar 计数=2 · 截图见扫线 + 布局未变 · 无回归 · 3/3 KEEP。已 cp index.html + push。

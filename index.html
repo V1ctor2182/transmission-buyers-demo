@@ -2708,6 +2708,7 @@ function showView(v){
   document.getElementById('topbar-left').textContent = TITLES[v]||v;
   const as=document.getElementById('agent-status'); if(as && AGENT_STATUS[v]) as.innerHTML = AGENT_STATUS[v];
   if(v==='procurement' && !currentSupplier) selectSupplier('ezz','steel');
+  if(v==='procurement') decorateTreeScores();
   if(v==='negotiation') renderNegDecision(curNeg);
   if(v==='map') renderMap();
 }
@@ -3155,6 +3156,20 @@ function procApprove(btn,name){
     card.innerHTML='<div class="bf-rec-ava" style="background:var(--green)"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 11"/></svg></div><div style="flex:1"><div class="bf-rec-label" style="color:var(--green)">Approved</div><div class="bf-rec-text">Layla is preparing the PO for '+name+' — she\'ll bring it to you to sign.</div></div>';
   }
   showToast('Approved — Layla is preparing the PO for '+name);
+}
+// Show Layla's score on each supplier row in the project tree (data-driven, idempotent)
+function decorateTreeScores(){
+  document.querySelectorAll('.sup-mini-row').forEach(function(row){
+    if(row.querySelector('.sup-mini-score')) return;
+    var id=row.id.replace('smr-',''); var s=SUPPLIERS[id]; if(!s) return;
+    var n=parseInt(String(s.risk),10)||0;
+    var col=n>=85?'var(--green)':n>=78?'var(--accent)':'var(--amber)';
+    var bg=n>=85?'var(--green-light)':n>=78?'var(--accent-light)':'rgba(245,158,11,.12)';
+    var b=document.createElement('span'); b.className='sup-mini-score';
+    b.style.cssText="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;line-height:1;color:"+col+";background:"+bg+";padding:3px 5px;border-radius:5px;flex-shrink:0;margin-left:8px";
+    b.title='Layla\'s match score'; b.textContent=n;
+    row.appendChild(b);
+  });
 }
 function buildBriefing(d){
   const stageColors = ['stage-done','stage-done','stage-active','stage-pending','stage-pending'];
