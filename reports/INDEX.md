@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 029](round-029-pipeline-funnel.md) · 🟦 · Sourcing pipeline 漏斗可视化(24→9→4→2,锥形+chevron)· 3/3 KEEP
 - [Round 028](round-028-dashboard-viz.md) · 🟦 · 首页可视化+减字+科技感(KPI mini-viz sparkline/bars/ticks/countdown + 点阵网格 + greeting 砍字)· 3/3 KEEP
 - [Round 027](round-027-laptop-width-audit.md) · ✅ 审计 · 1280/1366 笔记本宽度核验稳健 · 无需改动(谨慎,不凑改动)
 - [Round 026](round-026-tour-keyboard.md) · ⬜ Polish · 回归核验 39/39 + tour 键盘导航(Esc/←/→,附加无回归)· 3/3 KEEP

@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 029 · 🟦 · Sourcing pipeline 漏斗可视化(第二步)· 自主模式
+- 2026-06-25 · 见 `reports/round-029-pipeline-funnel.md`。dashboard 加 24→9→4→2 漏斗卡(锥形+chevron+green-win)。项目进度区已够视觉,不强改。
+- **闸门**:headless 无 stderr · 静态 · 3/3 KEEP。已 cp index.html + push。
+- **next**:总览趋势图 / 右栏 Replies 精简;视情况收敛。
+
 ### Round 028 · 🟦 · 首页可视化+减字+科技感(第一步)· 自主模式
 - 2026-06-25 · 见 `reports/round-028-dashboard-viz.md`。新方向(参考 factorygate;路线=亮色+加科技感/可视化)。KPI 行加 mini-viz(sparkline/bars/ticks/countdown)+ delta + rail;greeting 砍字;dashboard 点阵网格背景。
 - **闸门**:headless 无 stderr · viz 渲染清晰 · 纯静态 · 3/3 KEEP。已 cp index.html + push。
