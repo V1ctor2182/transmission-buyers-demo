@@ -2415,7 +2415,7 @@ textarea.form-input{resize:vertical;min-height:80px}
               </div>
               <div style="display:flex;align-items:center;gap:8px">
                 <div id="dd-rep-score-badge" style="padding:6px 14px;border-radius:20px;background:var(--green-light);font-weight:800;font-size:16px;color:var(--green);font-family:'JetBrains Mono',monospace">88 / 100</div>
-                <button class="btn btn-secondary btn-sm">↓ Export PDF</button>
+                <button class="btn btn-secondary btn-sm" onclick="showToast('Exporting due-diligence report — Layla is compiling the PDF…')">↓ Export PDF</button>
               </div>
             </div>
             <div class="card-body">
@@ -2614,7 +2614,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary" onclick="closeBg()">Close</button>
-      <button class="btn btn-primary">↓ Export Report</button>
+      <button class="btn btn-primary" onclick="showToast('Exporting background check — Layla is compiling the PDF…')">↓ Export Report</button>
     </div>
   </div>
 </div>
@@ -2636,7 +2636,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary" onclick="document.getElementById('cmp-modal').classList.remove('show')">Close</button>
-      <button class="btn btn-primary">↓ Export PDF Report</button>
+      <button class="btn btn-primary" onclick="showToast('Exporting comparison report — Layla is compiling the PDF…')">↓ Export PDF Report</button>
     </div>
   </div>
 </div>

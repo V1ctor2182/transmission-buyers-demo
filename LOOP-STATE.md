@@ -155,6 +155,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 071 · 🟦 Standard · 3 个死 Export 按钮 → toast 反馈 · 自主模式
+- 2026-06-26 · 见 `reports/round-071-dead-export-buttons.md`。diligence/bg/compare 三个 Export 按钮原无 onclick(死路)→ 各加 contextual toast「Exporting <X> — Layla is compiling the PDF…」。扫描确认无其它简单文本死按钮。
+- **闸门**:console 零错 · diligence Export 真点击 toast VIS=1 · 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 070 · 🟦 Standard · Negotiation「Adjust floor」→ 真实在场动作 · 自主模式
 - 2026-06-26 · 见 `reports/round-070-adjust-floor.md`。negDecide('floor') 由弱 toast 重定向 → Layla 发线程「守住 $X 底线」消息 + 决策面板/agent-bar 状态 + toast,与 Accept/Push 一致(§4 去死路)。审计副产:sourcing report/match cards/入场 logo 均优秀。
 - **闸门**:console 零错 · out-msgs 2→3 + status「holding firm at $37」+ 截图(demo 目录)· 仅 neg floor 无回归 · 3/3 KEEP。已 cp index.html + push。
