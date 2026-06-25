@@ -2983,7 +2983,10 @@ function negDecide(action){
     setTimeout(()=>{ if(typ&&typ.parentNode)typ.parentNode.removeChild(typ); negAppendMsg('in',d.ava,d.sup,d.push+' isn\'t workable on our margin, but I can hold <strong>'+d.counter+'</strong> if you confirm within 48h — that\'s genuinely final.'); setNegStatus('Counter received: '+d.counter+' — awaiting your call'); negPushLadder(d); }, 1200);
     showToast('Layla is pushing '+d.firm+' for a lower price');
   } else {
-    showToast('Set your floor in the project brief — Layla will renegotiate to it');
+    negAppendMsg('out','L','Layla · for you','Understood — I\'ll hold firm at <strong>'+d.push+'</strong> as your floor and won\'t settle higher. I\'ll flag the moment they meet it or walk away.');
+    setNegStatus('Layla is holding firm at '+d.push+' — your floor');
+    const a=document.getElementById('agent-status'); if(a) a.innerHTML='Holding firm at <b>'+d.push+'</b> with '+d.firm+' — your floor';
+    showToast('Floor set — Layla will hold firm at '+d.push);
   }
 }
 function decApprove(el,msg){

@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 070](round-070-adjust-floor.md) · 🟦 · Negotiation「Adjust floor」弱 toast→真实在场动作(Layla 守底线消息+状态,§4 去死路)· console0 · 3/3 KEEP
 - [Round 069](round-069-entry-audit.md) · ✅ 审计 · 入场(splash skip/timing/logo + login CTA)全核验稳健 + 方法学:含 logo 的 UI 须从 demo 目录截图(/tmp 破相对路径)· 无改动
 - [Round 068](round-068-diligence-loader-speedup.md) · 🟦 · runDueDiligence loader 提速 20.3→9.1s(R059 漏网最慢流程,bars 仍正常填充)· console0 · 3/3 KEEP
 - [Round 067](round-067-momentum-yaxis.md) · 🟦 · Savings momentum 加 Y 轴刻度标($843K/$420K/$0,网格线有意义、量级可读)· console0 · 3/3 KEEP

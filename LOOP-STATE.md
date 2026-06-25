@@ -155,6 +155,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 070 · 🟦 Standard · Negotiation「Adjust floor」→ 真实在场动作 · 自主模式
+- 2026-06-26 · 见 `reports/round-070-adjust-floor.md`。negDecide('floor') 由弱 toast 重定向 → Layla 发线程「守住 $X 底线」消息 + 决策面板/agent-bar 状态 + toast,与 Accept/Push 一致(§4 去死路)。审计副产:sourcing report/match cards/入场 logo 均优秀。
+- **闸门**:console 零错 · out-msgs 2→3 + status「holding firm at $37」+ 截图(demo 目录)· 仅 neg floor 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 069 · ✅ 审计 · 入场体验全核验 + 截图方法学修正 · 自主模式
 - 2026-06-26 · 见 `reports/round-069-entry-audit.md`。splash(skip 真生效/2.3s/logo 从 demo 目录渲染 OK)+ login(R058 chip 真 logo 非破图 / Sign in+demo user+Enter 全 → doLogin→afterIntro)+ loaders 全提速 —— 入场稳健无需改动。**方法学:含 logo 的 UI 须从 demo 目录截图(见顶部 ⚠️)。**
 - **闸门**:逐项肉眼核验 · 纯审计无改动 · 3/3 KEEP。
