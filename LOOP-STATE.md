@@ -151,6 +151,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 061 · ✅ 审计 · 笔记本宽度响应式核验 · 自主模式
+- 2026-06-26 · 见 `reports/round-061-responsive-audit.md`。1280/1120 逐视图核验 R036-060 全部新增(Egypt map+list 2-col / Replies|Deadlines / 决策横幅 / 阶段追踪 / score 徽章 / 3 列谈判)**无破版无回归**。demo 适配常见笔记本。纯审计无改动。
+- **收敛观察**:本轮无 UI 变更(响应式验证)。剩余仅决策卡抽组件(纯重构无视觉)。demo 高质量稳健态。
+
 ### Round 060 · ✅审计+⬜ · Compare 模态核验 + persona 统一 · 自主模式
 - 2026-06-26 · 见 `reports/round-060-compare-audit-persona.md`。① 核查 openCompare = 强组件(score 双条 + 逐维 winner ✓ 表 + Layla 配比建议 60/40 省 $24.8K),无缺陷。② compare 推荐框「Specialist recommendation」→「Layla's recommendation」;全量残留 persona sweep=0;现「Layla's recommendation」3 处跨视图一致(compare/proc/diligence)。
 - **闸门**:console 零错 · 截图确认 Layla's recommendation + 对比表完好 · 残留=0 · 纯文案无回归 · 3/3 KEEP。已 cp index.html + push。

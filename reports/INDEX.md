@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 061](round-061-responsive-audit.md) · ✅ 审计 · 1280/1120 笔记本宽度核验(dashboard/neg/proc 全 2-col 组件无破版)· 无改动 · 稳健
 - [Round 060](round-060-compare-audit-persona.md) · ✅+⬜ · Compare 模态核验(score 条+逐维 winner+配比建议=强)+ persona「Specialist→Layla's recommendation」统一(残留 sweep=0)· console0 · 3/3 KEEP
 - [Round 059](round-059-loader-speedup.md) · 🟦 · sourcing/bg-check loader 提速(MATCH 15.2→7.6s / BG 12.1→6.1s,保留逐步实质产出,去拖时间感)· console0 · 3/3 KEEP
 - [Round 058](round-058-login-logo-chip.md) · ⬜ · 登录页 logo 加白 chip(深色卡上由发淡→清晰,配侧栏 R001,开场对比修复)· console0 · 3/3 KEEP
