@@ -151,6 +151,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 067 · 🟦 Standard · Savings momentum 加 Y 轴刻度标 · 自主模式
+- 2026-06-26 · 见 `reports/round-067-momentum-yaxis.md`。momentum 图网格线原无数值标 → 加左侧 Y 轴刻度 $843K/$420K/$0(.mom-yl),网格有意义、量级可读。折线升势使左侧上半区空,标不压线(截图实证)。
+- **闸门**:console 零错 · 截图确认不压线不 cramped · 仅 3 静态 text dashboard-only 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 066 · ✅ 验证 · 扩展全交互回归 0 错 · 自主模式
 - 2026-06-26 · 见 `reports/round-066-regression-sweep.md`。扩展 smoke 跑 6 视图 + R055-065 全新增路径(goNeg/all-caught-up/push+typing/procApprove+tree scores/top-pick/verdict/map+键盘/egTip+compare+bg+tour)= **ERRORS=0**。30 轮编辑零回归。harness `reports/smoke-test.html` 更新。
 - **闸门**:ERRORS=0(纯验证无 UI 变更)· 3/3 KEEP。demo 高质量稳健态。
