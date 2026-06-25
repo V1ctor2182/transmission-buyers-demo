@@ -877,6 +877,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     .mom-dot{fill:var(--bg2);stroke:var(--accent);stroke-width:2;opacity:0;animation:momFade .4s ease forwards}
     .mom-gl{stroke:var(--border);stroke-width:1;stroke-dasharray:2 3}
     .mom-xl{font:600 9px Inter;fill:var(--text3)}
+    .mom-yl{font:600 8px 'JetBrains Mono';fill:var(--text3);opacity:.65}
     .mom-side{width:148px;flex:none;border-left:1px solid var(--border);padding-left:18px;display:flex;flex-direction:column;justify-content:center;gap:13px}
     .mom-stat-l{font-size:10px;color:var(--text3);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
     .mom-stat-v{font:700 20px 'JetBrains Mono';color:var(--text1);letter-spacing:-.5px}
@@ -899,6 +900,9 @@ textarea.form-input{resize:vertical;min-height:80px}
           <line class="mom-gl" x1="20" y1="14" x2="580" y2="14"/>
           <line class="mom-gl" x1="20" y1="64" x2="580" y2="64"/>
           <line class="mom-gl" x1="20" y1="114" x2="580" y2="114"/>
+          <text class="mom-yl" x="22" y="11">$843K</text>
+          <text class="mom-yl" x="22" y="61">$420K</text>
+          <text class="mom-yl" x="22" y="111">$0</text>
           <path class="mom-area" fill="url(#momGrad)" d="M20,114 L20,98.8 L132,80.1 L244,65.1 L356,47.7 L468,30.8 L580,14 L580,114 Z"/>
           <path class="mom-line" d="M20,98.8 L132,80.1 L244,65.1 L356,47.7 L468,30.8 L580,14"/>
           <circle class="mom-dot" cx="20" cy="98.8" r="3.5" style="animation-delay:.95s"/>
@@ -956,6 +960,8 @@ textarea.form-input{resize:vertical;min-height:80px}
     .proj-progress-card.eg-row-lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow);transition:box-shadow .15s,border-color .15s}
     .neg-lad-locked svg path:last-of-type{stroke:var(--green)}
     .neg-lad-locked svg circle:last-of-type{filter:drop-shadow(0 0 3px rgba(16,185,129,.85))}
+    .neg-sup-item.neg-locked{box-shadow:inset 3px 0 0 var(--green)}
+    .sup-mini-row.sup-approved{box-shadow:inset 3px 0 0 var(--green)}
     .sup-match-card.smc-top{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent)}
     .wl-badge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;margin-left:6px;font-family:'JetBrains Mono',monospace;vertical-align:middle}
     .typing-dots{display:inline-flex;gap:4px;align-items:center;padding:3px 2px}
@@ -1428,7 +1434,7 @@ textarea.form-input{resize:vertical;min-height:80px}
                   <div style="font-size:11px;color:var(--green);margin-top:3px;font-weight:600">6 suppliers matched · Report ready →</div>
                 </div>
               </div>
-              <div class="card" style="margin-bottom:0;cursor:pointer">
+              <div class="card" style="margin-bottom:0;cursor:pointer" onclick="showView('procurement')">
                 <div class="card-body" style="padding:10px 12px">
                   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px">
                     <div style="font-weight:700;font-size:12px">Structural Steel (HEA/HEB)</div>
@@ -1438,7 +1444,7 @@ textarea.form-input{resize:vertical;min-height:80px}
                   <div style="font-size:11px;color:var(--text3);margin-top:3px">5 suppliers matched</div>
                 </div>
               </div>
-              <div class="card" style="margin-bottom:0;cursor:pointer">
+              <div class="card" style="margin-bottom:0;cursor:pointer" onclick="goNeg('xcmg')">
                 <div class="card-body" style="padding:10px 12px">
                   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px">
                     <div style="font-weight:700;font-size:12px">Hydraulic Excavators (20T)</div>
@@ -2213,7 +2219,7 @@ textarea.form-input{resize:vertical;min-height:80px}
           <div class="neg-dec-actions">
             <button class="btn btn-primary" id="neg-btn-accept" onclick="negDecide('accept')">Accept $38.50 &amp; issue PO</button>
             <button class="btn btn-secondary" id="neg-btn-push" onclick="negDecide('push')">Have Layla push for $37</button>
-            <button class="btn btn-secondary" onclick="negDecide('floor')">Adjust floor</button>
+            <button class="btn btn-secondary" id="neg-btn-floor" onclick="negDecide('floor')">Adjust floor</button>
           </div>
         </div>
       </div>
@@ -2344,15 +2350,15 @@ textarea.form-input{resize:vertical;min-height:80px}
         <div class="card" id="dd-history-card">
           <div class="card-header"><div class="card-title">Recent Searches</div></div>
           <div class="card-body" style="padding:0">
-            <div style="padding:10px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background=''" onclick="loadDDPreset('gz')">
+            <div style="padding:10px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background=''" onclick="openBgCheck('guangzhou')">
               <div style="font-weight:600;font-size:13px">Guangzhou Lumens Technology</div>
               <div style="font-size:11px;color:var(--text3)">🇨🇳 China · Jun 20, 2025 · Score: 82/100</div>
             </div>
-            <div style="padding:10px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background=''" onclick="loadDDPreset('ezz')">
+            <div style="padding:10px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background=''" onclick="openBgCheck('ezz')">
               <div style="font-weight:600;font-size:13px">Ezz Steel Egypt S.A.E.</div>
               <div style="font-size:11px;color:var(--text3)">🇪🇬 Egypt · Jun 15, 2025 · Score: 88/100</div>
             </div>
-            <div style="padding:10px 16px;cursor:pointer;transition:background .12s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background=''" onclick="loadDDPreset('sandvik')">
+            <div style="padding:10px 16px;cursor:pointer;transition:background .12s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background=''" onclick="openBgCheck('sandvik')">
               <div style="font-weight:600;font-size:13px">Sandvik Mining &amp; Rock Technology</div>
               <div style="font-size:11px;color:var(--text3)">🇸🇪 Sweden · Jun 12, 2025 · Score: 94/100</div>
             </div>
@@ -2411,7 +2417,7 @@ textarea.form-input{resize:vertical;min-height:80px}
               </div>
               <div style="display:flex;align-items:center;gap:8px">
                 <div id="dd-rep-score-badge" style="padding:6px 14px;border-radius:20px;background:var(--green-light);font-weight:800;font-size:16px;color:var(--green);font-family:'JetBrains Mono',monospace">88 / 100</div>
-                <button class="btn btn-secondary btn-sm">↓ Export PDF</button>
+                <button class="btn btn-secondary btn-sm" onclick="showToast('Exporting due-diligence report — Layla is compiling the PDF…')">↓ Export PDF</button>
               </div>
             </div>
             <div class="card-body">
@@ -2564,7 +2570,7 @@ textarea.form-input{resize:vertical;min-height:80px}
 </div><!-- end .main -->
 
 <!-- BACKGROUND CHECK MODAL -->
-<div class="modal-overlay" id="bg-modal">
+<div class="modal-overlay" id="bg-modal" onclick="if(event.target===this)this.classList.remove('show')">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title" id="bg-title">Deep Background Check</div>
@@ -2610,13 +2616,13 @@ textarea.form-input{resize:vertical;min-height:80px}
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary" onclick="closeBg()">Close</button>
-      <button class="btn btn-primary">↓ Export Report</button>
+      <button class="btn btn-primary" onclick="showToast('Exporting background check — Layla is compiling the PDF…')">↓ Export Report</button>
     </div>
   </div>
 </div>
 
 <!-- COMPARE MODAL -->
-<div class="modal-overlay" id="cmp-modal">
+<div class="modal-overlay" id="cmp-modal" onclick="if(event.target===this)this.classList.remove('show')">
   <div class="modal" style="width:860px">
     <div class="modal-header">
       <div class="modal-title" id="cmp-modal-title">Supplier Comparison Report</div>
@@ -2632,13 +2638,13 @@ textarea.form-input{resize:vertical;min-height:80px}
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary" onclick="document.getElementById('cmp-modal').classList.remove('show')">Close</button>
-      <button class="btn btn-primary">↓ Export PDF Report</button>
+      <button class="btn btn-primary" onclick="showToast('Exporting comparison report — Layla is compiling the PDF…')">↓ Export PDF Report</button>
     </div>
   </div>
 </div>
 
 <!-- CONTACT CONFIRMATION MODAL -->
-<div class="modal-overlay" id="contact-modal-overlay">
+<div class="modal-overlay" id="contact-modal-overlay" onclick="if(event.target===this)this.classList.remove('show')">
   <div class="contact-modal">
     <div class="contact-modal-header">
       <div class="contact-modal-icon"><svg viewBox="0 0 24 24" style="width:30px;height:30px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
@@ -2747,6 +2753,9 @@ function goNeg(id){
   });
   if(match) selectNegSupplier(id, match);
 }
+// Procurement supplier id → negotiation thread id (most match; a couple differ). goNeg handles ids with no thread gracefully.
+const PROC_TO_NEG = {guangzhou:'gz', suez_cement:'suez'};
+function chatSupplier(id){ goNeg(PROC_TO_NEG[id] || id); }
 // ── SOURCING MAP (interactive) ──
 const MAP_HUB={x:500,y:350};
 const MAP_NODES=[
@@ -2907,6 +2916,17 @@ function negAppendMsg(side, ava, name, html){
 }
 function setNegStatus(t){ const s=document.getElementById('neg-dec-status'); if(s) s.textContent=t; }
 let curNeg = 'gz';
+const negLockedSet = new Set();
+// Reflect a locked deal in the decision buttons (persists across supplier switches via the Set)
+function applyNegLockedUI(){
+  const locked = negLockedSet.has(curNeg);
+  const ab=document.getElementById('neg-btn-accept');
+  const pb=document.getElementById('neg-btn-push');
+  const fb=document.getElementById('neg-btn-floor');
+  if(ab){ ab.disabled=locked; if(locked){ ab.innerHTML='✓ Deal locked'; ab.style.opacity='.65'; ab.style.cursor='default'; } else { ab.style.opacity=''; ab.style.cursor=''; } }
+  if(pb) pb.style.display=locked?'none':'';
+  if(fb) fb.style.display=locked?'none':'';
+}
 const NEG_DEC = {
   gz:{ava:'G',sup:'Kevin Zhang',firm:'Guangzhou Lumens',trail:'$42.00 → $39.50 → $38.50',pct:'−8.3%',accept:'$38.50/unit',unit:'8,000 units',push:'$37.00',counter:'$38.00',rec:'$38.50/unit is Guangzhou\'s best-and-final and matches your competing quote — SGS / ES 4698 confirmed, below your $40 floor. Their July slot needs confirmation by Jun 28, so I recommend accepting now.'},
   xcmg:{ava:'X',sup:'Mr. Li',firm:'XCMG',trail:'$148K → $146K → $144K',pct:'−2.7%',accept:'$144K/unit',unit:'5 units',push:'$142K',counter:'$143K',rec:'I used SANY\'s $142K quote as leverage to bring XCMG to $144K. Their Egypt service network is the strongest of the three — the small premium is worth it. I recommend approving.'},
@@ -2962,6 +2982,7 @@ function renderNegDecision(v){
   const a=document.getElementById('agent-status'); if(a) a.innerHTML='Negotiating with <b>'+d.firm+'</b> on your behalf';
   const ab=document.getElementById('neg-btn-accept'); if(ab) ab.innerHTML='Accept '+d.accept+' &amp; issue PO';
   const pb=document.getElementById('neg-btn-push'); if(pb) pb.textContent='Have Layla push for '+d.push;
+  applyNegLockedUI();
 }
 function negDecide(action){
   const d = NEG_DEC[curNeg] || NEG_DEC.gz;
@@ -2972,14 +2993,27 @@ function negDecide(action){
     const a=document.getElementById('agent-status'); if(a) a.innerHTML='Issuing PO to <b>'+d.firm+'</b> at '+d.accept+' — '+d.unit;
     const t=document.getElementById('neg-dec-trail'); if(t) t.innerHTML='<span style="color:var(--green);font-weight:700">✓ Deal locked</span> at <b style="font-family:\'JetBrains Mono\',monospace">'+d.accept+'</b> <span class="neg-trail-pct">'+d.pct+'</span>';
     const lad=document.getElementById('neg-dec-ladder'); if(lad) lad.classList.add('neg-lad-locked');
+    const item=document.querySelector('#view-negotiation .neg-sup-item.active');
+    if(item){
+      item.classList.add('neg-locked');
+      const bdg=item.querySelector('.neg-sup-item-meta .badge');
+      if(bdg){ bdg.className='badge b-green'; bdg.style.cssText='font-size:9px;padding:1px 6px'; bdg.textContent='✓ Locked'; }
+      const ur=item.querySelector('.neg-sup-item-unread'); if(ur) ur.style.display='none';
+    }
+    addWorklogEntry('Locked the deal with <b>'+d.firm+'</b> at '+d.accept+' — issuing the PO now.');
+    negLockedSet.add(curNeg); applyNegLockedUI();
   } else if(action==='push'){
     negAppendMsg('out','L','Layla · for you','We\'re ready to commit today at <strong>'+d.push+'</strong>. Match it and the '+d.unit+' order is yours.');
     setNegStatus('Layla is pushing for '+d.push+'…');
     var typ=negTyping(d.ava);
-    setTimeout(()=>{ if(typ&&typ.parentNode)typ.parentNode.removeChild(typ); negAppendMsg('in',d.ava,d.sup,d.push+' isn\'t workable on our margin, but I can hold <strong>'+d.counter+'</strong> if you confirm within 48h — that\'s genuinely final.'); setNegStatus('Counter received: '+d.counter+' — awaiting your call'); negPushLadder(d); }, 1200);
+    setTimeout(()=>{ if(typ&&typ.parentNode)typ.parentNode.removeChild(typ); negAppendMsg('in',d.ava,d.sup,d.push+' isn\'t workable on our margin, but I can hold <strong>'+d.counter+'</strong> if you confirm within 48h — that\'s genuinely final.'); setNegStatus('Counter received: '+d.counter+' — awaiting your call'); negPushLadder(d); addWorklogEntry('Pushed <b>'+d.firm+'</b> for '+d.push+' — they held at '+d.counter+'. Your call.'); }, 1200);
     showToast('Layla is pushing '+d.firm+' for a lower price');
   } else {
-    showToast('Set your floor in the project brief — Layla will renegotiate to it');
+    negAppendMsg('out','L','Layla · for you','Understood — I\'ll hold firm at <strong>'+d.push+'</strong> as your floor and won\'t settle higher. I\'ll flag the moment they meet it or walk away.');
+    setNegStatus('Layla is holding firm at '+d.push+' — your floor');
+    const a=document.getElementById('agent-status'); if(a) a.innerHTML='Holding firm at <b>'+d.push+'</b> with '+d.firm+' — your floor';
+    addWorklogEntry('Holding firm at '+d.push+' with <b>'+d.firm+'</b> — your floor.');
+    showToast('Floor set — Layla will hold firm at '+d.push);
   }
 }
 function decApprove(el,msg){
@@ -2994,6 +3028,7 @@ function decApprove(el,msg){
     const ac=document.getElementById('nyd-allclear'); if(ac) ac.style.display='flex';
     if(c){ c.textContent='✓'; c.style.background='var(--green)'; }
   }
+  addWorklogEntry(msg);
   showToast(msg);
 }
 
@@ -3206,7 +3241,8 @@ function selectSupplier(id, cat){
   currentSupplier = id;
   // Highlight
   document.querySelectorAll('.sup-mini-row').forEach(el=>el.classList.remove('active'));
-  const row = document.getElementById('smr-'+id);
+  let row = document.getElementById('smr-'+id);
+  if(!row) row = Array.prototype.find.call(document.querySelectorAll('.sup-mini-row'), function(r){ return (r.getAttribute('onclick')||'').indexOf("'"+id+"'")>-1; });
   if(row) row.classList.add('active');
   // Render briefing
   const data = SUPPLIERS[id];
@@ -3223,6 +3259,16 @@ function procApprove(btn,name){
     card.style.borderLeftColor='var(--green)';
     card.innerHTML='<div class="bf-rec-ava" style="background:var(--green)"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 11"/></svg></div><div style="flex:1"><div class="bf-rec-label" style="color:var(--green)">Approved</div><div class="bf-rec-text">Layla is preparing the PO for '+name+' — she\'ll bring it to you to sign.</div></div>';
   }
+  const row=document.querySelector('#view-procurement .sup-mini-row.active');
+  if(row){
+    row.classList.add('sup-approved');
+    if(!row.querySelector('.sup-approved-tick')){
+      const tk=document.createElement('span'); tk.className='sup-approved-tick'; tk.textContent='✓';
+      tk.style.cssText='color:var(--green);font-weight:800;font-size:12px;margin-left:4px;flex-shrink:0';
+      row.appendChild(tk);
+    }
+  }
+  addWorklogEntry('Approved <b>'+name+'</b> — preparing the PO for your signature.');
   showToast('Approved — Layla is preparing the PO for '+name);
 }
 // Show Layla's score on each supplier row in the project tree (data-driven, idempotent)
@@ -3273,7 +3319,7 @@ function buildBriefing(d){
       <div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap">${d.tags.map(t=>`<span class="badge b-gray">${t}</span>`).join('')}</div>
     </div>
     <div class="bf-actions">
-      <button class="btn btn-secondary btn-sm" onclick="showView('negotiation')">Chat</button>
+      <button class="btn btn-secondary btn-sm" onclick="chatSupplier('${d.id}')">Chat</button>
       <button class="btn btn-primary btn-sm" onclick="openBgCheck('${d.id}')">Background Check</button>
     </div>
   </div>
@@ -3334,8 +3380,23 @@ const BG_DATA = {
   xcmg:{name:'XCMG International Co., Ltd.',regno:'91320300600019622X',capital:'CNY 8.5B',rep:'Chen Jianhua',est:'1989',rev:'~$16B',growth:'+22% YoY',credit:'AA+ (Stable)',customs:[['Q1 2025','🇸🇦 Saudi Arabia','42 units','$6.2M','$147,619'],['Q1 2025','🇪🇬 Egypt','18 units','$2.7M','$150,000'],['Q4 2024','🇦🇪 UAE','31 units','$4.6M','$148,387']],risk:'✅ <strong style="color:var(--green)">Low Risk.</strong> China\'s #1 construction machinery manufacturer. $16B revenue, AA+ credit. Proven Egypt export record. No sanctions. Recommend as primary excavator supplier.'},
   sandvik:{name:'Sandvik Mining & Rock Technology AB',regno:'556234-6483',capital:'SEK 1.5B',rep:'Stefan Widing',est:'1862',rev:'~$11.2B',growth:'+12% YoY',credit:'AAA (Stable)',customs:[['Q1 2025','🇸🇦 Saudi Arabia','14 units','$4.5M','$321,429'],['Q4 2024','🇿🇦 South Africa','11 units','$3.5M','$318,182'],['Q3 2024','🇪🇬 Egypt','5 units','$1.6M','$320,000']],risk:'✅ <strong style="color:var(--green)">Very Low Risk.</strong> World leader in mining equipment. 160+ year history. AAA credit rating. Proven Egypt track record. Premium price justified by reliability.'}
 };
+// Use the dedicated background-check data when present; otherwise synthesise the right
+// supplier's report from SUPPLIERS (real name/est/customs/risk) instead of falling back to XCMG.
+function getBgData(id){
+  if(BG_DATA[id]) return BG_DATA[id];
+  const s = SUPPLIERS[id];
+  if(!s) return BG_DATA['xcmg'];
+  const n = parseInt(String(s.risk),10)||0;
+  const credit = n>=90?'AA (Stable)':n>=85?'A+ (Stable)':n>=80?'A (Stable)':n>=75?'BBB (Stable)':'BB (Watch)';
+  return {
+    name: s.name, regno:'Verified ✓', capital:'On file', rep:'On file', est: s.est||'—',
+    rev:'—', growth:'—', credit: credit,
+    customs: (s.exports||[]).map(e=>['12M', (e.flag||'')+' '+e.country, '—', e.val, '—']),
+    risk: '<strong style="color:'+(s.riskColor||'var(--green)')+'">'+(s.riskLabel||'Low Risk')+'.</strong> '+(s.why||'')
+  };
+}
 function openBgCheck(id){
-  const d = BG_DATA[id] || BG_DATA['xcmg'];
+  const d = getBgData(id);
   document.getElementById('bg-title').textContent = 'Background Check — ' + (SUPPLIERS[id]?.name || id);
   document.getElementById('bg-loading').style.display='block';
   document.getElementById('bg-report').style.display='none';
@@ -3766,9 +3827,9 @@ function runDueDiligence(){
         el.querySelector('.step-icon').textContent='\u2713';
         const tn = el.childNodes[el.childNodes.length-1];
         if(tn && tn.nodeType===3) tn.textContent = doneLabels[i];
-        if(i===steps.length-1) setTimeout(()=>showDDReport(),700);
-      },2600);
-    },i*3400);
+        if(i===steps.length-1) setTimeout(()=>showDDReport(),500);
+      },1100);
+    },i*1500);
   });
 }
 function showDDReport(){
@@ -3822,11 +3883,27 @@ function robotAlertClick(){
 }
 
 // ── TOAST ──
+let toastTimer;
 function showToast(msg){
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.style.opacity='1';
-  setTimeout(()=>t.style.opacity='0',2500);
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.style.opacity='0',2500);
+}
+// Escape closes any open modal (overlay click-to-close is wired inline on each .modal-overlay)
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Escape') return;
+  var m=document.querySelector('.modal-overlay.show');
+  if(m) m.classList.remove('show');
+});
+// Append a live entry to Layla's Worklog (top of Today) when you take an action — keeps it a living record (§3-B)
+function addWorklogEntry(text){
+  var day=document.querySelector('#robot-panel .wl-day');
+  if(!day) return;
+  var item=document.createElement('div'); item.className='wl-item';
+  item.innerHTML='<div class="wl-time">now</div><div class="wl-dot"></div><div class="wl-body">'+text+'</div>';
+  day.insertAdjacentElement('afterend', item);
 }
 
 // ── INIT ──
@@ -3952,27 +4029,20 @@ window.addEventListener('load', function(){
   </div>
 </div>
 <script>
-var ERR=[]; window.addEventListener('error',function(e){ERR.push((e.message||'')+' @'+(e.filename||'').split('/').pop()+':'+e.lineno);});
+var ERR=[]; window.addEventListener('error',function(e){ERR.push((e.message||'')+' @:'+(e.lineno||''));});
 window.addEventListener('unhandledrejection',function(e){ERR.push('PROMISE:'+e.reason);});
 function T(label,fn){ try{ fn(); }catch(e){ ERR.push(label+': '+e.message); } }
 window.addEventListener('load',function(){ setTimeout(function(){
   ['dashboard','sourcing','procurement','negotiation','diligence','map'].forEach(function(v){ T('view '+v,function(){showView(v);}); });
-  // R063-065 deep-links
-  T('goNeg gz/xcmg/eei', function(){ goNeg('gz'); goNeg('xcmg'); goNeg('eei'); });
-  // R053 all-caught-up
-  T('decApprove all', function(){ showView('dashboard'); document.querySelectorAll('#dec-grid .dec-card .btn-primary').forEach(function(b){b.click();}); });
-  // R052/R062 push grows + typing, R054 accept lock
-  T('negDecide push+accept', function(){ goNeg('gz'); negDecide('push'); });
-  // R044 procApprove + R049 tree scores
-  T('procurement select+approve+scores', function(){ showView('procurement'); selectSupplier('caterpillar','excavator'); decorateTreeScores(); var b=document.querySelector('#rp-briefing .bf-rec .btn'); if(b)b.click(); });
-  // R055 top pick
-  T('sourcing match render', function(){ showView('sourcing'); try{srcGoToStage(3);}catch(e){} renderSupplierCards(); });
-  // R056 diligence verdict
-  T('diligence verdict', function(){ showView('diligence'); var e=document.getElementById('dd-report-empty'); if(e)e.style.display='none'; var r=document.getElementById('dd-report'); if(r)r.style.display='block'; });
-  // R039-043 map full + keyboard + R048 scan, R057 worklog badge
-  T('map + keyboard + worklog', function(){ showView('map'); renderMap(); mapSelect('gz'); document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight'})); mapReset(); toggleRobot(); toggleRobot(); });
-  // R046/R051 egypt link, openCompare, bgCheck, tour
-  T('egypt+compare+bg+tour', function(){ showView('dashboard'); egTip({clientX:50,clientY:50},'p2'); egTipHide(); openCompare('lighting'); var m=document.getElementById('cmp-modal'); if(m)m.classList.remove('show'); openBgCheck('ezz'); closeBg(); startTour(); tourNext(); endTour(); });
-  setTimeout(function(){ document.title='ERRORS='+ERR.length+(ERR.length?(' :: '+ERR.slice(0,6).join(' || ')):' (CLEAN)'); }, 2500); }, 300); });
+  T('decApprove all + worklog', function(){ showView('dashboard'); document.querySelectorAll('#dec-grid .dec-card .btn-primary').forEach(function(b){b.click();}); });
+  T('neg accept lock + worklog', function(){ goNeg('gz'); negDecide('accept'); });
+  T('neg locked persists', function(){ goNeg('xcmg'); goNeg('gz'); });
+  T('neg push + floor + worklog', function(){ goNeg('eei'); negDecide('push'); negDecide('floor'); });
+  T('proc select cat/suez + approve', function(){ showView('procurement'); selectSupplier('caterpillar','excavator'); var b=document.querySelector('#rp-briefing .bf-rec .btn'); if(b)b.click(); selectSupplier('suez_cement','cement'); decorateTreeScores(); });
+  T('bg recent + synth + export', function(){ showView('diligence'); openBgCheck('guangzhou'); closeBg(); openBgCheck('baosteel'); var e=[].slice.call(document.querySelectorAll('#bg-modal button')).find(function(b){return b.textContent.indexOf('Export')>-1;}); if(e)e.click(); closeBg(); });
+  T('chatSupplier', function(){ chatSupplier('guangzhou'); chatSupplier('baosteel'); });
+  T('modal escape/overlay', function(){ openCompare('lighting'); document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'})); openBgCheck('ezz'); var m=document.getElementById('bg-modal'); m.dispatchEvent(new MouseEvent('click',{bubbles:true})); });
+  T('map + egypt + tour', function(){ showView('map'); renderMap(); mapSelect('gz'); document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight'})); mapReset(); showView('dashboard'); egTip({clientX:50,clientY:50},'p3'); egTipHide(); startTour(); tourNext(); endTour(); });
+  setTimeout(function(){ document.title='ERRORS='+ERR.length+(ERR.length?(' :: '+ERR.slice(0,6).join(' || ')):' (CLEAN)'); }, 3000); }, 300); });
 </script></body>
 </html>

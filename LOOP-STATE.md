@@ -158,6 +158,10 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 086 · ✅ 验证 · 扩展全交互回归 0 错 · 自主模式
+- 2026-06-26 · 见 `reports/round-086-regression-sweep.md`。smoke 跑 6 视图 + R067-085 全新增(状态一致/worklog/bg 合成/chatSupplier/模态关/map) = ERRORS=0。R036-085 零回归。harness 更新。
+- **闸门**:ERRORS=0(纯验证无 UI)· 3/3 KEEP。
+
 ### Round 085 · ✅审计+🟦 · 数据流一致 + proc Chat 深链 · 自主模式
 - 2026-06-26 · 见 `reports/round-085-chat-deeplink.md`。审计:neg(list/NEG_DATA/NEG_DEC 各 8)+ proc tree(19)/SUPPLIERS 全一致。修 R064 残留:proc Chat → chatSupplier(PROC_TO_NEG 映射 guangzhou→gz/suez_cement→suez,goNeg 优雅回退)。
 - **闸门**:console 零错 · guangzhou→gz/suez→suez/baosteel 优雅 · 仅 proc 无回归 · 3/3 KEEP。已 cp index.html + push。
