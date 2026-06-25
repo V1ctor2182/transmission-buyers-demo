@@ -814,6 +814,13 @@ textarea.form-input{resize:vertical;min-height:80px}
         <div class="dec-actions"><button class="btn btn-primary btn-sm" onclick="decApprove(this,'Sample approved — Layla will release the backup order')">Approve</button><button class="btn btn-secondary btn-sm" onclick="showView('procurement')">Review report</button></div>
       </div>
     </div>
+    <div id="nyd-allclear" class="slide-up" style="display:none;align-items:center;gap:14px;background:var(--green-light);border:1px solid rgba(16,185,129,.3);border-radius:12px;padding:15px 18px;margin-bottom:22px">
+      <div style="width:38px;height:38px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 11"/></svg></div>
+      <div>
+        <div style="font-size:14px;font-weight:800;color:var(--text1)">You're all caught up</div>
+        <div style="font-size:12px;color:var(--text2);margin-top:2px">Layla has everything from here — she'll bring you the next decision the moment it needs you. Nothing else for you to do right now.</div>
+      </div>
+    </div>
 
     <div class="section-title" style="margin-bottom:10px">Layla is keeping watch</div>
     <div class="grid-4" style="margin-bottom:20px">
@@ -2945,7 +2952,11 @@ function decApprove(el,msg){
   card.innerHTML='<div class="dec-tag" style="color:var(--green)"><span class="dec-done-dot"></span>Approved</div><div class="dec-title" style="font-weight:600;color:var(--text2);font-size:12.5px">'+msg+'</div>';
   const remaining=document.querySelectorAll('#dec-grid .dec-card:not(.done)').length;
   const c=document.getElementById('nyd-count'); if(c) c.textContent=remaining;
-  if(remaining===0){const s=document.getElementById('agent-status'); if(s) s.innerHTML='All decisions cleared — <b>I\'m on it</b>. I\'ll update you as suppliers respond.';}
+  if(remaining===0){
+    const s=document.getElementById('agent-status'); if(s) s.innerHTML='All decisions cleared — <b>I\'m on it</b>. I\'ll update you as suppliers respond.';
+    const ac=document.getElementById('nyd-allclear'); if(ac) ac.style.display='flex';
+    if(c){ c.textContent='✓'; c.style.background='var(--green)'; }
+  }
   showToast(msg);
 }
 
