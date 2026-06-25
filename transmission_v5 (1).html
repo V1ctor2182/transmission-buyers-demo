@@ -1483,10 +1483,33 @@ textarea.form-input{resize:vertical;min-height:80px}
       <!-- RIGHT: Analysis / Results Panel -->
       <div class="src-right">
         <!-- Empty state (default) -->
-        <div class="src-empty" id="src-right-empty">
-          <div class="src-empty-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-          <div class="src-empty-title">Layla is ready to match suppliers</div>
-          <div class="src-empty-sub">Confirm the brief on the left and I'll match qualified suppliers, verify each one, and bring back a ranked shortlist with my recommendation — you just choose.</div>
+        <div class="src-empty" id="src-right-empty" style="align-items:stretch;justify-content:flex-start;text-align:left;gap:0;min-height:300px;padding:8px 2px">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px">
+            <svg viewBox="0 0 24 24" style="width:19px;height:19px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <div style="font-size:15px;font-weight:800;color:var(--text1)">Layla is ready to match suppliers</div>
+          </div>
+          <div style="font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:20px">Confirm the brief on the left — she'll scan certified suppliers, verify each, and bring back a ranked shortlist with her recommendation. <b style="color:var(--text2)">You just choose.</b></div>
+          <div style="font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.6px;text-transform:uppercase;margin-bottom:9px">Searching across</div>
+          <div class="fact-chips" style="margin-bottom:22px"><span class="fact-chip">1688</span><span class="fact-chip">Alibaba Intl</span><span class="fact-chip">Made-in-China</span><span class="fact-chip">Egypt customs · HS 9405.40</span></div>
+          <div style="font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.6px;text-transform:uppercase;margin-bottom:9px">She'll rank every supplier on</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg2)">
+              <div style="width:30px;height:30px;border-radius:8px;background:#475569;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+              <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:var(--text1)">Price vs your budget</div><div style="font-size:11px;color:var(--text3)">Best landed cost under the $320K envelope</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg2)">
+              <div style="width:30px;height:30px;border-radius:8px;background:#475569;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="8" r="6"/><path d="M15.5 12.9 17 22l-5-3-5 3 1.5-9.1"/></svg></div>
+              <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:var(--text1)">Quality &amp; certification</div><div style="font-size:11px;color:var(--text3)">CE · IEC 60598 · Egyptian Standard ES 4698</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg2)">
+              <div style="width:30px;height:30px;border-radius:8px;background:#475569;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div>
+              <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:var(--text1)">Lead time to Alexandria</div><div style="font-size:11px;color:var(--text3)">Fastest CIF delivery to hold the July slot</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg2)">
+              <div style="width:30px;height:30px;border-radius:8px;background:#475569;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:var(--text1)">Egypt export record &amp; risk</div><div style="font-size:11px;color:var(--text3)">Prior Egypt shipments, sanctions &amp; financials</div></div>
+            </div>
+          </div>
         </div>
 
         <!-- Brief result (hidden initially) -->

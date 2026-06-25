@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 038 · 🟦 Standard · Sourcing 空状态 → 可视化匹配预览 · 自主模式
+- 2026-06-26 · 见 `reports/round-038-sourcing-empty-preview.md`。`#src-right-empty` 放大镜+散文 → 左对齐预览:Searching across fact chips(1688/Alibaba/Made-in-China/Egypt 海关 HS 9405.40)+ 4 评分维度行(价/质/交期/出口记录&风险)。**诚实**:动作未运行,只展示"将执行"的真实流程,无假匹配结果。
+- **闸门**:console 零错 · confirm-brief(runSrcAnalysis)toggle 完好(空状态隐藏+Brief 渲染)· 仅 sourcing 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:两 view 空状态已收齐;候选=地图游戏感增强(用户点名)/ procurement ghosted reveal 真机确认 / 决策卡抽组件 / flag emoji。1min cron 自主续跑。
+
 ### Round 037 · 🟦 Standard · Diligence 空状态 → 可视化尽调清单 · 自主模式
 - 2026-06-26 · 见 `reports/round-037-diligence-empty-checklist.md`。审计发现非 dashboard 视图最大问题=sourcing/diligence 默认右栏一大块空白+居中散文。先收 diligence:`#dd-report-empty` 放大镜+60px 散文 → 88/100·Low risk 评分 pill + 4 维度行(注册/海关/财务/制裁)各 slate 图标+真实微结论+绿 Cleared,数据忠于真实 dd-report。
 - **闸门**:console 零错 · 开报告 toggle 完好(空状态隐藏+分阶段流程跑)· 仅 diligence 跨视图无回归 · 3/3 KEEP。已 cp index.html + push。
