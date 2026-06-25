@@ -155,6 +155,11 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 075 · ✅ 审计 · 全量死可点件=0(交互层收尾)· 自主模式
+- 2026-06-26 · 见 `reports/round-075-interaction-audit-clean.md`。全文 inline cursor:pointer 无 onclick=0 + 全按钮无 onclick=0 + org-badge/user 块无 cursor:pointer(正确非交互)。交互层死件=0,R070-074 清理完整收尾。
+- **闸门**:全量扫描 + 肉眼 · 纯审计无改动 · 3/3 KEEP。
+- **★ 交互层审计全收尾**:深链(R063-65)+ 按钮(R70-72)+ 模态关(R73)+ 卡(R74)+ 死件0(R75)。**收敛观察**:本轮无肉眼提升(审计)。
+
 ### Round 074 · 🟦 Standard · Recent Requests 死卡深链 + pills 核验 · 自主模式
 - 2026-06-26 · 见 `reports/round-074-recent-request-cards.md`。sourcing pills(toggleQChip)正常。Recent Requests 中 Structural Steel / Hydraulic Excavators 两卡 cursor:pointer 无 onclick(死)→ steel→procurement / excavators→goNeg('xcmg')。sourcing 死卡=0。
 - **闸门**:console 零错 · steel→procurement/exc→neg(xcmg)/死卡=0 · 无回归 · 3/3 KEEP。已 cp index.html + push。
