@@ -151,6 +151,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 057 · ⬜ Polish · Worklog 新活动徽章 · 自主模式
+- 2026-06-26 · 见 `reports/round-057-worklog-badge.md`。agent-bar Worklog 按钮加 accent「3」徽章(配面板 3 new),toggleRobot 打开时清除。新活动提示 + worklog 发现性 + 人感。
+- **闸门**:console 零错 · BADGE_BEFORE=flex/AFTER_OPEN=none + 截图 · additive 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 056 · 🟦 Standard · Diligence 报告「Layla's verdict」结论横幅 · 自主模式
 - 2026-06-26 · 见 `reports/round-056-diligence-verdict.md`。dd-report 顶部加绿「Layla's verdict · Cleared」横幅(结论 + Proceed to negotiation 按钮),报告先给结论+下一步而非裸数据(§3-E/§4)。与 procurement R044 同款。
 - **闸门**:console 零错 · 强显 dd-report 截图确认横幅在数据之上 · diligence-only 无回归 · 3/3 KEEP。已 cp index.html + push。
