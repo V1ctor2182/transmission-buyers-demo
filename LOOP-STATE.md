@@ -155,6 +155,10 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### Round 074 · 🟦 Standard · Recent Requests 死卡深链 + pills 核验 · 自主模式
+- 2026-06-26 · 见 `reports/round-074-recent-request-cards.md`。sourcing pills(toggleQChip)正常。Recent Requests 中 Structural Steel / Hydraulic Excavators 两卡 cursor:pointer 无 onclick(死)→ steel→procurement / excavators→goNeg('xcmg')。sourcing 死卡=0。
+- **闸门**:console 零错 · steel→procurement/exc→neg(xcmg)/死卡=0 · 无回归 · 3/3 KEEP。已 cp index.html + push。
+
 ### Round 073 · 🟦 Standard · 模态 Escape + 遮罩点击关闭 · 自主模式
 - 2026-06-26 · 见 `reports/round-073-modal-escape-overlay.md`。bg/compare/contact 三模态原仅按钮关 → 加遮罩点击关(event.target===this)+ 全局 Escape 关。map 键盘已守卫模态,无冲突。
 - **闸门**:console 零错 · compare Escape 关 / bg 遮罩关 / bg 内点不关 全验证 · 无回归 · 3/3 KEEP。已 cp index.html + push。
