@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 063](round-063-reply-deeplink.md) · 🟦 · Dashboard 回复卡深链(goNeg:点 XCMG/Egyptian 回复开对应线程,修泛跳落默认 gz 错配)· console0 · 3/3 KEEP
 - [Round 062](round-062-typing-indicator.md) · 🟦 · Negotiation 供应商「typing…」弹跳指示器(push 后 counter 到达前,§3-D 真实来回,后必跟真消息非假 spinner)· console0 · 3/3 KEEP
 - [Round 061](round-061-responsive-audit.md) · ✅ 审计 · 1280/1120 笔记本宽度核验(dashboard/neg/proc 全 2-col 组件无破版)· 无改动 · 稳健
 - [Round 060](round-060-compare-audit-persona.md) · ✅+⬜ · Compare 模态核验(score 条+逐维 winner+配比建议=强)+ persona「Specialist→Layla's recommendation」统一(残留 sweep=0)· console0 · 3/3 KEEP
