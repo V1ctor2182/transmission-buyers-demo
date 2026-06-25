@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 046 · 🟦 Standard · Egypt map ↔ 项目列表联动 · 自主模式
+- 2026-06-26 · 见 `reports/round-046-map-list-link.md`。「In progress」项目行 hover → 对应 Egypt map pin 点亮放大(白描边)+ 其余 dim .25。事件委托(#dash-proj-list,卡序→pin 序 EG_DP2PINIDX=[1,0,2,3],地理正确)。消解 R045 地图/列表冗余为联动。
+- **闸门**:console 零错 · 模拟 hover Sinai 卡 → LIT=2/DIM=0,1,3 + 截图确认 · 委托守卫 · 仅 dashboard 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:可加反向 pin→行高亮 / 点击行→ping;决策卡抽组件;flag emoji。**余皆细件 → 趋近收敛。** 1min cron 自主续跑。
+
 ### Round 045 · 🟥 新组件 · Dashboard「Egypt project map」· 自主模式
 - 2026-06-26 · 见 `reports/round-045-egypt-project-map.md`。借鉴 factorygate(我没有的组件):dashboard 加 Egypt 项目地图卡(亮卡+深 command-center 画布,adapt Egypt SVG 轮廓/Nile/Sinai/Suez/网格/城市标注),4 真实项目作 pin(Smart City Lighting/New Cairo Construction/Sinai Mining/Benban Solar),hover tooltip(状态+进展)+click→procurement。factorygate emoji pin 全去 → 纯净脉冲点,3 语义色非撞色。
 - **闸门**:console 零错 · 截图确认轮廓+4 pin+tooltip · additive 无既有逻辑改动 · 跨视图无回归 · 3/3 KEEP。已 cp index.html + push。**NOTABLE 新组件(自主未停)。**

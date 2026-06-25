@@ -943,6 +943,9 @@ textarea.form-input{resize:vertical;min-height:80px}
     .eg-pin:hover .eg-core{r:10}
     .eg-tip{position:absolute;pointer-events:none;background:rgba(10,22,40,.96);border:1px solid #1f3f63;border-radius:9px;padding:9px 12px;color:#e6efff;font-size:12px;opacity:0;transition:opacity .12s;z-index:5;max-width:230px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
     .eg-tip.show{opacity:1}
+    .eg-pin{transition:opacity .15s}
+    .eg-pin.eg-dim{opacity:.25}
+    .eg-pin.eg-lit .eg-core{r:11;stroke:#fff}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
     </style>
     <div class="eg-card">
@@ -987,7 +990,7 @@ textarea.form-input{resize:vertical;min-height:80px}
 
     <div class="grid-2" style="margin-bottom:20px">
       <!-- Project Progress -->
-      <div>
+      <div id="dash-proj-list">
         <div class="section-title">
           In progress · Layla is managing
           <button class="btn btn-secondary btn-xs" onclick="toggleAllProjects()">Expand All</button>
@@ -2828,6 +2831,18 @@ function egTip(e,id){ var p=EG_PROJECTS[id]; if(!p) return; var t=document.getEl
   t.classList.add('show'); egTipMove(e); }
 function egTipMove(e){ var w=document.querySelector('.eg-map-wrap'); if(!w) return; var r=w.getBoundingClientRect(),t=document.getElementById('eg-tip'); if(!t) return; var x=e.clientX-r.left+14,y=e.clientY-r.top+14; if(x+242>r.width)x-=262; if(y+96>r.height)y-=112; t.style.left=x+'px'; t.style.top=y+'px'; }
 function egTipHide(){ var t=document.getElementById('eg-tip'); if(t)t.classList.remove('show'); }
+// Link the dashboard project list to the Egypt map: hovering a project row lights its pin
+const EG_DP2PINIDX=[1,0,2,3]; // card order (NewCairo,SmartCity,Sinai,Benban) → pin index (p2,p1,p3,p4)
+function egLitPin(cardIdx){
+  var pins=document.querySelectorAll('.eg-card .eg-pin');
+  var pinIdx = cardIdx>=0 ? EG_DP2PINIDX[cardIdx] : -1;
+  pins.forEach(function(g,i){ g.classList.toggle('eg-dim', pinIdx>=0 && i!==pinIdx); g.classList.toggle('eg-lit', pinIdx>=0 && i===pinIdx); });
+}
+(function(){
+  var wrap=document.getElementById('dash-proj-list'); if(!wrap) return;
+  wrap.addEventListener('mouseover',function(e){ var c=e.target.closest('.proj-progress-card'); if(!c) return; var cards=Array.prototype.slice.call(wrap.querySelectorAll('.proj-progress-card')); egLitPin(cards.indexOf(c)); });
+  wrap.addEventListener('mouseleave',function(){ egLitPin(-1); });
+})();
 function negAppendMsg(side, ava, name, html){
   const msgs=document.getElementById('chat-msgs'); if(!msgs) return;
   const d=document.createElement('div'); d.className='msg '+side+' slide-up';
