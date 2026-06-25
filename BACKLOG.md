@@ -36,6 +36,7 @@
 ## Standard(🟦)
 - [x] 🟦 **活动流 / Worklog(§3-B)**(R011,用户点名优先)— Layla's Worklog 面板重做为**带时间戳的助理动作时间线**(Today/Yesterday 分组 · mono 时间 · 连接线 · 语义点 blue=需你/green=done · 决策 pill),内容映射真实流程(XCMG/SANY 谈判省 $20K、Guangzhou 报价、尽调清单、寻源匹配 9 家、发 RFQ)。**待深化**:点击 worklog 条目跳到对应上下文 / 真实可累积。
 - [x] 🟦 **「Click to reply →」违背零负担(§4)**(R016)— dashboard「Replies Layla is handling」3 处「Click to reply →」→「Layla drafted a reply — review →」,与「她替你起草、你只审」叙事一致。
+- [~] 🟦 **空状态 void 可视化(纯文字 / 排布空)**:[x] diligence `#dd-report-empty`(R037:88/100 评分 + 4 维度 Cleared 清单);[ ] sourcing `src-right-empty`(放大镜+散文 → matching 维度/供应风景 preview,下轮同法)。
 - [ ] 🟦 **采购 procurement 助理盯单(§3-G)**:订单推进 / 异常由助理监控,买方看进度 + 仅需决策项。(procurement 视图基础不错:已有 matched 理由 + 进度 + quote terms;补"助理在盯 + 需决策项"。)
 - [ ] 🟦 **sourcing/bg-check 分阶段 loader 提速 / 真实化**(影响中·把握中·风险低):`runSupplierMatching`(~15s)、`openBgCheck`(~12s)是**真出结果**的分阶段过程(非纯转圈,北极星允许),但偏慢且固定时长有"演"的边缘感。可压缩时长 / 让每段产出更扎实,避免滑向"拖时间假过程"。
 - [ ] 🟦 **决策卡组件统一(§3-F)**:散落的「需买方拍板」统一为一致 Decision Card。

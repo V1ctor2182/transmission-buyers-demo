@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 037 · 🟦 Standard · Diligence 空状态 → 可视化尽调清单 · 自主模式
+- 2026-06-26 · 见 `reports/round-037-diligence-empty-checklist.md`。审计发现非 dashboard 视图最大问题=sourcing/diligence 默认右栏一大块空白+居中散文。先收 diligence:`#dd-report-empty` 放大镜+60px 散文 → 88/100·Low risk 评分 pill + 4 维度行(注册/海关/财务/制裁)各 slate 图标+真实微结论+绿 Cleared,数据忠于真实 dd-report。
+- **闸门**:console 零错 · 开报告 toggle 完好(空状态隐藏+分阶段流程跑)· 仅 diligence 跨视图无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:**sourcing 默认右栏空 void(`src-right-empty`)下轮同法可视化**;procurement 右栏 ghosted reveal 待真机确认;决策卡抽组件 / flag emoji。1min cron 自主续跑。
+
 ### Round 036 · 🟦 Standard · Dashboard 总览趋势图「Savings momentum」· 自主模式
 - 2026-06-26 · 见 `reports/round-036-savings-momentum.md`。KPI 行与 Sourcing pipeline 之间新增真实 SVG 面积+折线趋势图(6 周累计省下 128→843K,终值=既有 $843K KPI)+ mono 读数(本周 +$142K / 总 $843K / 周均 $140K)。诚实一次性绘入(stroke-dashoffset),reduced-motion 直接成品,非假转圈。
 - **闸门**:console 零错 · 纯静态无 JS 依赖 · 仅 dashboard、跨视图无回归 · 3/3 KEEP。已 cp index.html + push。

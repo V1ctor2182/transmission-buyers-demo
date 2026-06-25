@@ -2244,10 +2244,34 @@ textarea.form-input{resize:vertical;min-height:80px}
 
       <!-- Right: Report -->
       <div>
-        <div id="dd-report-empty" class="card" style="padding:60px 20px;text-align:center">
-          <div style="margin-bottom:12px;display:flex;justify-content:center"><svg viewBox="0 0 24 24" style="width:40px;height:40px;stroke:#94A3B8;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-          <div style="font-size:15px;font-weight:700;color:var(--text2);margin-bottom:6px">Layla's report is ready when you are</div>
-          <div style="font-size:13px;color:var(--text3);line-height:1.6">She's already cross-checked XCMG's business registration, 12-month customs records, financial health, and global sanctions lists. Open the report on the left to see her findings and any red flags — nothing for you to fill in.</div>
+        <div id="dd-report-empty" class="card" style="padding:22px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:5px">
+            <div style="font-size:15px;font-weight:800;color:var(--text1)">Layla's report is ready when you are</div>
+            <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:12px;color:var(--green);background:var(--green-light);padding:5px 11px;border-radius:20px;white-space:nowrap">88 / 100 · Low risk</span>
+          </div>
+          <div style="font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:18px">She's already vetted <b style="color:var(--text2)">XCMG International</b> across four dimensions — <b style="color:var(--text2)">0 red flags</b>. Open the full report on the left; nothing for you to fill in.</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg)">
+              <div style="width:30px;height:30px;border-radius:8px;background:#475569;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></div>
+              <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:var(--text1)">Business registration</div><div style="font-size:11px;color:var(--text3)">Active · 35-yr operating history, reg. verified</div></div>
+              <span style="font-size:11px;font-weight:700;color:var(--green);display:flex;align-items:center;gap:4px;white-space:nowrap"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 11"/></svg>Cleared</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg)">
+              <div style="width:30px;height:30px;border-radius:8px;background:#475569;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+              <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:var(--text1)">12-month customs records</div><div style="font-size:11px;color:var(--text3)">$2.7M shipped to Egypt · 18 units, prices match</div></div>
+              <span style="font-size:11px;font-weight:700;color:var(--green);display:flex;align-items:center;gap:4px;white-space:nowrap"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 11"/></svg>Cleared</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg)">
+              <div style="width:30px;height:30px;border-radius:8px;background:#475569;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+              <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:var(--text1)">Financial health</div><div style="font-size:11px;color:var(--text3)">AA+ credit · ~$16B revenue, +22% YoY</div></div>
+              <span style="font-size:11px;font-weight:700;color:var(--green);display:flex;align-items:center;gap:4px;white-space:nowrap"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 11"/></svg>Cleared</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg)">
+              <div style="width:30px;height:30px;border-radius:8px;background:#475569;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:var(--text1)">Sanctions &amp; litigation</div><div style="font-size:11px;color:var(--text3)">No global sanctions · no litigation on record</div></div>
+              <span style="font-size:11px;font-weight:700;color:var(--green);display:flex;align-items:center;gap:4px;white-space:nowrap"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 11"/></svg>Cleared</span>
+            </div>
+          </div>
         </div>
         <div id="dd-report" style="display:none">
           <div class="card" style="margin-bottom:16px">

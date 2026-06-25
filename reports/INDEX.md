@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 037](round-037-diligence-empty-checklist.md) · 🟦 · Diligence 空状态 void → 可视化尽调清单(88/100 评分 + 4 维度 Cleared 行,忠于真实报告,填空白减散文)· console0 · 3/3 KEEP
 - [Round 036](round-036-savings-momentum.md) · 🟦 · Dashboard 总览趋势图「Savings momentum」(真实 6 周累计省下折线/面积图,诚实一次性绘入,减纯文字+加可视化+科技感)· console0 · 3/3 KEEP
 - [Round 035](round-035-login.md) · 🟥 新组件 · 登录页(factorygate 式深色玻璃双栏,splash→login→app)· FAIL0/UNCAUGHT0 · 3/3 KEEP
 - [Round 034](round-034-map-labels.md) · ⬜ Polish · 地图标签 hover 揭示(China 簇防重叠,radar 干净观感)· 3/3 KEEP
