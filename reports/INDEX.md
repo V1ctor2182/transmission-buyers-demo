@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 078](round-078-accept-listitem-lock.md) · 🟦 · Accept 后供应商列表项同步「✓ Locked」(绿徽章+左边,状态一致)· 用户重发 1min 恢复高频 · console0 · 3/3 KEEP
 - [Round 077](round-077-convergence.md) · 🏁 收敛 · 全 5 视图视觉核验(demo 目录,全清)+ §6 收敛 K=3 → cadence 60s→30min · 无改动
 - [Round 076](round-076-visual-audit-clean.md) · ✅ 审计 · dashboard 全页视觉核验(demo 目录,logo 正常,无破版)· 无改动 · 收敛计数 2/3
 - [Round 075](round-075-interaction-audit-clean.md) · ✅ 审计 · 全量死可点件=0(交互层清理收尾;org-badge/user 块正确非交互)· 无改动 · 交互层完整

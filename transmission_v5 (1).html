@@ -960,6 +960,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     .proj-progress-card.eg-row-lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow);transition:box-shadow .15s,border-color .15s}
     .neg-lad-locked svg path:last-of-type{stroke:var(--green)}
     .neg-lad-locked svg circle:last-of-type{filter:drop-shadow(0 0 3px rgba(16,185,129,.85))}
+    .neg-sup-item.neg-locked{box-shadow:inset 3px 0 0 var(--green)}
     .sup-match-card.smc-top{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent)}
     .wl-badge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;margin-left:6px;font-family:'JetBrains Mono',monospace;vertical-align:middle}
     .typing-dots{display:inline-flex;gap:4px;align-items:center;padding:3px 2px}
@@ -2976,6 +2977,13 @@ function negDecide(action){
     const a=document.getElementById('agent-status'); if(a) a.innerHTML='Issuing PO to <b>'+d.firm+'</b> at '+d.accept+' — '+d.unit;
     const t=document.getElementById('neg-dec-trail'); if(t) t.innerHTML='<span style="color:var(--green);font-weight:700">✓ Deal locked</span> at <b style="font-family:\'JetBrains Mono\',monospace">'+d.accept+'</b> <span class="neg-trail-pct">'+d.pct+'</span>';
     const lad=document.getElementById('neg-dec-ladder'); if(lad) lad.classList.add('neg-lad-locked');
+    const item=document.querySelector('#view-negotiation .neg-sup-item.active');
+    if(item){
+      item.classList.add('neg-locked');
+      const bdg=item.querySelector('.neg-sup-item-meta .badge');
+      if(bdg){ bdg.className='badge b-green'; bdg.style.cssText='font-size:9px;padding:1px 6px'; bdg.textContent='✓ Locked'; }
+      const ur=item.querySelector('.neg-sup-item-unread'); if(ur) ur.style.display='none';
+    }
   } else if(action==='push'){
     negAppendMsg('out','L','Layla · for you','We\'re ready to commit today at <strong>'+d.push+'</strong>. Match it and the '+d.unit+' order is yours.');
     setNegStatus('Layla is pushing for '+d.push+'…');
