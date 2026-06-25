@@ -6,7 +6,7 @@
 - **GitHub repo**(public):https://github.com/V1ctor2182/transmission-buyers-demo
 - **Live(GitHub Pages)**:https://v1ctor2182.github.io/transmission-buyers-demo/
 - 整个 demo/ 已 git 化(main 分支),Pages 源 = main 根;`index.html` = `transmission_v5 (1).html` 镜像。
-- 更新流程:改完 `git add -A && git commit && git push`,Pages ~1min 自动重部署。
+- 更新流程:改完 **先 `cp "transmission_v5 (1).html" index.html`(必须!Pages 服务的是 index.html)**,再 `git add -A && git commit && git push`,Pages ~1min 自动重部署。
 
 ## 基线
 - 优化对象:`transmission_v5 (1).html`(2997 行,单文件,5 视图)。
@@ -147,6 +147,9 @@
 - 2026-06-25 · 见 `reports/round-023-tour-pulse.md`。回访(已 seen)时「Take a tour」脉冲 3 下后停,点击即清;首访仍自动开 tour。
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
+
+### Round 027 · ✅ 审计 · 笔记本宽度核验(无改动)· 自主模式
+- 2026-06-25 · 见 `reports/round-027-laptop-width-audit.md`。1280/1366 下 dashboard + negotiation 布局稳健,无破版。谨慎优化已到位(R026 键盘导航),不凑改动。demo 收敛。降回 1800s 低频心跳。
 
 ### Round 026 · ⬜ Polish · 回归核验 + tour 键盘导航 · 自主模式
 - 2026-06-25 · 见 `reports/round-026-tour-keyboard.md`。先全交互自检 39/39 + 0 uncaught(基线干净);再加 tour 键盘导航(Esc 关 / ← → 步进,仅 tour 开时生效,纯附加)。

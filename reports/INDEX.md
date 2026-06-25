@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 027](round-027-laptop-width-audit.md) · ✅ 审计 · 1280/1366 笔记本宽度核验稳健 · 无需改动(谨慎,不凑改动)
 - [Round 026](round-026-tour-keyboard.md) · ⬜ Polish · 回归核验 39/39 + tour 键盘导航(Esc/←/→,附加无回归)· 3/3 KEEP
 - [Round 025](round-025-vector-svg-logo.md) · 🟦 · logo 改用矢量 SVG（清理 source 尾部垃圾→tm-icon.svg，侧栏+favicon 改指 SVG）· 3/3 KEEP
 - [Round 024](round-024-tour-allviews.md) · 🟦 · tour 扩到 10 步覆盖全 5 视图(加 Sourcing/Projects/Diligence,1·2·3·4 阶段编号)· 10/10 自检 · 收敛→1800s
