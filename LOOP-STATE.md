@@ -2,6 +2,12 @@
 
 > 每轮 append 一条。权威流程见 `loop-procedure.md`;待办见 `BACKLOG.md`。
 
+## 🚀 已发布(2026-06-25)
+- **GitHub repo**(public):https://github.com/V1ctor2182/transmission-buyers-demo
+- **Live(GitHub Pages)**:https://v1ctor2182.github.io/transmission-buyers-demo/
+- 整个 demo/ 已 git 化(main 分支),Pages 源 = main 根;`index.html` = `transmission_v5 (1).html` 镜像。
+- 更新流程:改完 `git add -A && git commit && git push`,Pages ~1min 自动重部署。
+
 ## 基线
 - 优化对象:`transmission_v5 (1).html`(2997 行,单文件,5 视图)。
 - 截图工具:`chrome-headless-shell`(已缓存于 ms-playwright/chromium_headless_shell-1217),`--headless --screenshot`,`--force-device-scale-factor=2`。**非 git 仓库** → 落库 = 写 reports + 本台账(无 git commit/push)。
