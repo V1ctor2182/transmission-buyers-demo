@@ -2568,7 +2568,7 @@ textarea.form-input{resize:vertical;min-height:80px}
 </div><!-- end .main -->
 
 <!-- BACKGROUND CHECK MODAL -->
-<div class="modal-overlay" id="bg-modal">
+<div class="modal-overlay" id="bg-modal" onclick="if(event.target===this)this.classList.remove('show')">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title" id="bg-title">Deep Background Check</div>
@@ -2620,7 +2620,7 @@ textarea.form-input{resize:vertical;min-height:80px}
 </div>
 
 <!-- COMPARE MODAL -->
-<div class="modal-overlay" id="cmp-modal">
+<div class="modal-overlay" id="cmp-modal" onclick="if(event.target===this)this.classList.remove('show')">
   <div class="modal" style="width:860px">
     <div class="modal-header">
       <div class="modal-title" id="cmp-modal-title">Supplier Comparison Report</div>
@@ -2642,7 +2642,7 @@ textarea.form-input{resize:vertical;min-height:80px}
 </div>
 
 <!-- CONTACT CONFIRMATION MODAL -->
-<div class="modal-overlay" id="contact-modal-overlay">
+<div class="modal-overlay" id="contact-modal-overlay" onclick="if(event.target===this)this.classList.remove('show')">
   <div class="contact-modal">
     <div class="contact-modal-header">
       <div class="contact-modal-icon"><svg viewBox="0 0 24 24" style="width:30px;height:30px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
@@ -3837,6 +3837,12 @@ function showToast(msg){
   clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>t.style.opacity='0',2500);
 }
+// Escape closes any open modal (overlay click-to-close is wired inline on each .modal-overlay)
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Escape') return;
+  var m=document.querySelector('.modal-overlay.show');
+  if(m) m.classList.remove('show');
+});
 
 // ── INIT ──
 window.onload = function(){

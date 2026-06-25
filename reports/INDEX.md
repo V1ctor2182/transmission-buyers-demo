@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 073](round-073-modal-escape-overlay.md) · 🟦 · 模态 Escape + 遮罩点击关闭(bg/compare/contact,内点不关)标准 UX/可达性 · console0 · 3/3 KEEP
 - [Round 072](round-072-toast-timer.md) · 🟦 · 全按钮 onclick 核验 0 死 + showToast 连发计时修复(clearTimeout,连发 toast 各显完整 2.5s)· console0 · 3/3 KEEP
 - [Round 071](round-071-dead-export-buttons.md) · 🟦 · 3 个死 Export 按钮(diligence/bg/compare)加 toast 反馈(§4 去死路;扫描确认无其它死按钮)· console0 · 3/3 KEEP
 - [Round 070](round-070-adjust-floor.md) · 🟦 · Negotiation「Adjust floor」弱 toast→真实在场动作(Layla 守底线消息+状态,§4 去死路)· console0 · 3/3 KEEP
