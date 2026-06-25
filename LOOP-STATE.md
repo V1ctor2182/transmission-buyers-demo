@@ -148,6 +148,10 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 034 · ⬜ Polish · 地图标签防重叠 · 自主模式
+- 2026-06-25 · 见 `reports/round-034-map-labels.md`。节点标签 hover/sel 才显示(ready 节点淡显),China 簇不再重叠;聚焦由既有 click 追踪覆盖。
+- **★ 新方向交付完成**:开场 splash + 科技感 + 首页减字/可视化(KPI viz/漏斗/fact chips/网格)+ 交互地图(+标签打磨)。降回 1800s 低频心跳。
+
 ### Round 033 · 🟥 大组件 · 交互式 Sourcing Map · 自主模式
 - 2026-06-25 · 见 `reports/round-033-interactive-map.md`。第 6 视图:深色地图,9 节点按地理分布→Alexandria hub,流动路由弧线 + hover tooltip + click 追踪路线 + 侧列表同步。FAIL0/UNCAUGHT0。
 - **next**:地图细节打磨(节点标签防重叠/聚焦动画)/ 首页继续减字;视情况收敛。

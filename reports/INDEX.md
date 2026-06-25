@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 034](round-034-map-labels.md) · ⬜ Polish · 地图标签 hover 揭示(China 簇防重叠,radar 干净观感)· 3/3 KEEP
 - [Round 033](round-033-interactive-map.md) · 🟥 大组件 · 交互式 Sourcing Map(深色 command-center,路由弧线+流动点+hover/click 追踪,游戏感)· FAIL0/UNCAUGHT0 · 3/3 KEEP
 - [Round 032](round-032-opening-splash.md) · 🟦 新组件 · 开场 splash(星空+轨道+发光 logo,会话一次,后接 tour)· FAIL0/UNCAUGHT0 · 3/3 KEEP
 - [Round 031](round-031-dashboard-review.md) · ✅ 审计 · 首页改造整体核验(cohesive + 回归 0/0)· 无改动 → 收敛
