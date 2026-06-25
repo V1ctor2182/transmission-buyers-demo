@@ -148,6 +148,11 @@
 - **闸门**:自检 tour-btn/pulse/clear 全 true · UNCAUGHT 0 · 3/3 KEEP。
 - **next**:tutorial 核心 + 入口提示已完成。剩余可选:各视图首进轻量 hint(价值中)/ 文案微调。若无更高价值,下轮起趋向收敛(降 cadence)。
 
+### Round 039 · 🟦 Standard · Sourcing Map 游戏感/交互感增强 · 自主模式
+- 2026-06-26 · 见 `reports/round-039-map-game-feel.md`。用户点名「地图交互/游戏感」。加:① 双向 hover 追踪(hover 节点或列表项→路由点亮+其余 dim,移开复位)② 点击 dispatch ping 包沿 hot 路由疾驰到 hub(1.05s,完后移除)③ flow 点随高亮 dim/亮。全用户触发即时反馈,非假进度;mapSel 守卫选中态不被 hover 抢。
+- **闸门**:console 零错(含选中态)· 选中/默认截图确认 hot+dim+ping+基础渲染未坏 · 仅 map 跨视图无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:地图续(选中态侧栏 mini trace 卡:航线/交期/incoterm 真实数据;键盘 ←→ 切节点);procurement ghosted reveal 真机确认;决策卡抽组件;flag emoji。1min cron 自主续跑。
+
 ### Round 038 · 🟦 Standard · Sourcing 空状态 → 可视化匹配预览 · 自主模式
 - 2026-06-26 · 见 `reports/round-038-sourcing-empty-preview.md`。`#src-right-empty` 放大镜+散文 → 左对齐预览:Searching across fact chips(1688/Alibaba/Made-in-China/Egypt 海关 HS 9405.40)+ 4 评分维度行(价/质/交期/出口记录&风险)。**诚实**:动作未运行,只展示"将执行"的真实流程,无假匹配结果。
 - **闸门**:console 零错 · confirm-brief(runSrcAnalysis)toggle 完好(空状态隐藏+Brief 渲染)· 仅 sourcing 无回归 · 3/3 KEEP。已 cp index.html + push。

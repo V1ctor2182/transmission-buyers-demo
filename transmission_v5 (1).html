@@ -644,7 +644,9 @@ textarea.form-input{resize:vertical;min-height:80px}
 .map-route.dim{opacity:.18;animation:none}
 .map-route.hot{stroke:rgba(16,191,255,.95);stroke-width:2.4;filter:drop-shadow(0 0 5px rgba(16,191,255,.6))}
 @keyframes mapDash{to{stroke-dashoffset:-22}}
-.map-flow{fill:#10BFFF;filter:drop-shadow(0 0 4px #10BFFF)}
+.map-flow{fill:#10BFFF;filter:drop-shadow(0 0 4px #10BFFF);transition:opacity .2s}
+.map-flow.dim{opacity:.1}
+.map-ping{pointer-events:none;filter:drop-shadow(0 0 7px rgba(16,191,255,.95))}
 .map-node{cursor:pointer}
 .map-node .nd-hit{fill:transparent}
 .map-node .nd{fill:#1B5EFF;stroke:#0a1a2f;stroke-width:2;transition:r .15s}
@@ -2660,17 +2662,17 @@ function renderMap(){
     var path=document.createElementNS(SVGNS,'path');
     path.setAttribute('d',p); path.setAttribute('class','map-route'+(n.ready?' ready':'')); path.id='route-'+n.id;
     arcs.appendChild(path);
-    var dot=document.createElementNS(SVGNS,'circle'); dot.setAttribute('r','3'); dot.setAttribute('class','map-flow');
+    var dot=document.createElementNS(SVGNS,'circle'); dot.setAttribute('r','3'); dot.setAttribute('class','map-flow'); dot.id='flow-'+n.id;
     var am=document.createElementNS(SVGNS,'animateMotion'); am.setAttribute('dur',(2.6+(i%5)*0.35).toFixed(2)+'s'); am.setAttribute('repeatCount','indefinite'); am.setAttribute('path',p);
     dot.appendChild(am); arcs.appendChild(dot);
     var g=document.createElementNS(SVGNS,'g'); g.setAttribute('class','map-node'+(n.ready?' ready':'')); g.id='node-'+n.id;
     g.innerHTML='<circle class="nd-ring" cx="'+n.x+'" cy="'+n.y+'" r="7"></circle><circle class="nd" cx="'+n.x+'" cy="'+n.y+'" r="6"></circle><text class="nd-label" x="'+n.x+'" y="'+(n.y-13)+'" text-anchor="middle">'+n.name.split(' ')[0]+'</text><circle class="nd-hit" cx="'+n.x+'" cy="'+n.y+'" r="17"></circle>';
-    g.addEventListener('mouseenter',function(e){mapTip(n,e);});
+    g.addEventListener('mouseenter',function(e){mapTip(n,e);mapHover(n.id);});
     g.addEventListener('mousemove',mapTipMove);
-    g.addEventListener('mouseleave',mapTipHide);
+    g.addEventListener('mouseleave',function(){mapTipHide();mapUnhover();});
     g.addEventListener('click',function(e){e.stopPropagation();mapSelect(n.id);});
     nodes.appendChild(g);
-    lh+='<div class="map-supplier'+(n.ready?' ready':'')+'" id="sup-'+n.id+'" onclick="mapSelect(\''+n.id+'\')"><span class="map-sup-dot"></span><div class="map-sup-info"><div class="map-sup-n">'+n.name+'</div><div class="map-sup-m">'+n.region+' · '+n.supplies+'</div></div><span class="map-sup-stat">'+n.status+'</span></div>';
+    lh+='<div class="map-supplier'+(n.ready?' ready':'')+'" id="sup-'+n.id+'" onclick="mapSelect(\''+n.id+'\')" onmouseenter="mapHover(\''+n.id+'\')" onmouseleave="mapUnhover()"><span class="map-sup-dot"></span><div class="map-sup-info"><div class="map-sup-n">'+n.name+'</div><div class="map-sup-m">'+n.region+' · '+n.supplies+'</div></div><span class="map-sup-stat">'+n.status+'</span></div>';
   });
   list.innerHTML=lh;
   var hub=document.createElementNS(SVGNS,'g'); hub.setAttribute('class','map-hub');
@@ -2680,19 +2682,40 @@ function renderMap(){
 function mapTip(n,e){ var t=document.getElementById('map-tip'); var c=n.ready?'#10B981':'#10BFFF'; t.innerHTML='<div class="tt-n">'+n.name+'</div><div class="tt-m">'+n.region+' · '+n.supplies+'</div><div class="tt-s" style="color:'+c+'">'+n.status+'</div>'; t.classList.add('show'); mapTipMove(e); }
 function mapTipMove(e){ var w=document.querySelector('#view-map .map-wrap'); if(!w)return; var r=w.getBoundingClientRect(),t=document.getElementById('map-tip'); var x=e.clientX-r.left+14,y=e.clientY-r.top+14; if(x+232>r.width)x-=252; if(y+90>r.height)y-=110; t.style.left=x+'px'; t.style.top=y+'px'; }
 function mapTipHide(){ var t=document.getElementById('map-tip'); if(t)t.classList.remove('show'); }
-function mapSelect(id){
+let mapSel=null;
+function mapHighlight(id){
   document.querySelectorAll('#view-map .map-node').forEach(g=>g.classList.remove('sel'));
   document.querySelectorAll('#view-map .map-route').forEach(r=>{r.classList.remove('hot');r.classList.add('dim');});
+  document.querySelectorAll('#view-map .map-flow').forEach(f=>f.classList.add('dim'));
   document.querySelectorAll('#view-map .map-supplier').forEach(s=>s.classList.remove('sel'));
   var g=document.getElementById('node-'+id); if(g)g.classList.add('sel');
   var r=document.getElementById('route-'+id); if(r){r.classList.remove('dim');r.classList.add('hot');}
-  var s=document.getElementById('sup-'+id); if(s){s.classList.add('sel'); s.scrollIntoView({block:'nearest'});}
+  var f=document.getElementById('flow-'+id); if(f)f.classList.remove('dim');
+  var s=document.getElementById('sup-'+id); if(s)s.classList.add('sel');
+  return s;
 }
-function mapReset(){
+function mapResetVisual(){
   document.querySelectorAll('#view-map .map-node').forEach(g=>g.classList.remove('sel'));
   document.querySelectorAll('#view-map .map-route').forEach(r=>{r.classList.remove('hot');r.classList.remove('dim');});
+  document.querySelectorAll('#view-map .map-flow').forEach(f=>f.classList.remove('dim'));
   document.querySelectorAll('#view-map .map-supplier').forEach(s=>s.classList.remove('sel'));
 }
+// Fire a one-shot "dispatch" packet that races the supplier→hub route on select (user-triggered, not a perpetual progress fake)
+function mapPing(id){
+  var node=MAP_NODES.find(function(n){return n.id===id;}); if(!node) return;
+  var arcs=document.getElementById('map-arcs'); if(!arcs) return;
+  var SVGNS='http://www.w3.org/2000/svg';
+  var p=mapArc(node.x,node.y,MAP_HUB.x,MAP_HUB.y);
+  var pk=document.createElementNS(SVGNS,'circle'); pk.setAttribute('r','5'); pk.setAttribute('class','map-ping'); pk.setAttribute('fill',node.ready?'#10B981':'#10BFFF');
+  var am=document.createElementNS(SVGNS,'animateMotion'); am.setAttribute('dur','1.05s'); am.setAttribute('repeatCount','1'); am.setAttribute('path',p); am.setAttribute('begin','indefinite'); am.setAttribute('calcMode','spline'); am.setAttribute('keyPoints','0;1'); am.setAttribute('keyTimes','0;1'); am.setAttribute('keySplines','0.33 0 0.2 1');
+  pk.appendChild(am); arcs.appendChild(pk);
+  try{ am.beginElement(); }catch(e){}
+  setTimeout(function(){ if(pk.parentNode) pk.parentNode.removeChild(pk); }, 1250);
+}
+function mapSelect(id){ mapSel=id; var s=mapHighlight(id); if(s)s.scrollIntoView({block:'nearest'}); mapPing(id); }
+function mapReset(){ mapSel=null; mapResetVisual(); }
+function mapHover(id){ if(mapSel) return; mapHighlight(id); }
+function mapUnhover(){ if(mapSel) return; mapResetVisual(); }
 function negAppendMsg(side, ava, name, html){
   const msgs=document.getElementById('chat-msgs'); if(!msgs) return;
   const d=document.createElement('div'); d.className='msg '+side+' slide-up';
