@@ -155,6 +155,14 @@
 ### ▶ 用户重发 1min(2026-06-26,Round 051)— 恢复高频
 - 用户在我降速后**显式重发 `1min`** → 删 `877bb22f`(30min),恢复 1min cron `2c65de54`。继续自主细化,不再主推收敛。
 
+### 🏁 收敛(2026-06-26,Round 077,K=3)
+- R075(交互死件=0)+ R076(dashboard 视觉)+ R077(全 5 视图视觉)连续 3 轮严格审计无肉眼提升 → §6 判定收敛。
+- **§6 动作**:cadence 60s→**30min**(cron `2c65de54` 删 → 新建 `644304d8` `17,47 * * * *`)。demo 成熟完整态(终态总结见 `reports/round-077-convergence.md`)。
+- 用户:重发 `/loop 1min` 恢复高频(如 R051)/ 给新方向解锁新工作 / 喊停 CronDelete 644304d8。
+
+### Round 077 · 🏁 收敛 · 全 5 视图视觉核验 + §6 收敛 · 自主模式
+- 2026-06-26 · 见 `reports/round-077-convergence.md`。5 视图全 demo 目录截图核验干净;K=3 收敛 → 降 cadence 30min。
+
 ### Round 076 · ✅ 审计 · dashboard 全页视觉核验(无问题)· 自主模式
 - 2026-06-26 · 见 `reports/round-076-visual-audit-clean.md`。用正确方法(demo 目录截图,logo 解析)复核全页:侧栏 logo/agent-bar/决策卡/KPI/momentum(Y 轴标)全对齐无破版无破图。/tmp 破图纯测试假象未遮盖真缺陷。
 - **闸门**:demo 目录高清肉眼核验 · 纯审计无改动 · 3/3 KEEP。
