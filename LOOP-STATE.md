@@ -158,6 +158,12 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 109 · ⬜ Polish · Dashboard Replies+Deadlines 行响应式(响应式一致性收尾)
+- 2026-06-26 · 见 `reports/round-109-replies-row-responsive.md`。第三个顶层 2 栏行(Replies+Deadlines)原用全局 .grid-2(另 3 处表单也用)→ 不动全局,改 scoped `.dash-rd`(桌面 1fr/1fr 同值 + @media1080 单栏),与 .dash-insights(R099)/.dash-maprow(R108)同模式。dashboard 三顶层 2 栏行响应式统一收尾。
+- **闸门**:console 零错 · 1000px 全 dashboard 堆叠正常 · 1440 同值无回归 · 3/3 KEEP。已 cp index.html + push。
+- **★ 响应式一致性已收尾**。demo 收敛;后续极边际,继续诚实低风险或如实告知无高价值。
+- **next**:文案细抠 / factorygate 个别件 / 回归;价值走低即如实说明。1min 自主续跑。
+
 ### Round 108 · ⬜ Polish · Dashboard 地图+列表行响应式
 - 2026-06-26 · 见 `reports/round-108-maprow-responsive.md`。审 diligence 全报告=完整无缺口。把地图行内联 grid 提为 `.dash-maprow`+`@media(max-width:1080px)` 单栏(与 R099 insights 一致)。窄屏地图满宽不挤、Leaflet 自动重排;桌面 1.35fr/1fr 不变。
 - **闸门**:console 零错 · 1000px 截图地图满宽单栏正常 · 1440 同值无回归 · 3/3 KEEP。已 cp index.html + push。

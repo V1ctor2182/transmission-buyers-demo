@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 109](round-109-replies-row-responsive.md) · ⬜ · Dashboard Replies+Deadlines 行响应式(scoped .dash-rd,不动全局 grid-2;三顶层行响应式收尾)· console0 · 3/3 KEEP
 - [Round 108](round-108-maprow-responsive.md) · ⬜ · Dashboard 地图+列表行加响应式(<1080px 单栏满宽,与 insights 一致;桌面不变)· console0 · 3/3 KEEP
 - [Round 107](round-107-regression-sweep.md) · ✅ 验证 · 跨视图回归抽查(R098-106 大改后)= 13/13 OK · 0 console 错 · 无代码改动 · 收敛态诚实告知
 - [Round 106](round-106-map-route-flow.md) · ⬜ · 地图高亮路由虚线向 Alexandria 流动(货流游戏感,仅高亮条,reduced-motion 关)· console0 · 自检 3/3 · 3/3 KEEP
