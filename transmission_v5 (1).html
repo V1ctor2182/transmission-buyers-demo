@@ -3000,6 +3000,16 @@ const NEG_DEC = {
 };
 function parsePrice(s){ s=String(s).replace(/[$,\s]/g,''); var m=1; if(/k$/i.test(s)){m=1000;s=s.slice(0,-1);} else if(/m$/i.test(s)){m=1e6;s=s.slice(0,-1);} return parseFloat(s)*m; }
 function parseTrail(str){ return String(str).split('→').map(function(s){ s=s.trim(); return {label:s, val:parsePrice(s)}; }).filter(function(x){ return !isNaN(x.val); }); }
+function negParseQty(u){ var m=String(u).replace(/,/g,'').match(/[\d.]+/); return m?parseFloat(m[0]):0; }
+function negFmtMoney(n){ n=Math.round(n); if(n>=1e6) return '$'+(n/1e6).toFixed(n>=1e7?0:1).replace(/\.0$/,'')+'M'; if(n>=1e3) return '$'+Math.round(n/1e3)+'K'; return '$'+n; }
+// Honest bargaining summary: % off opening + real $ saved = (opening - final) × quantity
+function negTrailHTML(steps,d){
+  if(!steps || steps.length<2) return 'Layla negotiated <b>'+d.trail+'</b> <span class="neg-trail-pct">'+d.pct+'</span>';
+  var first=steps[0], last=steps[steps.length-1], pct=(last.val-first.val)/first.val*100;
+  var saved=(first.val-last.val)*negParseQty(d.unit);
+  var savedStr = saved>0 ? ' — <b style="color:var(--green)">saved ~'+negFmtMoney(saved)+'</b> vs opening' : '';
+  return 'Layla bargained <b>'+first.label+' → '+last.label+'</b> <span class="neg-trail-pct">'+(pct<0?'−':'+')+Math.abs(pct).toFixed(1)+'%</span>'+savedStr;
+}
 // Concession sparkline — visualises Layla bargaining the price down (real quote points from the trail, not animated)
 function buildConcessionLadder(steps){
   if(!steps || steps.length<2) return '';
@@ -3025,18 +3035,15 @@ function negPushLadder(d){
   var lad=document.getElementById('neg-dec-ladder'); if(lad) lad.innerHTML=buildConcessionLadder(steps);
   var first=steps[0], last=steps[steps.length-1];
   if(first && last && first.val){
-    var pct=(last.val-first.val)/first.val*100;
     var t=document.getElementById('neg-dec-trail');
-    if(t) t.innerHTML='Layla bargained <b>'+first.label+' → '+last.label+'</b> <span class="neg-trail-pct">'+(pct<0?'−':'+')+Math.abs(pct).toFixed(1)+'%</span>';
+    if(t) t.innerHTML=negTrailHTML(steps,d);
   }
 }
 function renderNegDecision(v){
   curNeg = NEG_DEC[v] ? v : 'gz';
   const d = NEG_DEC[curNeg];
   const steps=parseTrail(d.trail);
-  const t=document.getElementById('neg-dec-trail'); if(t) t.innerHTML= steps.length>=2
-    ? 'Layla bargained <b>'+steps[0].label+' → '+steps[steps.length-1].label+'</b> <span class="neg-trail-pct">'+d.pct+'</span>'
-    : 'Layla negotiated <b>'+d.trail+'</b> <span class="neg-trail-pct">'+d.pct+'</span>';
+  const t=document.getElementById('neg-dec-trail'); if(t) t.innerHTML=negTrailHTML(steps,d);
   const lad=document.getElementById('neg-dec-ladder'); if(lad) lad.innerHTML=buildConcessionLadder(steps);
   const r=document.getElementById('neg-dec-rec-text'); if(r) r.innerHTML='<b>Layla:</b> '+d.rec;
   setNegStatus('Awaiting your call');

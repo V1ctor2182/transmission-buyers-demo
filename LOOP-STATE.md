@@ -158,6 +158,12 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 105 · 🟦 Standard · 谈判博弈加真实「省下金额」标注
+- 2026-06-26 · 见 `reports/round-105-neg-savings-annotation.md`。「更多可视化(neg 博弈)」。让步 sparkline 已诚实;改加真实数字:省下=(开价−成交)×数量。决策面板让步行 →「… −8.3% — saved ~$28K vs opening」(绿)。新 helper negParseQty/negFmtMoney/negTrailHTML,renderNegDecision+negPushLadder 共用,accept 锁定态不变。
+- **闸门**:console 零错 · 自检 gz $28K/xcmg $20K(=dashboard)/ezz $480K 全对 · 截图正常 · 仅 neg additive · 3/3 KEEP。已 cp index.html + push。
+- **★ 各主视图 viz 已较充分**(dashboard/sourcing 价图/compare 分数/neg 让步+省下/customs/真实地图)。后续多为边际项;用户要持续 1min 不强推收敛,继续找诚实真改进。
+- **next**:科技感细节 / factorygate 补缺件 / procurement 审计。1min 自主续跑。
+
 ### Round 104 · 🟦 Standard · 寻源报告加单价对比横条图(诚实真数据)
 - 2026-06-26 · 见 `reports/round-104-price-landscape-chart.md`。「更多可视化」。诚实把关:diligence 雷达需假分数→放弃;改用寻源报告已有真实单价(8 家 LED fixture)。表格上方加 `.sr-pricebars` 横条图:按价升序,宽∝价(30→100% 非线性),mono 价标;Layla's pick(Guangzhou $38.50)蓝+◆标,China=cyan/Local=amber/Premium=slate。caption 标价段。一眼看清性价比格局。
 - **闸门**:console 零错 · 截图 8 条比例真实+高亮+语义色 · 仅 sourcing 报告 additive · 3/3 KEEP。已 cp index.html + push。
