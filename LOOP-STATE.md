@@ -158,6 +158,12 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 117 · 🟦 Standard · Dashboard 减负:Insights 折叠到底部 · 用户点名
+- 2026-06-26 · 见 `reports/round-117-dashboard-insights-collapse.md`。**用户问「dashboard 太多了?」→ 选 collapse 方案**。把 `.dash-insights`(Savings momentum + Sourcing pipeline)整块从 KPI 后移到 dashboard 最底部,包进 `.dash-collapse`「Insights」折叠区,**默认折叠**,toggleInsights 开/合(aria-expanded)。默认流:决策→KPI→地图+项目→Replies+Deadlines→▸Insights(收起)。数据零删,一键可见。
+- **闸门**:console 零错 · 自检 {defaultHidden:true,mom/funnel in body,toggle 开合正常} · 漏斗 onclick 随迁移保留、仅 dashboard 改 · 3/3 KEEP。已 cp index.html + push。
+- **★ 恢复活跃**:用户给新方向并参与,loop 回到响应态。
+- **next**:等用户对减负效果的反馈;若想更激进可去重复的 momentum 图。
+
 ### Round 116 · 🏁 收敛 digest + 降 cadence(诚实)· 无代码改动
 - 2026-06-26 · demo 真正收敛:本 run(R98-115)已交付用户全部诉求 + 充分硬化,本轮未发现值得提交的高价值零风险改进,**拒绝凑数/冒险**。
 - **本 run 成果**:真实可交互 Leaflet 暗色地图(替 AI-blob)+ flyTo + 路由流动 + 离线降级(R98/101/102/106/111);dashboard 去过载 2 栏(R99);开场信号脉冲 + Leaflet defer(R100/110);死 CSS 清理(R103);寻源真实单价图(R104)、谈判真实省下额(R105);响应式全覆盖(R108/109/112);loader 提速(R113);a11y(R115);回归 13/13(R107)。console 全程 0 错。

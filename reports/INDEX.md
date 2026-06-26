@@ -1,5 +1,7 @@
 # Reports INDEX(倒序)
 
+- [Round 117](round-117-dashboard-insights-collapse.md) · 🟦 · Dashboard 减负:Savings momentum + Sourcing pipeline 折叠进底部「Insights」(默认收起,一键展开)——用户「dashboard 太多了?」选 collapse · console0 · 自检 5/5 · 3/3 KEEP
+- [Round 116] · 🏁 收敛 digest + 降 cadence 60s→1800s(无代码改动)
 - [Round 115](round-115-a11y-close-labels.md) · ⬜ · 3 个图标 ✕ 关闭按钮加 aria-label(a11y,aria 计数 1→4)· 零视觉/零风险 · console0 · 3/3 KEEP
 - [Round 114](round-114-backlog-accuracy.md) · ✅ 审计 · BACKLOG 准确性核对(sparkle/procurement 盯单标 done;决策卡重构=风险>收益不做;flag=已决策保留)· 诚实收敛 · 无代码改动
 - [Round 113](round-113-loader-speedup.md) · 🟦 · 分阶段 loader 提速(supplierMatching ~7.6→5.25s、bgCheck ~6.1→4.25s;步距/done/final 常量压缩,结果数据不变)· console0 · 自检 9 卡/报告正常 · 3/3 KEEP

@@ -902,6 +902,16 @@ textarea.form-input{resize:vertical;min-height:80px}
     @media (prefers-reduced-motion:reduce){.mom-line{animation:none;stroke-dashoffset:0}.mom-area,.mom-dot{animation:none;opacity:1}}
     /* pair savings momentum + pipeline side-by-side to cut first-paint overload */
     .dash-insights{display:grid;grid-template-columns:1.55fr 1fr;gap:16px;align-items:stretch;margin-bottom:20px}
+    /* collapsible Insights (analytics tucked at the bottom, collapsed by default) */
+    .dash-collapse{margin-bottom:20px;border:1px solid var(--border);border-radius:12px;background:var(--bg2);box-shadow:var(--shadow);overflow:hidden}
+    .dash-collapse-hd{width:100%;display:flex;align-items:center;gap:10px;padding:13px 18px;background:none;border:none;cursor:pointer;text-align:left;font:inherit}
+    .dash-collapse-hd:hover{background:var(--accent-light)}
+    .dash-collapse-t{font-size:13px;font-weight:700;color:var(--text1)}
+    .dash-collapse-sub{font-size:11px;color:var(--text3);flex:1}
+    .dash-collapse-chev{width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s;flex:none}
+    .dash-collapse-hd.open .dash-collapse-chev{transform:rotate(180deg)}
+    .dash-collapse-body{padding:2px 18px 16px}
+    .dash-collapse-body .dash-insights{margin-bottom:0}
     .dash-insights .mom-card,.dash-insights .pipe-card{margin-bottom:0}
     .dash-insights .pipe-card{display:flex;flex-direction:column}
     .pipe-fn{display:flex;flex-direction:column;gap:8px;margin-top:12px;flex:1;justify-content:space-between}
@@ -919,54 +929,6 @@ textarea.form-input{resize:vertical;min-height:80px}
     .dash-rd{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;margin-bottom:20px}
     @media (max-width:1080px){.dash-rd{grid-template-columns:1fr}}
     </style>
-    <div class="dash-insights">
-    <div class="mom-card">
-      <div class="mom-main">
-        <div class="mom-head">
-          <div class="mom-title">Savings momentum <span>Layla compounding wins across all 4 projects</span></div>
-          <div class="mom-legend"><i></i> Cumulative saved · last 6 weeks</div>
-        </div>
-        <svg class="mom-chart" viewBox="0 0 600 150">
-          <defs><linearGradient id="momGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#1B5EFF" stop-opacity=".16"/>
-            <stop offset="1" stop-color="#1B5EFF" stop-opacity="0"/>
-          </linearGradient></defs>
-          <line class="mom-gl" x1="20" y1="14" x2="580" y2="14"/>
-          <line class="mom-gl" x1="20" y1="64" x2="580" y2="64"/>
-          <line class="mom-gl" x1="20" y1="114" x2="580" y2="114"/>
-          <text class="mom-yl" x="22" y="11">$843K</text>
-          <text class="mom-yl" x="22" y="61">$420K</text>
-          <text class="mom-yl" x="22" y="111">$0</text>
-          <path class="mom-area" fill="url(#momGrad)" d="M20,114 L20,98.8 L132,80.1 L244,65.1 L356,47.7 L468,30.8 L580,14 L580,114 Z"/>
-          <path class="mom-line" d="M20,98.8 L132,80.1 L244,65.1 L356,47.7 L468,30.8 L580,14"/>
-          <circle class="mom-dot" cx="20" cy="98.8" r="3.5" style="animation-delay:.95s"/>
-          <circle class="mom-dot" cx="132" cy="80.1" r="3.5" style="animation-delay:1.05s"/>
-          <circle class="mom-dot" cx="244" cy="65.1" r="3.5" style="animation-delay:1.15s"/>
-          <circle class="mom-dot" cx="356" cy="47.7" r="3.5" style="animation-delay:1.25s"/>
-          <circle class="mom-dot" cx="468" cy="30.8" r="3.5" style="animation-delay:1.35s"/>
-          <circle class="mom-dot" cx="580" cy="14" r="5" fill="#1B5EFF" style="animation-delay:1.5s"/>
-          <text class="mom-xl" x="20" y="132">May 13</text>
-          <text class="mom-xl" x="300" y="132" text-anchor="middle">Jun 3</text>
-          <text class="mom-xl" x="580" y="132" text-anchor="end">This week</text>
-        </svg>
-      </div>
-      <div class="mom-side">
-        <div><div class="mom-stat-l">This week</div><div class="mom-stat-v" style="color:var(--green)">+$142K<span class="mom-up">▲</span></div></div>
-        <div><div class="mom-stat-l">Total saved</div><div class="mom-stat-v">$843K</div></div>
-        <div><div class="mom-stat-l">Avg / week</div><div class="mom-stat-v">$140K</div></div>
-      </div>
-    </div>
-
-    <div class="pipe-card">
-      <div class="section-title" style="margin-bottom:0">Sourcing pipeline <span style="font-size:11px;font-weight:500;color:var(--text3);margin-left:6px">Layla is moving suppliers down the funnel</span></div>
-      <div class="pipe-fn">
-        <div class="pf-row" onclick="showView('sourcing')" title="View sourcing"><div class="pf-fill" style="width:100%"></div><div class="pf-content"><div class="pv">24</div><div class="pl">In dialogue</div></div></div>
-        <div class="pf-row" onclick="showView('sourcing')" title="View sourcing"><div class="pf-fill" style="width:66%"></div><div class="pf-content"><div class="pv">9</div><div class="pl">Shortlisted</div></div></div>
-        <div class="pf-row" onclick="showView('negotiation')" title="View negotiations"><div class="pf-fill" style="width:46%"></div><div class="pf-content"><div class="pv">4</div><div class="pl">Negotiating</div></div></div>
-        <div class="pf-row pf-win" onclick="showView('procurement')" title="View projects ready to award"><div class="pf-fill" style="width:34%"></div><div class="pf-content"><div class="pv">2</div><div class="pl">Ready to award</div></div></div>
-      </div>
-    </div>
-    </div>
 
     <!-- ░░ EGYPT PROJECT MAP ░░ -->
     <style>
@@ -1339,6 +1301,64 @@ textarea.form-input{resize:vertical;min-height:80px}
           <div class="dl-item dl-ok" onclick="showView('procurement')" title="Open in My Projects"><span class="dl-dot"></span>Benban Solar Park · Aug 30 · 68 days</div>
           <div class="dl-item dl-ok" onclick="showView('procurement')" title="Open in My Projects"><span class="dl-dot"></span>Sinai Mining · Sep 01 · 70 days</div>
         </div>
+      </div>
+    </div>
+    <!-- Insights (collapsed analytics) -->
+    <div class="dash-collapse" id="insights-collapse">
+      <button class="dash-collapse-hd" onclick="toggleInsights()" aria-expanded="false" aria-controls="insights-body">
+        <span class="dash-collapse-t">Insights</span>
+        <span class="dash-collapse-sub">Savings momentum · Sourcing pipeline</span>
+        <svg class="dash-collapse-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="dash-collapse-body" id="insights-body" hidden>
+    <div class="dash-insights">
+    <div class="mom-card">
+      <div class="mom-main">
+        <div class="mom-head">
+          <div class="mom-title">Savings momentum <span>Layla compounding wins across all 4 projects</span></div>
+          <div class="mom-legend"><i></i> Cumulative saved · last 6 weeks</div>
+        </div>
+        <svg class="mom-chart" viewBox="0 0 600 150">
+          <defs><linearGradient id="momGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1B5EFF" stop-opacity=".16"/>
+            <stop offset="1" stop-color="#1B5EFF" stop-opacity="0"/>
+          </linearGradient></defs>
+          <line class="mom-gl" x1="20" y1="14" x2="580" y2="14"/>
+          <line class="mom-gl" x1="20" y1="64" x2="580" y2="64"/>
+          <line class="mom-gl" x1="20" y1="114" x2="580" y2="114"/>
+          <text class="mom-yl" x="22" y="11">$843K</text>
+          <text class="mom-yl" x="22" y="61">$420K</text>
+          <text class="mom-yl" x="22" y="111">$0</text>
+          <path class="mom-area" fill="url(#momGrad)" d="M20,114 L20,98.8 L132,80.1 L244,65.1 L356,47.7 L468,30.8 L580,14 L580,114 Z"/>
+          <path class="mom-line" d="M20,98.8 L132,80.1 L244,65.1 L356,47.7 L468,30.8 L580,14"/>
+          <circle class="mom-dot" cx="20" cy="98.8" r="3.5" style="animation-delay:.95s"/>
+          <circle class="mom-dot" cx="132" cy="80.1" r="3.5" style="animation-delay:1.05s"/>
+          <circle class="mom-dot" cx="244" cy="65.1" r="3.5" style="animation-delay:1.15s"/>
+          <circle class="mom-dot" cx="356" cy="47.7" r="3.5" style="animation-delay:1.25s"/>
+          <circle class="mom-dot" cx="468" cy="30.8" r="3.5" style="animation-delay:1.35s"/>
+          <circle class="mom-dot" cx="580" cy="14" r="5" fill="#1B5EFF" style="animation-delay:1.5s"/>
+          <text class="mom-xl" x="20" y="132">May 13</text>
+          <text class="mom-xl" x="300" y="132" text-anchor="middle">Jun 3</text>
+          <text class="mom-xl" x="580" y="132" text-anchor="end">This week</text>
+        </svg>
+      </div>
+      <div class="mom-side">
+        <div><div class="mom-stat-l">This week</div><div class="mom-stat-v" style="color:var(--green)">+$142K<span class="mom-up">▲</span></div></div>
+        <div><div class="mom-stat-l">Total saved</div><div class="mom-stat-v">$843K</div></div>
+        <div><div class="mom-stat-l">Avg / week</div><div class="mom-stat-v">$140K</div></div>
+      </div>
+    </div>
+
+    <div class="pipe-card">
+      <div class="section-title" style="margin-bottom:0">Sourcing pipeline <span style="font-size:11px;font-weight:500;color:var(--text3);margin-left:6px">Layla is moving suppliers down the funnel</span></div>
+      <div class="pipe-fn">
+        <div class="pf-row" onclick="showView('sourcing')" title="View sourcing"><div class="pf-fill" style="width:100%"></div><div class="pf-content"><div class="pv">24</div><div class="pl">In dialogue</div></div></div>
+        <div class="pf-row" onclick="showView('sourcing')" title="View sourcing"><div class="pf-fill" style="width:66%"></div><div class="pf-content"><div class="pv">9</div><div class="pl">Shortlisted</div></div></div>
+        <div class="pf-row" onclick="showView('negotiation')" title="View negotiations"><div class="pf-fill" style="width:46%"></div><div class="pf-content"><div class="pv">4</div><div class="pl">Negotiating</div></div></div>
+        <div class="pf-row pf-win" onclick="showView('procurement')" title="View projects ready to award"><div class="pf-fill" style="width:34%"></div><div class="pf-content"><div class="pv">2</div><div class="pl">Ready to award</div></div></div>
+      </div>
+    </div>
+    </div>
       </div>
     </div>
   </div>
@@ -3118,6 +3138,15 @@ function decApprove(el,msg){
 
 // ── DASHBOARD EXPAND/COLLAPSE ──
 let allOpen = false;
+function toggleInsights(){
+  var b=document.getElementById('insights-body');
+  var btn=document.querySelector('#insights-collapse .dash-collapse-hd');
+  if(!b||!btn) return;
+  var willOpen=b.hasAttribute('hidden');
+  if(willOpen){ b.removeAttribute('hidden'); } else { b.setAttribute('hidden',''); }
+  btn.classList.toggle('open',willOpen);
+  btn.setAttribute('aria-expanded', willOpen?'true':'false');
+}
 function toggleDashProj(id){
   const body = document.getElementById('body-'+id);
   const chev = document.getElementById('chev-'+id);
