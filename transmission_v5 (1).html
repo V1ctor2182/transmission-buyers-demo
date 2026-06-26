@@ -4131,7 +4131,7 @@ window.addEventListener('load', function(){
   try{ sessionStorage.setItem('tmSplashSeen','1'); }catch(e){}
   makeStars(document.getElementById('sp-stars'),52);
   var done=false;
-  function finish(){ if(done) return; done=true; sp.classList.add('hide'); setTimeout(function(){ sp.style.display='none'; showLogin(); }, 650); }
+  function finish(){ if(done) return; done=true; showLogin(); sp.classList.add('hide'); setTimeout(function(){ sp.style.display='none'; }, 650); }
   sp.addEventListener('click', finish);
   setTimeout(finish, 4000);
 });

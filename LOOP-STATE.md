@@ -158,6 +158,11 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 119 · 🟦 Bugfix · 修 splash→login 间闪现 dashboard
+- 2026-06-26 · 见 `reports/round-119-splash-login-flash-fix.md`。**用户报 bug:动画后先闪 dashboard 再 login**。根因:finish 先淡出 splash(.6s)再 showLogin,淡出期 login 未显示→透出底下 dashboard。修:finish 改**先 showLogin(立即覆盖)再淡出 splash**,露出的是 login。
+- **闸门**:console 零错 · 自检 4150ms{loginShown:true,display:flex} · 截图过渡瞬间=login 非 dashboard · 仅改 finish 顺序流程不变 · 3/3 KEEP。已 cp index.html + push。
+- **next**:等用户反馈(开场/dashboard);splash 仍每会话一次(可选改每次播放)。
+
 ### Round 118 · ⬜ Polish · 开场 splash 延长(用户反馈"太快看不见")
 - 2026-06-26 · 见 `reports/round-118-splash-duration.md`。splash 自动结束 2300→4000ms(加载条 2150ms 才满,原来刚完成即淡出);信号脉冲 spPing 4.2→3.4s/错峰 1.1·2.2/opacity .55 更明显。Click to skip 仍在。
 - **闸门**:console 零错 · 3200ms 截图(原已淡出)现仍完整可见多圈信号环 · 仅 splash 时序流程不变 · 3/3 KEEP。已 cp index.html + push。

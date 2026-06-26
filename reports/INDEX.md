@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 119](round-119-splash-login-flash-fix.md) · 🟦 Bugfix · 修开场 splash→login 间闪现 dashboard(finish 改先 showLogin 再淡出 splash)· console0 · 自检 login 覆盖 · 3/3 KEEP
 - [Round 118](round-118-splash-duration.md) · ⬜ · 开场 splash 2.3s→4s + 信号脉冲更明显(用户「动画太快看不见」)· console0 · 3/3 KEEP
 - [Round 117](round-117-dashboard-insights-collapse.md) · 🟦 · Dashboard 减负:Savings momentum + Sourcing pipeline 折叠进底部「Insights」(默认收起,一键展开)——用户「dashboard 太多了?」选 collapse · console0 · 自检 5/5 · 3/3 KEEP
 - [Round 116] · 🏁 收敛 digest + 降 cadence 60s→1800s(无代码改动)
