@@ -3226,10 +3226,10 @@ function runSupplierMatching() {
             loading.style.display = 'none';
             results.style.display = 'block';
             renderSupplierCards();
-          }, 500);
+          }, 400);
         }
-      }, 1100);
-    }, i * 1500);
+      }, 850);
+    }, i * 1000);
   });
 }
 
@@ -3518,9 +3518,9 @@ function openBgCheck(id){
       setTimeout(()=>{
         el.style.borderColor='var(--green)'; el.style.background='var(--green-light)'; el.style.color='var(--green)';
         el.textContent = doneMsgs[i];
-        if(i===3) setTimeout(()=>showBgReport(d),500);
-      },1100);
-    },i*1500);
+        if(i===3) setTimeout(()=>showBgReport(d),400);
+      },850);
+    },i*1000);
   });
 }
 function showBgReport(d){

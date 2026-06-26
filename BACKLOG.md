@@ -38,7 +38,7 @@
 - [x] 🟦 **「Click to reply →」违背零负担(§4)**(R016)— dashboard「Replies Layla is handling」3 处「Click to reply →」→「Layla drafted a reply — review →」,与「她替你起草、你只审」叙事一致。
 - [~] 🟦 **空状态 void 可视化(纯文字 / 排布空)**:[x] diligence `#dd-report-empty`(R037:88/100 评分 + 4 维度 Cleared 清单);[x] sourcing `src-right-empty`(R038:Searching across 来源 chips + 4 评分维度行,诚实呈现"将执行"非假结果)。
 - [ ] 🟦 **采购 procurement 助理盯单(§3-G)**:订单推进 / 异常由助理监控,买方看进度 + 仅需决策项。(procurement 视图基础不错:已有 matched 理由 + 进度 + quote terms;补"助理在盯 + 需决策项"。)
-- [ ] 🟦 **sourcing/bg-check 分阶段 loader 提速 / 真实化**(影响中·把握中·风险低):`runSupplierMatching`(~15s)、`openBgCheck`(~12s)是**真出结果**的分阶段过程(非纯转圈,北极星允许),但偏慢且固定时长有"演"的边缘感。可压缩时长 / 让每段产出更扎实,避免滑向"拖时间假过程"。
+- [x] 🟦 **sourcing/bg-check 分阶段 loader 提速**(R113)— 步距 i*1500→i*1000、done 1100→850、final 500→400:`runSupplierMatching` ~7.6s→~5.25s(9 卡正常)、`openBgCheck` ~6.1s→~4.25s(报告正常)。staged reveal 行累积可读性保留,更 snappy 少"演"。自检通过、console0。
 - [ ] 🟦 **决策卡组件统一(§3-F)**:散落的「需买方拍板」统一为一致 Decision Card。
 - [x] 🟦 **进展 / 安心感汇总(§3-G)**(R020)— dashboard「Layla is keeping watch」KPI 行从被动计数重做为安心感:**Saved for you $843K**(谈判省下,3 deals)· **Advancing for you 4**(3 需你决策)· **Suppliers vetted 24**(全清无红旗)· **Next deadline 12d**(on track)。$843K = compare 三项节省($468K+$24.8K+$350K)真实加总。
 
