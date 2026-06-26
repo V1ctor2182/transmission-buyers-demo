@@ -158,6 +158,12 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 114 · ✅ 审计 · BACKLOG 准确性核对 + 诚实收敛 · 无代码改动
+- 2026-06-26 · 见 `reports/round-114-backlog-accuracy.md`。逐条核 BACKLOG 开放项:sparkle(R038 已消除)+ procurement 盯单(R044/R106 已达成)标 [x];决策卡重构=纯重构风险>收益不做;flag=de-AI 已决策保留。**剩余仅 2 项(均不优先)**。
+- **诚实状态**:高价值项全交付;不做凑数/冒险改动。建议用户给新方向最佳,否则 loop 仅在发现诚实低风险真改进时动手。
+- **闸门**:无代码改动 → 无回归。
+- **next**:等新方向 / 仅诚实低风险微改进。1min 自主续跑。
+
 ### Round 113 · 🟦 Standard · 分阶段 loader 提速(BACKLOG 项)
 - 2026-06-26 · 见 `reports/round-113-loader-speedup.md`。runSupplierMatching + openBgCheck 同模式时序压缩 i*1500→i*1000 / done1100→850 / final500→400:supplierMatching ~7.6→5.25s、bgCheck ~6.1→4.25s(~30% 快)。staged reveal 真过程不变、结果数据不变,更 snappy 少"演"。
 - **闸门**:console 零错 · 自检 supplierMatching{results block,9 卡}/bgCheck{report block} · 3/3 KEEP。已 cp index.html + push。BACKLOG 该项标 [x]。

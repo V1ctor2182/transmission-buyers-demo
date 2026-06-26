@@ -37,7 +37,7 @@
 - [x] 🟦 **活动流 / Worklog(§3-B)**(R011,用户点名优先)— Layla's Worklog 面板重做为**带时间戳的助理动作时间线**(Today/Yesterday 分组 · mono 时间 · 连接线 · 语义点 blue=需你/green=done · 决策 pill),内容映射真实流程(XCMG/SANY 谈判省 $20K、Guangzhou 报价、尽调清单、寻源匹配 9 家、发 RFQ)。**待深化**:点击 worklog 条目跳到对应上下文 / 真实可累积。
 - [x] 🟦 **「Click to reply →」违背零负担(§4)**(R016)— dashboard「Replies Layla is handling」3 处「Click to reply →」→「Layla drafted a reply — review →」,与「她替你起草、你只审」叙事一致。
 - [~] 🟦 **空状态 void 可视化(纯文字 / 排布空)**:[x] diligence `#dd-report-empty`(R037:88/100 评分 + 4 维度 Cleared 清单);[x] sourcing `src-right-empty`(R038:Searching across 来源 chips + 4 评分维度行,诚实呈现"将执行"非假结果)。
-- [ ] 🟦 **采购 procurement 助理盯单(§3-G)**:订单推进 / 异常由助理监控,买方看进度 + 仅需决策项。(procurement 视图基础不错:已有 matched 理由 + 进度 + quote terms;补"助理在盯 + 需决策项"。)
+- [x] 🟦 **采购 procurement 助理盯单(§3-G)**(已达成,R044+R106 核实)— agent-bar「Monitoring 4 active orders across your projects」=助理在盯;R044「Approve & request PO」决策横幅 + R041 阶段追踪器 = 需决策项 + 进度;matched 理由/quote terms 既有。无需新增。
 - [x] 🟦 **sourcing/bg-check 分阶段 loader 提速**(R113)— 步距 i*1500→i*1000、done 1100→850、final 500→400:`runSupplierMatching` ~7.6s→~5.25s(9 卡正常)、`openBgCheck` ~6.1s→~4.25s(报告正常)。staged reveal 行累积可读性保留,更 snappy 少"演"。自检通过、console0。
 - [ ] 🟦 **决策卡组件统一(§3-F)**:散落的「需买方拍板」统一为一致 Decision Card。
 - [x] 🟦 **进展 / 安心感汇总(§3-G)**(R020)— dashboard「Layla is keeping watch」KPI 行从被动计数重做为安心感:**Saved for you $843K**(谈判省下,3 deals)· **Advancing for you 4**(3 需你决策)· **Suppliers vetted 24**(全清无红旗)· **Next deadline 12d**(on track)。$843K = compare 三项节省($468K+$24.8K+$350K)真实加总。
@@ -46,7 +46,7 @@
 - [x] ⬜ **nav emoji 图标**(R004)— 侧栏 🏠🔍📋💬🔎 → inline SVG 线性图标(grid/search/layers/chat/shield-check),`stroke:currentColor` 随 active/hover 变色。
 - [~] ⬜ **flag / 装饰 emoji**(R005 部分):已去 `👋`、`🤖 YOUR PROCUREMENT SPECIALIST SUGGESTS`、`🤖 AI Procurement Recommendation`。**残留**:robot FAB `🤖`(L2171)+ robot-panel-title `🤖`(归助理常驻大件一起做)、diligence 标题 `🔧`、org-badge / 各处 flag emoji(🇪🇬🇨🇳…)、`📊` 等。
 - [x] ⬜ **供应商卡 emoji「logo」**(R006)— `renderSupplierCards` 的 `.smc-logo` 从 emoji(💡🔆☀️…)改为 `${s.name.charAt(0)}` 首字母,chip 重做成 slate `#475569` + 白 JetBrains Mono(与 supplier=slate 一致)。`logo:` 数据字段保留(已不渲染)。
-- [ ] ⬜ **sourcing 右栏 placeholder ✦ sparkle 图标**:`src-right-empty` 的装饰 sparkle 略 AI 味 → 收成更克制或去掉。
+- [x] ⬜ **sourcing 右栏 placeholder ✦ sparkle 图标**(R038 已消除)— R038 把 src-right-empty 重做为「Searching across 来源 chips + 4 评分维度行」预览,装饰 sparkle 已不存在(R114 grep 全文 0 处 ✦/sparkle)。
 - [x] ⬜ **彩色字母 avatar 撞色**(R005)— 25+ 处头像渐变从 amber/green/red/purple/cyan 彩虹撞色统一为**两档**:self(user/chat-buyer/robot FAB)= 品牌蓝 `#1B5EFF,#0EA5E9`;supplier/contact = 中性 slate `#475569,#64748B`(66 处)。
 - [x] ⬜ **negotiation/diligence export 条撞色**(R007)— export/destination 条 blue/green/purple/amber/grey → 统一品牌蓝 `var(--accent),var(--accent2)`;改 3 处渲染(negotiation 静态 markup L1781/87/93、diligence dd-bar L1974/78/82/86、JS `selectNegSupplier` exBars L2847)。语义 `.prog-green`/`.prog-amber` + Low-risk 绿框完好未动。
 - [x] ⬜ **proj-ph-icon emoji + deadline dots**(R008)— dashboard 项目图标 🏗💡⛏☀️ → slate SVG 线性图标(building/bulb/mountain/sun)+ 统一中性 chip(去 pastel 撞色底);Upcoming Deadlines 🔴🟡🟢 → `currentColor` CSS 圆点(语义色保留)。
