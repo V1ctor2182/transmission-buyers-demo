@@ -158,6 +158,11 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 102 · 🟦 Standard · 地图交互:点列表行→flyTo 站点+开 popup
+- 2026-06-26 · 见 `reports/round-102-map-flyto-row-click.md`。承接 R101 真实地图,补「点列表行→flyTo」。点 .proj-progress-header → egFlyTo:flyTo marker(zoom7,.7s)+开 popup+高亮;hover 互亮 & accordion 展开均保留(click 监听与 inline onclick 并存);reduced-motion 退化 setView。索引沿用 EG_DP2PINIDX。
+- **闸门**:console 零错 · 自检 egFlyTo(0)→{markers4,flyTarget[30,31.8],centerNearTarget true,popupOpen true,litMarker1 true} · 仅 dashboard additive 不破 accordion · 3/3 KEEP。已 cp index.html + push。
+- **next**:清死 CSS(.eg-svg/.eg-pin/.eg-route/.eg-coast/.eg-flow+egPulse/egFlow+老 .eg-tip;.pipe-row/.pipe-seg/.pipe-arrow/.pipe-win)· 更多可视化 · factorygate 补缺件。1min 自主续跑。
+
 ### Round 101 · 🟥 NOTABLE · Egypt 地图换真·可交互地图(Leaflet+暗色 CartoDB)· 用户紧急点名
 - 2026-06-26 · 见 `reports/round-101-real-leaflet-map.md`。**用户插话紧急**:「地图非常 AI 味…帮我赶紧改高级点,比如真实地图…能交互」(R098 手绘 SVG 仍不够真)。整体换成 **Leaflet 1.9.4(unpkg+SRI)+ 暗色 CartoDB dark_all 瓦片** 真实地图:真实埃及地理+地名;4 项目品牌脉冲 marker(真经纬度)+Alexandria 枢纽+送货路由;拖/缩/点 popup(含 Open in My Projects CTA);scrollWheelZoom 关。**联动保留**(egLitPin→egHL,EG_DP2PINIDX 不变;hover 行↔marker 互亮)。showView dashboard+load 触发 initEgMap+invalidateSize(守容器可见)。
 - **闸门**:console 零错 · headless 自检 {mapReady,markers4,routes4,L true,route2op .95,pin1lit true,tiles4} 全过 · 截图见真实暗色埃及图+marker+枢纽+路由+缩放控件 · 仅 dashboard+showView 一行,Sourcing Map 独立不受影响 · 3/3 KEEP。已 cp index.html + push。

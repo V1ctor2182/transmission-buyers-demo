@@ -2949,10 +2949,21 @@ function egLitRow(cardIdx){
 }
 // hovering a project row lights its map marker + route
 function egLitPin(cardIdx){ egHL(cardIdx>=0 ? EG_DP2PINIDX[cardIdx] : -1); }
+// clicking a project row flies the map to that site and opens its popup
+function egFlyTo(cardIdx){
+  if(!egMap || cardIdx<0) return;
+  var pinIdx=EG_DP2PINIDX[cardIdx], mk=EG_MARKERS[pinIdx]; if(!mk) return;
+  egHL(pinIdx);
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce){ egMap.setView(mk.getLatLng(),7); mk.openPopup(); }
+  else{ egMap.flyTo(mk.getLatLng(),7,{duration:.7}); setTimeout(function(){ try{mk.openPopup();}catch(e){} },720); }
+}
 (function(){
   var wrap=document.getElementById('dash-proj-list'); if(!wrap) return;
-  wrap.addEventListener('mouseover',function(e){ var c=e.target.closest('.proj-progress-card'); if(!c) return; var cards=Array.prototype.slice.call(wrap.querySelectorAll('.proj-progress-card')); egLitPin(cards.indexOf(c)); });
+  function cardIdxFrom(e){ var c=e.target.closest('.proj-progress-card'); if(!c) return -1; return Array.prototype.slice.call(wrap.querySelectorAll('.proj-progress-card')).indexOf(c); }
+  wrap.addEventListener('mouseover',function(e){ var c=e.target.closest('.proj-progress-card'); if(!c) return; egLitPin(cardIdxFrom(e)); });
   wrap.addEventListener('mouseleave',function(){ egLitPin(-1); });
+  wrap.addEventListener('click',function(e){ if(!e.target.closest('.proj-progress-header')) return; egFlyTo(cardIdxFrom(e)); });
 })();
 window.addEventListener('load',function(){ setTimeout(initEgMap,150); });
 // Transient "supplier is typing…" bubble shown before a real incoming message arrives
