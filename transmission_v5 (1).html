@@ -606,7 +606,13 @@ textarea.form-input{resize:vertical;min-height:80px}
 @keyframes spLoad{0%{width:0}100%{width:100%}}
 @keyframes spTwinkle{0%,100%{opacity:.2}50%{opacity:.95}}
 @keyframes spSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-@media (prefers-reduced-motion: reduce){.sp-orbit,.sp-star{animation:none!important}}
+/* emanating "signal" pings from the brand mark — on-theme for Transmission */
+.sp-pulse{position:absolute;top:47%;left:50%;z-index:1;pointer-events:none}
+.sp-pulse span{position:absolute;top:0;left:0;width:130px;height:130px;margin:-65px 0 0 -65px;border:1.5px solid rgba(16,191,255,.45);border-radius:50%;opacity:0;animation:spPing 4.2s ease-out infinite}
+.sp-pulse span:nth-child(2){animation-delay:1.4s}
+.sp-pulse span:nth-child(3){animation-delay:2.8s}
+@keyframes spPing{0%{transform:scale(.35);opacity:0}9%{opacity:.5}100%{transform:scale(4.6);opacity:0}}
+@media (prefers-reduced-motion: reduce){.sp-orbit,.sp-star{animation:none!important}.sp-pulse{display:none}}
 /* ── LOGIN (factorygate-style entry) ── */
 #login{position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at 50% 40%, #102845 0%, #0a1a2f 55%, #060d1b 100%);display:none;align-items:center;justify-content:center;overflow:hidden;transition:opacity .5s ease}
 #login.show{display:flex}
@@ -698,6 +704,7 @@ textarea.form-input{resize:vertical;min-height:80px}
 <!-- OPENING SPLASH (开场) -->
 <div id="splash">
   <div class="sp-stars" id="sp-stars"></div>
+  <div class="sp-pulse"><span></span><span></span><span></span></div>
   <div class="sp-orbit o1"></div><div class="sp-orbit o2"></div><div class="sp-orbit o3"></div>
   <div class="sp-logo"><img src="logo/transmission-tm-icon.svg" alt=""></div>
   <div class="sp-word"><div class="sp-name">TRANSMISSION</div><div class="sp-sub">AI BUYERS AGENT</div></div>

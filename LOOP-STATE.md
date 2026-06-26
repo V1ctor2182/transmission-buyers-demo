@@ -158,6 +158,11 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 100 · ⬜ Polish · 开场 splash 加「信号脉冲」环(科技感)· 用户点名
+- 2026-06-26 · 见 `reports/round-100-splash-signal-pings.md`。**用户点名「开场 + 更多科技感 + 参考 factorygate 补缺件」**。splash 原有轨道但极淡偏静。借鉴 factorygate ringPulse,加一组从品牌标向外扩散的**信号脉冲同心环**(.sp-pulse 3 环 spPing scale.35→4.6 错峰 1.4s)——双关产品名 Transmission(信号广播)。signal blue/cyan 克制,reduced-motion 隐藏。**未引入 factorygate barFill 假进度条**(红线)。既有流程/动画不动。
+- **闸门**:console 零错 · 两帧截图见同心信号环扩散 + 轨道点,流程正常 · 纯 splash additive 无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next(用户其余未做完)**:① 更多可视化(挑一内容视图加 viz)② factorygate 补更多缺件 ③ 首屏决策卡偏密 ④ 清旧 .pipe-row 死 CSS。1min 自主续跑。
+
 ### Round 099 · 🟦 Standard · Dashboard 降信息过载:momentum+pipeline 并排 2 栏 + 漏斗竖向可视化 · 用户点名
 - 2026-06-26 · 见 `reports/round-099-dashboard-overload-2col.md`。**用户重申「dashboard 信息密度太高,一登录就过载」+「多一些可视化」**。诊断:首屏后次级内容是一长串等宽全幅块堆叠=一面墙。解法=层级/紧凑(非删)。把 Savings momentum + Sourcing pipeline 两连续全幅块包进 `.dash-insights` 2 栏(1.55fr/1fr),纵向两块→一行;漏斗从横挤 4 段重做为**竖向漏斗条形图**(pf-row 轨道+按量递减填充 24/9/4/2,数字 mono 标签常显,撑满右栏对齐图)。showView 导航保留,<1080px 回退单栏。现首屏后全为一致 2 栏面板节奏(momentum|pipeline·地图|项目·Replies|Deadlines),页更短+可视化不减反增。
 - **闸门**:console 零错 · 截图 2 栏+递减漏斗渲染正确、全页无破版 · 仅 dashboard 改、导航保留、响应式 · 3/3 KEEP。已 cp index.html + push。
