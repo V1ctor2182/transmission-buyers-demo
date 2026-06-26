@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 107](round-107-regression-sweep.md) · ✅ 验证 · 跨视图回归抽查(R098-106 大改后)= 13/13 OK · 0 console 错 · 无代码改动 · 收敛态诚实告知
 - [Round 106](round-106-map-route-flow.md) · ⬜ · 地图高亮路由虚线向 Alexandria 流动(货流游戏感,仅高亮条,reduced-motion 关)· console0 · 自检 3/3 · 3/3 KEEP
 - [Round 105](round-105-neg-savings-annotation.md) · 🟦 · 谈判博弈加真实「saved ~$X vs opening」标注((开价−成交)×数量,与 dashboard $20K 一致)· console0 · 自检 3/3 · 3/3 KEEP
 - [Round 104](round-104-price-landscape-chart.md) · 🟦 · 寻源报告加单价对比横条图(8 家真实报价,Layla's pick 高亮,China/Local/Premium 语义色)——诚实真数据可视化 · console0 · 3/3 KEEP

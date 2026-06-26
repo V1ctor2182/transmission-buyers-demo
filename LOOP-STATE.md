@@ -158,6 +158,12 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 107 · ✅ 验证 · 跨视图回归抽查(R098-106 大改后)· 无代码改动
+- 2026-06-26 · 见 `reports/round-107-regression-sweep.md`。headless 注入扫描:6 视图切换 + egMap/4markers/flyTo + neg $144K + 寻源价条 8 行 + compare 开 + decApprove → **13/13 OK,errs 0**。地图重写等大改零回归。
+- **闸门**:console 零错 · 13/13 · 纯验证无改动。selftest-harness.html(R018 快照)已过期不再维护,改用内联 headless 扫描。
+- **★ 收敛诚实告知**:5 视图+真实地图 viz/交互/决策/人感/零负担充分,两北极星对齐,回归 0,仅余边际项。用户要持续 1min 不强推收敛 → 继续只做诚实低风险真改进,无高价值项会如实说明。
+- **next**:科技感微调(克制)/ factorygate 个别件 / 文案细抠。1min 自主续跑。
+
 ### Round 106 · ⬜ Polish · 地图高亮路由「货流向 Alexandria」流动动画
 - 2026-06-26 · 见 `reports/round-106-map-route-flow.md`。procurement 审计无缺口(树/分数/KPI/风险/Approve PO/阶段器/export 条全有)→ 转地图游戏感。egHL 高亮某路由时给其 Leaflet path 加 `.eg-route-flow`(egRouteFlow dashoffset),虚线向 Alexandria 流动;仅高亮条,reduced-motion 关。
 - **闸门**:console 零错 · 自检 egHL(2)→{r2flow:true,r0flow:false,清除 true} · 仅地图 additive · 3/3 KEEP。已 cp index.html + push。
