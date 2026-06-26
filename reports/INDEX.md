@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 104](round-104-price-landscape-chart.md) · 🟦 · 寻源报告加单价对比横条图(8 家真实报价,Layla's pick 高亮,China/Local/Premium 语义色)——诚实真数据可视化 · console0 · 3/3 KEEP
 - [Round 103](round-103-dead-css-cleanup.md) · ⬜ · 清死 CSS:旧 SVG 地图(.eg-pin/.eg-route/.eg-coast/egPulse/egFlow…)+ 旧横向漏斗(.pipe-row/.pipe-seg/.pipe-arrow)· 死类 0/在用完好 · console0 · 3/3 KEEP
 - [Round 102](round-102-map-flyto-row-click.md) · 🟦 · 地图交互:点项目列表行→flyTo 站点+开 popup+高亮(承接真实地图,reduced-motion 退化 setView)· console0 · 自检 5/5 · 3/3 KEEP
 - [Round 101](round-101-real-leaflet-map.md) · 🟥 NOTABLE · Egypt 地图换成真·可交互地图(Leaflet+暗色 CartoDB,真实地理/地名+拖缩点 popup+路由+列表联动)——用户紧急点名「真实地图能交互」· console0 · 自检 markers4/routes4/tiles4/linkage✓ · 3/3 KEEP · ⚠依赖网络(线上 Pages 正常)

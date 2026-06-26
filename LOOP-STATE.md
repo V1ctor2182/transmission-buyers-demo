@@ -158,6 +158,11 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 104 · 🟦 Standard · 寻源报告加单价对比横条图(诚实真数据)
+- 2026-06-26 · 见 `reports/round-104-price-landscape-chart.md`。「更多可视化」。诚实把关:diligence 雷达需假分数→放弃;改用寻源报告已有真实单价(8 家 LED fixture)。表格上方加 `.sr-pricebars` 横条图:按价升序,宽∝价(30→100% 非线性),mono 价标;Layla's pick(Guangzhou $38.50)蓝+◆标,China=cyan/Local=amber/Premium=slate。caption 标价段。一眼看清性价比格局。
+- **闸门**:console 零错 · 截图 8 条比例真实+高亮+语义色 · 仅 sourcing 报告 additive · 3/3 KEEP。已 cp index.html + push。
+- **next**:更多可视化(neg 博弈/compare)· 科技感 · factorygate 补缺件。1min 自主续跑。
+
 ### Round 103 · ⬜ Utility · 清理死 CSS(R099/R101 遗留)
 - 2026-06-26 · 见 `reports/round-103-dead-css-cleanup.md`。删无引用死样式:旧 SVG 地图(.eg-svg/.eg-pin*/.eg-core/.eg-pin-pulse/.eg-ring/.eg-route*/.eg-hub-mark/.eg-coast/.eg-tip*+egPulse/egFlow/.eg-flow)+ 旧横向漏斗(.pipe-row/.pipe-seg*/.pipe-arrow)。保留在用(.eg-mk/.eg-hub-ic/.eg-row-lit/.eg-tt/.egpop/.pipe-card/.pf-*/.eg-card 等)。
 - **闸门**:机检 15 死类全 0 + 7 在用类完好 · console 零错 · 截图 dashboard(momentum+漏斗+真实地图+列表)无回归 · 3/3 KEEP。已 cp index.html + push。
