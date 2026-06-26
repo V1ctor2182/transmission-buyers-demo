@@ -158,6 +158,11 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 108 · ⬜ Polish · Dashboard 地图+列表行响应式
+- 2026-06-26 · 见 `reports/round-108-maprow-responsive.md`。审 diligence 全报告=完整无缺口。把地图行内联 grid 提为 `.dash-maprow`+`@media(max-width:1080px)` 单栏(与 R099 insights 一致)。窄屏地图满宽不挤、Leaflet 自动重排;桌面 1.35fr/1fr 不变。
+- **闸门**:console 零错 · 1000px 截图地图满宽单栏正常 · 1440 同值无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:replies+deadlines 行同法(轻微)/ 文案细抠;收敛态续做诚实低风险微改进。1min 自主续跑。
+
 ### Round 107 · ✅ 验证 · 跨视图回归抽查(R098-106 大改后)· 无代码改动
 - 2026-06-26 · 见 `reports/round-107-regression-sweep.md`。headless 注入扫描:6 视图切换 + egMap/4markers/flyTo + neg $144K + 寻源价条 8 行 + compare 开 + decApprove → **13/13 OK,errs 0**。地图重写等大改零回归。
 - **闸门**:console 零错 · 13/13 · 纯验证无改动。selftest-harness.html(R018 快照)已过期不再维护,改用内联 headless 扫描。
