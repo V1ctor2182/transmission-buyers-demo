@@ -887,7 +887,22 @@ textarea.form-input{resize:vertical;min-height:80px}
     @keyframes momDraw{to{stroke-dashoffset:0}}
     @keyframes momFade{to{opacity:1}}
     @media (prefers-reduced-motion:reduce){.mom-line{animation:none;stroke-dashoffset:0}.mom-area,.mom-dot{animation:none;opacity:1}}
+    /* pair savings momentum + pipeline side-by-side to cut first-paint overload */
+    .dash-insights{display:grid;grid-template-columns:1.55fr 1fr;gap:16px;align-items:stretch;margin-bottom:20px}
+    .dash-insights .mom-card,.dash-insights .pipe-card{margin-bottom:0}
+    .dash-insights .pipe-card{display:flex;flex-direction:column}
+    .pipe-fn{display:flex;flex-direction:column;gap:8px;margin-top:12px;flex:1;justify-content:space-between}
+    .pf-row{position:relative;cursor:pointer;border-radius:8px;overflow:hidden;background:var(--bg);border:1px solid var(--border);transition:box-shadow .15s,transform .15s}
+    .pf-row:hover{box-shadow:0 2px 10px rgba(27,94,255,.14);transform:translateX(2px)}
+    .pf-fill{position:absolute;top:0;bottom:0;left:0;background:var(--accent-light);border-right:2px solid rgba(27,94,255,.32)}
+    .pf-win .pf-fill{background:var(--green-light);border-right-color:rgba(16,185,129,.38)}
+    .pf-content{position:relative;display:flex;align-items:center;gap:10px;padding:9px 13px}
+    .pf-content .pv{font:800 18px 'JetBrains Mono',monospace;color:var(--accent);line-height:1;flex:none;min-width:24px}
+    .pf-win .pf-content .pv{color:var(--green)}
+    .pf-content .pl{font-size:11px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    @media (max-width:1080px){.dash-insights{grid-template-columns:1fr}}
     </style>
+    <div class="dash-insights">
     <div class="mom-card">
       <div class="mom-main">
         <div class="mom-head">
@@ -926,16 +941,14 @@ textarea.form-input{resize:vertical;min-height:80px}
     </div>
 
     <div class="pipe-card">
-      <div class="section-title" style="margin-bottom:0">Sourcing pipeline <span style="font-size:11px;font-weight:500;color:var(--text3);margin-left:6px">Layla is moving suppliers down the funnel — across 4 active projects</span></div>
-      <div class="pipe-row">
-        <div class="pipe-seg" style="flex:1.7" onclick="showView('sourcing')" title="View sourcing"><div class="pv">24</div><div class="pl">In dialogue</div></div>
-        <div class="pipe-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-        <div class="pipe-seg" style="flex:1.4" onclick="showView('sourcing')" title="View sourcing"><div class="pv">9</div><div class="pl">Shortlisted</div></div>
-        <div class="pipe-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-        <div class="pipe-seg" style="flex:1.15" onclick="showView('negotiation')" title="View negotiations"><div class="pv">4</div><div class="pl">Negotiating</div></div>
-        <div class="pipe-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-        <div class="pipe-seg pipe-win" style="flex:1" onclick="showView('procurement')" title="View projects ready to award"><div class="pv">2</div><div class="pl">Ready to award</div></div>
+      <div class="section-title" style="margin-bottom:0">Sourcing pipeline <span style="font-size:11px;font-weight:500;color:var(--text3);margin-left:6px">Layla is moving suppliers down the funnel</span></div>
+      <div class="pipe-fn">
+        <div class="pf-row" onclick="showView('sourcing')" title="View sourcing"><div class="pf-fill" style="width:100%"></div><div class="pf-content"><div class="pv">24</div><div class="pl">In dialogue</div></div></div>
+        <div class="pf-row" onclick="showView('sourcing')" title="View sourcing"><div class="pf-fill" style="width:66%"></div><div class="pf-content"><div class="pv">9</div><div class="pl">Shortlisted</div></div></div>
+        <div class="pf-row" onclick="showView('negotiation')" title="View negotiations"><div class="pf-fill" style="width:46%"></div><div class="pf-content"><div class="pv">4</div><div class="pl">Negotiating</div></div></div>
+        <div class="pf-row pf-win" onclick="showView('procurement')" title="View projects ready to award"><div class="pf-fill" style="width:34%"></div><div class="pf-content"><div class="pv">2</div><div class="pl">Ready to award</div></div></div>
       </div>
+    </div>
     </div>
 
     <!-- ░░ EGYPT PROJECT MAP ░░ -->

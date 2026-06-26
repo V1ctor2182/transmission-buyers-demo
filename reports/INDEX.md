@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 099](round-099-dashboard-overload-2col.md) · 🟦 · Dashboard 降过载:Savings momentum + Sourcing pipeline 并排 2 栏 + 漏斗重做竖向条形可视化(用户「登录信息过载/要可视化」)· console0 · 3/3 KEEP
 - [Round 098](round-098-egmap-real-geography.md) · 🟦 · Egypt 项目地图重做为真实地理(三角洲/西奈/尼罗河/纳赛尔湖)+ 去雷达扫线/glow/假 blob + 送货路由→Alexandria 港 hover 点亮(用户点名「地图 AI 味重/要交互游戏感」)· console0 · 3/3 KEEP
 - [Round 097](round-097-dead-logo-emoji-sweep.md) · ⬜ · De-AI 去 9 个死 logo emoji 字段
 - [Round 096](round-096-compare-pick-badge.md) · 🟦 · Compare 「Layla's pick」徽章替装饰星

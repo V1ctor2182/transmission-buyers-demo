@@ -158,6 +158,11 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 099 · 🟦 Standard · Dashboard 降信息过载:momentum+pipeline 并排 2 栏 + 漏斗竖向可视化 · 用户点名
+- 2026-06-26 · 见 `reports/round-099-dashboard-overload-2col.md`。**用户重申「dashboard 信息密度太高,一登录就过载」+「多一些可视化」**。诊断:首屏后次级内容是一长串等宽全幅块堆叠=一面墙。解法=层级/紧凑(非删)。把 Savings momentum + Sourcing pipeline 两连续全幅块包进 `.dash-insights` 2 栏(1.55fr/1fr),纵向两块→一行;漏斗从横挤 4 段重做为**竖向漏斗条形图**(pf-row 轨道+按量递减填充 24/9/4/2,数字 mono 标签常显,撑满右栏对齐图)。showView 导航保留,<1080px 回退单栏。现首屏后全为一致 2 栏面板节奏(momentum|pipeline·地图|项目·Replies|Deadlines),页更短+可视化不减反增。
+- **闸门**:console 零错 · 截图 2 栏+递减漏斗渲染正确、全页无破版 · 仅 dashboard 改、导航保留、响应式 · 3/3 KEEP。已 cp index.html + push。
+- **next(用户本轮其余未做完)**:① 开场 + 更多科技感 ② 参考 factorygate 补缺 component ③ 首屏决策卡仍偏密(文案/间距呼吸)④ 清旧 .pipe-row 死 CSS。1min 自主续跑。
+
 ### Round 098 · 🟦 Standard · Egypt 项目地图重做真实地理 + 去 AI 味 + 交互路由 · 用户点名
 - 2026-06-26 · 见 `reports/round-098-egmap-real-geography.md`。**用户本轮点名「Egypt project map 非常 AI 味很重 + 要交互感/游戏感」**。删 dashboard 地图 `radar-scan` 雷达扫线(R048 加,本质假科技 slop)+ `egGlow` 模糊 + 手画抽象 blob 轮廓 + sourcing map 残留死 div;用真坐标投影重画**可辨识埃及**(地中海/三角洲外凸/西奈+苏伊士湾缺口/红海斜岸/22°N 南境)+ 尼罗河/纳赛尔湖/苏伊士运河 + 城市/海域标注。4 pin 按真实地理重定位 + 新增 **Alexandria import hub** + 4 条送货路由(hover pin/行→对应路由点亮+货流虚线,reduced-motion 关),呼应「Layla 在替你交付」。pin id/DOM 序保留 → R046 双向联动 + click→proc 不动。
 - **闸门**:console 零错 · headless 注入自检 routes=4/pins=4 + hover p1→route0/pin0 + errs=0 + linkage 往返一致 · 仅 `.eg-*`/`EG_*`+删 sourcing 死 div,跨视图无回归 · 3/3 KEEP。已 cp index.html + push。
