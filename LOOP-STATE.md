@@ -158,6 +158,12 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 101 · 🟥 NOTABLE · Egypt 地图换真·可交互地图(Leaflet+暗色 CartoDB)· 用户紧急点名
+- 2026-06-26 · 见 `reports/round-101-real-leaflet-map.md`。**用户插话紧急**:「地图非常 AI 味…帮我赶紧改高级点,比如真实地图…能交互」(R098 手绘 SVG 仍不够真)。整体换成 **Leaflet 1.9.4(unpkg+SRI)+ 暗色 CartoDB dark_all 瓦片** 真实地图:真实埃及地理+地名;4 项目品牌脉冲 marker(真经纬度)+Alexandria 枢纽+送货路由;拖/缩/点 popup(含 Open in My Projects CTA);scrollWheelZoom 关。**联动保留**(egLitPin→egHL,EG_DP2PINIDX 不变;hover 行↔marker 互亮)。showView dashboard+load 触发 initEgMap+invalidateSize(守容器可见)。
+- **闸门**:console 零错 · headless 自检 {mapReady,markers4,routes4,L true,route2op .95,pin1lit true,tiles4} 全过 · 截图见真实暗色埃及图+marker+枢纽+路由+缩放控件 · 仅 dashboard+showView 一行,Sourcing Map 独立不受影响 · 3/3 KEEP。已 cp index.html + push。
+- **⚠️ 依赖网络**(Leaflet CDN+瓦片):线上 GitHub Pages 正常;离线 file:// 无瓦片(真实地图本性)。SRI 锁版。
+- **next**:旧 .eg-pin/.eg-route SVG CSS 已死(可清);可选 点列表行→flyTo marker;更多可视化;清旧 .pipe-row CSS。1min 自主续跑。
+
 ### Round 100 · ⬜ Polish · 开场 splash 加「信号脉冲」环(科技感)· 用户点名
 - 2026-06-26 · 见 `reports/round-100-splash-signal-pings.md`。**用户点名「开场 + 更多科技感 + 参考 factorygate 补缺件」**。splash 原有轨道但极淡偏静。借鉴 factorygate ringPulse,加一组从品牌标向外扩散的**信号脉冲同心环**(.sp-pulse 3 环 spPing scale.35→4.6 错峰 1.4s)——双关产品名 Transmission(信号广播)。signal blue/cyan 克制,reduced-motion 隐藏。**未引入 factorygate barFill 假进度条**(红线)。既有流程/动画不动。
 - **闸门**:console 零错 · 两帧截图见同心信号环扩散 + 轨道点,流程正常 · 纯 splash additive 无回归 · 3/3 KEEP。已 cp index.html + push。

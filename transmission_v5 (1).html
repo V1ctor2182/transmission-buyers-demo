@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Transmission — AI Buyers Agent</title>
 <link rel="icon" type="image/svg+xml" href="logo/transmission-tm-icon.svg">
@@ -999,69 +1001,43 @@ textarea.form-input{resize:vertical;min-height:80px}
     @keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}
     @media (prefers-reduced-motion:reduce){.typing-dots span{animation:none}}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
+    /* real interactive Leaflet map (dark CartoDB basemap) */
+    #eg-leaflet{position:absolute;inset:0;background:#0b1b2e;z-index:0}
+    .eg-map-wrap .leaflet-container{background:#0b1b2e;font-family:'Inter',sans-serif;outline:none}
+    .eg-map-wrap .leaflet-control-zoom a{background:rgba(13,33,56,.92);color:#cfe0f5;border-color:#21405f}
+    .eg-map-wrap .leaflet-control-zoom a:hover{background:rgba(20,46,75,.98);color:#fff}
+    .eg-map-wrap .leaflet-control-attribution{background:rgba(7,17,31,.7);color:#5f7896;font-size:9px}
+    .eg-map-wrap .leaflet-control-attribution a{color:#7d96b8}
+    .eg-mk{transition:opacity .15s}
+    .eg-mk .egp{display:block;width:14px;height:14px;border-radius:50%;background:var(--c,#1B5EFF);border:2px solid #06101d;box-shadow:0 0 9px var(--c,#1B5EFF);position:relative}
+    .eg-mk .egp::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--c,#1B5EFF);opacity:.55;animation:egPing 2.6s ease-out infinite}
+    @keyframes egPing{0%{transform:scale(.55);opacity:.65}100%{transform:scale(2.5);opacity:0}}
+    .eg-mk.eg-dim{opacity:.32}
+    .eg-mk.eg-lit .egp{box-shadow:0 0 0 3px rgba(255,255,255,.9),0 0 14px var(--c,#1B5EFF)}
+    .eg-hub-ic i{display:block;width:11px;height:11px;background:#e8f0ff;border:1.5px solid #06101d;transform:rotate(45deg);box-shadow:0 0 7px rgba(232,240,255,.6)}
+    .leaflet-tooltip.eg-tt{background:rgba(10,22,40,.97);border:1px solid #21405f;color:#e6efff;font-size:11px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+    .leaflet-tooltip.eg-tt::before{border-top-color:#21405f}
+    .eg-map-wrap .leaflet-popup-content-wrapper{background:#0d2138;color:#e6efff;border:1px solid #21405f;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+    .eg-map-wrap .leaflet-popup-tip{background:#0d2138;border:1px solid #21405f}
+    .eg-map-wrap .leaflet-popup-close-button{color:#7d96b8}
+    .egpop{min-width:170px;padding:2px 1px}
+    .egpop .egpop-n{font-weight:700;font-size:12.5px;color:#fff}
+    .egpop .egpop-l{color:#9fb6d6;font-size:11px;margin-top:2px}
+    .egpop .egpop-s{margin-top:6px;font-size:10px;font-weight:700;letter-spacing:.4px}
+    .egpop .egpop-m{color:#9fb6d6;font-size:10.5px;margin-top:3px;line-height:1.45}
+    .egpop .egpop-cta{margin-top:9px;display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:600;padding:5px 11px;border:none;border-radius:7px;cursor:pointer}
+    .egpop .egpop-cta:hover{background:#1450e0}
     .eg-flow{stroke-dasharray:3 7;animation:egFlow 1s linear infinite}
     @keyframes egFlow{to{stroke-dashoffset:-20}}
-    @media (prefers-reduced-motion:reduce){.eg-flow{animation:none}}
+    @media (prefers-reduced-motion:reduce){.eg-flow{animation:none}.eg-mk .egp::before{animation:none}}
     </style>
     <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:start;margin-bottom:20px">
     <div class="eg-card" style="margin-bottom:0">
       <div class="eg-head">
-        <div class="eg-title">Egypt project map <span>Where Layla is delivering for you — hover a site, click to open</span></div>
+        <div class="eg-title">Egypt project map <span>Where Layla is delivering for you — drag, zoom &amp; click a site</span></div>
         <div class="eg-legend"><span><i style="background:#1B5EFF"></i>In negotiation</span><span><i style="background:#F59E0B"></i>Sampling</span><span><i style="background:#10BFFF"></i>Quoting</span></div>
       </div>
-      <div class="eg-map-wrap">
-        <svg class="eg-svg" viewBox="0 0 800 700" preserveAspectRatio="xMidYMid meet">
-          <!-- faint reference graticule -->
-          <g stroke="rgba(120,160,210,0.06)" stroke-width="1">
-            <line x1="0" y1="175" x2="800" y2="175"/><line x1="0" y1="350" x2="800" y2="350"/><line x1="0" y1="525" x2="800" y2="525"/>
-            <line x1="200" y1="0" x2="200" y2="700"/><line x1="400" y1="0" x2="400" y2="700"/><line x1="600" y1="0" x2="600" y2="700"/>
-          </g>
-          <!-- Egypt landmass (recognizable silhouette: Med + delta, Sinai w/ Gulf of Suez notch, Red Sea coast, 22°N south border) -->
-          <path class="eg-coast" d="M 44 48 L 294 64 L 360 58 L 452 48 L 510 60 L 537 67 L 613 70 L 652 177 L 614 288 L 525 152 L 585 319 L 658 456 L 774 649 L 50 649 L 50 146 Z"
-                fill="rgba(38,68,108,0.55)" stroke="rgba(120,170,235,0.55)" stroke-width="1.5" stroke-linejoin="round"/>
-          <!-- Lake Nasser -->
-          <path d="M 522 506 L 540 520 L 548 560 L 542 600 L 528 612 L 520 580 L 516 540 Z" fill="rgba(16,140,210,0.34)" stroke="rgba(80,180,240,0.4)" stroke-width="1"/>
-          <!-- Nile (Aswan → Cairo) + delta distributaries -->
-          <path d="M 528 506 L 520 460 L 502 400 L 478 330 L 456 262 L 440 200 L 432 150 M 432 150 L 360 78 M 432 150 L 470 70" fill="none" stroke="rgba(70,170,235,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Suez Canal -->
-          <path d="M 537 67 L 530 110 L 525 152" fill="none" stroke="rgba(110,200,245,0.55)" stroke-width="1.6" stroke-dasharray="2 4"/>
-          <!-- water labels -->
-          <text x="320" y="34" fill="rgba(120,180,235,0.5)" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="3">MEDITERRANEAN</text>
-          <text x="712" y="430" fill="rgba(120,180,235,0.42)" font-size="9.5" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="2" transform="rotate(64,712,430)">RED SEA</text>
-          <text x="640" y="205" fill="rgba(210,225,245,0.4)" font-size="10.5" font-family="Inter, sans-serif" text-anchor="middle" letter-spacing=".5">Sinai</text>
-          <!-- city ticks -->
-          <text x="468" y="152" fill="rgba(210,225,245,0.45)" font-size="9.5" font-family="Inter, sans-serif" text-anchor="start">Cairo</text>
-          <text x="528" y="490" fill="rgba(210,225,245,0.42)" font-size="9.5" font-family="Inter, sans-serif" text-anchor="middle">Aswan</text>
-          <text x="556" y="150" fill="rgba(210,225,245,0.38)" font-size="9" font-family="Inter, sans-serif" text-anchor="start">Suez</text>
-          <!-- delivery routes: each project site → Alexandria import hub -->
-          <g fill="none">
-            <path class="eg-route" data-pin="0" d="M 438 150 Q 300 60 244 78" stroke="#1B5EFF" stroke-width="2"/>
-            <path class="eg-route" data-pin="1" d="M 470 165 Q 320 70 244 78" stroke="#F59E0B" stroke-width="2"/>
-            <path class="eg-route" data-pin="2" d="M 595 205 Q 380 60 244 78" stroke="#10BFFF" stroke-width="2"/>
-            <path class="eg-route" data-pin="3" d="M 520 500 Q 300 320 244 78" stroke="#10BFFF" stroke-width="2"/>
-          </g>
-          <!-- Alexandria import hub -->
-          <g class="eg-hub-mark" transform="translate(240,72)">
-            <circle r="4.5" fill="#e8f0ff" stroke="#0a1a2f" stroke-width="1.5"/>
-            <circle r="8" fill="none" stroke="rgba(232,240,255,.45)" stroke-width="1"/>
-          </g>
-          <text x="240" y="56" fill="rgba(220,232,250,0.6)" font-size="9.5" font-family="Inter, sans-serif" text-anchor="middle" font-weight="600">Alexandria · import hub</text>
-          <!-- project pins (DOM order p1,p2,p3,p4 preserved for list linkage) -->
-          <g class="eg-pin" onmouseenter="egTip(event,'p1')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(438,150)">
-            <circle class="eg-pin-pulse" r="9" fill="rgba(27,94,255,.5)"/><circle class="eg-ring" r="13"/><circle class="eg-core" r="6.5" fill="#1B5EFF" stroke="#0a1a2f" stroke-width="2"/>
-          </g>
-          <g class="eg-pin" onmouseenter="egTip(event,'p2')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(470,165)">
-            <circle class="eg-pin-pulse" r="9" fill="rgba(245,158,11,.5)" style="animation-delay:.7s"/><circle class="eg-ring" r="13"/><circle class="eg-core" r="6.5" fill="#F59E0B" stroke="#0a1a2f" stroke-width="2"/>
-          </g>
-          <g class="eg-pin" onmouseenter="egTip(event,'p3')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(595,205)">
-            <circle class="eg-pin-pulse" r="9" fill="rgba(16,191,255,.5)" style="animation-delay:1.4s"/><circle class="eg-ring" r="13"/><circle class="eg-core" r="6.5" fill="#10BFFF" stroke="#0a1a2f" stroke-width="2"/>
-          </g>
-          <g class="eg-pin" onmouseenter="egTip(event,'p4')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(520,500)">
-            <circle class="eg-pin-pulse" r="9" fill="rgba(16,191,255,.5)" style="animation-delay:2.1s"/><circle class="eg-ring" r="13"/><circle class="eg-core" r="6.5" fill="#10BFFF" stroke="#0a1a2f" stroke-width="2"/>
-          </g>
-        </svg>
-        <div class="eg-tip" id="eg-tip"></div>
-      </div>
+      <div class="eg-map-wrap"><div id="eg-leaflet"></div></div>
     </div>
       <div id="dash-proj-list">
         <div class="section-title">
@@ -2797,6 +2773,7 @@ function showView(v){
   if(v==='procurement') decorateTreeScores();
   if(v==='negotiation') renderNegDecision(curNeg);
   if(v==='map') renderMap();
+  if(v==='dashboard') setTimeout(function(){ if(typeof initEgMap==='function'){ initEgMap(); if(egMap) egMap.invalidateSize(); } },60);
 }
 // Deep-link into a specific supplier's negotiation thread (e.g. from a dashboard reply card)
 function goNeg(id){
@@ -2923,47 +2900,61 @@ document.addEventListener('keydown',function(e){
   else if(e.key==='Escape'){ mapReset(); }
   else if(e.key==='Enter'&&mapSel){ var n=MAP_NODES.find(function(x){return x.id===mapSel;}); if(n) showView(n.ready?'procurement':'negotiation'); }
 });
-// ── EGYPT PROJECT MAP (dashboard) ──
+// ── EGYPT PROJECT MAP (dashboard) — real interactive Leaflet map (dark CartoDB basemap) ──
 const EG_PROJECTS={
-  p1:{name:'Smart City Road Lighting',loc:'New Cairo Smart City',status:'In negotiation',color:'#3b82f6',meta:'8,000 LED units · Guangzhou Lumens at $38.50'},
+  p1:{name:'Smart City Road Lighting',loc:'New Cairo Smart City',status:'In negotiation',color:'#1B5EFF',meta:'8,000 LED units · Guangzhou Lumens at $38.50'},
   p2:{name:'New Cairo Construction',loc:'New Administrative Capital · Phase 2',status:'Sampling',color:'#F59E0B',meta:'Structural steel · 3 suppliers in review'},
   p3:{name:'Sinai Mining Equipment',loc:'Egyptian Mineral Resources · Phase 1',status:'Quoting',color:'#10BFFF',meta:'Excavators · XCMG vs SANY at $144K'},
   p4:{name:'Benban Solar Park · Ph.3',loc:'Benban, Aswan',status:'Quoting',color:'#10BFFF',meta:'PV mounting systems · early sourcing'}
 };
-const EG_ID2IDX={p1:0,p2:1,p3:2,p4:3};
-// Highlight the delivery route (and dim others) for a given pin DOM index; -1 clears.
-function egRoute(pinIdx){
-  document.querySelectorAll('.eg-card .eg-route').forEach(function(r){
-    var on = pinIdx>=0 && +r.getAttribute('data-pin')===pinIdx;
-    r.classList.toggle('eg-route-on', on); r.classList.toggle('eg-flow', on);
+// pin/array index order p1..p4 — kept so the list↔map index maps below stay valid
+const EG_ORDER=['p1','p2','p3','p4'];
+const EG_GEO={p1:[30.03,31.47],p2:[30.00,31.80],p3:[29.55,33.85],p4:[24.45,32.74]}; // real lat/lng
+const EG_HUB=[31.20,29.92]; // Alexandria import hub
+const EG_PIN2CARD={p1:1,p2:0,p3:2,p4:3};   // map pin id → project-list card index
+const EG_DP2PINIDX=[1,0,2,3];              // list card index → pin array index
+let egMap=null, EG_MARKERS=[], EG_ROUTES=[];
+function initEgMap(){
+  if(egMap || !window.L) return;
+  var el=document.getElementById('eg-leaflet'); if(!el || el.offsetParent===null) return; // wait until visible
+  egMap=L.map(el,{zoomControl:true,scrollWheelZoom:false,attributionControl:true,zoomSnap:.25,minZoom:4,maxZoom:12});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19,attribution:'&copy; OpenStreetMap, &copy; CARTO'}).addTo(egMap);
+  // delivery routes (project site → Alexandria) drawn under the markers
+  EG_ORDER.forEach(function(id,i){ EG_ROUTES[i]=L.polyline([EG_GEO[id],EG_HUB],{color:EG_PROJECTS[id].color,weight:1.5,opacity:.3,dashArray:'4 6'}).addTo(egMap); });
+  // Alexandria import hub
+  L.marker(EG_HUB,{icon:L.divIcon({className:'eg-hub-ic',html:'<i></i>',iconSize:[12,12],iconAnchor:[6,6]})}).addTo(egMap).bindTooltip('Alexandria · import hub',{direction:'top',className:'eg-tt',offset:[0,-6]});
+  // project markers
+  EG_ORDER.forEach(function(id,i){
+    var p=EG_PROJECTS[id];
+    var mk=L.marker(EG_GEO[id],{icon:L.divIcon({className:'eg-mk',html:'<span class="egp" style="--c:'+p.color+'"></span>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(egMap);
+    mk.bindPopup('<div class="egpop"><div class="egpop-n">'+p.name+'</div><div class="egpop-l">'+p.loc+'</div><div class="egpop-s" style="color:'+p.color+'">'+p.status.toUpperCase()+'</div><div class="egpop-m">'+p.meta+'</div><div class="egpop-m" style="color:#7d96b8">→ shipping to Alexandria import hub</div><button class="egpop-cta" onclick="showView(\'procurement\')">Open in My Projects &rarr;</button></div>');
+    mk.on('mouseover',function(){ egLitRow(EG_PIN2CARD[id]); egHL(i); });
+    mk.on('mouseout',function(){ egLitRow(-1); egHL(-1); });
+    EG_MARKERS[i]=mk;
   });
+  // frame all sites + the hub
+  try{ egMap.fitBounds(L.featureGroup(EG_MARKERS.concat([L.marker(EG_HUB)])).getBounds(),{padding:[30,30]}); }
+  catch(e){ egMap.setView([27.8,30.8],5.4); }
+  setTimeout(function(){ if(egMap) egMap.invalidateSize(); },180);
 }
-function egTip(e,id){ var p=EG_PROJECTS[id]; if(!p) return; var t=document.getElementById('eg-tip'); if(!t) return;
-  t.innerHTML='<div style="font-weight:700;font-size:12.5px">'+p.name+'</div><div style="color:#9fb6d6;font-size:11px;margin-top:2px">'+p.loc+'</div><div style="margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.4px;color:'+p.color+'">'+p.status.toUpperCase()+'</div><div style="color:#9fb6d6;font-size:10.5px;margin-top:3px;line-height:1.45">'+p.meta+'</div><div style="color:#7d96b8;font-size:9.5px;margin-top:5px">→ shipping to Alexandria import hub</div>';
-  t.classList.add('show'); egTipMove(e); egLitRow(EG_PIN2CARD[id]);
-  var idx=EG_ID2IDX[id]; egRoute(idx); egLitPin(EG_PIN2CARD[id]); }
-function egTipMove(e){ var w=document.querySelector('.eg-map-wrap'); if(!w) return; var r=w.getBoundingClientRect(),t=document.getElementById('eg-tip'); if(!t) return; var x=e.clientX-r.left+14,y=e.clientY-r.top+14; if(x+242>r.width)x-=262; if(y+96>r.height)y-=112; t.style.left=x+'px'; t.style.top=y+'px'; }
-function egTipHide(){ var t=document.getElementById('eg-tip'); if(t)t.classList.remove('show'); egLitRow(-1); egRoute(-1); egLitPin(-1); }
-// Reverse link: hovering a map pin highlights its project row in the list
-const EG_PIN2CARD={p1:1,p2:0,p3:2,p4:3};
+// Highlight one site's route + marker (and dim the rest); -1 clears.
+function egHL(pinIdx){
+  EG_ROUTES.forEach(function(r,i){ if(!r) return; var on=i===pinIdx; r.setStyle({opacity: pinIdx<0?.3:(on?.95:.1), weight: on?3:1.5}); });
+  EG_MARKERS.forEach(function(m,i){ var el=m&&m.getElement&&m.getElement(); if(!el) return; el.classList.toggle('eg-dim', pinIdx>=0&&i!==pinIdx); el.classList.toggle('eg-lit', pinIdx>=0&&i===pinIdx); });
+}
 function egLitRow(cardIdx){
   var wrap=document.getElementById('dash-proj-list'); if(!wrap) return;
   var cards=wrap.querySelectorAll('.proj-progress-card');
   cards.forEach(function(c,i){ c.classList.toggle('eg-row-lit', cardIdx!==undefined && cardIdx>=0 && i===cardIdx); });
 }
-// Link the dashboard project list to the Egypt map: hovering a project row lights its pin
-const EG_DP2PINIDX=[1,0,2,3]; // card order (NewCairo,SmartCity,Sinai,Benban) → pin index (p2,p1,p3,p4)
-function egLitPin(cardIdx){
-  var pins=document.querySelectorAll('.eg-card .eg-pin');
-  var pinIdx = cardIdx>=0 ? EG_DP2PINIDX[cardIdx] : -1;
-  pins.forEach(function(g,i){ g.classList.toggle('eg-dim', pinIdx>=0 && i!==pinIdx); g.classList.toggle('eg-lit', pinIdx>=0 && i===pinIdx); });
-  egRoute(pinIdx);
-}
+// hovering a project row lights its map marker + route
+function egLitPin(cardIdx){ egHL(cardIdx>=0 ? EG_DP2PINIDX[cardIdx] : -1); }
 (function(){
   var wrap=document.getElementById('dash-proj-list'); if(!wrap) return;
   wrap.addEventListener('mouseover',function(e){ var c=e.target.closest('.proj-progress-card'); if(!c) return; var cards=Array.prototype.slice.call(wrap.querySelectorAll('.proj-progress-card')); egLitPin(cards.indexOf(c)); });
   wrap.addEventListener('mouseleave',function(){ egLitPin(-1); });
 })();
+window.addEventListener('load',function(){ setTimeout(initEgMap,150); });
 // Transient "supplier is typing…" bubble shown before a real incoming message arrives
 function negTyping(ava){
   const msgs=document.getElementById('chat-msgs'); if(!msgs) return null;

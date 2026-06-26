@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 101](round-101-real-leaflet-map.md) · 🟥 NOTABLE · Egypt 地图换成真·可交互地图(Leaflet+暗色 CartoDB,真实地理/地名+拖缩点 popup+路由+列表联动)——用户紧急点名「真实地图能交互」· console0 · 自检 markers4/routes4/tiles4/linkage✓ · 3/3 KEEP · ⚠依赖网络(线上 Pages 正常)
 - [Round 100](round-100-splash-signal-pings.md) · ⬜ · 开场 splash 加「信号脉冲」同心环(双关 Transmission 信号,借鉴 factorygate ringPulse,不引入假进度条)· console0 · 3/3 KEEP
 - [Round 099](round-099-dashboard-overload-2col.md) · 🟦 · Dashboard 降过载:Savings momentum + Sourcing pipeline 并排 2 栏 + 漏斗重做竖向条形可视化(用户「登录信息过载/要可视化」)· console0 · 3/3 KEEP
 - [Round 098](round-098-egmap-real-geography.md) · 🟦 · Egypt 项目地图重做为真实地理(三角洲/西奈/尼罗河/纳赛尔湖)+ 去雷达扫线/glow/假 blob + 送货路由→Alexandria 港 hover 点亮(用户点名「地图 AI 味重/要交互游戏感」)· console0 · 3/3 KEEP
