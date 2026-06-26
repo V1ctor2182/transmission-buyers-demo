@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 103](round-103-dead-css-cleanup.md) · ⬜ · 清死 CSS:旧 SVG 地图(.eg-pin/.eg-route/.eg-coast/egPulse/egFlow…)+ 旧横向漏斗(.pipe-row/.pipe-seg/.pipe-arrow)· 死类 0/在用完好 · console0 · 3/3 KEEP
 - [Round 102](round-102-map-flyto-row-click.md) · 🟦 · 地图交互:点项目列表行→flyTo 站点+开 popup+高亮(承接真实地图,reduced-motion 退化 setView)· console0 · 自检 5/5 · 3/3 KEEP
 - [Round 101](round-101-real-leaflet-map.md) · 🟥 NOTABLE · Egypt 地图换成真·可交互地图(Leaflet+暗色 CartoDB,真实地理/地名+拖缩点 popup+路由+列表联动)——用户紧急点名「真实地图能交互」· console0 · 自检 markers4/routes4/tiles4/linkage✓ · 3/3 KEEP · ⚠依赖网络(线上 Pages 正常)
 - [Round 100](round-100-splash-signal-pings.md) · ⬜ · 开场 splash 加「信号脉冲」同心环(双关 Transmission 信号,借鉴 factorygate ringPulse,不引入假进度条)· console0 · 3/3 KEEP

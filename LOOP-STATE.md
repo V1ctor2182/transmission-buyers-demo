@@ -158,6 +158,11 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 103 · ⬜ Utility · 清理死 CSS(R099/R101 遗留)
+- 2026-06-26 · 见 `reports/round-103-dead-css-cleanup.md`。删无引用死样式:旧 SVG 地图(.eg-svg/.eg-pin*/.eg-core/.eg-pin-pulse/.eg-ring/.eg-route*/.eg-hub-mark/.eg-coast/.eg-tip*+egPulse/egFlow/.eg-flow)+ 旧横向漏斗(.pipe-row/.pipe-seg*/.pipe-arrow)。保留在用(.eg-mk/.eg-hub-ic/.eg-row-lit/.eg-tt/.egpop/.pipe-card/.pf-*/.eg-card 等)。
+- **闸门**:机检 15 死类全 0 + 7 在用类完好 · console 零错 · 截图 dashboard(momentum+漏斗+真实地图+列表)无回归 · 3/3 KEEP。已 cp index.html + push。
+- **next**:更多可视化 / 科技感 / factorygate 补缺件 / 首屏决策卡密度。1min 自主续跑。
+
 ### Round 102 · 🟦 Standard · 地图交互:点列表行→flyTo 站点+开 popup
 - 2026-06-26 · 见 `reports/round-102-map-flyto-row-click.md`。承接 R101 真实地图,补「点列表行→flyTo」。点 .proj-progress-header → egFlyTo:flyTo marker(zoom7,.7s)+开 popup+高亮;hover 互亮 & accordion 展开均保留(click 监听与 inline onclick 并存);reduced-motion 退化 setView。索引沿用 EG_DP2PINIDX。
 - **闸门**:console 零错 · 自检 egFlyTo(0)→{markers4,flyTarget[30,31.8],centerNearTarget true,popupOpen true,litMarker1 true} · 仅 dashboard additive 不破 accordion · 3/3 KEEP。已 cp index.html + push。
