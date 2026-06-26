@@ -158,6 +158,11 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### ⏹ Loop 已停止(用户 2026-06-26 "stop loop")
+- 取消 pending wakeup(be93fa0c),CronList 已空,不再 ScheduleWakeup。
+- 收尾态:demo 高质量预售可用;真实可交互 Leaflet 地图、dashboard 减负(分析折叠)、开场 splash(延长+修闪 bug)、全视图 viz/交互/决策、响应式全覆盖、a11y、loader 提速、回归 13/13、console 全程 0 错。
+- 重启:重新发 `/loop 1min …`(或带新方向)即接上本 LOOP-STATE + BACKLOG 进度。
+
 ### Round 119 · 🟦 Bugfix · 修 splash→login 间闪现 dashboard
 - 2026-06-26 · 见 `reports/round-119-splash-login-flash-fix.md`。**用户报 bug:动画后先闪 dashboard 再 login**。根因:finish 先淡出 splash(.6s)再 showLogin,淡出期 login 未显示→透出底下 dashboard。修:finish 改**先 showLogin(立即覆盖)再淡出 splash**,露出的是 login。
 - **闸门**:console 零错 · 自检 4150ms{loginShown:true,display:flex} · 截图过渡瞬间=login 非 dashboard · 仅改 finish 顺序流程不变 · 3/3 KEEP。已 cp index.html + push。
