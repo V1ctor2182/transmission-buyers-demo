@@ -993,6 +993,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     @media (prefers-reduced-motion:reduce){.typing-dots span{animation:none}}
     /* real interactive Leaflet map (dark CartoDB basemap) */
     #eg-leaflet{position:absolute;inset:0;background:#0b1b2e;z-index:0}
+    .eg-offline{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#5f7896;font-size:12px;letter-spacing:.04em}
     .eg-map-wrap .leaflet-container{background:#0b1b2e;font-family:'Inter',sans-serif;outline:none}
     .eg-map-wrap .leaflet-control-zoom a{background:rgba(13,33,56,.92);color:#cfe0f5;border-color:#21405f}
     .eg-map-wrap .leaflet-control-zoom a:hover{background:rgba(20,46,75,.98);color:#fff}
@@ -2916,8 +2917,10 @@ const EG_PIN2CARD={p1:1,p2:0,p3:2,p4:3};   // map pin id → project-list card i
 const EG_DP2PINIDX=[1,0,2,3];              // list card index → pin array index
 let egMap=null, EG_MARKERS=[], EG_ROUTES=[];
 function initEgMap(){
-  if(egMap || !window.L) return;
+  if(egMap) return;
   var el=document.getElementById('eg-leaflet'); if(!el || el.offsetParent===null) return; // wait until visible
+  if(!window.L){ if(!el.querySelector('.eg-offline')) el.innerHTML='<div class="eg-offline">Interactive map loads when online</div>'; return; } // graceful offline fallback
+  el.innerHTML='';
   egMap=L.map(el,{zoomControl:true,scrollWheelZoom:false,attributionControl:true,zoomSnap:.25,minZoom:4,maxZoom:12});
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19,attribution:'&copy; OpenStreetMap, &copy; CARTO'}).addTo(egMap);
   // delivery routes (project site → Alexandria) drawn under the markers

@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 111](round-111-map-offline-fallback.md) · ⬜ · 地图离线优雅降级(无 Leaflet 时显示克制提示替空白暗框;在线 egMap/markers4 不变)· console0 · 自检 A/B 通过 · 3/3 KEEP
 - [Round 110](round-110-defer-leaflet.md) · ⬜ · Leaflet 脚本改 defer(开场首屏不被 150KB 阻塞;map 仍正常 L/egMap/markers4/tiles12)· console0 · 3/3 KEEP
 - [Round 109](round-109-replies-row-responsive.md) · ⬜ · Dashboard Replies+Deadlines 行响应式(scoped .dash-rd,不动全局 grid-2;三顶层行响应式收尾)· console0 · 3/3 KEEP
 - [Round 108](round-108-maprow-responsive.md) · ⬜ · Dashboard 地图+列表行加响应式(<1080px 单栏满宽,与 insights 一致;桌面不变)· console0 · 3/3 KEEP
