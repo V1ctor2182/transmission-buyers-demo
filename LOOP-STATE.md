@@ -158,6 +158,12 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 098 · 🟦 Standard · Egypt 项目地图重做真实地理 + 去 AI 味 + 交互路由 · 用户点名
+- 2026-06-26 · 见 `reports/round-098-egmap-real-geography.md`。**用户本轮点名「Egypt project map 非常 AI 味很重 + 要交互感/游戏感」**。删 dashboard 地图 `radar-scan` 雷达扫线(R048 加,本质假科技 slop)+ `egGlow` 模糊 + 手画抽象 blob 轮廓 + sourcing map 残留死 div;用真坐标投影重画**可辨识埃及**(地中海/三角洲外凸/西奈+苏伊士湾缺口/红海斜岸/22°N 南境)+ 尼罗河/纳赛尔湖/苏伊士运河 + 城市/海域标注。4 pin 按真实地理重定位 + 新增 **Alexandria import hub** + 4 条送货路由(hover pin/行→对应路由点亮+货流虚线,reduced-motion 关),呼应「Layla 在替你交付」。pin id/DOM 序保留 → R046 双向联动 + click→proc 不动。
+- **闸门**:console 零错 · headless 注入自检 routes=4/pins=4 + hover p1→route0/pin0 + errs=0 + linkage 往返一致 · 仅 `.eg-*`/`EG_*`+删 sourcing 死 div,跨视图无回归 · 3/3 KEEP。已 cp index.html + push。
+- **注**:INDEX/LOOP-STATE 此前漏记 R093-097(报告/commit 已存),本轮 INDEX 顺手补回 5 行。
+- **next(用户本轮还点名,未做完)**:① **dashboard 登录信息过载**(R047 整合过一次,用户重申仍过载 → 渐进披露/降次级区视觉权重/折叠)② 开场 + 更多科技感 ③ 更多可视化 ④ 参考 factorygate 补缺组件。1min 自主续跑。
+
 ### Round 092 · 🟦 Standard · Compare 模态 Award 决策动作 · 自主模式
 - 2026-06-26 · 见 `reports/round-092-compare-award.md`。compare footer 加「Award per Layla's recommendation」主按钮(Export 降次):awardComparison() 关模态+worklog+toast。对比建议→可决策(§4)。
 - **闸门**:console 零错 · award 关模态/wl 6→7/toast + 截图 3 按钮 footer · 无回归 · 3/3 KEEP。已 cp index.html + push。

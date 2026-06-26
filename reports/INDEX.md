@@ -1,5 +1,11 @@
 # Reports INDEX(倒序)
 
+- [Round 098](round-098-egmap-real-geography.md) · 🟦 · Egypt 项目地图重做为真实地理(三角洲/西奈/尼罗河/纳赛尔湖)+ 去雷达扫线/glow/假 blob + 送货路由→Alexandria 港 hover 点亮(用户点名「地图 AI 味重/要交互游戏感」)· console0 · 3/3 KEEP
+- [Round 097](round-097-dead-logo-emoji-sweep.md) · ⬜ · De-AI 去 9 个死 logo emoji 字段
+- [Round 096](round-096-compare-pick-badge.md) · 🟦 · Compare 「Layla's pick」徽章替装饰星
+- [Round 095](round-095-risk-verdict-emoji.md) · ⬜ · 去 10 处 risk verdict 装饰勾 emoji
+- [Round 094](round-094-dash-projlist-deeplinks.md) · 🟦 · 项目列表 Chat→ 深链各供应商线程
+- [Round 093](round-093-contact-go-to-neg.md) · 🟦 · Contact 模态 Go to Negotiations 导航+worklog
 - [Round 092](round-092-compare-award.md) · 🟦 · Compare 模态加「Award per recommendation」决策动作(关模态+worklog+toast,§4 看→决策闭环)· console0 · 3/3 KEEP
 - [Round 091](round-091-decremaining-source-of-truth.md) · 🟦 · decRemaining 单一真值(KPI delta+agent-bar 随决策同步+导航持久,配 R90 greeting,一致收尾)· console0 · 3/3 KEEP
 - [Round 090](round-090-greeting-sync.md) · 🟦 · 问候语随决策清空同步(3→2→All caught up,配 count/banner,状态一致)· console0 · 3/3 KEEP

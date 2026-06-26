@@ -957,8 +957,14 @@ textarea.form-input{resize:vertical;min-height:80px}
     .eg-tip{position:absolute;pointer-events:none;background:rgba(10,22,40,.96);border:1px solid #1f3f63;border-radius:9px;padding:9px 12px;color:#e6efff;font-size:12px;opacity:0;transition:opacity .12s;z-index:5;max-width:230px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
     .eg-tip.show{opacity:1}
     .eg-pin{transition:opacity .15s}
-    .eg-pin.eg-dim{opacity:.25}
-    .eg-pin.eg-lit .eg-core{r:11;stroke:#fff}
+    .eg-pin.eg-dim{opacity:.28}
+    .eg-pin.eg-lit .eg-core{r:11;stroke:#fff;stroke-width:2.5}
+    .eg-ring{fill:none;stroke:#fff;stroke-width:1.5;opacity:0;transition:opacity .15s}
+    .eg-pin.eg-lit .eg-ring{opacity:.9}
+    .eg-route{fill:none;stroke-linecap:round;opacity:0;transition:opacity .2s,stroke-width .2s}
+    .eg-route.eg-route-on{opacity:.85}
+    .eg-hub-mark{cursor:default}
+    .eg-coast{transition:none}
     .proj-progress-card.eg-row-lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow);transition:box-shadow .15s,border-color .15s}
     .neg-lad-locked svg path:last-of-type{stroke:var(--green)}
     .neg-lad-locked svg circle:last-of-type{filter:drop-shadow(0 0 3px rgba(16,185,129,.85))}
@@ -973,9 +979,9 @@ textarea.form-input{resize:vertical;min-height:80px}
     @keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}
     @media (prefers-reduced-motion:reduce){.typing-dots span{animation:none}}
     @media (prefers-reduced-motion:reduce){.eg-pin-pulse{animation:none}}
-    .radar-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(16,191,255,.32),transparent);pointer-events:none;z-index:2;animation:radarSweep 6s linear infinite}
-    @keyframes radarSweep{0%{top:-2px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
-    @media (prefers-reduced-motion:reduce){.radar-scan{display:none}}
+    .eg-flow{stroke-dasharray:3 7;animation:egFlow 1s linear infinite}
+    @keyframes egFlow{to{stroke-dashoffset:-20}}
+    @media (prefers-reduced-motion:reduce){.eg-flow{animation:none}}
     </style>
     <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:start;margin-bottom:20px">
     <div class="eg-card" style="margin-bottom:0">
@@ -984,35 +990,54 @@ textarea.form-input{resize:vertical;min-height:80px}
         <div class="eg-legend"><span><i style="background:#1B5EFF"></i>In negotiation</span><span><i style="background:#F59E0B"></i>Sampling</span><span><i style="background:#10BFFF"></i>Quoting</span></div>
       </div>
       <div class="eg-map-wrap">
-        <div class="radar-scan"></div>
         <svg class="eg-svg" viewBox="0 0 800 700" preserveAspectRatio="xMidYMid meet">
-          <defs><filter id="egGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-          <g stroke="rgba(27,94,255,0.09)" stroke-width="1">
-            <line x1="0" y1="100" x2="800" y2="100"/><line x1="0" y1="200" x2="800" y2="200"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="400" x2="800" y2="400"/><line x1="0" y1="500" x2="800" y2="500"/><line x1="0" y1="600" x2="800" y2="600"/>
-            <line x1="100" y1="0" x2="100" y2="700"/><line x1="200" y1="0" x2="200" y2="700"/><line x1="300" y1="0" x2="300" y2="700"/><line x1="400" y1="0" x2="400" y2="700"/><line x1="500" y1="0" x2="500" y2="700"/><line x1="600" y1="0" x2="600" y2="700"/><line x1="700" y1="0" x2="700" y2="700"/>
+          <!-- faint reference graticule -->
+          <g stroke="rgba(120,160,210,0.06)" stroke-width="1">
+            <line x1="0" y1="175" x2="800" y2="175"/><line x1="0" y1="350" x2="800" y2="350"/><line x1="0" y1="525" x2="800" y2="525"/>
+            <line x1="200" y1="0" x2="200" y2="700"/><line x1="400" y1="0" x2="400" y2="700"/><line x1="600" y1="0" x2="600" y2="700"/>
           </g>
-          <path d="M 180 80 L 560 80 L 580 100 L 600 140 L 610 180 L 600 220 L 590 240 L 580 260 L 600 300 L 620 340 L 640 380 L 650 420 L 640 460 L 620 490 L 590 510 L 560 520 L 520 530 L 480 540 L 440 550 L 400 560 L 360 560 L 320 555 L 280 545 L 240 535 L 200 520 L 170 500 L 150 470 L 140 440 L 145 400 L 155 360 L 160 320 L 155 280 L 150 240 L 155 200 L 160 160 L 165 120 Z" fill="rgba(27,94,255,0.07)" stroke="rgba(16,191,255,0.32)" stroke-width="1.5" filter="url(#egGlow)"/>
-          <path d="M 390 560 L 385 520 L 380 480 L 375 440 L 370 400 L 368 360 L 365 320 L 362 280 L 358 240 L 355 200 L 350 160 L 345 120 L 340 90" fill="none" stroke="rgba(16,191,255,0.35)" stroke-width="2.5"/>
-          <path d="M 340 90 L 290 80 L 250 82 L 220 88 L 200 95 L 280 100 L 320 95 L 340 90 L 360 95 L 390 100 L 420 95 L 450 90 L 480 88 L 510 90 L 530 95 L 510 100 L 480 100 L 450 98 L 420 100 L 390 100 L 360 95" fill="rgba(16,191,255,0.12)" stroke="rgba(16,191,255,0.25)" stroke-width="1"/>
-          <path d="M 560 80 L 565 120 L 570 160 L 565 200 L 560 240" fill="none" stroke="rgba(16,191,255,0.4)" stroke-width="2" stroke-dasharray="6,3"/>
-          <path d="M 560 80 L 600 140 L 610 180 L 600 220 L 590 240 L 580 260 L 600 300 L 620 340 L 640 380 L 650 420 L 640 460 L 620 490 L 590 510 L 570 480 L 560 440 L 555 400 L 560 360 L 565 320 L 560 280 L 555 240 L 560 200 L 565 160 L 560 120 L 555 100 Z" fill="rgba(27,94,255,0.05)" stroke="rgba(16,191,255,0.2)" stroke-width="1"/>
-          <text x="350" y="55" fill="rgba(16,191,255,0.4)" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="2">MEDITERRANEAN SEA</text>
-          <text x="660" y="400" fill="rgba(16,191,255,0.32)" font-size="9" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="1" transform="rotate(70,660,400)">RED SEA</text>
-          <text x="610" y="300" fill="rgba(255,255,255,0.2)" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">Sinai</text>
-          <text x="352" y="112" fill="rgba(255,255,255,0.32)" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">Cairo</text>
-          <text x="240" y="86" fill="rgba(255,255,255,0.3)" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">Alexandria</text>
-          <text x="372" y="540" fill="rgba(255,255,255,0.26)" font-size="10" font-family="Inter, sans-serif" text-anchor="middle">Aswan</text>
-          <g class="eg-pin" onmouseenter="egTip(event,'p1')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(388,116)">
-            <circle class="eg-pin-pulse" r="9" fill="rgba(27,94,255,.5)"/><circle class="eg-core" r="7" fill="#1B5EFF" stroke="#0a1a2f" stroke-width="2"/>
+          <!-- Egypt landmass (recognizable silhouette: Med + delta, Sinai w/ Gulf of Suez notch, Red Sea coast, 22°N south border) -->
+          <path class="eg-coast" d="M 44 48 L 294 64 L 360 58 L 452 48 L 510 60 L 537 67 L 613 70 L 652 177 L 614 288 L 525 152 L 585 319 L 658 456 L 774 649 L 50 649 L 50 146 Z"
+                fill="rgba(38,68,108,0.55)" stroke="rgba(120,170,235,0.55)" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- Lake Nasser -->
+          <path d="M 522 506 L 540 520 L 548 560 L 542 600 L 528 612 L 520 580 L 516 540 Z" fill="rgba(16,140,210,0.34)" stroke="rgba(80,180,240,0.4)" stroke-width="1"/>
+          <!-- Nile (Aswan → Cairo) + delta distributaries -->
+          <path d="M 528 506 L 520 460 L 502 400 L 478 330 L 456 262 L 440 200 L 432 150 M 432 150 L 360 78 M 432 150 L 470 70" fill="none" stroke="rgba(70,170,235,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Suez Canal -->
+          <path d="M 537 67 L 530 110 L 525 152" fill="none" stroke="rgba(110,200,245,0.55)" stroke-width="1.6" stroke-dasharray="2 4"/>
+          <!-- water labels -->
+          <text x="320" y="34" fill="rgba(120,180,235,0.5)" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="3">MEDITERRANEAN</text>
+          <text x="712" y="430" fill="rgba(120,180,235,0.42)" font-size="9.5" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="2" transform="rotate(64,712,430)">RED SEA</text>
+          <text x="640" y="205" fill="rgba(210,225,245,0.4)" font-size="10.5" font-family="Inter, sans-serif" text-anchor="middle" letter-spacing=".5">Sinai</text>
+          <!-- city ticks -->
+          <text x="468" y="152" fill="rgba(210,225,245,0.45)" font-size="9.5" font-family="Inter, sans-serif" text-anchor="start">Cairo</text>
+          <text x="528" y="490" fill="rgba(210,225,245,0.42)" font-size="9.5" font-family="Inter, sans-serif" text-anchor="middle">Aswan</text>
+          <text x="556" y="150" fill="rgba(210,225,245,0.38)" font-size="9" font-family="Inter, sans-serif" text-anchor="start">Suez</text>
+          <!-- delivery routes: each project site → Alexandria import hub -->
+          <g fill="none">
+            <path class="eg-route" data-pin="0" d="M 438 150 Q 300 60 244 78" stroke="#1B5EFF" stroke-width="2"/>
+            <path class="eg-route" data-pin="1" d="M 470 165 Q 320 70 244 78" stroke="#F59E0B" stroke-width="2"/>
+            <path class="eg-route" data-pin="2" d="M 595 205 Q 380 60 244 78" stroke="#10BFFF" stroke-width="2"/>
+            <path class="eg-route" data-pin="3" d="M 520 500 Q 300 320 244 78" stroke="#10BFFF" stroke-width="2"/>
           </g>
-          <g class="eg-pin" onmouseenter="egTip(event,'p2')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(418,134)">
-            <circle class="eg-pin-pulse" r="9" fill="rgba(245,158,11,.5)" style="animation-delay:.7s"/><circle class="eg-core" r="7" fill="#F59E0B" stroke="#0a1a2f" stroke-width="2"/>
+          <!-- Alexandria import hub -->
+          <g class="eg-hub-mark" transform="translate(240,72)">
+            <circle r="4.5" fill="#e8f0ff" stroke="#0a1a2f" stroke-width="1.5"/>
+            <circle r="8" fill="none" stroke="rgba(232,240,255,.45)" stroke-width="1"/>
           </g>
-          <g class="eg-pin" onmouseenter="egTip(event,'p3')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(610,350)">
-            <circle class="eg-pin-pulse" r="9" fill="rgba(16,191,255,.5)" style="animation-delay:1.4s"/><circle class="eg-core" r="7" fill="#10BFFF" stroke="#0a1a2f" stroke-width="2"/>
+          <text x="240" y="56" fill="rgba(220,232,250,0.6)" font-size="9.5" font-family="Inter, sans-serif" text-anchor="middle" font-weight="600">Alexandria · import hub</text>
+          <!-- project pins (DOM order p1,p2,p3,p4 preserved for list linkage) -->
+          <g class="eg-pin" onmouseenter="egTip(event,'p1')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(438,150)">
+            <circle class="eg-pin-pulse" r="9" fill="rgba(27,94,255,.5)"/><circle class="eg-ring" r="13"/><circle class="eg-core" r="6.5" fill="#1B5EFF" stroke="#0a1a2f" stroke-width="2"/>
           </g>
-          <g class="eg-pin" onmouseenter="egTip(event,'p4')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(358,505)">
-            <circle class="eg-pin-pulse" r="9" fill="rgba(16,191,255,.5)" style="animation-delay:2.1s"/><circle class="eg-core" r="7" fill="#10BFFF" stroke="#0a1a2f" stroke-width="2"/>
+          <g class="eg-pin" onmouseenter="egTip(event,'p2')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(470,165)">
+            <circle class="eg-pin-pulse" r="9" fill="rgba(245,158,11,.5)" style="animation-delay:.7s"/><circle class="eg-ring" r="13"/><circle class="eg-core" r="6.5" fill="#F59E0B" stroke="#0a1a2f" stroke-width="2"/>
+          </g>
+          <g class="eg-pin" onmouseenter="egTip(event,'p3')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(595,205)">
+            <circle class="eg-pin-pulse" r="9" fill="rgba(16,191,255,.5)" style="animation-delay:1.4s"/><circle class="eg-ring" r="13"/><circle class="eg-core" r="6.5" fill="#10BFFF" stroke="#0a1a2f" stroke-width="2"/>
+          </g>
+          <g class="eg-pin" onmouseenter="egTip(event,'p4')" onmousemove="egTipMove(event)" onmouseleave="egTipHide()" onclick="showView('procurement')" transform="translate(520,500)">
+            <circle class="eg-pin-pulse" r="9" fill="rgba(16,191,255,.5)" style="animation-delay:2.1s"/><circle class="eg-ring" r="13"/><circle class="eg-core" r="6.5" fill="#10BFFF" stroke="#0a1a2f" stroke-width="2"/>
           </g>
         </svg>
         <div class="eg-tip" id="eg-tip"></div>
@@ -2544,7 +2569,6 @@ textarea.form-input{resize:vertical;min-height:80px}
     </div>
     <div class="map-layout">
       <div class="map-wrap">
-        <div class="radar-scan"></div>
         <svg class="map-svg" id="map-svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet">
           <defs><pattern id="mapgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" class="map-grid-line"/></pattern></defs>
           <rect id="map-bg" width="1000" height="520" fill="url(#mapgrid)" onclick="mapReset()"/>
@@ -2886,11 +2910,20 @@ const EG_PROJECTS={
   p3:{name:'Sinai Mining Equipment',loc:'Egyptian Mineral Resources · Phase 1',status:'Quoting',color:'#10BFFF',meta:'Excavators · XCMG vs SANY at $144K'},
   p4:{name:'Benban Solar Park · Ph.3',loc:'Benban, Aswan',status:'Quoting',color:'#10BFFF',meta:'PV mounting systems · early sourcing'}
 };
+const EG_ID2IDX={p1:0,p2:1,p3:2,p4:3};
+// Highlight the delivery route (and dim others) for a given pin DOM index; -1 clears.
+function egRoute(pinIdx){
+  document.querySelectorAll('.eg-card .eg-route').forEach(function(r){
+    var on = pinIdx>=0 && +r.getAttribute('data-pin')===pinIdx;
+    r.classList.toggle('eg-route-on', on); r.classList.toggle('eg-flow', on);
+  });
+}
 function egTip(e,id){ var p=EG_PROJECTS[id]; if(!p) return; var t=document.getElementById('eg-tip'); if(!t) return;
-  t.innerHTML='<div style="font-weight:700;font-size:12.5px">'+p.name+'</div><div style="color:#9fb6d6;font-size:11px;margin-top:2px">'+p.loc+'</div><div style="margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.4px;color:'+p.color+'">'+p.status.toUpperCase()+'</div><div style="color:#9fb6d6;font-size:10.5px;margin-top:3px;line-height:1.45">'+p.meta+'</div>';
-  t.classList.add('show'); egTipMove(e); egLitRow(EG_PIN2CARD[id]); }
+  t.innerHTML='<div style="font-weight:700;font-size:12.5px">'+p.name+'</div><div style="color:#9fb6d6;font-size:11px;margin-top:2px">'+p.loc+'</div><div style="margin-top:5px;font-size:10.5px;font-weight:700;letter-spacing:.4px;color:'+p.color+'">'+p.status.toUpperCase()+'</div><div style="color:#9fb6d6;font-size:10.5px;margin-top:3px;line-height:1.45">'+p.meta+'</div><div style="color:#7d96b8;font-size:9.5px;margin-top:5px">→ shipping to Alexandria import hub</div>';
+  t.classList.add('show'); egTipMove(e); egLitRow(EG_PIN2CARD[id]);
+  var idx=EG_ID2IDX[id]; egRoute(idx); egLitPin(EG_PIN2CARD[id]); }
 function egTipMove(e){ var w=document.querySelector('.eg-map-wrap'); if(!w) return; var r=w.getBoundingClientRect(),t=document.getElementById('eg-tip'); if(!t) return; var x=e.clientX-r.left+14,y=e.clientY-r.top+14; if(x+242>r.width)x-=262; if(y+96>r.height)y-=112; t.style.left=x+'px'; t.style.top=y+'px'; }
-function egTipHide(){ var t=document.getElementById('eg-tip'); if(t)t.classList.remove('show'); egLitRow(-1); }
+function egTipHide(){ var t=document.getElementById('eg-tip'); if(t)t.classList.remove('show'); egLitRow(-1); egRoute(-1); egLitPin(-1); }
 // Reverse link: hovering a map pin highlights its project row in the list
 const EG_PIN2CARD={p1:1,p2:0,p3:2,p4:3};
 function egLitRow(cardIdx){
@@ -2904,6 +2937,7 @@ function egLitPin(cardIdx){
   var pins=document.querySelectorAll('.eg-card .eg-pin');
   var pinIdx = cardIdx>=0 ? EG_DP2PINIDX[cardIdx] : -1;
   pins.forEach(function(g,i){ g.classList.toggle('eg-dim', pinIdx>=0 && i!==pinIdx); g.classList.toggle('eg-lit', pinIdx>=0 && i===pinIdx); });
+  egRoute(pinIdx);
 }
 (function(){
   var wrap=document.getElementById('dash-proj-list'); if(!wrap) return;
