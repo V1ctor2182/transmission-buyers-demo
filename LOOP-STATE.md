@@ -158,6 +158,11 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 115 · ⬜ Polish · 图标按钮 aria-label(a11y,零风险)
+- 2026-06-26 · 见 `reports/round-115-a11y-close-labels.md`。3 个仅图标 ✕ 关闭按钮(bg/compare/worklog)加 aria-label;aria 计数 1→4。纯属性、零视觉/零回归。
+- **闸门**:console 零错 · 属性新增无变化 · 3/3 KEEP。已 cp index.html + push。
+- **next**:仅余 2 刻意延后项;等新方向最佳。1min 自主续跑。
+
 ### Round 114 · ✅ 审计 · BACKLOG 准确性核对 + 诚实收敛 · 无代码改动
 - 2026-06-26 · 见 `reports/round-114-backlog-accuracy.md`。逐条核 BACKLOG 开放项:sparkle(R038 已消除)+ procurement 盯单(R044/R106 已达成)标 [x];决策卡重构=纯重构风险>收益不做;flag=de-AI 已决策保留。**剩余仅 2 项(均不优先)**。
 - **诚实状态**:高价值项全交付;不做凑数/冒险改动。建议用户给新方向最佳,否则 loop 仅在发现诚实低风险真改进时动手。
