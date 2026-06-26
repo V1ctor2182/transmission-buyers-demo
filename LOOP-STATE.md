@@ -158,6 +158,12 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 112 · ⬜ Polish · 决策卡 hero 响应式(auto-fit)
+- 2026-06-26 · 见 `reports/round-112-deccards-responsive.md`。`.dec-grid` repeat(3,1fr)→repeat(auto-fit,minmax(250px,1fr)),窄屏自动换行不挤,桌面 3 栏不变。
+- **闸门**:console 零错 · 1440 三栏不变 / 860 换 2 栏可读 · 3/3 KEEP。已 cp index.html + push。
+- **★ Dashboard 响应式全覆盖**(决策 hero + 三顶层 2 栏行)。
+- **next**:极边际;诚实低风险或如实告知无高价值。1min 自主续跑。
+
 ### Round 111 · ⬜ Polish · 地图离线优雅降级
 - 2026-06-26 · 见 `reports/round-111-map-offline-fallback.md`。initEgMap 在 `!window.L`(离线/CDN 挂)时显示克制提示「Interactive map loads when online」替空白暗框;有 L 时先清提示再交 Leaflet。线上不变。
 - **闸门**:console 零错 · 自检 A 在线{egMap:true,markers:4,offlineNote:false} / B 离线{egMap:false,offlineNote:true} 零抛错 · 3/3 KEEP。已 cp index.html + push。
