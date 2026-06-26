@@ -1,5 +1,6 @@
 # Reports INDEX(倒序)
 
+- [Round 110](round-110-defer-leaflet.md) · ⬜ · Leaflet 脚本改 defer(开场首屏不被 150KB 阻塞;map 仍正常 L/egMap/markers4/tiles12)· console0 · 3/3 KEEP
 - [Round 109](round-109-replies-row-responsive.md) · ⬜ · Dashboard Replies+Deadlines 行响应式(scoped .dash-rd,不动全局 grid-2;三顶层行响应式收尾)· console0 · 3/3 KEEP
 - [Round 108](round-108-maprow-responsive.md) · ⬜ · Dashboard 地图+列表行加响应式(<1080px 单栏满宽,与 insights 一致;桌面不变)· console0 · 3/3 KEEP
 - [Round 107](round-107-regression-sweep.md) · ✅ 验证 · 跨视图回归抽查(R098-106 大改后)= 13/13 OK · 0 console 错 · 无代码改动 · 收敛态诚实告知

@@ -158,6 +158,11 @@
 ### ▶ 用户第 2 次重发 1min(R078)→ 恢复高频,停止主推收敛
 - 用户在 R077 收敛后**又一次**显式重发 1min(R051 已一次)→ 删 30min `644304d8`,恢复 1min `de3a705a`。**结论:用户明确要 1min 持续跑,后续不再主推收敛**;有价值就做,无则诚实审计,响应保持简洁。
 
+### Round 110 · ⬜ Polish · Leaflet 脚本改 defer(开场首屏性能)
+- 2026-06-26 · 见 `reports/round-110-defer-leaflet.md`。Leaflet(~150KB)在 head 无 defer 阻塞首屏。加 `defer`;initEgMap 只在 load/showView 调用,L 届时就绪,defer 安全。splash 不再等 Leaflet。
+- **闸门**:console 零错 · 自检 {L:true,egMap:true,markers:4,tiles:12} defer 后地图正常 · 无视觉变化 · 3/3 KEEP。已 cp index.html + push。
+- **next**:极边际;文案细抠 / 回归 / 如实告知。1min 自主续跑。
+
 ### Round 109 · ⬜ Polish · Dashboard Replies+Deadlines 行响应式(响应式一致性收尾)
 - 2026-06-26 · 见 `reports/round-109-replies-row-responsive.md`。第三个顶层 2 栏行(Replies+Deadlines)原用全局 .grid-2(另 3 处表单也用)→ 不动全局,改 scoped `.dash-rd`(桌面 1fr/1fr 同值 + @media1080 单栏),与 .dash-insights(R099)/.dash-maprow(R108)同模式。dashboard 三顶层 2 栏行响应式统一收尾。
 - **闸门**:console 零错 · 1000px 全 dashboard 堆叠正常 · 1440 同值无回归 · 3/3 KEEP。已 cp index.html + push。
